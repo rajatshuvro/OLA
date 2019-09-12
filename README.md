@@ -14,6 +14,7 @@ Options:<br/>
 	add		Add new book 	[add -i {isbn number} -g {genre} -r {reading level}]<br/>
 	co		Checkout 	[co -i {book id} -b {borrower id}]<br/>
 	ret		return  	[ci -i {book id} -b {borrower_id}]<br/>
+	isbn		create isbn	[isbn -t {title} -a {author} -y {year}]<br/>
 	help		detailed help	[help {command}]
 </pre></code>
 
