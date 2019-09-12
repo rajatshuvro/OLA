@@ -11,7 +11,7 @@ The aim of this app is to automate Onkur Bangla Language Academy's library manag
 
 Options:<br/>
 <pre><code>
-	add		Add new book 	[add -i {isbn number} -g {genre} -r {reading level}]<br/>
+	add		Add new book 	[add -i *isbn number* -g *genre* -r *reading level*}]<br/>
 	co		Checkout 	[co -i {book id} -b {borrower id}]<br/>
 	ret		return  	[ci -i {book id} -b {borrower_id}]<br/>
 	help		detailed help	[help command]
