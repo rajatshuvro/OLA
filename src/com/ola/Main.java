@@ -6,8 +6,9 @@ import java.util.Scanner;
 public class Main {
 //https://github.com/rajatshuvro/OLA/blob/master/README.md
     public static void main(String[] args) throws Exception{
-
-        while (true){
+        //todo: load database from file
+        boolean quit=false;
+        while (!quit){
             PrintMenu();
             Scanner in = new Scanner(System.in);
             String command = in.nextLine();
@@ -22,11 +23,13 @@ public class Main {
                     CheckOut.Run(subArgs);
                     break;
                 case "quit":
-                    return;
+                    quit = true;
+                    break;
                 default:
                     System.out.println("Type {quit} to exit");
             }
 
+            //todo: save changes to file
         }
 
     }
