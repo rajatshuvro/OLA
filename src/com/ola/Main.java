@@ -1,33 +1,42 @@
 package com.ola;
 import org.apache.commons.cli.*;
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Main {
 //https://github.com/rajatshuvro/OLA/blob/master/README.md
     public static void main(String[] args) throws Exception{
-        String subCommand = GetSubCommand(args);
-        Options options = new Options();
-        Option input = new Option("p", "problem", true, "problem name");
-        input.setRequired(true);
-        options.addOption(input);
 
-        CommandLineParser parser = new DefaultParser();
-        HelpFormatter formatter = new HelpFormatter();
-        CommandLine cmd;
+        while (true){
+            PrintMenu();
+            Scanner in = new Scanner(System.in);
+            String command = in.nextLine();
+            String[] subArgs = command.split("\\s+");
 
-        try {
-            cmd = parser.parse(options, args);
-            String problemName = cmd.getOptionValue("problem");
-            System.out.println("Running all unit tests for the "+problemName+" problem");
+            String subCommand = subArgs[0];
+            switch (subCommand){
+                case "add":
+                    Add.Run(subArgs);
+                    break;
+                case "co":
+                    CheckOut.Run(subArgs);
+                    break;
+                case "quit":
+                    return;
+                default:
+                    System.out.println("Type {quit} to exit");
             }
-        catch (ParseException e) {
-            System.out.println(e.getMessage());
-            formatter.printHelp("LeetJ [problem name]", options);
 
-            System.exit(1);
         }
+
     }
 
-    private static String GetSubCommand(String[] args) throws Exception {
-        if (args.length < 2) throw new Exception("Missing sub-command");
-        return args[1];
+    private static void PrintMenu() {
+        System.out.println("Options:");
+        System.out.println("\tadd (add new book to database)");
+        System.out.println("\tco (checkout book)");
+        System.out.println("\tquit (quit OLA)");
+        System.out.println("\tType command to get detailed help");
     }
+
 }
