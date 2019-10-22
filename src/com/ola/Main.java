@@ -1,12 +1,13 @@
 package com.ola;
 import org.apache.commons.cli.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 //https://github.com/rajatshuvro/OLA/blob/master/README.md
     public static void main(String[] args) throws Exception{
-        //todo: load database from file
+
+        DataProvider dataProvider = Initialize(args);
+        dataProvider.Load();
         boolean quit=false;
         while (!quit){
             PrintMenu();
@@ -33,13 +34,40 @@ public class Main {
         }
 
     }
+    private static String commandSyntex = "ola -b c:\\path\\to\\file\\bookDb.tsv";
+    private static DataProvider Initialize(String[] args) {
+        System.out.println("Welcome to OLA (Onkur Library Application");
+        Options options = new Options();
+        Option bookDbFile = new Option("b", "book", true, "book database file");
+        bookDbFile.setRequired(true);
+        options.addOption(bookDbFile);
+
+        CommandLineParser parser = new DefaultParser();
+        HelpFormatter formatter = new HelpFormatter();
+        CommandLine cmd;
+
+        if(args.length==1) {
+            formatter.printHelp(commandSyntex, options);
+            return null;
+        }
+
+        try {
+            cmd = parser.parse(options, args);
+            return new DataProvider(cmd.getOptionValue("book"));
+        }
+        catch (ParseException e) {
+            System.out.println(e.getMessage());
+            formatter.printHelp(commandSyntex, options);
+            return null;
+        }
+    }
 
     private static void PrintMenu() {
         System.out.println("Options:");
         System.out.println("\tadd (add new book to database)");
         System.out.println("\tco (checkout book)");
         System.out.println("\tquit (quit OLA)");
-        System.out.println("\tType command to get detailed help");
+        System.out.println("\t[Type command to get detailed help]");
     }
 
 }
