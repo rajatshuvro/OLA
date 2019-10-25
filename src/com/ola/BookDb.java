@@ -39,6 +39,11 @@ public class BookDb {
     private final int AuthorIndex = 1;
     private final int IsbnIndex = 2;
     private final int CopyNumIndex = 3;
+    private final int PageCountIndex = 3;
+    private final int PriceIndex = 3;
+    private final int PublisherIndex = 3;
+    private final int GenreIndex = 3;
+    private final int ReadingLevelIndex = 3;
 
 
     private void AddBook(String line) {
