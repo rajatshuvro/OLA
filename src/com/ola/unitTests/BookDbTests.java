@@ -1,0 +1,33 @@
+package com.ola.unitTests;
+import com.ola.BookDb;
+import org.junit.jupiter.api.Test;
+
+import java.io.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class BookDbTests {
+    private InputStream GetBooksStream() throws IOException {
+        var memStream = new ByteArrayOutputStream();
+        var writer = new OutputStreamWriter(memStream);
+
+        writer.write("Title\tAuthor\tISBN\tCopy number\tPage count\tPrice\tPublisher\tGenre\tReading level\tYear\n");
+        writer.write("Amar Baba\tRajat Shuvro Roy\t7890788\t1\t5\t5\tBonosree books and co\tGEN\t4\t2015\n");
+        writer.write("Amar Baba\tRajat Shuvro Roy\t7890788\t2\t5\t5\tBonosree books and co\tGEN\t4\t2015\n");
+        writer.write("Bhua Bhalobasha \tSaber Nabil\t678564\t1\t10\t10\tDakkhin Khan Publishers\tFIC\t5\t2017\n");
+        writer.write("Robindra Prem\tNanda Mitra\t456098\t1\t15\t10\tBakura Publishers\tFIC\t6\t2018\n");
+
+        writer.close();
+
+        var buffer = memStream.toByteArray();
+        memStream.close();
+        return new ByteArrayInputStream(buffer);
+    }
+    @Test
+    public void ParseBooks() throws IOException{
+        var bookParser = new BookDb(GetBooksStream());
+        var count = bookParser.Load();
+        bookParser.Close();
+        assertEquals(4, count);
+    }
+}

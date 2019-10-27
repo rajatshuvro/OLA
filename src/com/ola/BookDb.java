@@ -1,5 +1,7 @@
 package com.ola;
 
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -9,9 +11,36 @@ import java.util.Scanner;
 public class BookDb {
     private InputStream _inputStream;
     private HashMap<String, Book> _books;
+    public int Count(){
+        return _books.size();
+    }
+    //Title    Author  ISBN    Page count      Price   Publisher       Genre   Reading level Copy number
+    private int TitleIndex = -1;
+    private int AuthorIndex = -1;
+    private int IsbnIndex = -1;
+    private int PageCountIndex = -1;
+    private int PriceIndex = -1;
+    private int PublisherIndex = -1;
+    private int GenreIndex = -1;
+    private int ReadingLevelIndex = -1;
+    private int CopyNumberIndex =-1;
+    private int YearIndex = -1;
+
+    public final String TitleTag = "Title";
+    public final String AuthorTag = "Author";
+    public final String IsbnTag = "ISBN";
+    public final String PageCountTag = "Page count";
+    public final String PriceTag = "Price";
+    public final String PublisherTag = "Publisher";
+    public final String GenreTag = "Genre";
+    public final String ReadingLevelTag = "Reading level";
+    public final String CopyNumTag = "Copy number";
+    public final String YearTag = "Year";
+
 
     public BookDb(InputStream inputStream) {
         _inputStream = inputStream;
+        _books = new HashMap<>();
     }
 
     public int Load() throws IOException {
@@ -26,47 +55,63 @@ public class BookDb {
                     isFirstLine = false;
                     continue;
                 }
-                AddBook(line);
+                var book = GetBook(line);
+                if (book != null){
+                    _books.put(book.GetId(),book);
+                }
                 count++;
             }
         }
         System.out.println("Loaded book database. Book count:"+ count);
         return count;
     }
-//Title    Author  ISBN    Page count      Price   Publisher       Genre   Reading level
-    private int TitleIndex = -1;
-    private int AuthorIndex = -1;
-    private int IsbnIndex = -1;
-    private int PageCountIndex = -1;
-    private int PriceIndex = -1;
-    private int PublisherIndex = -1;
-    private int GenreIndex = -1;
-    private int ReadingLevelIndex = -1;
-
-    public final String TitleTag = "Title";
-    public final String AuthorTag = "Author";
-    public final String IsbnTag = "ISBN";
-    public final String PageCountTag = "Page count";
-    public final String PriceTag = "Price";
-    public final String PublisherTag = "Publisher";
-    public final String GenreTag = "Genre";
-    public final String ReadingLevelTag = "Reading level";
-
     private void SetColumnIndices(String headerLine){
         var splits = headerLine.split("\t");
-        TitleIndex = Arrays.binarySearch(splits, TitleTag);
-        AuthorIndex = Arrays.binarySearch(splits, AuthorTag);
-        IsbnIndex = Arrays.binarySearch(splits, IsbnTag);
-        PageCountIndex = Arrays.binarySearch(splits, PageCountTag);
-        PriceIndex = Arrays.binarySearch(splits, PriceTag);
-        PublisherIndex = Arrays.binarySearch(splits, PublisherTag);
-        GenreIndex = Arrays.binarySearch(splits, GenreTag);
-        ReadingLevelIndex = Arrays.binarySearch(splits, ReadingLevelTag);
+        var splitList =Arrays.asList(splits);
+
+        TitleIndex = splitList.indexOf(TitleTag);
+        AuthorIndex = splitList.indexOf(AuthorTag);
+        IsbnIndex = splitList.indexOf( IsbnTag);
+        PageCountIndex = splitList.indexOf( PageCountTag);
+        PriceIndex = splitList.indexOf( PriceTag);
+        PublisherIndex = splitList.indexOf( PublisherTag);
+        GenreIndex = splitList.indexOf( GenreTag);
+        ReadingLevelIndex = splitList.indexOf( ReadingLevelTag);
+        CopyNumberIndex = splitList.indexOf(CopyNumTag);
+        YearIndex = splitList.indexOf(YearTag);
     }
 
-    private void AddBook(String line) {
+    private Book GetBook(String line) {
         var splits = line.split("\t");
 
+        var title = splits[TitleIndex];
+        var author = splits[AuthorIndex];
+        var isbn = Long.parseLong(splits[IsbnIndex]);
+        var pageCount = Integer.parseInt(splits[PageCountIndex]);
+        var price = Integer.parseInt(splits[PriceIndex]);
+        var publisher = splits[PublisherIndex];
+        var year = Integer.parseInt(splits[YearIndex]);
+        var genre = splits[GenreIndex];
+        var readingLevel = Integer.parseInt(splits[ReadingLevelIndex]);
+        var copyNumber = Integer.parseInt(splits[CopyNumberIndex]);
+
+        if(!IsValidateGenre(genre)){
+            System.out.println("Invalid genre provided:"+ genre+" .Skipping book:"+title);
+            return null;
+        }
+        if(readingLevel <0 || readingLevel > 10) {
+            System.out.println("Invalid reading level provided:"+ readingLevel +" .Skipping book:"+ title);
+            return null;
+        }
+
+        return new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber);
     }
 
+    private boolean IsValidateGenre(String genre) {
+        return genre.equals("FIC") || genre.equals("GEN") || genre.equals("SCI") || genre.equals("SOC");
+    }
+
+    public void Close() throws IOException {
+        _inputStream.close();
+    }
 }

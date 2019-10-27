@@ -1,5 +1,8 @@
 package com.ola;
 import org.apache.commons.cli.*;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
@@ -53,9 +56,11 @@ public class Main {
 
         try {
             cmd = parser.parse(options, args);
-            return new DataProvider(cmd.getOptionValue("book"));
+            String fileName = cmd.getOptionValue("book");
+
+            return new DataProvider(new FileInputStream(fileName));
         }
-        catch (ParseException e) {
+        catch (ParseException | FileNotFoundException e) {
             System.out.println(e.getMessage());
             formatter.printHelp(commandSyntex, options);
             return null;

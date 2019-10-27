@@ -1,5 +1,6 @@
 package com.ola;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class DataProvider {
@@ -7,8 +8,8 @@ public class DataProvider {
     public UserDb Users;
     public LendingDb Lendings;
 
-    public DataProvider(String bookDbPath) {
-        Books = new BookDb(bookDbPath);
+    public DataProvider(FileInputStream bookInputStream) {
+        Books = new BookDb(bookInputStream);
     }
 
     public void Load() throws IOException{
