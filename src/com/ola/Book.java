@@ -1,5 +1,8 @@
 package com.ola;
-//Title    Author  ISBN    Copy_num        Page_count      Price   Publisher       Genre   Reading level
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+//Title    Author  ISBN    Page_count      Price   Publisher       Genre   Reading level
 
 public class Book {
     public final String Isbn;
@@ -12,22 +15,29 @@ public class Book {
     public final float Price;
     public final Genre Genre;
     public final int ReadingLevel;
+    public final long EntryTime;
 
-    public Book(String isbn, String author, String title, String publisher, int year, int copyNum, int pageCount, float price, Genre genre, int readingLevel){
+
+    public Book(String isbn, String author, String title, String publisher, int year, int pageCount, float price, Genre genre, int readingLevel, long epochSeconds){
         Isbn = isbn;
         Author = author;
         Title = title;
         Publisher = publisher;
         Year = year;
-        CopyNum = copyNum;
+        CopyNum = -1;//user not allowed to input copy number. I will be assigned once the book is submitted to central database
         PageCount = pageCount;
         Price = price;
         Genre = genre;
         ReadingLevel = readingLevel;
+        EntryTime = epochSeconds;
     }
 
     public String GetId(){
-        return String.join("-", Isbn, Genre.name(), Integer.toString(ReadingLevel), Integer.toString(CopyNum));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        var timeOfEntry = dtf.format(LocalDateTime.ofEpochSecond(EntryTime, 0, ZoneOffset.UTC));
+        // todo: replace time of entry with copyNum
+        String copyNumString = CopyNum ==-1 ? timeOfEntry: Integer.toString(CopyNum);
+        return String.join("-", Isbn, Genre.name(), Integer.toString(ReadingLevel), copyNumString);
     }
 
     public enum Genre{
@@ -38,11 +48,11 @@ public class Book {
     }
 
     public enum ReadingLevel{
-        Infant,
-        Toddler,
-        KinderGarden,
-        Elementary,
-        Middle,
-        High
+        INF, // infant
+        TOD, // toddler
+        KGN, // kinder garden
+        ELE, // elementary
+        MID, // middle
+        HIG // High
     }
 }

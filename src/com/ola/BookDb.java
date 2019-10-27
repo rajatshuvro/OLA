@@ -1,29 +1,28 @@
 package com.ola;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class BookDb {
-    private String _filePath;
+    private InputStream _inputStream;
     private HashMap<String, Book> _books;
 
-    public BookDb(String filePath) {
-        _filePath = filePath;
+    public BookDb(InputStream inputStream) {
+        _inputStream = inputStream;
     }
 
     public int Load() throws IOException {
-        Path path = Paths.get(_filePath);
         Integer count=0;
         boolean isFirstLine = true;
-        try (Scanner scanner =  new Scanner(path)){
+        try (Scanner scanner =  new Scanner(_inputStream)){
             while (scanner.hasNextLine()){
                 //process each line in some way
                 String line = scanner.nextLine();
                 if(isFirstLine){
-                    //skipping the header
+                    SetColumnIndices(line);
                     isFirstLine = false;
                     continue;
                 }
@@ -34,17 +33,36 @@ public class BookDb {
         System.out.println("Loaded book database. Book count:"+ count);
         return count;
     }
-//Title    Author  ISBN    Copy_num        Page_count      Price   Publisher       Genre   Reading level
-    private final int TitleIndex = 0;
-    private final int AuthorIndex = 1;
-    private final int IsbnIndex = 2;
-    private final int CopyNumIndex = 3;
-    private final int PageCountIndex = 3;
-    private final int PriceIndex = 3;
-    private final int PublisherIndex = 3;
-    private final int GenreIndex = 3;
-    private final int ReadingLevelIndex = 3;
+//Title    Author  ISBN    Page count      Price   Publisher       Genre   Reading level
+    private int TitleIndex = -1;
+    private int AuthorIndex = -1;
+    private int IsbnIndex = -1;
+    private int PageCountIndex = -1;
+    private int PriceIndex = -1;
+    private int PublisherIndex = -1;
+    private int GenreIndex = -1;
+    private int ReadingLevelIndex = -1;
 
+    public final String TitleTag = "Title";
+    public final String AuthorTag = "Author";
+    public final String IsbnTag = "ISBN";
+    public final String PageCountTag = "Page count";
+    public final String PriceTag = "Price";
+    public final String PublisherTag = "Publisher";
+    public final String GenreTag = "Genre";
+    public final String ReadingLevelTag = "Reading level";
+
+    private void SetColumnIndices(String headerLine){
+        var splits = headerLine.split("\t");
+        TitleIndex = Arrays.binarySearch(splits, TitleTag);
+        AuthorIndex = Arrays.binarySearch(splits, AuthorTag);
+        IsbnIndex = Arrays.binarySearch(splits, IsbnTag);
+        PageCountIndex = Arrays.binarySearch(splits, PageCountTag);
+        PriceIndex = Arrays.binarySearch(splits, PriceTag);
+        PublisherIndex = Arrays.binarySearch(splits, PublisherTag);
+        GenreIndex = Arrays.binarySearch(splits, GenreTag);
+        ReadingLevelIndex = Arrays.binarySearch(splits, ReadingLevelTag);
+    }
 
     private void AddBook(String line) {
         var splits = line.split("\t");
