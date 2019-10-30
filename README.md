@@ -9,13 +9,18 @@ The aim of this app is to automate Onkur Bangla Language Academy's library manag
 
 ## Command Line Interface
 
-Options:<br/>
+Usage:<br/>
 <pre><code>
-	add		Add new book 	[add -i {isbn number} -g {genre} -r {reading level}]<br/>
+	OLA	Start OLA	[ola -b {book file path} -u {users file path}]
+</pre></code>
+
+Once OLA starts successfully, the following sub-commands will be available
+Sub-commands:<br/>
+<pre><code>
+	add		Add new book 	[add -i {input file TSV with new book records}]<br/>
 	co		Checkout 	[co -i {book id} -b {borrower id}]<br/>
 	ret		return  	[ci -i {book id} -b {borrower_id}]<br/>
-	isbn		create isbn	[isbn -t {title} -a {author} -y {year}]<br/>
 	help		detailed help	[help {command}]
 </pre></code>
 
-## config file
+
