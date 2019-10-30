@@ -1,117 +1,53 @@
 package com.ola;
 
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class BookDb {
-    private InputStream _inputStream;
     private HashMap<String, Book> _books;
+    private HashMap<Long, Integer> _latestCopyNumbers;
     public int Count(){
         return _books.size();
     }
     //Title    Author  ISBN    Page count      Price   Publisher       Genre   Reading level Copy number
-    private int TitleIndex = -1;
-    private int AuthorIndex = -1;
-    private int IsbnIndex = -1;
-    private int PageCountIndex = -1;
-    private int PriceIndex = -1;
-    private int PublisherIndex = -1;
-    private int GenreIndex = -1;
-    private int ReadingLevelIndex = -1;
-    private int CopyNumberIndex =-1;
-    private int YearIndex = -1;
 
-    public final String TitleTag = "Title";
-    public final String AuthorTag = "Author";
-    public final String IsbnTag = "ISBN";
-    public final String PageCountTag = "Page count";
-    public final String PriceTag = "Price";
-    public final String PublisherTag = "Publisher";
-    public final String GenreTag = "Genre";
-    public final String ReadingLevelTag = "Reading level";
-    public final String CopyNumTag = "Copy number";
-    public final String YearTag = "Year";
-
-
-    public BookDb(InputStream inputStream) {
-        _inputStream = inputStream;
+    public BookDb(Iterable<Book> books) {
         _books = new HashMap<>();
-    }
-
-    public int Load() throws IOException {
-        Integer count=0;
-        boolean isFirstLine = true;
-        try (Scanner scanner =  new Scanner(_inputStream)){
-            while (scanner.hasNextLine()){
-                //process each line in some way
-                String line = scanner.nextLine();
-                if(isFirstLine){
-                    SetColumnIndices(line);
-                    isFirstLine = false;
-                    continue;
-                }
-                var book = GetBook(line);
-                if (book != null){
-                    _books.put(book.GetId(),book);
-                }
-                count++;
-            }
+        _latestCopyNumbers = new HashMap<>();
+        for(Book book: books){
+            _books.put(book.GetId(), book);
+            UpdateLatestCopyNum(book);
         }
-        System.out.println("Loaded book database. Book count:"+ count);
-        return count;
-    }
-    private void SetColumnIndices(String headerLine){
-        var splits = headerLine.split("\t");
-        var splitList =Arrays.asList(splits);
-
-        TitleIndex = splitList.indexOf(TitleTag);
-        AuthorIndex = splitList.indexOf(AuthorTag);
-        IsbnIndex = splitList.indexOf( IsbnTag);
-        PageCountIndex = splitList.indexOf( PageCountTag);
-        PriceIndex = splitList.indexOf( PriceTag);
-        PublisherIndex = splitList.indexOf( PublisherTag);
-        GenreIndex = splitList.indexOf( GenreTag);
-        ReadingLevelIndex = splitList.indexOf( ReadingLevelTag);
-        CopyNumberIndex = splitList.indexOf(CopyNumTag);
-        YearIndex = splitList.indexOf(YearTag);
     }
 
-    private Book GetBook(String line) {
-        var splits = line.split("\t");
-
-        var title = splits[TitleIndex];
-        var author = splits[AuthorIndex];
-        var isbn = Long.parseLong(splits[IsbnIndex]);
-        var pageCount = Integer.parseInt(splits[PageCountIndex]);
-        var price = Integer.parseInt(splits[PriceIndex]);
-        var publisher = splits[PublisherIndex];
-        var year = Integer.parseInt(splits[YearIndex]);
-        var genre = splits[GenreIndex];
-        var readingLevel = Integer.parseInt(splits[ReadingLevelIndex]);
-        var copyNumber = Integer.parseInt(splits[CopyNumberIndex]);
-
-        if(!IsValidateGenre(genre)){
-            System.out.println("Invalid genre provided:"+ genre+" .Skipping book:"+title);
-            return null;
+    //return a list of all books having a isbn number
+    public ArrayList<Book> GetBooks(long isbn){
+        ArrayList<Book> books = new ArrayList<>();
+        for (Book book : _books.values()) {
+            if(book.Isbn== isbn) books.add(book);
         }
-        if(readingLevel <0 || readingLevel > 10) {
-            System.out.println("Invalid reading level provided:"+ readingLevel +" .Skipping book:"+ title);
-            return null;
+        return books;
+    }
+
+    // get the new copy number for a given isbn. e.g. if the latest copy in the db has copy# 4, this will return 4
+    //if book doesn't exist return 0.
+    public int GetLatestCopyNumber(long isbn){
+        return _latestCopyNumbers.containsKey(isbn)? _latestCopyNumbers.get(isbn) : 0;
+    }
+    private void UpdateLatestCopyNum(Book book) {
+        if(_latestCopyNumbers.containsKey(book.Isbn)){
+            if(_latestCopyNumbers.get(book.Isbn) < book.CopyNum) _latestCopyNumbers.replace(book.Isbn, book.CopyNum);
         }
-
-        return new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber);
+        else _latestCopyNumbers.put(book.Isbn, book.CopyNum);
     }
 
-    private boolean IsValidateGenre(String genre) {
-        return genre.equals("FIC") || genre.equals("GEN") || genre.equals("SCI") || genre.equals("SOC");
-    }
+    public boolean Add(Book book){
+        var id = book.GetId();
+        if(_books.containsKey(id)) return false;
+        _books.put(id, book);
 
-    public void Close() throws IOException {
-        _inputStream.close();
+        UpdateLatestCopyNum(book);
+        return true;
     }
 }

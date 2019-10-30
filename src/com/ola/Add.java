@@ -4,27 +4,13 @@ import static java.lang.Integer.valueOf;
 
 
 public class Add {
-    private static String commandSyntex = "add  -i {string} -g {string} -l {integer} [-a {string}] [-t {string} -y {integer}]";
+    private static String commandSyntex = "add  -i c:\\path\\to\\file\\newBooks.tsv";
     public static void Run(String[] args){
         Options options = new Options();
 
-        Option bookId = new Option("i", "isbn", true, "book id (isbn)");
+        Option bookId = new Option("i", "in", true, "input TSV with book details");
         bookId.setRequired(true);
         options.addOption(bookId);
-
-        Option genre = new Option("g", "genre", true, "book genre (FIC, NFI, SOC, SCI)");
-        bookId.setRequired(true);
-        options.addOption(genre);
-
-        Option readingLevel = new Option("l", "level", true, "Reading level (1 to 5)");
-        bookId.setRequired(true);
-        options.addOption(readingLevel);
-
-        Option author = new Option("a", "author", true, "Author Name (optional)");
-        options.addOption(author);
-
-        Option title = new Option("t", "title", true, "Title of the book (optional)");
-        options.addOption(title);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();

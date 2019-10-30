@@ -30,4 +30,23 @@ public class BookDbTests {
         bookParser.Close();
         assertEquals(4, count);
     }
+
+    @Test
+    public void GetBooks() throws IOException{
+        var bookParser = new BookDb(GetBooksStream());
+        bookParser.Load();
+        bookParser.Close();
+        assertEquals(2, bookParser.GetBooks(7890788L).size());
+        assertEquals(0, bookParser.GetBooks(12345678L).size());
+    }
+    @Test
+    public void LatestCopyNumber() throws IOException{
+        var bookParser = new BookDb(GetBooksStream());
+        bookParser.Load();
+        bookParser.Close();
+
+        assertEquals(2,bookParser.GetLatestCopyNumber(7890788L));
+        assertEquals(1,bookParser.GetLatestCopyNumber(678564L));
+        assertEquals(0,bookParser.GetLatestCopyNumber(123456L));
+    }
 }
