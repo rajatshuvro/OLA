@@ -35,7 +35,7 @@ public class BookTsvParser {
 
     }
 
-    public ArrayList<Book> Load() throws IOException {
+    public ArrayList<Book> GetBooks() throws IOException {
         ArrayList<Book> books = new ArrayList<>();
 
         boolean isFirstLine = true;

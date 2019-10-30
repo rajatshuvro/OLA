@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class DataProvider {
-    public BookDb Books;
+    public BookDb BooksDb;
     private BookTsvParser _bookParser;
     public UserDb Users;
     public LendingDb Lendings;
@@ -15,6 +15,6 @@ public class DataProvider {
     }
 
     public void Load() throws IOException{
-        Books = new BookDb(_bookParser.Load());
+        BooksDb = new BookDb(_bookParser.GetBooks());
     }
 }

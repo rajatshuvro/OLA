@@ -2,13 +2,12 @@ package com.ola.unitTests;
 import com.ola.BookDb;
 import com.ola.BookTsvParser;
 import org.junit.jupiter.api.Test;
-
 import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BookDbTests {
-    private InputStream GetBooksStream() throws IOException {
+    public static InputStream GetBooksStream() throws IOException {
         var memStream = new ByteArrayOutputStream();
         var writer = new OutputStreamWriter(memStream);
 
@@ -27,7 +26,7 @@ public class BookDbTests {
     @Test
     public void ParseBooks() throws IOException{
         var bookParser = new BookTsvParser(GetBooksStream());
-        var bookDb = new BookDb(bookParser.Load());
+        var bookDb = new BookDb(bookParser.GetBooks());
         var count = bookDb.Count();
         bookParser.Close();
         assertEquals(4, count);
@@ -36,7 +35,7 @@ public class BookDbTests {
     @Test
     public void GetBooks() throws IOException{
         var bookParser = new BookTsvParser(GetBooksStream());
-        var bookDb = new BookDb(bookParser.Load());
+        var bookDb = new BookDb(bookParser.GetBooks());
         bookParser.Close();
         assertEquals(2, bookDb.GetBooks(7890788L).size());
         assertEquals(0, bookDb.GetBooks(12345678L).size());
@@ -44,7 +43,7 @@ public class BookDbTests {
     @Test
     public void LatestCopyNumber() throws IOException{
         var bookParser = new BookTsvParser(GetBooksStream());
-        var bookDb = new BookDb(bookParser.Load());
+        var bookDb = new BookDb(bookParser.GetBooks());
         bookParser.Close();
         assertEquals(2, bookDb.GetLatestCopyNumber(7890788L));
         assertEquals(1, bookDb.GetLatestCopyNumber(678564L));

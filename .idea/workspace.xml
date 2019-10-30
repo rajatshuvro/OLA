@@ -54,7 +54,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BookDbTests">
+  <component name="RunManager" selected="JUnit.AddBooksTest.AddBooks">
+    <configuration name="AddBooksTest.AddBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OLA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.AddBooksTest" />
+      <option name="METHOD_NAME" value="AddBooks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BookDbTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
@@ -118,29 +134,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookTests.GetBookId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OLA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookTests" />
-      <option name="METHOD_NAME" value="GetBookId" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AddBooksTest.AddBooks" />
         <item itemvalue="JUnit.BookDbTests" />
         <item itemvalue="JUnit.BookDbTests.GetBooks" />
         <item itemvalue="JUnit.BookDbTests.LatestCopyNumber" />
         <item itemvalue="JUnit.BookDbTests.ParseBooks" />
-        <item itemvalue="JUnit.BookTests.GetBookId" />
       </list>
     </recent_temporary>
   </component>
@@ -174,8 +174,8 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/Add.java</url>
-          <line>10</line>
+          <url>file://$PROJECT_DIR$/src/com/ola/AddBooks.java</url>
+          <line>13</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -185,7 +185,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/ola/BookDb.java</url>
-          <line>52</line>
+          <line>56</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>

@@ -21,7 +21,7 @@ public class Main {
             String subCommand = subArgs[0];
             switch (subCommand){
                 case "add":
-                    Add.Run(subArgs);
+                    AddBooks.Run(subArgs, dataProvider.BooksDb);
                     break;
                 case "co":
                     CheckOut.Run(subArgs);
