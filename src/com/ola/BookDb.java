@@ -1,5 +1,7 @@
 package com.ola;
 
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -16,6 +18,8 @@ public class BookDb {
         _books = new HashMap<>();
         _latestCopyNumbers = new HashMap<>();
         for(Book book: books){
+            var id = book.GetId();
+            if (_books.containsKey(id)) throw new DataValidationException("Duplicate book id:"+ id);
             _books.put(book.GetId(), book);
             UpdateLatestCopyNum(book);
         }
