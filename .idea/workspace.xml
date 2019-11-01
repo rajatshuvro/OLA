@@ -38,6 +38,10 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.ola.databases" />
+      <recent name="com.ola.parsers" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.ola" />
     </key>
@@ -175,7 +179,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/ola/AddBooks.java</url>
-          <line>13</line>
+          <line>15</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -184,7 +188,7 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/BookDb.java</url>
+          <url>file://$PROJECT_DIR$/src/com/ola/databases/BookDb.java</url>
           <line>56</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>

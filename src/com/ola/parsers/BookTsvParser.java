@@ -1,5 +1,6 @@
-package com.ola;
+package com.ola.parsers;
 
+import com.ola.Book;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;

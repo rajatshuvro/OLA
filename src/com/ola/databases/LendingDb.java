@@ -1,4 +1,4 @@
-package com.ola;
+package com.ola.databases;
 
 public class LendingDb {
 }

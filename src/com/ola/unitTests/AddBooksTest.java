@@ -1,7 +1,7 @@
 package com.ola.unitTests;
 import com.ola.AddBooks;
-import com.ola.BookDb;
-import com.ola.BookTsvParser;
+import com.ola.databases.BookDb;
+import com.ola.parsers.BookTsvParser;
 import org.junit.jupiter.api.Test;
 import java.io.*;
 
