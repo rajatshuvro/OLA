@@ -1,4 +1,4 @@
-package com.ola;
+package com.ola.dataStructures;
 
 public class Book {
     public final long Isbn;

@@ -1,6 +1,6 @@
 package com.ola.parsers;
 
-import com.ola.Book;
+import com.ola.dataStructures.Book;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -20,20 +20,19 @@ public class BookTsvParser {
     private int CopyNumberIndex =-1;
     private int YearIndex = -1;
 
-    public final String TitleTag = "Title";
-    public final String AuthorTag = "Author";
-    public final String IsbnTag = "ISBN";
-    public final String PageCountTag = "Page count";
-    public final String PriceTag = "Price";
-    public final String PublisherTag = "Publisher";
-    public final String GenreTag = "Genre";
-    public final String ReadingLevelTag = "Reading level";
-    public final String CopyNumTag = "Copy number";
-    public final String YearTag = "Year";
+    private final String TitleTag = "Title";
+    private final String AuthorTag = "Author";
+    private final String IsbnTag = "ISBN";
+    private final String PageCountTag = "Page count";
+    private final String PriceTag = "Price";
+    private final String PublisherTag = "Publisher";
+    private final String GenreTag = "Genre";
+    private final String ReadingLevelTag = "Reading level";
+    private final String CopyNumTag = "Copy number";
+    private final String YearTag = "Year";
 
     public BookTsvParser(InputStream inputStream){
         _inputStream = inputStream;
-
     }
 
     public ArrayList<Book> GetBooks() throws IOException {

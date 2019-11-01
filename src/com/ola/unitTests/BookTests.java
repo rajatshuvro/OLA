@@ -1,6 +1,6 @@
 package com.ola.unitTests;
 
-import com.ola.Book;
+import com.ola.dataStructures.Book;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

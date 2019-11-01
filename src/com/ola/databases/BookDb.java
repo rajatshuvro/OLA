@@ -1,10 +1,8 @@
 package com.ola.databases;
 
-import com.ola.Book;
+import com.ola.dataStructures.Book;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 
 public class BookDb {

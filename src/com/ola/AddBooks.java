@@ -1,4 +1,5 @@
 package com.ola;
+import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
 import com.ola.parsers.BookTsvParser;
 import org.apache.commons.cli.*;
