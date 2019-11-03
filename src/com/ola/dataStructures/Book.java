@@ -30,6 +30,4 @@ public class Book {
     public String GetId(){
         return String.join("-", Long.toString(Isbn), Genre, Integer.toString(ReadingLevel), '('+Integer.toString(CopyNum)+')');
     }
-
-
 }

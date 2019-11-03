@@ -1,10 +1,14 @@
 package com.ola.parsers;
 
+import com.ola.dataStructures.Book;
 import com.ola.dataStructures.User;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class UserTsvParser {
     private InputStream _inputStream;
@@ -20,6 +24,27 @@ public class UserTsvParser {
         _inputStream = inputStream;
     }
 
+    public ArrayList<User> GetUsers() throws IOException {
+        ArrayList<User> users = new ArrayList<>();
+
+        boolean isFirstLine = true;
+        try (Scanner scanner =  new Scanner(_inputStream)){
+            while (scanner.hasNextLine()){
+                //process each line in some way
+                String line = scanner.nextLine();
+                if(isFirstLine){
+                    SetColumnIndices(line);
+                    isFirstLine = false;
+                    continue;
+                }
+                var user = GetUser(line);
+                if (user != null){
+                    users.add(user);
+                }
+            }
+        }
+        return users;
+    }
     //Id	Name	Role
     //234	Saber Nabil	Teacher
     private void SetColumnIndices(String headerLine){
@@ -43,9 +68,9 @@ public class UserTsvParser {
     }
 
     private boolean IsValidRole(String role) {
-        return role.equals("Student")
-                || role.equals("Teacher")
-                || role.equals("Volunteer")
-                || role.equals("Administrator");
+        return role.equals(User.StudentRoleTag)
+                || role.equals(User.VolunteerRoleTag)
+                || role.equals(User.TeacherRoleTag)
+                || role.equals(User.AdminRoleTag);
     }
 }

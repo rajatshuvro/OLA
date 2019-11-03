@@ -59,7 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AddBooksTest.AddBooks">
+  <component name="RunManager" selected="JUnit.UserTests.CreateUserDbTest">
     <configuration name="AddBooksTest.AddBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
@@ -107,7 +107,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookDbTests.LatestCopyNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserTests.CreateUserDbTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -116,14 +116,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookDbTests" />
-      <option name="METHOD_NAME" value="LatestCopyNumber" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.UserTests" />
+      <option name="METHOD_NAME" value="CreateUserDbTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookDbTests.ParseBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserTests.ParseUsersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -132,8 +132,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookDbTests" />
-      <option name="METHOD_NAME" value="ParseBooks" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.UserTests" />
+      <option name="METHOD_NAME" value="ParseUsersTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserTests.CreateUserDbTest" />
+        <item itemvalue="JUnit.UserTests.ParseUsersTest" />
         <item itemvalue="JUnit.AddBooksTest.AddBooks" />
         <item itemvalue="JUnit.BookDbTests" />
         <item itemvalue="JUnit.BookDbTests.GetBooks" />
-        <item itemvalue="JUnit.BookDbTests.LatestCopyNumber" />
-        <item itemvalue="JUnit.BookDbTests.ParseBooks" />
       </list>
     </recent_temporary>
   </component>
@@ -192,6 +192,11 @@
           <url>file://$PROJECT_DIR$/src/com/ola/databases/BookDb.java</url>
           <line>54</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/parsers/UserTsvParser.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
