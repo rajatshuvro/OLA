@@ -1,5 +1,7 @@
 package com.ola.dataStructures;
 
+import java.util.HashSet;
+
 public class Book {
     public final long Isbn;
     public final String Author;
@@ -11,7 +13,6 @@ public class Book {
     public final float Price;
     public final String Genre;
     public final int ReadingLevel;
-
 
     public Book(long isbn, String author, String title, String publisher, int year, int pageCount,
                 float price, String genre, int readingLevel, int copyNum){
@@ -30,4 +31,17 @@ public class Book {
     public String GetId(){
         return String.join("-", Long.toString(Isbn), Genre, Integer.toString(ReadingLevel), '('+Integer.toString(CopyNum)+')');
     }
+
+    //static fields
+    public static final String FictionTag = "FIC";
+    public static final String ScienceTag = "SCI";
+    public static final String SocialScienceTag = "SOC";
+    public static final String GeneralTag = "GEN";
+
+    public static final HashSet<String> GenreTags = new HashSet<>(){{
+        add(FictionTag);
+        add(ScienceTag);
+        add(SocialScienceTag);
+        add(GeneralTag);
+    }};
 }

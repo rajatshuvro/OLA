@@ -101,7 +101,7 @@ public class BookTsvParser {
     }
 
     private boolean IsValidateGenre(String genre) {
-        return genre.equals("FIC") || genre.equals("GEN") || genre.equals("SCI") || genre.equals("SOC");
+        return Book.GenreTags.contains(genre);
     }
 
     public void Close() throws IOException {

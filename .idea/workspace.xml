@@ -59,38 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserTests.CreateUserDbTest">
-    <configuration name="AddBooksTest.AddBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OLA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.AddBooksTest" />
-      <option name="METHOD_NAME" value="AddBooks" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BookDbTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OLA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookDbTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.com.ola.unitTests in OLA">
     <configuration name="BookDbTests.GetBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
@@ -102,6 +71,22 @@
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
       <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookDbTests" />
       <option name="METHOD_NAME" value="GetBooks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookDbTests.ParseBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OLA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookDbTests" />
+      <option name="METHOD_NAME" value="ParseBooks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -139,13 +124,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="com.ola.unitTests in OLA" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OLA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserTests.CreateUserDbTest" />
-        <item itemvalue="JUnit.UserTests.ParseUsersTest" />
-        <item itemvalue="JUnit.AddBooksTest.AddBooks" />
-        <item itemvalue="JUnit.BookDbTests" />
+        <item itemvalue="JUnit.com.ola.unitTests in OLA" />
         <item itemvalue="JUnit.BookDbTests.GetBooks" />
+        <item itemvalue="JUnit.BookDbTests.ParseBooks" />
+        <item itemvalue="JUnit.UserTests.ParseUsersTest" />
+        <item itemvalue="JUnit.UserTests.CreateUserDbTest" />
       </list>
     </recent_temporary>
   </component>

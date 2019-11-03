@@ -68,9 +68,6 @@ public class UserTsvParser {
     }
 
     private boolean IsValidRole(String role) {
-        return role.equals(User.StudentRoleTag)
-                || role.equals(User.VolunteerRoleTag)
-                || role.equals(User.TeacherRoleTag)
-                || role.equals(User.AdminRoleTag);
+        return User.RoleTags.contains(role);
     }
 }

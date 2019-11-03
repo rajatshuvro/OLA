@@ -1,11 +1,8 @@
 package com.ola.dataStructures;
 
-public class User {
-    public static final String StudentRoleTag = "Student";
-    public static final String VolunteerRoleTag = "Volunteer";
-    public static final String TeacherRoleTag = "Teacher";
-    public static final String AdminRoleTag = "Administrator";
+import java.util.HashSet;
 
+public class User {
     public final int Id;
     public final String Name;
     public final String Role;
@@ -19,4 +16,17 @@ public class User {
     public String toString(){
         return "Id:"+Integer.toString(Id) + "Name:"+ Name + "Role:" + Role;
     }
+
+    //static fields
+    public static final String StudentRoleTag = "Student";
+    public static final String VolunteerRoleTag = "Volunteer";
+    public static final String TeacherRoleTag = "Teacher";
+    public static final String AdminRoleTag = "Administrator";
+
+    public static final HashSet<String> RoleTags = new HashSet<>(){{
+        add(StudentRoleTag);
+        add(VolunteerRoleTag);
+        add(TeacherRoleTag);
+        add(AdminRoleTag);
+    }};
 }

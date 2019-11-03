@@ -1,8 +1,6 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.User;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UserDb {
