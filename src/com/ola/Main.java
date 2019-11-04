@@ -37,13 +37,18 @@ public class Main {
         }
 
     }
-    private static String commandSyntex = "ola -b c:\\path\\to\\file\\bookDb.tsv";
+    private static String commandSyntex = "ola -b c:\\path\\to\\file\\books.tsv -u c:\\path\\to\\file\\users.tsv";
     private static DataProvider Initialize(String[] args) {
         System.out.println("Welcome to OLA (Onkur Library Application");
         Options options = new Options();
-        Option bookDbFile = new Option("b", "book", true, "book database file");
+
+        Option bookDbFile = new Option("b", "books", true, "book database file");
         bookDbFile.setRequired(true);
         options.addOption(bookDbFile);
+
+        Option userDbFile = new Option("u", "users", true, "user database file");
+        userDbFile.setRequired(true);
+        options.addOption(userDbFile);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -56,9 +61,9 @@ public class Main {
 
         try {
             cmd = parser.parse(options, args);
-            String fileName = cmd.getOptionValue("book");
-
-            return new DataProvider(new FileInputStream(fileName));
+            String bookFileName = cmd.getOptionValue("books");
+            String userFileName = cmd.getOptionValue("users");
+            return new DataProvider(new FileInputStream(bookFileName), new FileInputStream(userFileName));
         }
         catch (ParseException | FileNotFoundException e) {
             System.out.println(e.getMessage());

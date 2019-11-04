@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import javax.print.MultiDocPrintService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 
 public class UserTests {
@@ -54,5 +55,6 @@ public class UserTests {
         assertEquals(4,userDb.size());
 
         assertEquals("Totini", userDb.GetUser(123).Name);
+        assertNull(userDb.GetUser(999));
     }
 }

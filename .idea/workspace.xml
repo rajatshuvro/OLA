@@ -141,10 +141,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.com.ola.unitTests in OLA" />
+        <item itemvalue="JUnit.UserTests.CreateUserDbTest" />
         <item itemvalue="JUnit.BookDbTests.GetBooks" />
         <item itemvalue="JUnit.BookDbTests.ParseBooks" />
         <item itemvalue="JUnit.UserTests.ParseUsersTest" />
-        <item itemvalue="JUnit.UserTests.CreateUserDbTest" />
       </list>
     </recent_temporary>
   </component>
