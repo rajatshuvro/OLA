@@ -50,6 +50,10 @@ public class Main {
         userDbFile.setRequired(true);
         options.addOption(userDbFile);
 
+        Option lendingRecordsFile = new Option("l", "lendings", true, "lending records file");
+        lendingRecordsFile.setRequired(true);
+        options.addOption(lendingRecordsFile);
+
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd;
@@ -63,7 +67,9 @@ public class Main {
             cmd = parser.parse(options, args);
             String bookFileName = cmd.getOptionValue("books");
             String userFileName = cmd.getOptionValue("users");
-            return new DataProvider(new FileInputStream(bookFileName), new FileInputStream(userFileName));
+            String lendingsFileName = cmd.getOptionValue("lendings");
+            return new DataProvider(new FileInputStream(bookFileName), new FileInputStream(userFileName),
+                    new FileInputStream(lendingsFileName));
         }
         catch (ParseException | FileNotFoundException e) {
             System.out.println(e.getMessage());

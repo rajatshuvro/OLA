@@ -17,7 +17,7 @@ public class DataProvider {
     private UserTsvParser _userParser;
     public LendingDb Lendings;
 
-    public DataProvider(FileInputStream bookInputStream, FileInputStream userInputStream) {
+    public DataProvider(FileInputStream bookInputStream, FileInputStream userInputStream, FileInputStream fileInputStream) {
         _bookParser = new BookTsvParser(bookInputStream);
         _userParser = new UserTsvParser(userInputStream);
     }
