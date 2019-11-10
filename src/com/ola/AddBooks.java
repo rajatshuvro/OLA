@@ -7,14 +7,15 @@ import org.apache.commons.cli.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 
 
 public class AddBooks {
-    private static String commandSyntex = "add  -i c:\\path\\to\\file\\newBooks.tsv";
+    private static String commandSyntex = "add  -i c:\\path\\to\\file\\newBooks.dat";
     public static void Run(String[] args, BookDb bookDb){
         Options options = new Options();
 
-        Option bookId = new Option("i", "in", true, "input TSV with book details");
+        Option bookId = new Option("i", "in", true, "input file with book details");
         bookId.setRequired(true);
         options.addOption(bookId);
 
@@ -43,9 +44,11 @@ public class AddBooks {
         var parser = new BookParser(stream);
         for (Book book: parser.GetBooks()) {
             var copyNum = bookDb.GetLatestCopyNumber(book.Isbn) +1;
+            Date date = new Date(System.currentTimeMillis());
+
             var newBook = new Book(book.Isbn, book.Author, book.Title,
                     book.Publisher,book.Year, book.PageCount, book.Price,
-                    book.Genre, book.ReadingLevel, copyNum, null, null );
+                    book.Genre, book.ReadingLevel, copyNum, date, null );
             bookDb.Add(newBook);
             System.out.println("Adding new book: "+ newBook.GetId());
         }

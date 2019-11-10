@@ -12,10 +12,10 @@ import java.io.IOException;
 public class DataProvider {
     public BookDb BooksDb;
     public UserDb UserDb;
+    public TransactionDb Transactions;
 
     private BookParser _bookParser;
     private UserParser _userParser;
-    public TransactionDb Transactions;
 
     public DataProvider(FileInputStream bookInputStream, FileInputStream userInputStream, FileInputStream fileInputStream) {
         _bookParser = new BookParser(bookInputStream);
