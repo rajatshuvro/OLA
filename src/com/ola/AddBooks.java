@@ -1,7 +1,7 @@
 package com.ola;
 import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
-import com.ola.parsers.BookTsvParser;
+import com.ola.parsers.BookParser;
 import org.apache.commons.cli.*;
 
 import java.io.FileInputStream;
@@ -40,12 +40,12 @@ public class AddBooks {
     }
 
     public static void AddNewBook(InputStream stream, BookDb bookDb) throws IOException {
-        var parser = new BookTsvParser(stream);
+        var parser = new BookParser(stream);
         for (Book book: parser.GetBooks()) {
             var copyNum = bookDb.GetLatestCopyNumber(book.Isbn) +1;
             var newBook = new Book(book.Isbn, book.Author, book.Title,
                     book.Publisher,book.Year, book.PageCount, book.Price,
-                    book.Genre, book.ReadingLevel, copyNum);
+                    book.Genre, book.ReadingLevel, copyNum, null, null );
             bookDb.Add(newBook);
             System.out.println("Adding new book: "+ newBook.GetId());
         }

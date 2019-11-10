@@ -1,0 +1,144 @@
+package com.ola.parsers;
+
+import com.ola.dataStructures.Book;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+import static com.ola.parsers.parserUtilities.GetNextRecordLines;
+
+public class BookParser {
+    private InputStream _inputStream;
+
+    private final String TitleTag = "Title";
+    private final String AuthorTag = "Author";
+    private final String IsbnTag = "ISBN";
+    private final String PageCountTag = "Page count";
+    private final String PriceTag = "Price";
+    private final String PublisherTag = "Publisher";
+    private final String GenreTag = "Genre";
+    private final String ReadingLevelTag = "Reading level";
+    private final String CopyNumTag = "Copy number";
+    private final String YearTag = "Year";
+    private final String EntryDateTag = "Entry date";
+    private final String ExpiryDateTag = "Expiry date";
+    private final DateFormat _dateFormat;
+    private final String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+
+    public BookParser(InputStream inputStream){
+        _dateFormat = new SimpleDateFormat(DateTimeFormat);
+        _inputStream = inputStream;
+    }
+
+    public ArrayList<Book> GetBooks() throws IOException {
+        ArrayList<Book> books = new ArrayList<>();
+
+        try (Scanner scanner =  new Scanner(_inputStream)){
+            while (scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                //skipping header lines
+                if(line.startsWith("#") || line.isEmpty()) continue;
+                if(line.startsWith("*")){
+                    //book records are delimited with a long stretch of '*'
+                    //e.g. ********************************
+                    String[] lines = GetNextRecordLines(scanner,"*");
+                    var book = GetBook(lines);
+                    if (book != null){
+                        books.add(book);
+                    }
+                }
+                else{
+                    throw new DataValidationException("Misaligned line:\n"+line);
+                }
+            }
+        }
+        return books;
+    }
+
+    private Book GetBook(String[] lines) {
+        String title = null;
+        String author = null;
+        long isbn = -1;
+        int pageCount = -1;
+        float price = (float) 0.0;
+        String publisher  = null;
+        int year =0;
+        String genre = null;
+        int readingLevel = -1;
+        //when adding new books, the copy number field may be absent
+        int copyNumber = -1;
+        Date entryDate = null;
+        Date expiryDate = null;
+
+        for (String line: lines) {
+            var splits = line.split(":",2);
+            var key = splits[0].strip();
+            var value = splits[1].strip();
+            switch (key){
+                case TitleTag:
+                    title = value;
+                    break;
+                case AuthorTag:
+                    author = value;
+                    break;
+                case IsbnTag:
+                    isbn = Long.parseLong(value);
+                    break;
+                case PageCountTag:
+                    pageCount = Integer.parseInt(value);
+                    break;
+                case PriceTag:
+                    price = Float.parseFloat(value);
+                    break;
+                case PublisherTag:
+                    publisher = value;
+                    break;
+                case YearTag:
+                    year = Integer.parseInt(value);
+                    break;
+                case GenreTag:
+                    genre = value;
+                    break;
+                case ReadingLevelTag:
+                    readingLevel = Integer.parseInt(value);
+                    break;
+                case CopyNumTag:
+                    copyNumber = Integer.parseInt(value);
+                    break;
+                case EntryDateTag:
+                    try {
+                        entryDate = !value.equals("") ?_dateFormat.parse(value): null;
+                    } catch (ParseException e) {
+                        System.out.println("Invalid entry date provided:"+value);
+                        System.out.println("Date format: "+ DateTimeFormat);
+                    }
+                    break;
+                case ExpiryDateTag:
+                    try {
+                        expiryDate = !value.equals("") ?_dateFormat.parse(value): null;
+                    } catch (ParseException e) {
+                        System.out.println("Invalid expiry date provided:"+value);
+                        System.out.println("Date format: "+ DateTimeFormat);
+                    }
+                    break;
+
+            }
+        }
+
+        if(Book.IsValidRecord(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber))
+            return new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber,
+                    entryDate, expiryDate);
+        else return null;
+    }
+
+    public void Close() throws IOException {
+        _inputStream.close();
+    }
+}

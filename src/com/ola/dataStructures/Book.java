@@ -1,5 +1,6 @@
 package com.ola.dataStructures;
 
+import java.util.Date;
 import java.util.HashSet;
 
 public class Book {
@@ -13,9 +14,12 @@ public class Book {
     public final float Price;
     public final String Genre;
     public final int ReadingLevel;
+    public final Date EntryDate;
+    public final Date ExpiryDate;
 
     public Book(long isbn, String author, String title, String publisher, int year, int pageCount,
-                float price, String genre, int readingLevel, int copyNum){
+                float price, String genre, int readingLevel, int copyNum,
+                Date entryDate, Date expiryDate){
         Isbn = isbn;
         Author = author;
         Title = title;
@@ -26,12 +30,29 @@ public class Book {
         Price = price;
         Genre = genre;
         ReadingLevel = readingLevel;
+        EntryDate = entryDate;
+        ExpiryDate = expiryDate;
+    }
+
+    public static boolean IsValidRecord(long isbn, String author, String title, String publisher, int year,
+                      int pageCount, float price, String genre, int readingLevel, int copyNumber) {
+        return isbn != 0 &&
+                author != null &&
+                title != null &&
+                pageCount > 0 &&
+                IsValidateGenre(genre) &&
+                ValidateReadingLevel(readingLevel);
     }
 
     public String GetId(){
         return String.join("-", Long.toString(Isbn), Genre, Integer.toString(ReadingLevel), '('+Integer.toString(CopyNum)+')');
     }
 
+    public static final int MinReadingLevel =1;
+    public static final int MaxReadingLevle = 10;
+    public static boolean ValidateReadingLevel(int level){
+        return level >= MinReadingLevel && level <= MaxReadingLevle;
+    }
     //static fields
     public static final String FictionTag = "FIC";
     public static final String ScienceTag = "SCI";
@@ -44,4 +65,8 @@ public class Book {
         add(SocialScienceTag);
         add(GeneralTag);
     }};
+
+    public static boolean IsValidateGenre(String genre) {
+        return GenreTags.contains(genre);
+    }
 }

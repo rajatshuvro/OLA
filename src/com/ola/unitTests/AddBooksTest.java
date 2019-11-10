@@ -1,7 +1,6 @@
 package com.ola.unitTests;
 import com.ola.AddBooks;
 import com.ola.databases.BookDb;
-import com.ola.parsers.BookTsvParser;
 import org.junit.jupiter.api.Test;
 import java.io.*;
 
@@ -27,8 +26,7 @@ public class AddBooksTest {
 
     @Test
     public void AddBooks() throws IOException {
-        var bookParser = new BookTsvParser(BookDbTests.GetBooksStream());
-        var bookDb = new BookDb(bookParser.GetBooks());
+        var bookDb = new BookDb(BookDbTests.GetBooks());
 
         AddBooks.AddNewBook(GetNewBooksStream(), bookDb);
 

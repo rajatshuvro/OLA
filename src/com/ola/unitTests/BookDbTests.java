@@ -1,50 +1,36 @@
 package com.ola.unitTests;
+import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
-import com.ola.parsers.BookTsvParser;
 import org.junit.jupiter.api.Test;
 import java.io.*;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BookDbTests {
-    public static InputStream GetBooksStream() throws IOException {
-        var memStream = new ByteArrayOutputStream();
-        var writer = new OutputStreamWriter(memStream);
+    public static ArrayList<Book> GetBooks() {
+        var books = new ArrayList<Book>();
+        books.add(new Book(7890788,"Rajat Shuvro Roy","Amar Baba","Bonosree books and co",
+                2015, 5, 5, "GEN", 4,1, null, null));
+        books.add(new Book(7890788,"Rajat Shuvro Roy","Amar Baba","Bonosree books and co",
+                2015, 5, 5, "GEN", 4,2, null, null));
+        books.add(new Book(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
+                2017, 10, 10, "FIC", 5,1, null, null));
+        books.add(new Book(456098,"Nanda Mitra","Robindra Prem","Bakura Publishers",
+                2018, 15, 12, "FIC", 6,1, null, null));
 
-        writer.write("Title\tAuthor\tISBN\tCopy number\tPage count\tPrice\tPublisher\tGenre\tReading level\tYear\n");
-        writer.write("Amar Baba\tRajat Shuvro Roy\t7890788\t1\t5\t5\tBonosree books and co\tGEN\t4\t2015\n");
-        writer.write("Amar Baba\tRajat Shuvro Roy\t7890788\t2\t5\t5\tBonosree books and co\tGEN\t4\t2015\n");
-        writer.write("Bhua Bhalobasha \tSaber Nabil\t678564\t1\t10\t10\tDakkhin Khan Publishers\tFIC\t5\t2017\n");
-        writer.write("Robindra Prem\tNanda Mitra\t456098\t1\t15\t10\tBakura Publishers\tFIC\t6\t2018\n");
-
-        writer.close();
-
-        var buffer = memStream.toByteArray();
-        memStream.close();
-        return new ByteArrayInputStream(buffer);
-    }
-    @Test
-    public void ParseBooks() throws IOException{
-        var bookParser = new BookTsvParser(GetBooksStream());
-        var bookDb = new BookDb(bookParser.GetBooks());
-        var count = bookDb.Count();
-        bookParser.Close();
-        assertEquals(4, count);
+        return books;
     }
 
     @Test
-    public void GetBooks() throws IOException{
-        var bookParser = new BookTsvParser(GetBooksStream());
-        var bookDb = new BookDb(bookParser.GetBooks());
-        bookParser.Close();
+    public void SearchByIsbn() throws IOException{
+        var bookDb = new BookDb(GetBooks());
         assertEquals(2, bookDb.GetBooks(7890788L).size());
         assertEquals(0, bookDb.GetBooks(12345678L).size());
     }
     @Test
     public void LatestCopyNumber() throws IOException{
-        var bookParser = new BookTsvParser(GetBooksStream());
-        var bookDb = new BookDb(bookParser.GetBooks());
-        bookParser.Close();
+        var bookDb = new BookDb(GetBooks());
         assertEquals(2, bookDb.GetLatestCopyNumber(7890788L));
         assertEquals(1, bookDb.GetLatestCopyNumber(678564L));
         assertEquals(0, bookDb.GetLatestCopyNumber(123456L));
