@@ -34,8 +34,8 @@ public class Book {
         ExpiryDate = expiryDate;
     }
 
-    public static boolean IsValidRecord(long isbn, String author, String title, String publisher, int year,
-                      int pageCount, float price, String genre, int readingLevel, int copyNumber) {
+    public static boolean IsValid(long isbn, String author, String title, String publisher, int year,
+                                  int pageCount, float price, String genre, int readingLevel, int copyNumber) {
         return isbn != 0 &&
                 author != null &&
                 title != null &&

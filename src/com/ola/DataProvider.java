@@ -1,7 +1,7 @@
 package com.ola;
 
 import com.ola.databases.BookDb;
-import com.ola.databases.LendingDb;
+import com.ola.databases.TransactionDb;
 import com.ola.databases.UserDb;
 import com.ola.parsers.BookParser;
 import com.ola.parsers.UserParser;
@@ -15,7 +15,7 @@ public class DataProvider {
 
     private BookParser _bookParser;
     private UserParser _userParser;
-    public LendingDb Lendings;
+    public TransactionDb Transactions;
 
     public DataProvider(FileInputStream bookInputStream, FileInputStream userInputStream, FileInputStream fileInputStream) {
         _bookParser = new BookParser(bookInputStream);

@@ -1,7 +1,6 @@
 package com.ola.parsers;
 
 import com.ola.dataStructures.Book;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -124,7 +123,7 @@ public class BookParser {
             }
         }
 
-        if(Book.IsValidRecord(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber))
+        if(Book.IsValid(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber))
             return new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber,
                     entryDate, expiryDate);
         else return null;

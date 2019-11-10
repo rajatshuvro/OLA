@@ -13,7 +13,7 @@ public class User {
         Role = role;
     }
 
-    public static boolean IsValidUser(int id, String name, String role) {
+    public static boolean IsValid(int id, String name, String role) {
         return id > 0 &&
                 name != null &&
                 IsValidRole(role);

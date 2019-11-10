@@ -1,7 +1,6 @@
 package com.ola.parsers;
 
 import com.ola.dataStructures.User;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,7 +59,7 @@ public class UserParser {
             }
         }
 
-            if (!User.IsValidUser(id, name, role)) return null;
+        if (!User.IsValid(id, name, role)) return null;
         return new User(id, name, role);
     }
 
