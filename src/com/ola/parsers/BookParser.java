@@ -42,21 +42,13 @@ public class BookParser {
 
         try (Scanner scanner =  new Scanner(_inputStream)){
             while (scanner.hasNextLine()){
-                String line = scanner.nextLine();
-                //skipping header lines
-                if(line.startsWith("#") || line.isEmpty()) continue;
-                if(line.startsWith("*")){
-                    //book records are delimited with a long stretch of '*'
-                    //e.g. ********************************
-                    String[] lines = GetNextRecordLines(scanner,"*");
-                    var book = GetBook(lines);
-                    if (book != null){
-                        books.add(book);
-                    }
+                String[] lines = GetNextRecordLines(scanner,"*");
+                if(lines.length == 0) continue;
+                var book = GetBook(lines);
+                if (book != null){
+                    books.add(book);
                 }
-                else{
-                    throw new DataValidationException("Misaligned line:\n"+line);
-                }
+
             }
         }
         return books;

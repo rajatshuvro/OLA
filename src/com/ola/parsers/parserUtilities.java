@@ -9,6 +9,7 @@ public class parserUtilities {
         ArrayList<String> lines = new ArrayList<>();
         while (scanner.hasNextLine()){
             String line = scanner.nextLine();
+            if(line.startsWith("#") || line.isEmpty()) continue;
             if(line.startsWith(endOfRecordPrefix)) break;
             lines.add(line);
         }

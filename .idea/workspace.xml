@@ -62,7 +62,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AddBooksTest">
+  <component name="RunManager" selected="JUnit.UserTests">
     <configuration name="AddBooksTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
@@ -93,7 +93,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookParserTests.ParseOneBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookParserTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -103,13 +103,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
       <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookParserTests" />
-      <option name="METHOD_NAME" value="ParseOneBook" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTests.CreateUserDbTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -119,13 +118,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
       <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.UserTests" />
-      <option name="METHOD_NAME" value="CreateUserDbTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.ola.unitTests in OLA" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserTests.ParseUsersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -134,18 +132,20 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.UserTests" />
+      <option name="METHOD_NAME" value="ParseUsersTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserTests" />
+        <item itemvalue="JUnit.BookParserTests" />
+        <item itemvalue="JUnit.UserTests.ParseUsersTest" />
         <item itemvalue="JUnit.AddBooksTest" />
         <item itemvalue="JUnit.BookDbTests" />
-        <item itemvalue="JUnit.BookParserTests.ParseOneBook" />
-        <item itemvalue="JUnit.com.ola.unitTests in OLA" />
-        <item itemvalue="JUnit.UserTests.CreateUserDbTest" />
       </list>
     </recent_temporary>
   </component>
@@ -200,7 +200,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/ola/unitTests/BookParserTests.java</url>
-          <line>55</line>
+          <line>54</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -212,6 +212,11 @@
           <url>file://$PROJECT_DIR$/src/com/ola/parsers/BookParser.java</url>
           <line>124</line>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/parsers/UserParser.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

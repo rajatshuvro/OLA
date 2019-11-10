@@ -28,7 +28,6 @@ public class BookParserTests {
         writer.write("Entry date:\t\t2018-05-17 11:35:06\n");
         writer.write("Expiry date:\t2018-11-10 11:35:34\n");
         writer.write("***************************************************************\n");
-
         writer.write("Title:\t\t\tAmar Baba\n");
         writer.write("Author:\t\t\tRajat Shuvro Roy\n");
         writer.write("ISBN:\t\t\t7890788\n");
