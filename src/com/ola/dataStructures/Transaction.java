@@ -37,4 +37,8 @@ public class Transaction {
     private static boolean IsValidType(String role) {
         return TransactionTags.contains(role);
     }
+
+    public boolean OlderThan(Transaction record) {
+        return Date.before(record.Date);
+    }
 }
