@@ -12,7 +12,7 @@ import java.io.IOException;
 public class DataProvider {
     public BookDb BooksDb;
     public UserDb UserDb;
-    public TransactionDb Transactions;
+    public TransactionDb TransactionsDb;
 
     private BookParser _bookParser;
     private UserParser _userParser;

@@ -23,7 +23,7 @@ public class TransactionParser {
     private final String TypeTag = "Type";
 
     private final DateFormat _dateFormat;
-    private final String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+    public static final String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
 
 
     public TransactionParser(InputStream inputStream){

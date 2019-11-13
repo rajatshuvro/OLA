@@ -1,7 +1,14 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Transaction;
+import com.ola.parsers.TransactionParser;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -57,5 +64,21 @@ public class TransactionDb {
         _latestTransaction.replace(record.BookId, record);
         _transactions.add(record);
         return true;
+    }
+    private final String RecordSeparator = "************************************";
+    private Format _dateFormat = new SimpleDateFormat(TransactionParser.DateTimeFormat);
+
+    public void WriteLatestRecords(OutputStream stream) throws IOException {
+        var latestTransactions = GetLatestTransactions();
+        var writer = new BufferedWriter(new OutputStreamWriter(System.out));
+        writer.write(RecordSeparator+'\n');
+        for (Transaction record: latestTransactions.values()) {
+            writer.write("Book Id:\t"+record.BookId+'\n');
+            writer.write("User Id:\t"+record.UserId+'\n');
+            writer.write("Date:\t\t"+_dateFormat.format(record.Date)+'\n');
+            writer.write("Type:\t\t"+record.Type+'\n');
+            writer.write(RecordSeparator+'\n');
+        }
+        stream.close();
     }
 }

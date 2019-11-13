@@ -24,7 +24,10 @@ public class Main {
                     AddBooks.Run(subArgs, dataProvider.BooksDb);
                     break;
                 case "co":
-                    CheckOut.Run(subArgs);
+                    CheckOut.Run(subArgs, dataProvider.TransactionsDb);
+                    break;
+                case "ret":
+                    Return.Run(subArgs, dataProvider.TransactionsDb);
                     break;
                 case "quit":
                     quit = true;

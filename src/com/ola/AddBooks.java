@@ -7,6 +7,7 @@ import org.apache.commons.cli.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -32,7 +33,8 @@ public class AddBooks {
             cmd = parser.parse(options, args);
             var filePath = cmd.getOptionValue("in");
             InputStream stream = new FileInputStream(filePath);
-            AddNewBook(stream, bookDb);
+            var bookParser = new BookParser(stream);
+            AddNewBook(bookParser.GetBooks(), bookDb);
         }
         catch (ParseException | IOException e) {
             System.out.println(e.getMessage());
@@ -40,9 +42,8 @@ public class AddBooks {
         }
     }
 
-    public static void AddNewBook(InputStream stream, BookDb bookDb) throws IOException {
-        var parser = new BookParser(stream);
-        for (Book book: parser.GetBooks()) {
+    public static void AddNewBook(ArrayList<Book> books, BookDb bookDb) throws IOException {
+        for (Book book: books) {
             var copyNum = bookDb.GetLatestCopyNumber(book.Isbn) +1;
             Date date = new Date(System.currentTimeMillis());
 

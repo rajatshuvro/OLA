@@ -1,34 +1,33 @@
 package com.ola.unitTests;
 import com.ola.AddBooks;
+import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
 import org.junit.jupiter.api.Test;
 import java.io.*;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AddBooksTest {
-    public InputStream GetNewBooksStream() throws IOException {
-        var memStream = new ByteArrayOutputStream();
-        var writer = new OutputStreamWriter(memStream);
+    public ArrayList<Book> GetNewBooks() {
+        var books = new ArrayList<Book>();
+        books.add(new Book(7890788,"Rajat Shuvro Roy","Amar Baba","Bonosree books and co",
+                2015, 5, 5, "GEN", 4,-1, null, null));
+        books.add(new Book(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
+                2017, 10, 10, "FIC", 5,-1, null, null));
+        books.add(new Book(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
+                2017, 10, 10, "FIC", 5,-1, null, null));
+        books.add(new Book(456098,"Nanda Mitra","Robindra Prem","Bakura Publishers",
+                2018, 15, 12, "FIC", 6,-1, null, null));
 
-        writer.write("Title\tAuthor\tISBN\tPage count\tPrice\tPublisher\tGenre\tReading level\tYear\n");
-        writer.write("Amar Baba\tRajat Shuvro Roy\t7890788\t5\t5\tBonosree books and co\tGEN\t4\t2015\n");
-        writer.write("Bhua Bhalobasha \tSaber Nabil\t678564\t10\t10\tDakkhin Khan Publishers\tFIC\t5\t2017\n");
-        writer.write("Bhua Bhalobasha \tSaber Nabil\t678564\t10\t10\tDakkhin Khan Publishers\tFIC\t5\t2017\n");
-        writer.write("Robindra Prem\tNanda Mitra\t456098\t15\t10\tBakura Publishers\tFIC\t6\t2018\n");
-
-        writer.close();
-
-        var buffer = memStream.toByteArray();
-        memStream.close();
-        return new ByteArrayInputStream(buffer);
+        return books;
     }
 
     @Test
     public void AddBooks() throws IOException {
         var bookDb = new BookDb(BookDbTests.GetBooks());
 
-        AddBooks.AddNewBook(GetNewBooksStream(), bookDb);
+        AddBooks.AddNewBook(GetNewBooks(), bookDb);
 
         assertEquals(3, bookDb.GetLatestCopyNumber(7890788));
         assertEquals(3, bookDb.GetLatestCopyNumber(678564));

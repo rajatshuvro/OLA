@@ -7,8 +7,8 @@ import org.apache.commons.cli.*;
 
 import java.util.Date;
 
-public class CheckOut {
-    private static String commandSyntex = "co  -b [book id] -u [user id]";
+public class Return {
+    private static String commandSyntex = "ret  -b [book id] -u [user id]";
     public static void Run(String[] args, TransactionDb transactionDb){
         Options options = new Options();
 
@@ -34,7 +34,7 @@ public class CheckOut {
             var bookId = cmd.getOptionValue('b');
             var userId = Integer.parseInt(cmd.getOptionValue('u'));
             var date = TimeUtilities.GetCurrentTime();
-            transactionDb.Add(new Transaction(bookId, userId, date, Transaction.CheckoutTag));
+            transactionDb.Add(new Transaction(bookId, userId, date, Transaction.ReturnTag));
         }
         catch (ParseException e) {
             System.out.println(e.getMessage());

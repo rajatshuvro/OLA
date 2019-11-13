@@ -44,8 +44,12 @@ public class Book {
                 ValidateReadingLevel(readingLevel);
     }
 
-    public String GetId(){
+    public String GetUserFriendlyId(){
         return String.join("-", Long.toString(Isbn), Genre, Integer.toString(ReadingLevel), '('+Integer.toString(CopyNum)+')');
+    }
+
+    public String GetId(){
+        return Long.toString(Isbn) +"-("+Integer.toString(CopyNum)+')';
     }
 
     public static final int MinReadingLevel =1;
