@@ -62,7 +62,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.com.ola.unitTests in OLA">
+  <component name="RunManager" selected="JUnit.TransactionTests">
     <configuration name="AddBooksTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
@@ -78,7 +78,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookDbTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TransactionTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -87,13 +87,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookDbTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.TransactionTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookParserTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TransactionTests.TransactionDbTest_add_transactions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -102,13 +102,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookParserTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.TransactionTests" />
+      <option name="METHOD_NAME" value="TransactionDbTest_add_transactions" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TransactionTests.TransactionDbTest_match_user_on_return" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -117,8 +118,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.TransactionTests" />
+      <option name="METHOD_NAME" value="TransactionDbTest_match_user_on_return" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -139,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TransactionTests" />
+        <item itemvalue="JUnit.TransactionTests.TransactionDbTest_match_user_on_return" />
+        <item itemvalue="JUnit.TransactionTests.TransactionDbTest_add_transactions" />
         <item itemvalue="JUnit.com.ola.unitTests in OLA" />
         <item itemvalue="JUnit.AddBooksTest" />
-        <item itemvalue="JUnit.BookDbTests" />
-        <item itemvalue="JUnit.BookParserTests" />
-        <item itemvalue="JUnit.BookTests" />
       </list>
     </recent_temporary>
   </component>
@@ -210,6 +212,11 @@
           <url>file://$PROJECT_DIR$/src/com/ola/parsers/UserParser.java</url>
           <line>27</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/databases/TransactionDb.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

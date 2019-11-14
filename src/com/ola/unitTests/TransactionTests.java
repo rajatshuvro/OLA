@@ -3,13 +3,13 @@ package com.ola.unitTests;
 import com.ola.dataStructures.Transaction;
 import com.ola.databases.TransactionDb;
 import com.ola.parsers.TransactionParser;
+import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.util.HashSet;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TransactionTests {
     public static InputStream GetStream() throws IOException {
@@ -82,6 +82,35 @@ public class TransactionTests {
         assertEquals(Transaction.ReturnTag, latestTransactions.get("7890788-(2)").Type);
         assertEquals(Transaction.CheckoutTag, latestTransactions.get("678564-(1)").Type);
         assertEquals(Transaction.CheckoutTag, latestTransactions.get("456098-(1)").Type);
+    }
+
+    @Test
+    public void TransactionDbTest_add_transactions() throws IOException{
+        var parser = new TransactionParser(GetStream());
+        var transactions = parser.GetTransactions();
+
+        var transactionDb = new TransactionDb(transactions, GetUserIds(), GetBookIds());
+
+        //cannot return a book that is already returned
+        assertFalse(transactionDb.Add(new Transaction("7890788-(2)", 234, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
+        assertTrue(transactionDb.Add(new Transaction("678564-(1)", 123, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
+
+        var latestTransactions = transactionDb.GetLatestTransactions();
+        assertEquals(Transaction.ReturnTag, latestTransactions.get("678564-(1)").Type);
+    }
+
+    @Test
+    public void TransactionDbTest_match_user_on_return() throws IOException{
+        var parser = new TransactionParser(GetStream());
+        var transactions = parser.GetTransactions();
+
+        var transactionDb = new TransactionDb(transactions, GetUserIds(), GetBookIds());
+
+        //cannot return a book that is already returned
+        assertFalse(transactionDb.Add(new Transaction("678564-(1)", 234, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
+
+        var latestTransactions = transactionDb.GetLatestTransactions();
+        assertEquals(Transaction.CheckoutTag, latestTransactions.get("678564-(1)").Type);
     }
 
     private HashSet<String> GetBookIds_reduced() {
