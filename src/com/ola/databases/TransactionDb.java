@@ -91,6 +91,7 @@ public class TransactionDb {
             writer.write(RecordSeparator+'\n');
         }
         writer.close();
+
     }
 
     public final String[] HeaderLines = new String[]{
@@ -116,7 +117,7 @@ public class TransactionDb {
             writer.write("Type:\t\t"+record.Type+'\n');
             writer.write(RecordSeparator+'\n');
         }
-        stream.close();
+        writer.close();
     }
 
     public String GetBookStatus(String bookId) {

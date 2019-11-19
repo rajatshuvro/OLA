@@ -46,7 +46,12 @@ public class DataProvider {
     }
 
     public void Close() throws IOException {
-        TransactionsDb.AppendNewRecords(_appendStream);
-        _appendStream.close();
+
+        try
+        {
+            TransactionsDb.AppendNewRecords(_appendStream);
+            _appendStream.close();
+        }
+        catch(IOException e) { System.out.println("Failed to close streams"); }
     }
 }

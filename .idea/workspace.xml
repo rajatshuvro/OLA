@@ -62,7 +62,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.com.ola.unitTests in OLA">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ola.Main" />
+      <module name="OLA" />
+      <option name="PROGRAM_PARAMETERS" value="-u C:\Users\rajat\OLAdb\users.dat -b C:\Users\rajat\OLAdb\Books.dat -t C:\Users\rajat\OLAdb\LendingRecord.dat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ola.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CheckoutTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
@@ -74,22 +88,6 @@
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
       <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.CheckoutTests" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CheckoutTests.Checkout_invalid_book" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OLA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.CheckoutTests" />
-      <option name="METHOD_NAME" value="Checkout_invalid_book" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,13 +138,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.CheckoutTests" />
+      <item itemvalue="JUnit.com.ola.unitTests in OLA" />
+      <item itemvalue="JUnit.DataProviderTests.DataProvider_basic" />
+      <item itemvalue="JUnit.ReturnTests.Return_invalid_book" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.com.ola.unitTests in OLA" />
         <item itemvalue="JUnit.DataProviderTests.DataProvider_basic" />
         <item itemvalue="JUnit.ReturnTests.Return_invalid_book" />
         <item itemvalue="JUnit.CheckoutTests" />
-        <item itemvalue="JUnit.CheckoutTests.Checkout_invalid_book" />
       </list>
     </recent_temporary>
   </component>
@@ -195,11 +200,6 @@
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/parsers/UserParser.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
           <line>174</line>
           <option name="timeStamp" value="21" />
@@ -223,6 +223,11 @@
           <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
           <line>43</line>
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/DataProvider.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
