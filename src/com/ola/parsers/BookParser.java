@@ -1,9 +1,11 @@
 package com.ola.parsers;
 
 import com.ola.dataStructures.Book;
+import com.ola.utilities.TimeUtilities;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,11 +30,8 @@ public class BookParser {
     private final String YearTag = "Year";
     private final String EntryDateTag = "Entry date";
     private final String ExpiryDateTag = "Expiry date";
-    private final DateFormat _dateFormat;
-    private final String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
 
     public BookParser(InputStream inputStream){
-        _dateFormat = new SimpleDateFormat(DateTimeFormat);
         _inputStream = inputStream;
     }
 
@@ -104,20 +103,10 @@ public class BookParser {
                     copyNumber = Integer.parseInt(value);
                     break;
                 case EntryDateTag:
-                    try {
-                        entryDate = !value.equals("") ?_dateFormat.parse(value): null;
-                    } catch (ParseException e) {
-                        System.out.println("Invalid entry date provided:"+value);
-                        System.out.println("Date format: "+ DateTimeFormat);
-                    }
+                    entryDate = TimeUtilities.parseDate(value);
                     break;
                 case ExpiryDateTag:
-                    try {
-                        expiryDate = !value.equals("") ?_dateFormat.parse(value): null;
-                    } catch (ParseException e) {
-                        System.out.println("Invalid expiry date provided:"+value);
-                        System.out.println("Date format: "+ DateTimeFormat);
-                    }
+                    expiryDate = TimeUtilities.parseDate(value);
                     break;
 
             }

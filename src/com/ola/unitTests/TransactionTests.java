@@ -7,8 +7,11 @@ import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Scanner;
 
+import static com.ola.parsers.parserUtilities.GetNextRecordLines;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TransactionTests {
@@ -77,11 +80,9 @@ public class TransactionTests {
 
         var transactionDb = new TransactionDb(transactions, GetUserIds(), GetBookIds());
 
-        var latestTransactions = transactionDb.GetLatestTransactions();
-        assertEquals(3, latestTransactions.size());
-        assertEquals(Transaction.ReturnTag, latestTransactions.get("7890788-(2)").Type);
-        assertEquals(Transaction.CheckoutTag, latestTransactions.get("678564-(1)").Type);
-        assertEquals(Transaction.CheckoutTag, latestTransactions.get("456098-(1)").Type);
+        assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("7890788-(2)"));
+        assertEquals(Transaction.CheckoutTag, transactionDb.GetBookStatus("678564-(1)"));
+        assertEquals(Transaction.CheckoutTag, transactionDb.GetBookStatus("456098-(1)"));
     }
 
     @Test
@@ -95,8 +96,7 @@ public class TransactionTests {
         assertFalse(transactionDb.Add(new Transaction("7890788-(2)", 234, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
         assertTrue(transactionDb.Add(new Transaction("678564-(1)", 123, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
 
-        var latestTransactions = transactionDb.GetLatestTransactions();
-        assertEquals(Transaction.ReturnTag, latestTransactions.get("678564-(1)").Type);
+        assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("678564-(1)"));
     }
 
     @Test
@@ -109,8 +109,7 @@ public class TransactionTests {
         //cannot return a book that is already returned
         assertFalse(transactionDb.Add(new Transaction("678564-(1)", 234, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
 
-        var latestTransactions = transactionDb.GetLatestTransactions();
-        assertEquals(Transaction.CheckoutTag, latestTransactions.get("678564-(1)").Type);
+        assertEquals(Transaction.CheckoutTag, transactionDb.GetBookStatus("678564-(1)"));
     }
 
     private HashSet<String> GetBookIds_reduced() {
@@ -136,8 +135,45 @@ public class TransactionTests {
 
         var transactionDb = new TransactionDb(transactions, GetUserIds_reduced(), GetBookIds_reduced());
 
-        var latestTransactions = transactionDb.GetLatestTransactions();
-        assertEquals(1, latestTransactions.size());
-        assertEquals(Transaction.ReturnTag, latestTransactions.get("7890788-(2)").Type);
+        assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("7890788-(2)"));
+    }
+    private ArrayList<Transaction> GetTransactions(){
+        var transactions = new ArrayList<Transaction>();
+        transactions.add(new Transaction("7890788-(2)", 234, TimeUtilities.parseDate("2019-09-13 10:30:31"), Transaction.CheckoutTag));
+        transactions.add(new Transaction("678564-(1)", 123, TimeUtilities.parseDate("2019-10-15 11:01:22"), Transaction.CheckoutTag));
+        transactions.add(new Transaction("456098-(1)", 345, TimeUtilities.parseDate("2019-11-03 10:33:22"), Transaction.CheckoutTag));
+        transactions.add(new Transaction("7890788-(2)", 234, TimeUtilities.parseDate("2019-11-13 10:30:25"), Transaction.ReturnTag));
+
+        return transactions;
+    }
+    @Test
+    public void AppendNewTransactions() throws IOException{
+        var memStream = new ByteArrayOutputStream();
+        //initializing with empty transaction list
+        var transactionDb = new TransactionDb(GetTransactions(), GetUserIds(), GetBookIds());
+        //adding new transactions
+        transactionDb.Add(new Transaction("7890788-(2)", 234, TimeUtilities.parseDate("2019-11-13 10:39:31"), Transaction.CheckoutTag));
+        transactionDb.Add(new Transaction("678564-(1)", 123, TimeUtilities.parseDate("2019-11-15 11:01:22"), Transaction.ReturnTag));
+
+        transactionDb.AppendNewRecords(memStream);
+        var buffer = memStream.toByteArray();
+        memStream.close();
+        var inputStream =  new ByteArrayInputStream(buffer);
+        var hasTimeStamp1= false;
+        var hasTimeStamp2 = false;
+        try (Scanner scanner =  new Scanner(inputStream)){
+            while (scanner.hasNextLine()){
+                var line = scanner.nextLine();
+                if(line.contains("2019-11-13 10:39:31")){
+                    hasTimeStamp1 = true;
+                }
+                if(line.contains("2019-11-15 11:01:22")){
+                    hasTimeStamp2 = true;
+                }
+            }
+        }
+
+        assertTrue(hasTimeStamp1);
+        assertTrue(hasTimeStamp2);
     }
 }

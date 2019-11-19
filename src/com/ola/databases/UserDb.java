@@ -2,6 +2,7 @@ package com.ola.databases;
 
 import com.ola.dataStructures.User;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class UserDb {
     private HashMap<Integer, User> _users;
@@ -18,5 +19,13 @@ public class UserDb {
     public User GetUser(int id){
         if(_users.containsKey(id)) return _users.get(id);
         return null;
+    }
+
+    public HashSet<Integer> GetIds() {
+        var ids = new HashSet<Integer>();
+        for (int id: _users.keySet()) {
+            ids.add(id);
+        }
+        return ids;
     }
 }

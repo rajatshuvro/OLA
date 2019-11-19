@@ -1,13 +1,10 @@
 package com.ola.parsers;
 
 import com.ola.dataStructures.Transaction;
-import com.ola.dataStructures.User;
+import com.ola.utilities.TimeUtilities;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -22,12 +19,7 @@ public class TransactionParser {
     private final String DateTag = "Date";
     private final String TypeTag = "Type";
 
-    private final DateFormat _dateFormat;
-    public static final String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
-
-
     public TransactionParser(InputStream inputStream){
-        _dateFormat = new SimpleDateFormat(DateTimeFormat);
         _inputStream = inputStream;
     }
 
@@ -65,12 +57,7 @@ public class TransactionParser {
                     userId = Integer.parseInt(value);
                     break;
                 case DateTag:
-                    try {
-                        date = !value.equals("") ?_dateFormat.parse(value): null;
-                    } catch (ParseException e) {
-                        System.out.println("Invalid entry date provided:"+value);
-                        System.out.println("Date format: "+ DateTimeFormat);
-                    }
+                    date = TimeUtilities.parseDate(value);
                     break;
                 case TypeTag:
                     type = value;

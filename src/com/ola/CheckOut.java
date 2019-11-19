@@ -5,8 +5,6 @@ import com.ola.databases.TransactionDb;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
-import java.util.Date;
-
 public class CheckOut {
     private static String commandSyntex = "co  -b [book id] -u [user id]";
     public static void Run(String[] args, TransactionDb transactionDb){

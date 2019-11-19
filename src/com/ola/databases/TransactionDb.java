@@ -1,14 +1,12 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Transaction;
-import com.ola.parsers.TransactionParser;
+import com.ola.utilities.TimeUtilities;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,10 +14,16 @@ import java.util.HashSet;
 public class TransactionDb {
     private ArrayList<Transaction> _transactions;
     public HashMap<String, Transaction> _latestTransaction;
+    private HashSet<Integer> _userIds;
+    private HashSet<String> _bookIds;
+    private final int _newRecordIndex;//keep track of where the new records start from
 
     public TransactionDb(Iterable<Transaction> transactions, HashSet<Integer> userIds, HashSet<String> bookIds){
         //transactions are assumed to ordered by increasing timestamps
+        _userIds = userIds;
+        _bookIds = bookIds;
         _transactions = new ArrayList<>();
+        _latestTransaction = new HashMap<>();
         for (Transaction record: transactions) {
             if(!bookIds.contains(record.BookId)) {
                 System.out.println("WARNING: Invalid book id:"+record.BookId+". Ignoring transaction.");
@@ -30,13 +34,7 @@ public class TransactionDb {
                 continue;
             }
             _transactions.add(record);
-        }
-    }
-
-    public HashMap<String, Transaction> GetLatestTransactions() {
-        if(_latestTransaction != null) return _latestTransaction;
-        _latestTransaction = new HashMap<>();
-        for (Transaction record:_transactions) {
+            //updating latest transaction
             if(!_latestTransaction.containsKey(record.BookId)){
                 _latestTransaction.put(record.BookId, record);
                 continue;
@@ -45,12 +43,20 @@ public class TransactionDb {
             var existingRecord = _latestTransaction.get(record.BookId);
             if(existingRecord.OlderThan(record)) _latestTransaction.replace(record.BookId, record);
         }
-        return _latestTransaction;
+        _newRecordIndex = _transactions.size();
     }
 
     public boolean Add(Transaction record){
-        var latestTransactions = GetLatestTransactions();
-        if(!latestTransactions.containsKey(record.BookId)){
+        //make sure the book exists in the book database and the user in user database
+        if(!_bookIds.contains(record.BookId)){
+            System.out.println("WARNING:Unknown book id: "+ record.BookId);
+            return false;
+        }
+        if(!_userIds.contains(record.UserId)){
+            System.out.println("WARNING:Unknown user id: "+ record.UserId);
+            return false;
+        }
+        if(!_latestTransaction.containsKey(record.BookId)){
             _latestTransaction.put(record.BookId, record);
             _transactions.add(record);
             return true;
@@ -58,7 +64,7 @@ public class TransactionDb {
         //if the latest transaction is of type checkout you cannot add another checkout and similarly for return
         var latestRecord = _latestTransaction.get(record.BookId);
         if (latestRecord.Type.equals(record.Type)) {
-            System.out.println("WARNING: cannot "+record.Type+ "a book that is already in that state");
+            System.out.println("WARNING: cannot "+record.Type+ " a book that is already in that state. Book id:" + record.BookId);
             return false;
         }
         //make sure user ids match for returns
@@ -73,19 +79,48 @@ public class TransactionDb {
         return true;
     }
     private final String RecordSeparator = "************************************";
-    private Format _dateFormat = new SimpleDateFormat(TransactionParser.DateTimeFormat);
 
-    public void WriteLatestRecords(OutputStream stream) throws IOException {
-        var latestTransactions = GetLatestTransactions();
-        var writer = new BufferedWriter(new OutputStreamWriter(System.out));
-        writer.write(RecordSeparator+'\n');
-        for (Transaction record: latestTransactions.values()) {
+    public void AppendNewRecords(OutputStream stream) throws IOException {
+        var writer = new BufferedWriter(new OutputStreamWriter(stream));
+        for (int i = _newRecordIndex; i < _transactions.size(); i++) {
+            var record = _transactions.get(i);
             writer.write("Book Id:\t"+record.BookId+'\n');
             writer.write("User Id:\t"+record.UserId+'\n');
-            writer.write("Date:\t\t"+_dateFormat.format(record.Date)+'\n');
+            writer.write("Date:\t\t"+ TimeUtilities.ToString(record.Date)+'\n');
+            writer.write("Type:\t\t"+record.Type+'\n');
+            writer.write(RecordSeparator+'\n');
+        }
+        writer.close();
+    }
+
+    public final String[] HeaderLines = new String[]{
+        "#Onkur library book lending records\n",
+        "#Book Id = Onkur book id. Value = <String>\n",
+        "#User Id = Onkur user id. Value = <Integer>\n",
+        "#Date = Date of transaction. Value = <YYYY-MM-DD HH:MM:ss>\n",
+        "#Type = Type of transaction. Value = Checkout/Return\n"
+    };
+    /// Write out all the records into an output stream
+    public void Write(OutputStream stream) throws IOException {
+        var writer = new BufferedWriter(new OutputStreamWriter(stream));
+        //header lines
+        for (String line: HeaderLines) {
+            writer.write(line);
+        }
+        //not required, but for aesthetics
+        writer.write(RecordSeparator+'\n');
+        for (Transaction record: _transactions) {
+            writer.write("Book Id:\t"+record.BookId+'\n');
+            writer.write("User Id:\t"+record.UserId+'\n');
+            writer.write("Date:\t\t"+ TimeUtilities.ToString(record.Date)+'\n');
             writer.write("Type:\t\t"+record.Type+'\n');
             writer.write(RecordSeparator+'\n');
         }
         stream.close();
+    }
+
+    public String GetBookStatus(String bookId) {
+        if(_latestTransaction.containsKey(bookId)) return _latestTransaction.get(bookId).Type;
+        return Transaction.UnknownTag;
     }
 }

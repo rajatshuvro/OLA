@@ -62,8 +62,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TransactionTests">
-    <configuration name="AddBooksTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ReturnTests.Return_invalid_book">
+    <configuration name="CheckoutTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -72,13 +72,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.AddBooksTest" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.CheckoutTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransactionTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CheckoutTests.Checkout_invalid_book" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -87,29 +87,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.TransactionTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TransactionTests.TransactionDbTest_add_transactions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OLA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.TransactionTests" />
-      <option name="METHOD_NAME" value="TransactionDbTest_add_transactions" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.CheckoutTests" />
+      <option name="METHOD_NAME" value="Checkout_invalid_book" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransactionTests.TransactionDbTest_match_user_on_return" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CheckoutTests.Checkout_invalid_user" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -118,14 +103,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.TransactionTests" />
-      <option name="METHOD_NAME" value="TransactionDbTest_match_user_on_return" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.CheckoutTests" />
+      <option name="METHOD_NAME" value="Checkout_invalid_user" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.ola.unitTests in OLA" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CheckoutTests.Checkout_new_book" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -134,18 +119,36 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.CheckoutTests" />
+      <option name="METHOD_NAME" value="Checkout_new_book" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReturnTests.Return_invalid_book" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OLA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.ReturnTests" />
+      <option name="METHOD_NAME" value="Return_invalid_book" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TransactionTests" />
-        <item itemvalue="JUnit.TransactionTests.TransactionDbTest_match_user_on_return" />
-        <item itemvalue="JUnit.TransactionTests.TransactionDbTest_add_transactions" />
-        <item itemvalue="JUnit.com.ola.unitTests in OLA" />
-        <item itemvalue="JUnit.AddBooksTest" />
+        <item itemvalue="JUnit.ReturnTests.Return_invalid_book" />
+        <item itemvalue="JUnit.CheckoutTests" />
+        <item itemvalue="JUnit.CheckoutTests.Checkout_invalid_book" />
+        <item itemvalue="JUnit.CheckoutTests.Checkout_invalid_user" />
+        <item itemvalue="JUnit.CheckoutTests.Checkout_new_book" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +193,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/ola/databases/BookDb.java</url>
-          <line>54</line>
+          <line>63</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -199,24 +202,34 @@
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/parsers/BookParser.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/parsers/BookParser.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/ola/parsers/UserParser.java</url>
           <line>27</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/databases/TransactionDb.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="20" />
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
+          <line>175</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
+          <line>165</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

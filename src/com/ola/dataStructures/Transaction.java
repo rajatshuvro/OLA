@@ -29,6 +29,7 @@ public class Transaction {
     //static fields
     public static final String CheckoutTag = "Checkout";
     public static final String ReturnTag = "Return";
+    public static final String UnknownTag = "Unknown";
 
     public static final HashSet<String> TransactionTags = new HashSet<>(){{
         add(CheckoutTag);

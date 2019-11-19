@@ -8,6 +8,15 @@ import java.util.*;
 public class BookDb {
     private HashMap<String, Book> _books;
     private HashMap<Long, Integer> _latestCopyNumbers;
+
+    public HashSet<String> GetIds() {
+        var ids = new HashSet<String>();
+        for (String bookId:_books.keySet()) {
+            ids.add(bookId);
+        }
+        return ids;
+    }
+
     public int Count(){
         return _books.size();
     }

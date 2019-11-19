@@ -21,7 +21,7 @@ public class Main {
             String subCommand = subArgs[0];
             switch (subCommand){
                 case "add":
-                    AddBooks.Run(subArgs, dataProvider.BooksDb);
+                    AddBooks.Run(subArgs, dataProvider.BookDb);
                     break;
                 case "co":
                     CheckOut.Run(subArgs, dataProvider.TransactionsDb);
@@ -37,6 +37,7 @@ public class Main {
             }
 
             //todo: save changes to file
+
         }
 
     }
@@ -53,9 +54,9 @@ public class Main {
         userDbFile.setRequired(true);
         options.addOption(userDbFile);
 
-        Option lendingRecordsFile = new Option("t", "transactions", true, "transactions records file");
-        lendingRecordsFile.setRequired(true);
-        options.addOption(lendingRecordsFile);
+        Option transactionsFile = new Option("t", "transactions", true, "transactions records file");
+        transactionsFile.setRequired(true);
+        options.addOption(transactionsFile);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
