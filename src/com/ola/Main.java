@@ -3,6 +3,7 @@ import org.apache.commons.cli.*;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +12,8 @@ public class Main {
 
         DataProvider dataProvider = Initialize(args);
         dataProvider.Load();
+        System.out.println("Welcome to OLA (Onkur Library Application");
+
         boolean quit=false;
         while (!quit){
             PrintMenu();
@@ -37,13 +40,14 @@ public class Main {
             }
 
             //todo: save changes to file
-
+            dataProvider.Close();
         }
 
     }
-    private static String commandSyntex = "ola -b c:\\path\\to\\file\\books.tsv -u c:\\path\\to\\file\\users.tsv -t c:\\path\\to\\file\\transactions.tsv";
+    private static String commandSyntex = "ola -b [full path to books data file] " +
+            "-u [full path to users data file] " +
+            "-t [full path to transactions data file]";
     private static DataProvider Initialize(String[] args) {
-        System.out.println("Welcome to OLA (Onkur Library Application");
         Options options = new Options();
 
         Option bookDbFile = new Option("b", "books", true, "book database file");
@@ -73,19 +77,21 @@ public class Main {
             String userFileName = cmd.getOptionValue("users");
             String transactionFileName = cmd.getOptionValue("transactions");
             return new DataProvider(new FileInputStream(bookFileName), new FileInputStream(userFileName),
-                    new FileInputStream(transactionFileName));
+                    new FileInputStream(transactionFileName), new FileOutputStream(transactionFileName,true));
         }
         catch (ParseException | FileNotFoundException e) {
             System.out.println(e.getMessage());
             formatter.printHelp(commandSyntex, options);
             return null;
         }
+
     }
 
     private static void PrintMenu() {
-        System.out.println("Options:");
+        System.out.println("Please choose from the following options:");
         System.out.println("\tadd (add new book to database)");
         System.out.println("\tco (checkout book)");
+        System.out.println("\tret (return book)");
         System.out.println("\tuser (manage user info)");
         System.out.println("\tquit (quit OLA)");
         System.out.println("\t[Type command to get detailed help]");

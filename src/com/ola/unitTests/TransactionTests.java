@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
-import static com.ola.parsers.parserUtilities.GetNextRecordLines;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TransactionTests {
