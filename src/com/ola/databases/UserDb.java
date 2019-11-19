@@ -28,4 +28,9 @@ public class UserDb {
         }
         return ids;
     }
+
+    public String GetUserName(int userId) {
+        if(_users.containsKey(userId)) return _users.get(userId).Name;
+        return null;
+    }
 }

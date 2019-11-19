@@ -124,4 +124,13 @@ public class TransactionDb {
         if(_latestTransaction.containsKey(bookId)) return _latestTransaction.get(bookId).Type;
         return Transaction.UnknownTag;
     }
+
+    public ArrayList<Transaction> GetPendingCheckouts() {
+        var checkouts = new ArrayList<Transaction>();
+        for (Transaction record: _latestTransaction.values()) {
+            if(record.Type.equals(Transaction.CheckoutTag))
+                checkouts.add(record);
+        }
+        return checkouts;
+    }
 }

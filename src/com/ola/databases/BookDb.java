@@ -62,4 +62,9 @@ public class BookDb {
         UpdateLatestCopyNum(book);
         return true;
     }
+
+    public String GetTitle(String bookId) {
+        if(_books.containsKey(bookId)) return _books.get(bookId).Title;
+        return null;
+    }
 }

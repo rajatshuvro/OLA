@@ -225,9 +225,9 @@
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/DataProvider.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="27" />
+          <url>file://$PROJECT_DIR$/src/com/ola/Status.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
