@@ -1,0 +1,80 @@
+#Onkur library books
+#Schema number: 1
+#Title = Book title. Value = <String>
+#Author = Author name. Value = <String>
+#ISBN = ISBN number. Value = <Integer>
+#Publisher = Publisher name. Value = <String>
+#Year = Year of publication. Value = <Integer>
+#Genre = Book genre. Value = GEN/FIC/SCI/SOC
+#Copy number = Copy number. Value = <Integer>
+#Page count = Page count. Value = <Integer>
+#Price = Book price (to be charged if lost). Value = <Decimal>
+#Reading level = Estimated reading level. Value = [1,2,3...10]
+#Entry date = Date the book was added to library. Value = <YYYY-MM-DD HH:MM>
+#Expiry date = Date the book was removed from library (due to loss or damage). Value = <YYYY-MM-DD HH:MM>
+***************************************************************
+Title:			Amar Baba
+Author:			Rajat Shuvro Roy
+ISBN:			7890788
+Publisher:		Bonosree books and co
+Year:			2015
+Genre:			GEN
+Copy number:	1
+Page count:		7
+Price:			5
+Reading level:	4
+Entry date:		2018-05-17 11:35:21
+Expiry date:	2018-11-10 11:35:27
+***************************************************************
+Title:			Amar Baba
+Author:			Rajat Shuvro Roy
+ISBN:			7890788
+Publisher:		Bonosree books and co
+Year:			2015
+Genre:			GEN
+Copy number:	2
+Page count:		7
+Price:			5
+Reading level:	4
+Entry date:		2018-11-17 11:39:55
+Expiry date:
+***************************************************************
+Title:			Amar Baba
+Author:			Rajat Shuvro Roy
+ISBN:			7890788
+Publisher:		Bonosree books and co
+Year:			2015
+Genre:			GEN
+Copy number:	3
+Page count:		7
+Price:			5
+Reading level:	4
+Entry date:		2018-11-17 11:49:08
+Expiry date:
+***************************************************************
+Title:			Bhua Bhalobasha
+Author:			Saber Nabil
+ISBN:			678564
+Publisher:		Dakkhin Khan Publishers
+Year:			2017
+Genre:			FIC
+Copy number:	1
+Page count:		10
+Price:			10
+Reading level:	5
+Entry date:		2018-11-27 11:49:55
+Expiry date:
+***************************************************************
+Title:			Robindra Prem
+Author:			Nandana Mitra
+ISBN:			456098
+Publisher:		Bakura Publishers
+Year:			2018
+Genre:			FIC
+Copy number:	1
+Page count:		15
+Price:			10
+Reading level:	6
+Entry date:		2019-11-27 11:28:44
+Expiry date:
+***************************************************************
