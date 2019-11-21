@@ -153,7 +153,8 @@ public class DataProviderTests {
 
     @Test
     public void DataProvider_basic() throws IOException {
-        var provider = new DataProvider(GetBooksStream(), GetUsersStream(), GetTransactionsStream(), GetAppendStream());
+        var provider = new DataProvider(GetBooksStream(), GetUsersStream(), GetTransactionsStream(),
+                GetAppendStream(), GetAppendStream());
         provider.Load();
         var checkoutArgs = new String[]{"co", "-b", "7890788-(2)","-u","564"};
         CheckOut.Run(checkoutArgs, provider.TransactionsDb);

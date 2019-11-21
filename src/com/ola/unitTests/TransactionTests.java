@@ -154,7 +154,7 @@ public class TransactionTests {
         transactionDb.Add(new Transaction("7890788-(2)", 234, TimeUtilities.parseDate("2019-11-13 10:39:31"), Transaction.CheckoutTag));
         transactionDb.Add(new Transaction("678564-(1)", 123, TimeUtilities.parseDate("2019-11-15 11:01:22"), Transaction.ReturnTag));
 
-        transactionDb.AppendNewRecords(memStream);
+        transactionDb.Append(memStream);
         var buffer = memStream.toByteArray();
         memStream.close();
         var inputStream =  new ByteArrayInputStream(buffer);

@@ -80,7 +80,8 @@ public class Main {
             String userFileName = cmd.getOptionValue("users");
             String transactionFileName = cmd.getOptionValue("transactions");
             return new DataProvider(new FileInputStream(bookFileName), new FileInputStream(userFileName),
-                    new FileInputStream(transactionFileName), new FileOutputStream(transactionFileName,true));
+                    new FileInputStream(transactionFileName), new FileOutputStream(transactionFileName,true),
+                    new FileOutputStream(bookFileName, true));
         }
         catch (ParseException | FileNotFoundException e) {
             System.out.println(e.getMessage());

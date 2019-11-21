@@ -21,14 +21,16 @@ public class DataProvider {
     private InputStream _bookInputStream;
     private InputStream _userInputStream;
     private InputStream _transactionInputStream;
-    private OutputStream _appendStream;
+    private OutputStream _transactionAppendStream;
+    private OutputStream _bookAppendStream;
 
     public DataProvider(InputStream bookInputStream, InputStream userInputStream, InputStream transactionInputStream
-                        , OutputStream transactionAppendStream) {
+                        , OutputStream transactionAppendStream, OutputStream bookAppendStream) {
         _bookInputStream = bookInputStream;
         _userInputStream = userInputStream;
         _transactionInputStream = transactionInputStream;
-        _appendStream = transactionAppendStream;
+        _transactionAppendStream = transactionAppendStream;
+        _bookAppendStream = bookAppendStream;
 
         _bookParser = new BookParser(bookInputStream);
         _userParser = new UserParser(userInputStream);
@@ -46,12 +48,18 @@ public class DataProvider {
     }
 
     public void Close() throws IOException {
+        try
+        {
+            TransactionsDb.Append(_transactionAppendStream);
+            _transactionAppendStream.close();
+        }
+        catch(IOException e) { System.out.println("Failed to close transaction append stream"); }
 
         try
         {
-            TransactionsDb.AppendNewRecords(_appendStream);
-            _appendStream.close();
+            BookDb.Append(_bookAppendStream);
+            _bookAppendStream.close();
         }
-        catch(IOException e) { System.out.println("Failed to close streams"); }
+        catch(IOException e) { System.out.println("Failed to close book append stream"); }
     }
 }

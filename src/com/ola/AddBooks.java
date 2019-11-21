@@ -12,7 +12,7 @@ import java.util.Date;
 
 
 public class AddBooks {
-    private static String commandSyntex = "add  -i c:\\path\\to\\file\\newBooks.dat";
+    private static String commandSyntex = "add  -i [path to new books dat file]";
     public static void Run(String[] args, BookDb bookDb){
         Options options = new Options();
 

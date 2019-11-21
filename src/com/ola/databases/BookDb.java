@@ -1,13 +1,19 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Book;
+import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.*;
 
 public class BookDb {
     private HashMap<String, Book> _books;
     private HashMap<Long, Integer> _latestCopyNumbers;
+    private int _newBookIndex;
 
     public HashSet<String> GetIds() {
         var ids = new HashSet<String>();
@@ -31,6 +37,7 @@ public class BookDb {
             _books.put(book.GetId(), book);
             UpdateLatestCopyNum(book);
         }
+        _newBookIndex = _books.size();
     }
 
     //return a list of all books having a isbn number
@@ -66,5 +73,29 @@ public class BookDb {
     public String GetTitle(String bookId) {
         if(_books.containsKey(bookId)) return _books.get(bookId).Title;
         return null;
+    }
+    private final String RecordSeparator = "***************************************************************";
+    public void Append(OutputStream stream)throws IOException {
+        if(_newBookIndex == _books.size()) return;
+        var writer = new BufferedWriter(new OutputStreamWriter(stream));
+        for (int i = _newBookIndex; i < _books.size(); i++) {
+            var book = _books.get(i);
+            writer.write("Title:\t\t\t"+book.Title+'\n');
+            writer.write("Author:\t\t\t"+book.Author+'\n');
+            writer.write("ISBN:\t\t\t"+ book.Isbn+'\n');
+            writer.write("Publisher:\t\t"+book.Publisher+'\n');
+            writer.write("Year:\t\t\t"+book.Year+'\n');
+            writer.write("Genre:\t\t\t"+book.Genre+'\n');
+            writer.write("Copy number:\t"+book.CopyNum+'\n');
+            writer.write("Page count:\t\t"+ book.PageCount+'\n');
+            writer.write("Price:\t\t\t"+book.Price+'\n');
+            writer.write("Reading level:\t"+book.ReadingLevel+'\n');
+            writer.write("Entry date:\t\t"+TimeUtilities.GetCurrentTime()+'\n');
+            writer.write("Expiry date:\t-\n");
+            writer.write(RecordSeparator+'\n');
+            _newBookIndex++;
+        }
+        writer.close();
+
     }
 }

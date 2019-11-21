@@ -16,7 +16,7 @@ public class TransactionDb {
     public HashMap<String, Transaction> _latestTransaction;
     private HashSet<Integer> _userIds;
     private HashSet<String> _bookIds;
-    private final int _newRecordIndex;//keep track of where the new records start from
+    private int _newRecordIndex;//keep track of where the new records start from
 
     public TransactionDb(Iterable<Transaction> transactions, HashSet<Integer> userIds, HashSet<String> bookIds){
         //transactions are assumed to ordered by increasing timestamps
@@ -80,7 +80,8 @@ public class TransactionDb {
     }
     private final String RecordSeparator = "************************************";
 
-    public void AppendNewRecords(OutputStream stream) throws IOException {
+    public void Append(OutputStream stream) throws IOException {
+        if(_newRecordIndex == _transactions.size()) return;
         var writer = new BufferedWriter(new OutputStreamWriter(stream));
         for (int i = _newRecordIndex; i < _transactions.size(); i++) {
             var record = _transactions.get(i);
@@ -89,6 +90,7 @@ public class TransactionDb {
             writer.write("Date:\t\t"+ TimeUtilities.ToString(record.Date)+'\n');
             writer.write("Type:\t\t"+record.Type+'\n');
             writer.write(RecordSeparator+'\n');
+            _newRecordIndex++;
         }
         writer.close();
 
