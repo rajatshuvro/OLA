@@ -50,6 +50,15 @@ public class AddBooks {
             var newBook = new Book(book.Isbn, book.Author, book.Title,
                     book.Publisher,book.Year, book.PageCount, book.Price,
                     book.Genre, book.ReadingLevel, copyNum, date, null );
+
+            if(copyNum > 1) {
+                if(bookDb.ValidateDetails(newBook) == false)
+                {
+                    System.out.println("WARNING!! Book details mismatch found for Title:"+book.Title);
+                    System.out.println("Either the Genre or the Reading level does not match with those of existing copies.");
+                    continue;
+                }
+            }
             bookDb.Add(newBook);
             System.out.println("Adding new book: "+ newBook.GetId());
         }

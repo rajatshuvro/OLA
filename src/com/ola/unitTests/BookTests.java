@@ -13,4 +13,18 @@ public class BookTests {
         assertEquals("9789849195290-FIC-3-(1)", book.GetUserFriendlyId());
         assertEquals("9789849195290-(1)", book.GetId());
     }
+
+    @Test
+    public void GenerateIsbn(){
+        var isbn = Book.GenerateIsbn("Chotoder Ramayan", "Upendrakishore Roy Choudhury"
+                ,"Kalighat prokashoni", 1929, 35);
+
+        assertEquals(232192935, isbn);
+
+        isbn = Book.GenerateIsbn("Borno porichoy", "Ishwarchandra Viddyasagar"
+                ,"Bengal publishers", 1881, 20);
+
+        assertEquals(222188120, isbn);
+
+    }
 }

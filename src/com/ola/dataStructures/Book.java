@@ -44,12 +44,28 @@ public class Book {
                 ValidateReadingLevel(readingLevel);
     }
 
+    public static long GenerateIsbn(String title, String author, String publisher, int year, int pageCount) {
+        // since the spelling of the title, author and publisher is subjective,
+        // we use a more reliable and stable parameter - word counts of these strings
+        var titleWordCount = GetWordCount(title);
+        var authorWordCount = GetWordCount(author);
+        var publisherWordCount = GetWordCount(publisher);
+        var isbnString = Integer.toString(titleWordCount) + authorWordCount + publisherWordCount
+                        + year + pageCount;
+        return Long.parseLong(isbnString);
+    }
+
+    private static int GetWordCount(String s) {
+        var words = s.split("\\s+");
+        return words.length;
+    }
+
     public String GetUserFriendlyId(){
         return String.join("-", Long.toString(Isbn), Genre, Integer.toString(ReadingLevel), '('+Integer.toString(CopyNum)+')');
     }
 
     public String GetId(){
-        return Long.toString(Isbn) +"-("+Integer.toString(CopyNum)+')';
+        return Isbn +"-("+ CopyNum +')';
     }
 
     public static final int MinReadingLevel =1;

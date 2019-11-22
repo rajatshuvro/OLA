@@ -14,8 +14,7 @@ public class TimeUtilities {
     }
 
     public static Date parseDate(String value) {
-        if(value == null
-                || value.equals("")) return null;
+        if(value == null || value.equals("")) return null;
         try {
             return DateFormat.parse(value);
         } catch (ParseException e) {

@@ -11,15 +11,16 @@ The aim of this app is to automate Onkur Bangla Language Academy's library manag
 
 Usage:<br/>
 <pre><code>
-	[ola -b {book file path} -u {users file path}]
+	[ola -b {book file path} -u {users file path} -t {transactions file path}]
 </pre></code>
 
 Once OLA starts successfully, the following sub-commands will be available<br/>
 
 <pre><code>
-	add		Add new book 	[add -i {input file TSV with new book records}]<br/>
+	add		Add new books 	[add -i {input file TSV with new book records}]<br/>
 	co		Checkout 	[co -i {book id} -b {borrower id}]<br/>
 	ret		return  	[ci -i {book id} -b {borrower_id}]<br/>
+	status	checkout status	[status]<br/>
 	help		detailed help	[help {command}]
 </pre></code>
 

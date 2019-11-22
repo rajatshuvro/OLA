@@ -2,7 +2,7 @@
 #Schema number: 1
 #Title = Book title. Value = <String>
 #Author = Author name. Value = <String>
-#ISBN = ISBN number. Value = <Integer>
+#ISBN = ISBN number (-1 if unknown). Value = <Integer>
 #Publisher = Publisher name. Value = <String>
 #Year = Year of publication. Value = <Integer>
 #Genre = Book genre. Value = GEN/FIC/SCI/SOC

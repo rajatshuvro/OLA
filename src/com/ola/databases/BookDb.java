@@ -26,7 +26,6 @@ public class BookDb {
     public int Count(){
         return _books.size();
     }
-    //Title    Author  ISBN    Page count      Price   Publisher       Genre   Reading level Copy number
 
     public BookDb(Iterable<Book> books) {
         _books = new HashMap<>();
@@ -97,5 +96,17 @@ public class BookDb {
         }
         writer.close();
 
+    }
+
+    public boolean ValidateDetails(Book newBook) {
+        for (Book book: _books.values()) {
+            if(book.Isbn != newBook.Isbn) continue;
+            //we don't check Title, Author since spelling them in English can be fuzzy
+            // year of publication, page counts may vary with editions
+            return book.Genre.equals(newBook.Genre)
+                    && book.ReadingLevel == newBook.ReadingLevel;
+
+        }
+        return true;
     }
 }
