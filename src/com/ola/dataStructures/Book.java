@@ -37,8 +37,10 @@ public class Book {
     public static boolean IsValid(long isbn, String author, String title, String publisher, int year,
                                   int pageCount, float price, String genre, int readingLevel, int copyNumber) {
         return isbn != 0 &&
-                author != null &&
-                title != null &&
+                !(author == null || author.equals("")) &&
+                !(title == null || title.equals("")) &&
+                !(publisher == null || publisher.equals("")) &&
+                year > 0 &&
                 pageCount > 0 &&
                 IsValidateGenre(genre) &&
                 ValidateReadingLevel(readingLevel);

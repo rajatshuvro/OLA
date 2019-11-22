@@ -11,7 +11,7 @@
 #Price = Book price (to be charged if lost). Value = <Decimal>
 #Reading level = Estimated reading level. Value = [1,2,3...10]
 #Entry date = Date the book was added to library. Value = <YYYY-MM-DD HH:MM>
-#Expiry date = Date the book was removed from library (due to loss or damage). Value = <YYYY-MM-DD HH:MM>
+#Expiry date = Date the book was removed from library (due to loss or damage), blank otherwise. Value = <YYYY-MM-DD HH:MM>
 ***************************************************************
 Title:			Amar Baba
 Author:			Rajat Shuvro Roy
