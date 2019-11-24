@@ -1,0 +1,61 @@
+#Onkur library books
+#Schema number: 1
+#Title = Book title. Value = <String>
+#Author = Author name. Value = <String>
+#ISBN = ISBN number (-1 if unknown). Value = <Integer>
+#Publisher = Publisher name. Value = <String>
+#Year = Year of publication. Value = <Integer>
+#Genre = Book genre. Value = GEN/FIC/SCI/SOC
+#Copy number = Copy number. Value = <Integer>
+#Page count = Page count. Value = <Integer>
+#Price = Book price (to be charged if lost). Value = <Decimal>
+#Reading level = Estimated reading level. Value = [1,2,3...10]
+#Entry date = Date the book was added to library. Value = <YYYY-MM-DD HH:MM>
+#Expiry date = Date the book was removed from library (due to loss or damage), blank otherwise. Value = <YYYY-MM-DD HH:MM>
+***************************************************************
+Title:			Chotoder Ramayan
+Author:			Upendrakishore Roy Choudhury
+ISBN:			-1
+Publisher:		Kalighat prokashoni
+Year:			1929
+Genre:			FIC
+Copy number:	1
+Page count:		35
+Price:			15
+Reading level:	4
+***************************************************************
+Title:			Borno porichoy
+Author:			Ishwarchandra Viddyasagar
+ISBN:			-1
+Publisher:		Bengal publishers
+Year:			1881
+Genre:			GEN
+Copy number:	2
+Page count:		20
+Price:			10
+Reading level:	3
+***************************************************************
+Title:			Bhua Balobasha
+Author:			Saber Nabil
+ISBN:			678564
+Publisher:		Dakkhin Khan Publishers
+Year:			2017
+Genre:			FIC
+Copy number:	1
+Page count:		10
+Price:			10
+Reading level:	5
+Entry date:		2018-11-27 11:49:55
+Expiry date:
+***************************************************************
+Title:			Robindra Prem
+Author:			Nandana Mitra
+ISBN:			456098
+Publisher:		Bakura Publishers
+Year:			2018
+Genre:			FIC
+Copy number:	1
+Page count:		15
+Price:			10
+Reading level:	6
+***************************************************************

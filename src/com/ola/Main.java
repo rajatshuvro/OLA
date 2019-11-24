@@ -42,9 +42,9 @@ public class Main {
                     System.out.println("Type {quit} to exit");
             }
 
-            //save changes to file
-            dataProvider.Close();
         }
+        //save changes to file
+        dataProvider.Close();
 
     }
     private static String commandSyntex = "ola -b [full path to books data file] " +
@@ -93,12 +93,12 @@ public class Main {
 
     private static void PrintMenu() {
         System.out.println("Please choose from the following options:");
-        System.out.println("\tadd (add new book to database)");
-        System.out.println("\tco (checkout book)");
-        System.out.println("\tret (return book)");
-        System.out.println("\tstatus (checkout status)");
-        System.out.println("\tuser (manage user info)");
-        System.out.println("\tquit (quit OLA)");
+        System.out.println("\tadd\t\t(add new book to database)");
+        System.out.println("\tco\t\t(checkout book)");
+        System.out.println("\tret\t\t(return book)");
+        System.out.println("\tstatus\t(checkout status)");
+        //System.out.println("\tuser (manage user info)");
+        System.out.println("\tquit\t(quit OLA)");
         System.out.println("\t[Type command to get detailed help]");
     }
 

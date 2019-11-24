@@ -53,7 +53,7 @@ public class AddBooksTest {
         var bookDb = new BookDb(BookDbTests.GetBooks());
         AddBooks.AddNewBook(GetMismatchingBook(), bookDb);
 
-        assertEquals(6, bookDb.Count());
+        assertEquals(5, bookDb.Count());
     }
 
 }

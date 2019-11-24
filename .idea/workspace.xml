@@ -67,7 +67,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.com.ola.unitTests in OLA">
+  <component name="RunManager" selected="Application.ola">
+    <configuration name="ola" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.ola.Main" />
+      <module name="OLA" />
+      <option name="PROGRAM_PARAMETERS" value=" -b data\Books.dat -u data\Users.dat -t data\Lendings.dat" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AddBooksTest.AddBooks_details_mismatch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
@@ -132,7 +140,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.ola.unitTests in OLA" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="com.ola.unitTests in OLA" type="JUnit" factoryName="JUnit">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -147,15 +155,15 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.ola" />
+      <item itemvalue="JUnit.com.ola.unitTests in OLA" />
       <item itemvalue="JUnit.AddBooksTest.AddBooks_details_mismatch" />
       <item itemvalue="JUnit.AddBooksTest.AddBooks_missing_isbn" />
       <item itemvalue="JUnit.BookTests.GenerateIsbn" />
       <item itemvalue="JUnit.BookParserTests.ParseAntiqueBooks" />
-      <item itemvalue="JUnit.com.ola.unitTests in OLA" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.com.ola.unitTests in OLA" />
         <item itemvalue="JUnit.BookParserTests.ParseAntiqueBooks" />
         <item itemvalue="JUnit.BookTests.GenerateIsbn" />
         <item itemvalue="JUnit.AddBooksTest.AddBooks_missing_isbn" />
@@ -193,49 +201,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/BookTests.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/databases/BookDb.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/BookParserTests.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
-          <line>174</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
-          <line>164</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
-          <line>156</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/Status.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="28" />
+          <url>file://$PROJECT_DIR$/src/com/ola/Main.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

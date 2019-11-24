@@ -8,12 +8,13 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class BookDb {
     private HashMap<String, Book> _books;
     private HashMap<Long, Integer> _latestCopyNumbers;
-    private int _newBookIndex;
+    private ArrayList<Book> _newBooks;
 
     public HashSet<String> GetIds() {
         var ids = new HashSet<String>();
@@ -29,6 +30,7 @@ public class BookDb {
 
     public BookDb(Iterable<Book> books) {
         _books = new HashMap<>();
+        _newBooks = new ArrayList<>();
         _latestCopyNumbers = new HashMap<>();
         for(Book book: books){
             var id = book.GetId();
@@ -36,7 +38,7 @@ public class BookDb {
             _books.put(book.GetId(), book);
             UpdateLatestCopyNum(book);
         }
-        _newBookIndex = _books.size();
+
     }
 
     //return a list of all books having a isbn number
@@ -60,11 +62,14 @@ public class BookDb {
         else _latestCopyNumbers.put(book.Isbn, book.CopyNum);
     }
 
-    public boolean Add(Book book){
+    public boolean AddNew(Book book){
         var id = book.GetId();
-        if(_books.containsKey(id)) return false;
+        if(_books.containsKey(id)) {
+            System.out.println("WARNING!! new book Id exists in database.\nSkipping book:"+book.Title);
+            return false;
+        }
         _books.put(id, book);
-
+        _newBooks.add(book);
         UpdateLatestCopyNum(book);
         return true;
     }
@@ -75,10 +80,9 @@ public class BookDb {
     }
     private final String RecordSeparator = "***************************************************************";
     public void Append(OutputStream stream)throws IOException {
-        if(_newBookIndex == _books.size()) return;
+        if(_newBooks.size()==0) return;
         var writer = new BufferedWriter(new OutputStreamWriter(stream));
-        for (int i = _newBookIndex; i < _books.size(); i++) {
-            var book = _books.get(i);
+        for (Book book: _newBooks) {
             writer.write("Title:\t\t\t"+book.Title+'\n');
             writer.write("Author:\t\t\t"+book.Author+'\n');
             writer.write("ISBN:\t\t\t"+ book.Isbn+'\n');
@@ -89,22 +93,56 @@ public class BookDb {
             writer.write("Page count:\t\t"+ book.PageCount+'\n');
             writer.write("Price:\t\t\t"+book.Price+'\n');
             writer.write("Reading level:\t"+book.ReadingLevel+'\n');
-            writer.write("Entry date:\t\t"+TimeUtilities.GetCurrentTime()+'\n');
-            writer.write("Expiry date:\t-\n");
+            writer.write("Entry date:\t\t"+TimeUtilities.ToString(TimeUtilities.GetCurrentTime())+'\n');
+            writer.write("Expiry date:\t\n");
             writer.write(RecordSeparator+'\n');
-            _newBookIndex++;
         }
         writer.close();
 
     }
 
-    public boolean ValidateDetails(Book newBook) {
+    public boolean CrossCheck(Book newBook) {
         for (Book book: _books.values()) {
             if(book.Isbn != newBook.Isbn) continue;
-            //we don't check Title, Author since spelling them in English can be fuzzy
-            // year of publication, page counts may vary with editions
-            return book.Genre.equals(newBook.Genre)
-                    && book.ReadingLevel == newBook.ReadingLevel;
+            if(!book.Title.equals(newBook.Title)){
+                System.out.println("WARNING!! Title mismatch found");
+                System.out.println("Existing Title:"+book.Title);
+                System.out.println("new Title:"+ newBook.Title);
+                return false;
+            }
+            if(!book.Author.equals(newBook.Author)){
+                System.out.println("WARNING!! Author mismatch found");
+                System.out.println("Existing Author:"+book.Author);
+                System.out.println("new Author:"+ newBook.Author);
+                return false;
+            }
+            if(book.Year != newBook.Year){
+                System.out.println("WARNING!! Year mismatch found");
+                System.out.println("Existing Year:"+book.Year);
+                System.out.println("new Year:"+ newBook.Year);
+                return false;
+            }
+            if(book.PageCount != newBook.PageCount){
+                System.out.println("WARNING!! PageCount mismatch found");
+                System.out.println("Existing PageCount:"+book.PageCount);
+                System.out.println("new PageCount:"+ newBook.PageCount);
+                return false;
+            }
+
+            if(!book.Genre.equals(newBook.Genre)){
+                System.out.println("WARNING!! Genre mismatch found");
+                System.out.println("Existing Genre:"+book.Genre);
+                System.out.println("new Genre:"+ newBook.Genre);
+                return false;
+            }
+            if(book.ReadingLevel != newBook.ReadingLevel){
+                System.out.println("WARNING!! ReadingLevel mismatch found");
+                System.out.println("Existing ReadingLevel:"+book.ReadingLevel);
+                System.out.println("new ReadingLevel:"+ newBook.ReadingLevel);
+                return false;
+            }
+
+            return true;
 
         }
         return true;

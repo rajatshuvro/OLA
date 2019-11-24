@@ -48,18 +48,10 @@ public class DataProvider {
     }
 
     public void Close() throws IOException {
-        try
-        {
-            TransactionsDb.Append(_transactionAppendStream);
-            _transactionAppendStream.close();
-        }
-        catch(IOException e) { System.out.println("Failed to close transaction append stream"); }
+        TransactionsDb.Append(_transactionAppendStream);
+        _transactionAppendStream.close();
 
-        try
-        {
-            BookDb.Append(_bookAppendStream);
-            _bookAppendStream.close();
-        }
-        catch(IOException e) { System.out.println("Failed to close book append stream"); }
+        BookDb.Append(_bookAppendStream);
+        _bookAppendStream.close();
     }
 }

@@ -13,8 +13,8 @@ public class Status {
         for (Transaction record: transactionDb.GetPendingCheckouts()) {
             var userName = userDb.GetUserName(record.UserId);
             var bookTitle = bookDb.GetTitle(record.BookId);
-            System.out.println("User:\t\t" + userName + " [id:"+ record.UserId+"]");
-            System.out.println("Title:\t\t" + bookTitle + " [id:"+ record.BookId+"]");
+            System.out.println("User:\t\t\t" + userName + " [id:"+ record.UserId+"]");
+            System.out.println("Title:\t\t\t" + bookTitle + " [id:"+ record.BookId+"]");
             System.out.println("Borrowed on:\t"+ TimeUtilities.ToString(record.Date));
             System.out.println("**********************************************");
         }

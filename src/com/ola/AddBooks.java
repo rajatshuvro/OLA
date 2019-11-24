@@ -52,14 +52,14 @@ public class AddBooks {
                     book.Genre, book.ReadingLevel, copyNum, date, null );
 
             if(copyNum > 1) {
-                if(bookDb.ValidateDetails(newBook) == false)
+                if(bookDb.CrossCheck(newBook) == false)
                 {
                     System.out.println("WARNING!! Book details mismatch found for Title:"+book.Title);
-                    System.out.println("Either the Genre or the Reading level does not match with those of existing copies.");
+                    System.out.println("Skipping new book:"+newBook.Title);
                     continue;
                 }
             }
-            bookDb.Add(newBook);
+            bookDb.AddNew(newBook);
             System.out.println("Adding new book: "+ newBook.GetId());
         }
     }

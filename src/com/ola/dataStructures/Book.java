@@ -1,5 +1,7 @@
 package com.ola.dataStructures;
 
+import com.ola.utilities.StringUtilities;
+
 import java.util.Date;
 import java.util.HashSet;
 
@@ -49,17 +51,12 @@ public class Book {
     public static long GenerateIsbn(String title, String author, String publisher, int year, int pageCount) {
         // since the spelling of the title, author and publisher is subjective,
         // we use a more reliable and stable parameter - word counts of these strings
-        var titleWordCount = GetWordCount(title);
-        var authorWordCount = GetWordCount(author);
-        var publisherWordCount = GetWordCount(publisher);
+        var titleWordCount = StringUtilities.GetWordCount(title);
+        var authorWordCount = StringUtilities.GetWordCount(author);
+        var publisherWordCount = StringUtilities.GetWordCount(publisher);
         var isbnString = Integer.toString(titleWordCount) + authorWordCount + publisherWordCount
                         + year + pageCount;
         return Long.parseLong(isbnString);
-    }
-
-    private static int GetWordCount(String s) {
-        var words = s.split("\\s+");
-        return words.length;
     }
 
     public String GetUserFriendlyId(){
