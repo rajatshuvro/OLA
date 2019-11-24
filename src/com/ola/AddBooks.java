@@ -54,13 +54,12 @@ public class AddBooks {
             if(copyNum > 1) {
                 if(bookDb.CrossCheck(newBook) == false)
                 {
-                    System.out.println("WARNING!! Book details mismatch found for Title:"+book.Title);
-                    System.out.println("Skipping new book:"+newBook.Title);
+                    System.out.println("Failed to add:"+newBook.Title + " to the library\n=============================");
                     continue;
                 }
             }
             bookDb.AddNew(newBook);
-            System.out.println("Adding new book: "+ newBook.GetId());
+            System.out.println("Adding new book: "+ newBook.GetId() + " to the library\n=============================");
         }
     }
 }
