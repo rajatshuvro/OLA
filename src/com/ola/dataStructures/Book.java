@@ -73,6 +73,7 @@ public class Book {
         return level >= MinReadingLevel && level <= MaxReadingLevle;
     }
     //static fields
+    // Religious, History, Geography, Culture, Biography, Fairy, Factual
     public static final String FictionTag = "FIC";
     public static final String ScienceTag = "SCI";
     public static final String SocialScienceTag = "SOC";

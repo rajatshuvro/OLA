@@ -97,7 +97,6 @@ public class Main {
         System.out.println("\tco     (checkout book)");
         System.out.println("\tret    (return book)");
         System.out.println("\tstatus (checkout status)");
-        //System.out.println("\tuser (manage user info)");
         System.out.println("\tquit   (quit OLA)");
         System.out.println("\t[Type command to get detailed help]");
     }
