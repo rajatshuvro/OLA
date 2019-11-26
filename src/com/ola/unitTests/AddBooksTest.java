@@ -12,13 +12,13 @@ public class AddBooksTest {
     public ArrayList<Book> GetNewBooks() {
         var books = new ArrayList<Book>();
         books.add(new Book(7890788,"Rajat Shuvro Roy","Amar Baba","Bonosree books and co",
-                2015, 5, 5, "GEN", 4,-1, null, null));
+                2015, 5, 5, "General", 4,-1, null, null));
         books.add(new Book(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
-                2017, 10, 10, "FIC", 5,-1, null, null));
+                2017, 10, 10, "Fiction", 5,-1, null, null));
         books.add(new Book(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
-                2017, 10, 10, "FIC", 5,-1, null, null));
+                2017, 10, 10, "Fiction", 5,-1, null, null));
         books.add(new Book(456098,"Nanda Mitra","Robindra Prem","Bakura Publishers",
-                2018, 15, 12, "FIC", 6,-1, null, null));
+                2018, 15, 12, "Fiction", 6,-1, null, null));
 
         return books;
     }
@@ -26,13 +26,13 @@ public class AddBooksTest {
     public ArrayList<Book> GetMismatchingBook() {
         var books = new ArrayList<Book>();
         books.add(new Book(7890788,"Rajat Shuvro Roy","Amar Baba","Bonosree books and co",
-                2015, 5, 5, "FIC", 4,-1, null, null));
+                2015, 5, 5, "Fiction", 4,-1, null, null));
         books.add(new Book(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
-                2017, 10, 10, "FIC", 6,-1, null, null));
+                2017, 10, 10, "Fiction", 6,-1, null, null));
         books.add(new Book(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
-                2017, 10, 10, "FIC", 5,-1, null, null));
+                2017, 10, 10, "Fiction", 5,-1, null, null));
         books.add(new Book(456098,"Nandana Mitra","Robindra Prem","Bakura Publishers",
-                2018, 15, 12, "FIC", 6,-1, null, null));
+                2018, 15, 12, "Fiction", 6,-1, null, null));
 
         return books;
     }

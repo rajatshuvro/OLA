@@ -5,7 +5,7 @@
 #ISBN = ISBN number (-1 if unknown). Value = <Integer>
 #Publisher = Publisher name. Value = <String>
 #Year = Year of publication. Value = <Integer>
-#Genre = Book genre. Value = GEN/FIC/SCI/SOC
+#Genre = Book genre. Value = General/Fiction/Science/Social/Religion/History/Geography/Culture/Biography/Fairy tale/Factual
 #Copy number = Copy number. Value = <Integer>
 #Page count = Page count. Value = <Integer>
 #Price = Book price (to be charged if lost). Value = <Decimal>
@@ -18,7 +18,7 @@ Author:			Rajat Shuvro Roy
 ISBN:			7890788
 Publisher:		Bonosree books and co
 Year:			2015
-Genre:			GEN
+Genre:			General
 Copy number:	1
 Page count:		7
 Price:			5
@@ -31,7 +31,7 @@ Author:			Rajat Shuvro Roy
 ISBN:			7890788
 Publisher:		Bonosree books and co
 Year:			2015
-Genre:			GEN
+Genre:			General
 Copy number:	2
 Page count:		7
 Price:			5
@@ -44,7 +44,7 @@ Author:			Rajat Shuvro Roy
 ISBN:			7890788
 Publisher:		Bonosree books and co
 Year:			2015
-Genre:			GEN
+Genre:			General
 Copy number:	3
 Page count:		7
 Price:			5
@@ -57,7 +57,7 @@ Author:			Saber Nabil
 ISBN:			678564
 Publisher:		Dakkhin Khan Publishers
 Year:			2017
-Genre:			FIC
+Genre:			Fiction
 Copy number:	1
 Page count:		10
 Price:			10
@@ -70,7 +70,7 @@ Author:			Nandana Mitra
 ISBN:			456098
 Publisher:		Bakura Publishers
 Year:			2018
-Genre:			FIC
+Genre:			Fiction
 Copy number:	1
 Page count:		15
 Price:			10
@@ -83,7 +83,7 @@ Author:			Upendrakishore Roy Choudhury
 ISBN:			232192935
 Publisher:		Kalighat prokashoni
 Year:			1929
-Genre:			FIC
+Genre:			Fiction
 Copy number:	1
 Page count:		35
 Price:			15.0
@@ -96,7 +96,7 @@ Author:			Ishwarchandra Viddyasagar
 ISBN:			222188120
 Publisher:		Bengal publishers
 Year:			1881
-Genre:			GEN
+Genre:			General
 Copy number:	1
 Page count:		20
 Price:			10.0
@@ -109,7 +109,7 @@ Author:			Nandana Mitra
 ISBN:			456098
 Publisher:		Bakura Publishers
 Year:			2018
-Genre:			FIC
+Genre:			Fiction
 Copy number:	2
 Page count:		15
 Price:			10.0

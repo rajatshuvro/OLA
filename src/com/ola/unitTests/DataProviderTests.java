@@ -52,7 +52,7 @@ public class DataProviderTests {
         writer.write("ISBN:\t\t\t7890788\n");
         writer.write("Publisher:\t\tBonosree books and co\n");
         writer.write("Year:\t\t\t2015\n");
-        writer.write("Genre:\t\t\tGEN\n");
+        writer.write("Genre:\t\t\tGeneral\n");
         writer.write("Copy number:\t1\n");
         writer.write("Page count:\t\t7\n");
         writer.write("Price:\t\t\t5\n");
@@ -65,7 +65,7 @@ public class DataProviderTests {
         writer.write("ISBN:\t\t\t7890788\n");
         writer.write("Publisher:\t\tBonosree books and co\n");
         writer.write("Year:\t\t\t2015\n");
-        writer.write("Genre:\t\t\tGEN\n");
+        writer.write("Genre:\t\t\tGeneral\n");
         writer.write("Copy number:\t2\n");
         writer.write("Page count:\t\t7\n");
         writer.write("Price:\t\t\t5\n");
@@ -78,7 +78,7 @@ public class DataProviderTests {
         writer.write("ISBN:\t\t\t678564\n");
         writer.write("Publisher:\t\tDakkhin Khan Publishers\n");
         writer.write("Year:\t\t\t2017\n");
-        writer.write("Genre:\t\t\tFIC\n");
+        writer.write("Genre:\t\t\tFiction\n");
         writer.write("Copy number:\t1\n");
         writer.write("Page count:\t\t10\n");
         writer.write("Price:\t\t\t10\n");
@@ -91,7 +91,7 @@ public class DataProviderTests {
         writer.write("ISBN:\t\t\t456098\n");
         writer.write("Publisher:\t\tBakura Publishers\n");
         writer.write("Year:\t\t\t2018\n");
-        writer.write("Genre:\t\t\tFIC\n");
+        writer.write("Genre:\t\t\tFiction\n");
         writer.write("Copy number:\t1\n");
         writer.write("Page count:\t\t15\n");
         writer.write("Price:\t\t\t10\n");

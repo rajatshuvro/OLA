@@ -3,6 +3,7 @@ package com.ola.dataStructures;
 import com.ola.utilities.StringUtilities;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Book {
@@ -16,7 +17,7 @@ public class Book {
     public final float Price;
     public final String Genre;
     public final int ReadingLevel;
-    public final Date EntryDate;
+    private final Date EntryDate;
     public final Date ExpiryDate;
 
     public Book(long isbn, String author, String title, String publisher, int year, int pageCount,
@@ -42,6 +43,7 @@ public class Book {
                 !(author == null || author.equals("")) &&
                 !(title == null || title.equals("")) &&
                 !(publisher == null || publisher.equals("")) &&
+                price > 0 &&
                 year > 0 &&
                 pageCount > 0 &&
                 IsValidateGenre(genre) &&
@@ -60,33 +62,66 @@ public class Book {
     }
 
     public String GetUserFriendlyId(){
-        return String.join("-", Long.toString(Isbn), Genre, Integer.toString(ReadingLevel), '('+Integer.toString(CopyNum)+')');
+        return String.join("-", Long.toString(Isbn), GetAbbreviation(Genre), Integer.toString(ReadingLevel), '('+Integer.toString(CopyNum)+')');
     }
 
     public String GetId(){
         return Isbn +"-("+ CopyNum +')';
     }
 
-    public static final int MinReadingLevel =1;
-    public static final int MaxReadingLevle = 10;
-    public static boolean ValidateReadingLevel(int level){
-        return level >= MinReadingLevel && level <= MaxReadingLevle;
+    private static final int MinReadingLevel =1;
+    private static final int MaxReadingLevel = 10;
+    private static boolean ValidateReadingLevel(int level){
+        return level >= MinReadingLevel && level <= MaxReadingLevel;
     }
     //static fields
-    // Religious, History, Geography, Culture, Biography, Fairy, Factual
-    public static final String FictionTag = "FIC";
-    public static final String ScienceTag = "SCI";
-    public static final String SocialScienceTag = "SOC";
-    public static final String GeneralTag = "GEN";
+    // Tags in the files should be user friendly. they may be abbreviated in IDs.
+    private static final String FictionTag = "Fiction";
+    private static final String ScienceTag = "Science";
+    private static final String SociologyTag = "Social";
+    private static final String GeneralTag = "General";
+    private static final String ReligiousTag = "Religion";
+    private static final String HistoryTag = "History";
+    private static final String GeographyTag = "Geography";
+    private static final String CultureTag = "Culture";
+    private static final String BiographyTag = "Biography";
+    private static final String FairyTaleTag = "Fairy tale";
+    private static final String FactualTag = "Factual";
 
-    public static final HashSet<String> GenreTags = new HashSet<>(){{
+    private static final HashSet<String> GenreTags = new HashSet<>(){{
         add(FictionTag);
         add(ScienceTag);
-        add(SocialScienceTag);
+        add(SociologyTag);
         add(GeneralTag);
+        add(ReligiousTag);
+        add(HistoryTag);
+        add(GeographyTag);
+        add(CultureTag);
+        add(BiographyTag);
+        add(FairyTaleTag);
+        add(FactualTag);
+
     }};
 
-    public static boolean IsValidateGenre(String genre) {
+    private static final HashMap<String, String> GenreAbbreviations = new HashMap<>(){{
+        put(FictionTag, "FIC");
+        put(ScienceTag, "SCI");
+        put(SociologyTag, "SOC");
+        put(GeneralTag, "GEN");
+        put(ReligiousTag, "REL");
+        put(HistoryTag, "HIS");
+        put(GeographyTag, "GEO");
+        put(CultureTag, "CUL");
+        put(BiographyTag, "BIO");
+        put(FairyTaleTag, "FAI");
+        put(FactualTag, "FAC");
+
+    }};
+    private static String GetAbbreviation(String genre){
+        if(!GenreAbbreviations.containsKey(genre)) return null;
+        return GenreAbbreviations.get(genre);
+    }
+    private static boolean IsValidateGenre(String genre) {
         return GenreTags.contains(genre);
     }
 }
