@@ -52,7 +52,7 @@ public class BookDb {
 
     // get the new copy number for a given isbn. e.g. if the latest copy in the db has copy# 4, this will return 4
     //if book doesn't exist return 0.
-    public int GetLatestCopyNumber(long isbn){
+    public int GetCopyCount(long isbn){
         return _latestCopyNumbers.containsKey(isbn)? _latestCopyNumbers.get(isbn) : 0;
     }
     private void UpdateLatestCopyNum(Book book) {
@@ -63,6 +63,7 @@ public class BookDb {
     }
 
     public boolean AddNew(Book book){
+        book = StandardizeFields(book);
         var id = book.GetId();
         if(_books.containsKey(id)) {
             System.out.println("WARNING!! new book Id exists in database.\nSkipping book:"+book.Title);
@@ -101,50 +102,57 @@ public class BookDb {
 
     }
 
-    public boolean CrossCheck(Book newBook) {
-        for (Book book: _books.values()) {
-            if(book.Isbn != newBook.Isbn) continue;
-            if(!book.Title.equals(newBook.Title)){
-                System.out.println("WARNING!! Title mismatch found");
-                System.out.println("Existing Title:"+book.Title);
-                System.out.println("new Title:"+ newBook.Title);
-                return false;
-            }
-            if(!book.Author.equals(newBook.Author)){
-                System.out.println("WARNING!! Author mismatch found");
-                System.out.println("Existing Author:"+book.Author);
-                System.out.println("new Author:"+ newBook.Author);
-                return false;
-            }
-            if(book.Year != newBook.Year){
-                System.out.println("WARNING!! Year mismatch found");
-                System.out.println("Existing Year:"+book.Year);
-                System.out.println("new Year:"+ newBook.Year);
-                return false;
-            }
-            if(book.PageCount != newBook.PageCount){
-                System.out.println("WARNING!! PageCount mismatch found");
-                System.out.println("Existing PageCount:"+book.PageCount);
-                System.out.println("new PageCount:"+ newBook.PageCount);
-                return false;
-            }
+    public Book StandardizeFields(Book book) {
+        var copyNum = GetCopyCount(book.Isbn) + 1;
+        Date date = new Date(System.currentTimeMillis());
 
-            if(!book.Genre.equals(newBook.Genre)){
-                System.out.println("WARNING!! Genre mismatch found");
-                System.out.println("Existing Genre:"+book.Genre);
-                System.out.println("new Genre:"+ newBook.Genre);
-                return false;
-            }
-            if(book.ReadingLevel != newBook.ReadingLevel){
-                System.out.println("WARNING!! ReadingLevel mismatch found");
-                System.out.println("Existing ReadingLevel:"+book.ReadingLevel);
-                System.out.println("new ReadingLevel:"+ newBook.ReadingLevel);
-                return false;
-            }
+        //getting canonical id
+        var canonicalId = Book.GenerateId(book.Isbn, 1);
+        var canon = _books.get(canonicalId);
+        if (canon == null) {
+            //this is the first copy of this book
+            return new Book(book.Isbn, book.Author, book.Title,
+                    book.Publisher,book.Year, book.PageCount, book.Price,
+                    book.Genre, book.ReadingLevel, copyNum, date, null );
+        }
 
-            return true;
+        if(!canon.Title.equals(book.Title)){
+            System.out.println("WARNING!! Title mismatch found. New value will be overwritten with existing value.");
+            System.out.println("Existing Title:"+canon.Title);
+            System.out.println("new Title:"+ book.Title);
+        }
+        if(!canon.Author.equals(book.Author)){
+            System.out.println("WARNING!! Author mismatch found. New value will be overwritten with existing value.");
+            System.out.println("Existing Author:"+canon.Author);
+            System.out.println("new Author:"+ book.Author);
+        }
+        if(canon.Year != book.Year){
+            System.out.println("WARNING!! Year mismatch found. New value will be overwritten with existing value.");
+            System.out.println("Existing Year:"+canon.Year);
+            System.out.println("new Year:"+ book.Year);
 
         }
-        return true;
+        if(canon.PageCount != book.PageCount){
+            System.out.println("WARNING!! PageCount mismatch found. New value will be overwritten with existing value.");
+            System.out.println("Existing PageCount:"+canon.PageCount);
+            System.out.println("new PageCount:"+ book.PageCount);
+
+        }
+
+        if(!canon.Genre.equals(book.Genre)){
+            System.out.println("WARNING!! Genre mismatch found. New value will be overwritten with existing value.");
+            System.out.println("Existing Genre:"+canon.Genre);
+            System.out.println("new Genre:"+ book.Genre);
+
+        }
+        if(canon.ReadingLevel != book.ReadingLevel){
+            System.out.println("WARNING!! ReadingLevel mismatch found. New value will be overwritten with existing value.");
+            System.out.println("Existing ReadingLevel:"+canon.ReadingLevel);
+            System.out.println("new ReadingLevel:"+ book.ReadingLevel);
+
+        }
+        return new Book(book.Isbn, canon.Author, canon.Title,
+                canon.Publisher,canon.Year, canon.PageCount, canon.Price,
+                canon.Genre, canon.ReadingLevel, copyNum, date, null );
     }
 }

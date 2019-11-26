@@ -42,9 +42,9 @@ public class AddBooksTest {
 
         AddBooks.AddNewBook(GetNewBooks(), bookDb);
 
-        assertEquals(3, bookDb.GetLatestCopyNumber(7890788));
-        assertEquals(3, bookDb.GetLatestCopyNumber(678564));
-        assertEquals(2, bookDb.GetLatestCopyNumber(456098));
+        assertEquals(3, bookDb.GetCopyCount(7890788));
+        assertEquals(3, bookDb.GetCopyCount(678564));
+        assertEquals(2, bookDb.GetCopyCount(456098));
 
     }
 
@@ -53,7 +53,7 @@ public class AddBooksTest {
         var bookDb = new BookDb(BookDbTests.GetBooks());
         AddBooks.AddNewBook(GetMismatchingBook(), bookDb);
 
-        assertEquals(5, bookDb.Count());
+        assertEquals(8, bookDb.Count());
     }
 
 }

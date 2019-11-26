@@ -66,7 +66,11 @@ public class Book {
     }
 
     public String GetId(){
-        return Isbn +"-("+ CopyNum +')';
+        return GenerateId(Isbn, CopyNum);
+    }
+
+    public static String GenerateId(long isbn, int copyNum){
+        return isbn +"-("+ copyNum +')';
     }
 
     private static final int MinReadingLevel =1;

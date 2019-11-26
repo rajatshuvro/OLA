@@ -105,10 +105,9 @@ public class TransactionTests {
 
         var transactionDb = new TransactionDb(transactions, GetUserIds(), GetBookIds());
 
-        //cannot return a book that is already returned
-        assertFalse(transactionDb.Add(new Transaction("678564-(1)", 234, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
+        assertTrue(transactionDb.Add(new Transaction("678564-(1)", Integer.MIN_VALUE, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
 
-        assertEquals(Transaction.CheckoutTag, transactionDb.GetBookStatus("678564-(1)"));
+        assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("678564-(1)"));
     }
 
     private HashSet<String> GetBookIds_reduced() {

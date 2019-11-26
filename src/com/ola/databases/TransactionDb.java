@@ -52,7 +52,7 @@ public class TransactionDb {
             System.out.println("WARNING:Unknown book id: "+ record.BookId);
             return false;
         }
-        if(!_userIds.contains(record.UserId)){
+        if(!_userIds.contains(record.UserId) && record.UserId != Integer.MIN_VALUE){
             System.out.println("WARNING:Unknown user id: "+ record.UserId);
             return false;
         }
@@ -67,13 +67,7 @@ public class TransactionDb {
             System.out.println("WARNING: cannot "+record.Type+ " a book that is already in that state. Book id:" + record.BookId);
             return false;
         }
-        //make sure user ids match for returns
-        if (record.Type.equals(Transaction.ReturnTag)){
-            if(record.UserId != latestRecord.UserId){
-                System.out.println("WARNING: A book has to be returned by the user who checked it out. User on checkout record: "+latestRecord.UserId);
-                return false;
-            }
-        }
+
         _latestTransaction.replace(record.BookId, record);
         _transactions.add(record);
         return true;

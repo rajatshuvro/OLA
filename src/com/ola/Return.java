@@ -8,17 +8,13 @@ import org.apache.commons.cli.*;
 import java.util.Date;
 
 public class Return {
-    private static String commandSyntex = "ret  -b [book id] -u [user id]";
+    private static String commandSyntex = "ret  -b [book id]";
     public static void Run(String[] args, TransactionDb transactionDb){
         Options options = new Options();
 
         Option bookIdOption = new Option("b", "book", true, "book id");
         bookIdOption.setRequired(true);
         options.addOption(bookIdOption);
-
-        Option userIdOption = new Option("u", "user", true, "user id");
-        userIdOption.setRequired(true);
-        options.addOption(userIdOption);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -32,9 +28,8 @@ public class Return {
         try {
             cmd = parser.parse(options, args);
             var bookId = cmd.getOptionValue('b');
-            var userId = Integer.parseInt(cmd.getOptionValue('u'));
             var date = TimeUtilities.GetCurrentTime();
-            transactionDb.Add(new Transaction(bookId, userId, date, Transaction.ReturnTag));
+            transactionDb.Add(new Transaction(bookId, Integer.MIN_VALUE, date, Transaction.ReturnTag));
         }
         catch (ParseException e) {
             System.out.println(e.getMessage());

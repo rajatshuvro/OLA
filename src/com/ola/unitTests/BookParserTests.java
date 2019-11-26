@@ -69,12 +69,9 @@ public class BookParserTests {
         writer.write("Publisher:\t\tKalighat prokashoni\n");
         writer.write("Year:\t\t\t1929\n");
         writer.write("Genre:\t\t\tFiction\n");
-        writer.write("Copy number:\t1\n");
         writer.write("Page count:\t\t35\n");
         writer.write("Price:\t\t\t15\n");
         writer.write("Reading level:\t4\n");
-        writer.write("Entry date:\t\t2018-05-17 11:35:06\n");
-        writer.write("Expiry date:\t\n");
         writer.write("***************************************************************\n");
         writer.write("Title:\t\t\tBorno porichoy\n");
         writer.write("Author:\t\t\tIshwarchandra Viddyasagar\n");
@@ -82,12 +79,9 @@ public class BookParserTests {
         writer.write("Publisher:\t\tBengal publishers\n");
         writer.write("Year:\t\t\t1881\n");
         writer.write("Genre:\t\t\tGeneral\n");
-        writer.write("Copy number:\t1\n");
         writer.write("Page count:\t\t20\n");
         writer.write("Price:\t\t\t10\n");
         writer.write("Reading level:\t3\n");
-        writer.write("Entry date:\t\t2018-05-17 11:35:06\n");
-        writer.write("Expiry date:\t\n");
 
         writer.close();
 

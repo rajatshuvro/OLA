@@ -44,22 +44,7 @@ public class AddBooks {
 
     public static void AddNewBook(ArrayList<Book> books, BookDb bookDb) throws IOException {
         for (Book book: books) {
-            var copyNum = bookDb.GetLatestCopyNumber(book.Isbn) +1;
-            Date date = new Date(System.currentTimeMillis());
-
-            var newBook = new Book(book.Isbn, book.Author, book.Title,
-                    book.Publisher,book.Year, book.PageCount, book.Price,
-                    book.Genre, book.ReadingLevel, copyNum, date, null );
-
-            if(copyNum > 1) {
-                if(bookDb.CrossCheck(newBook) == false)
-                {
-                    System.out.println("Failed to add:"+newBook.Title + " to the library\n=============================");
-                    continue;
-                }
-            }
-            bookDb.AddNew(newBook);
-            System.out.println("Adding new book: "+ newBook.GetId() + " to the library\n=============================");
+            bookDb.AddNew(book);
         }
     }
 }

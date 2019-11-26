@@ -31,8 +31,8 @@ public class BookDbTests {
     @Test
     public void LatestCopyNumber() throws IOException{
         var bookDb = new BookDb(GetBooks());
-        assertEquals(2, bookDb.GetLatestCopyNumber(7890788L));
-        assertEquals(1, bookDb.GetLatestCopyNumber(678564L));
-        assertEquals(0, bookDb.GetLatestCopyNumber(123456L));
+        assertEquals(2, bookDb.GetCopyCount(7890788L));
+        assertEquals(1, bookDb.GetCopyCount(678564L));
+        assertEquals(0, bookDb.GetCopyCount(123456L));
     }
 }

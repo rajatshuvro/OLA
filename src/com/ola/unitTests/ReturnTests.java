@@ -44,7 +44,7 @@ public class ReturnTests {
     @Test
     public void Return(){
         var transactionDb = new TransactionDb(GetTransactions(), GetUserIds(), GetBookIds());
-        var args = new String[]{"ret", "-b", "456098-(1)","-u","345"};
+        var args = new String[]{"ret", "-b", "456098-(1)"};
         Return.Run(args, transactionDb);
 
         assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("456098-(1)"));
@@ -53,7 +53,7 @@ public class ReturnTests {
     @Test
     public void Return_invalid_book(){
         var transactionDb = new TransactionDb(GetTransactions(), GetUserIds(), GetBookIds());
-        var args = new String[]{"ret", "-b", "456098-(4)","-u","345"};
+        var args = new String[]{"ret", "-b", "456098-(4)"};
         Return.Run(args, transactionDb);
 
         assertEquals(Transaction.UnknownTag, transactionDb.GetBookStatus("456098-(4)"));
