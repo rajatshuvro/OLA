@@ -33,7 +33,7 @@ public class Main {
                     Return.Run(subArgs, dataProvider.TransactionsDb);
                     break;
                 case "status":
-                    Status.Run(dataProvider);
+                    Status.Run(subArgs, dataProvider);
                     break;
                 case "quit":
                     quit = true;
