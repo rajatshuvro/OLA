@@ -2,6 +2,7 @@ package com.ola.dataStructures;
 
 import com.ola.utilities.StringUtilities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -121,11 +122,26 @@ public class Book {
         put(FactualTag, "FAC");
 
     }};
-    private static String GetAbbreviation(String genre){
-        if(!GenreAbbreviations.containsKey(genre)) return null;
-        return GenreAbbreviations.get(genre);
-    }
-    private static boolean IsValidateGenre(String genre) {
-        return GenreTags.contains(genre);
+    private static String GetAbbreviation(String genres){
+        var genreArray = genres.split("/");
+        var abbreviation = new StringBuilder();
+        boolean isFirst=true;
+        for (String genre: genreArray){
+            if(!isFirst) abbreviation.append("-");
+            abbreviation.append(GenreAbbreviations.get(genre));
+            isFirst = false;
+            }
+        return abbreviation.toString();
+        }
+
+    private static boolean IsValidateGenre(String genres) {
+        var genreArray = genres.split("/");
+        for (String genre: genreArray) {
+            if (!GenreTags.contains(genre)) {
+                System.out.println("WARNING!! Invalid genre:" + genre);
+                return false;
+            }
+        }
+        return true;
     }
 }

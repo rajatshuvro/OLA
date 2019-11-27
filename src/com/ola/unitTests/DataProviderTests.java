@@ -161,7 +161,7 @@ public class DataProviderTests {
 
         assertEquals(Transaction.CheckoutTag, provider.TransactionsDb.GetBookStatus("7890788-(2)"));
 
-        var returnArgs = new String[]{"ret", "-b", "456098-(1)","-u","897"};
+        var returnArgs = new String[]{"ret", "-b", "456098-(1)"};
         Return.Run(returnArgs, provider.TransactionsDb);
         assertEquals(Transaction.ReturnTag, provider.TransactionsDb.GetBookStatus("456098-(1)"));
 

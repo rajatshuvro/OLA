@@ -67,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.com.ola.unitTests in OLA">
+  <component name="RunManager" selected="JUnit.BookTests.GetBookId">
     <configuration name="ola" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.ola.Main" />
       <module name="OLA" />
@@ -76,7 +76,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AddBooksTest.AddBooks_details_mismatch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookParserTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -85,25 +85,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.AddBooksTest" />
-      <option name="METHOD_NAME" value="AddBooks_details_mismatch" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AddBooksTest.AddBooks_missing_isbn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OLA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.AddBooksTest" />
-      <option name="METHOD_NAME" value="AddBooks_missing_isbn" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookParserTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,6 +123,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BookTests.GetBookId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OLA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookTests" />
+      <option name="METHOD_NAME" value="GetBookId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataProviderTests.DataProvider_basic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OLA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.DataProviderTests" />
+      <option name="METHOD_NAME" value="DataProvider_basic" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="com.ola.unitTests in OLA" type="JUnit" factoryName="JUnit">
       <module name="OLA" />
       <extension name="coverage">
@@ -157,17 +172,19 @@
     <list>
       <item itemvalue="Application.ola" />
       <item itemvalue="JUnit.com.ola.unitTests in OLA" />
-      <item itemvalue="JUnit.AddBooksTest.AddBooks_details_mismatch" />
-      <item itemvalue="JUnit.AddBooksTest.AddBooks_missing_isbn" />
       <item itemvalue="JUnit.BookTests.GenerateIsbn" />
       <item itemvalue="JUnit.BookParserTests.ParseAntiqueBooks" />
+      <item itemvalue="JUnit.DataProviderTests.DataProvider_basic" />
+      <item itemvalue="JUnit.BookParserTests" />
+      <item itemvalue="JUnit.BookTests.GetBookId" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BookTests.GetBookId" />
         <item itemvalue="JUnit.BookParserTests.ParseAntiqueBooks" />
+        <item itemvalue="JUnit.BookParserTests" />
+        <item itemvalue="JUnit.DataProviderTests.DataProvider_basic" />
         <item itemvalue="JUnit.BookTests.GenerateIsbn" />
-        <item itemvalue="JUnit.AddBooksTest.AddBooks_missing_isbn" />
-        <item itemvalue="JUnit.AddBooksTest.AddBooks_details_mismatch" />
       </list>
     </recent_temporary>
   </component>
