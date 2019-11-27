@@ -167,7 +167,7 @@ public class DataProviderTests {
 
     }
 
-    private OutputStream GetAppendStream() {
+    public static OutputStream GetAppendStream() {
         var memStream = new ByteArrayOutputStream();
         return memStream;
     }
