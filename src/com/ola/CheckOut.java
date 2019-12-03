@@ -6,7 +6,7 @@ import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
 public class CheckOut {
-    private static String commandSyntex = "co  -b [book id] -u [user id]";
+    private static String commandSyntax = "co  -b [book id] -u [user id]";
     public static void Run(String[] args, TransactionDb transactionDb){
         Options options = new Options();
 
@@ -23,7 +23,7 @@ public class CheckOut {
         CommandLine cmd;
 
         if(args.length==1) {
-            formatter.printHelp(commandSyntex, options);
+            formatter.printHelp(commandSyntax, options);
             return;
         }
 
@@ -36,7 +36,7 @@ public class CheckOut {
         }
         catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp(commandSyntex, options);
+            formatter.printHelp(commandSyntax, options);
         }
     }
 }

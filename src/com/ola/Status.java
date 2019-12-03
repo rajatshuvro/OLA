@@ -5,11 +5,11 @@ import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
 public class Status {
-    private static String commandSyntex = "status  (-u [user id])";
+    private static String commandSyntax = "stat  (-u [user id])";
     public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
 
-        Option userIdOption = new Option("u", "user", true, "user id");
+        Option userIdOption = new Option("u", "user", true, "Optional: user id");
         userIdOption.setRequired(false);
         options.addOption(userIdOption);
 
@@ -31,7 +31,7 @@ public class Status {
         }
         catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp(commandSyntex, options);
+            formatter.printHelp(commandSyntax, options);
         }
     }
 

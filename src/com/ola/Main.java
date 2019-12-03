@@ -32,8 +32,11 @@ public class Main {
                 case "ret":
                     Return.Run(subArgs, dataProvider.TransactionsDb);
                     break;
-                case "status":
+                case "stat":
                     Status.Run(subArgs, dataProvider);
+                    break;
+                case "find":
+                    BookSearch.Run(subArgs, dataProvider.BookDb);
                     break;
                 case "quit":
                     quit = true;
@@ -96,7 +99,8 @@ public class Main {
         System.out.println("\tadd    (add new book to database)");
         System.out.println("\tco     (checkout book)");
         System.out.println("\tret    (return book)");
-        System.out.println("\tstatus (checkout status)");
+        System.out.println("\tstat (checkout status)");
+        System.out.println("\tfind   (search book database)");
         System.out.println("\tquit   (quit OLA)");
         System.out.println("\t[Type command to get detailed help]");
     }
