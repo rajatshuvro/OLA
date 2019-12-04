@@ -84,23 +84,13 @@ public class BookDb {
         if(_newBooks.size()==0) return;
         var writer = new BufferedWriter(new OutputStreamWriter(stream));
         for (Book book: _newBooks) {
-            writer.write("Title:\t\t\t"+book.Title+'\n');
-            writer.write("Author:\t\t\t"+book.Author+'\n');
-            writer.write("ISBN:\t\t\t"+ book.Isbn+'\n');
-            writer.write("Publisher:\t\t"+book.Publisher+'\n');
-            writer.write("Year:\t\t\t"+book.Year+'\n');
-            writer.write("Genre:\t\t\t"+book.Genre+'\n');
-            writer.write("Copy number:\t"+book.CopyNum+'\n');
-            writer.write("Page count:\t\t"+ book.PageCount+'\n');
-            writer.write("Price:\t\t\t"+book.Price+'\n');
-            writer.write("Reading level:\t"+book.ReadingLevel+'\n');
-            writer.write("Entry date:\t\t"+TimeUtilities.ToString(TimeUtilities.GetCurrentTime())+'\n');
-            writer.write("Expiry date:\t\n");
+            writer.write(book.toString()+'\n');
             writer.write(RecordSeparator+'\n');
         }
         writer.close();
 
     }
+
 
     public Book StandardizeFields(Book book) {
         var copyNum = GetCopyCount(book.Isbn) + 1;
@@ -154,5 +144,9 @@ public class BookDb {
         return new Book(book.Isbn, canon.Author, canon.Title,
                 canon.Publisher,canon.Year, canon.PageCount, canon.Price,
                 canon.Genre, canon.ReadingLevel, copyNum, date, null );
+    }
+
+    public ArrayList<Book> search(String genre, int level, String author, String title) {
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package com.ola.dataStructures;
 
 import com.ola.utilities.StringUtilities;
+import com.ola.utilities.TimeUtilities;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -78,6 +79,23 @@ public class Book {
     private static final int MaxReadingLevel = 10;
     private static boolean ValidateReadingLevel(int level){
         return level >= MinReadingLevel && level <= MaxReadingLevel;
+    }
+
+    @Override
+    public String toString(){
+        return "Title:\t\t\t"+Title+'\n'+
+                "Author:\t\t\t"+Author+'\n'+
+                "ISBN:\t\t\t"+ Isbn+'\n'+
+                "Publisher:\t\t"+Publisher+'\n'+
+                "Year:\t\t\t"+Year+'\n'+
+                "Genre:\t\t\t"+Genre+'\n'+
+                "Copy number:\t"+CopyNum+'\n'+
+                "Page count:\t\t"+ PageCount+'\n'+
+                "Price:\t\t\t"+Price+'\n'+
+                "Reading level:\t"+ReadingLevel+'\n'+
+                "Entry date:\t\t"+ TimeUtilities.ToString(EntryDate)+'\n'+
+                "Expiry date:t\t"+ TimeUtilities.ToString(ExpiryDate);
+
     }
     //static fields
     // Tags in the files should be user friendly. they may be abbreviated in IDs.

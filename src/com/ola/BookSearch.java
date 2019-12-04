@@ -4,6 +4,8 @@ import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
 import org.apache.commons.cli.*;
 
+import java.util.ArrayList;
+
 public class BookSearch {
     private static String commandSyntax = "find  (-v) (-g [genre]) (-l [reading level]) (-t [title]) (-a [author])";
     public static void Run(String[] args, BookDb bookDb) {
@@ -44,8 +46,12 @@ public class BookSearch {
             var author = cmd.hasOption('a')? cmd.getOptionValue('a'): null;
             var title = cmd.hasOption('t')? cmd.getOptionValue('t'): null;
 
-            for (Book book:RunSearch(bookDb, genre, level, author, title)) {
+            var searchResults = bookDb.search(genre, level, author, title);
+            System.out.println(SummarizeSearch(searchResults));
 
+            if(!verbose) return;
+            for (Book book: searchResults) {
+                System.out.println(book.toString());
             }
 
         }
@@ -53,5 +59,9 @@ public class BookSearch {
             System.out.println(e.getMessage());
             formatter.printHelp(commandSyntax, options);
         }
+    }
+
+    private static String SummarizeSearch(ArrayList<Book> searchResults) {
+        return searchResults.size() + " books matched the search criteria";
     }
 }
