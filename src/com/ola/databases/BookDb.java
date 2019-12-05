@@ -1,14 +1,12 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Book;
-import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class BookDb {
@@ -146,7 +144,39 @@ public class BookDb {
                 canon.Genre, canon.ReadingLevel, copyNum, date, null );
     }
 
-    public ArrayList<Book> search(String genre, int level, String author, String title) {
+    public ArrayList<Book> Search(String genre, int level, String author, String title) {
+        //todo: build search indexes
+        var isValidGenre = Book.IsValidGenre(genre);
+        var isValidLevel = Book.IsValidReadingLevel(level);
+
+        var allBooks = new ArrayList<>(_books.values());
+        allBooks.addAll(_newBooks);
+        if(isValidGenre & isValidLevel) return SearchByGenreAndLevel(allBooks, genre, level);
+        if(isValidGenre) return SearchByGenre(allBooks, genre);
+        if(isValidLevel) return SearchByLevel(allBooks, level);
         return null;
+    }
+
+    private ArrayList<Book> SearchByLevel(ArrayList<Book> allBooks, int level) {
+        var books = new ArrayList<Book>();
+        for (Book book:allBooks) {
+            if(book.ReadingLevel== level)
+                books.add(book);
+        }
+        return books;
+    }
+
+    private ArrayList<Book> SearchByGenre(ArrayList<Book> allBooks, String genre) {
+        var books = new ArrayList<Book>();
+        for (Book book:allBooks) {
+            if(book.Genre.equals(genre) )
+                books.add(book);
+        }
+        return books;
+    }
+
+    private ArrayList<Book> SearchByGenreAndLevel(ArrayList<Book> allBooks, String genre, int level) {
+        var booksByGenre = SearchByGenre(allBooks, genre);
+        return SearchByLevel(booksByGenre, level);
     }
 }

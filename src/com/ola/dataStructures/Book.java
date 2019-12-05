@@ -3,7 +3,6 @@ package com.ola.dataStructures;
 import com.ola.utilities.StringUtilities;
 import com.ola.utilities.TimeUtilities;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -48,8 +47,8 @@ public class Book {
                 price > 0 &&
                 year > 0 &&
                 pageCount > 0 &&
-                IsValidateGenre(genre) &&
-                ValidateReadingLevel(readingLevel);
+                IsValidGenreTag(genre) &&
+                IsValidReadingLevel(readingLevel);
     }
 
     public static long GenerateIsbn(String title, String author, String publisher, int year, int pageCount) {
@@ -77,7 +76,7 @@ public class Book {
 
     private static final int MinReadingLevel =1;
     private static final int MaxReadingLevel = 10;
-    private static boolean ValidateReadingLevel(int level){
+    public static boolean IsValidReadingLevel(int level){
         return level >= MinReadingLevel && level <= MaxReadingLevel;
     }
 
@@ -140,6 +139,10 @@ public class Book {
         put(FactualTag, "FAC");
 
     }};
+
+    public static boolean IsValidGenre(String genre){
+        return GenreTags.contains(genre) || GenreAbbreviations.containsValue(genre);
+    }
     private static String GetAbbreviation(String genres){
         var genreArray = genres.split("/");
         var abbreviation = new StringBuilder();
@@ -152,7 +155,7 @@ public class Book {
         return abbreviation.toString();
         }
 
-    private static boolean IsValidateGenre(String genres) {
+    private static boolean IsValidGenreTag(String genres) {
         var genreArray = genres.split("/");
         for (String genre: genreArray) {
             if (!GenreTags.contains(genre)) {

@@ -46,7 +46,7 @@ public class BookSearch {
             var author = cmd.hasOption('a')? cmd.getOptionValue('a'): null;
             var title = cmd.hasOption('t')? cmd.getOptionValue('t'): null;
 
-            var searchResults = bookDb.search(genre, level, author, title);
+            var searchResults = bookDb.Search(genre, level, author, title);
             System.out.println(SummarizeSearch(searchResults));
 
             if(!verbose) return;
