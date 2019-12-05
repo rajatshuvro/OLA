@@ -25,6 +25,6 @@ public class TimeUtilities {
     }
 
     public static String ToString(Date date) {
-        return DateFormat.format(date);
+        return date==null? "":DateFormat.format(date);
     }
 }

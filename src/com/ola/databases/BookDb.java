@@ -148,16 +148,14 @@ public class BookDb {
         //todo: build search indexes
         var isValidGenre = Book.IsValidGenre(genre);
         var isValidLevel = Book.IsValidReadingLevel(level);
-
-        var allBooks = new ArrayList<>(_books.values());
-        allBooks.addAll(_newBooks);
-        if(isValidGenre & isValidLevel) return SearchByGenreAndLevel(allBooks, genre, level);
-        if(isValidGenre) return SearchByGenre(allBooks, genre);
-        if(isValidLevel) return SearchByLevel(allBooks, level);
+        var books = _books.values();
+        if(isValidGenre & isValidLevel) return SearchByGenreAndLevel(books, genre, level);
+        if(isValidGenre) return SearchByGenre(books, genre);
+        if(isValidLevel) return SearchByLevel(books, level);
         return null;
     }
 
-    private ArrayList<Book> SearchByLevel(ArrayList<Book> allBooks, int level) {
+    private ArrayList<Book> SearchByLevel(Collection<Book> allBooks, int level) {
         var books = new ArrayList<Book>();
         for (Book book:allBooks) {
             if(book.ReadingLevel== level)
@@ -166,7 +164,7 @@ public class BookDb {
         return books;
     }
 
-    private ArrayList<Book> SearchByGenre(ArrayList<Book> allBooks, String genre) {
+    private ArrayList<Book> SearchByGenre(Collection<Book> allBooks, String genre) {
         var books = new ArrayList<Book>();
         for (Book book:allBooks) {
             if(book.Genre.equals(genre) )
@@ -175,7 +173,7 @@ public class BookDb {
         return books;
     }
 
-    private ArrayList<Book> SearchByGenreAndLevel(ArrayList<Book> allBooks, String genre, int level) {
+    private ArrayList<Book> SearchByGenreAndLevel(Collection<Book> allBooks, String genre, int level) {
         var booksByGenre = SearchByGenre(allBooks, genre);
         return SearchByLevel(booksByGenre, level);
     }

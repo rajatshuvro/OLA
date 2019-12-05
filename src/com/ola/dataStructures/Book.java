@@ -93,7 +93,7 @@ public class Book {
                 "Price:\t\t\t"+Price+'\n'+
                 "Reading level:\t"+ReadingLevel+'\n'+
                 "Entry date:\t\t"+ TimeUtilities.ToString(EntryDate)+'\n'+
-                "Expiry date:t\t"+ TimeUtilities.ToString(ExpiryDate);
+                "Expiry date:\t\t"+ TimeUtilities.ToString(ExpiryDate);
 
     }
     //static fields
