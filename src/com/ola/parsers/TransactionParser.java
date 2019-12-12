@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-import static com.ola.parsers.parserUtilities.GetNextRecordLines;
+import static com.ola.parsers.ParserUtilities.GetNextRecordLines;
 
 public class TransactionParser {
     private InputStream _inputStream;

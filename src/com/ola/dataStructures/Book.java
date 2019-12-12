@@ -98,17 +98,17 @@ public class Book {
     }
     //static fields
     // Tags in the files should be user friendly. they may be abbreviated in IDs.
-    private static final String FictionTag = "Fiction";
-    private static final String ScienceTag = "Science";
-    private static final String SociologyTag = "Social";
-    private static final String GeneralTag = "General";
-    private static final String ReligiousTag = "Religion";
-    private static final String HistoryTag = "History";
-    private static final String GeographyTag = "Geography";
-    private static final String CultureTag = "Culture";
-    private static final String BiographyTag = "Biography";
-    private static final String FairyTaleTag = "Fairy tale";
-    private static final String FactualTag = "Factual";
+    public static final String FictionTag = "Fiction";
+    public static final String ScienceTag = "Science";
+    public static final String SociologyTag = "Social";
+    public static final String GeneralTag = "General";
+    public static final String ReligiousTag = "Religion";
+    public static final String HistoryTag = "History";
+    public static final String GeographyTag = "Geography";
+    public static final String CultureTag = "Culture";
+    public static final String BiographyTag = "Biography";
+    public static final String FairyTaleTag = "Fairy tale";
+    public static final String FactualTag = "Factual";
 
     private static final HashSet<String> GenreTags = new HashSet<>(){{
         add(FictionTag);

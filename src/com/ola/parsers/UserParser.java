@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.ola.parsers.parserUtilities.GetNextRecordLines;
+import static com.ola.parsers.ParserUtilities.GetNextRecordLines;
 
 public class UserParser {
     private InputStream _inputStream;

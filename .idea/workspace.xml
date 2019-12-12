@@ -59,7 +59,7 @@
       <recent name="com.ola" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SearchTests.Search_by_genre_level">
+  <component name="RunManager" selected="JUnit.com.ola.unitTests in OLA">
     <configuration name="ola" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.ola.Main" />
       <module name="OLA" />
@@ -164,11 +164,11 @@
     <list>
       <item itemvalue="Application.ola" />
       <item itemvalue="JUnit.com.ola.unitTests in OLA" />
-      <item itemvalue="JUnit.StatusTests" />
       <item itemvalue="JUnit.BookDbTests.Search_by_genre" />
       <item itemvalue="JUnit.SearchTests.Search_by_genre" />
-      <item itemvalue="JUnit.SearchTests.Search_by_level" />
       <item itemvalue="JUnit.SearchTests.Search_by_genre_level" />
+      <item itemvalue="JUnit.SearchTests.Search_by_level" />
+      <item itemvalue="JUnit.StatusTests" />
     </list>
     <recent_temporary>
       <list>
@@ -223,22 +223,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1051" y="308" key="#com.intellij.ide.util.MemberChooser/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575476835676" />
-    <state width="1716" height="353" key="GridCell.Tab.0.bottom" timestamp="1575565929421">
+    <state width="1716" height="301" key="GridCell.Tab.0.bottom" timestamp="1576170349631">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="353" key="GridCell.Tab.0.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575565929421" />
-    <state width="1716" height="353" key="GridCell.Tab.0.center" timestamp="1575565929421">
+    <state width="1716" height="301" key="GridCell.Tab.0.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576170349631" />
+    <state width="1716" height="301" key="GridCell.Tab.0.center" timestamp="1576170349631">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="353" key="GridCell.Tab.0.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575565929421" />
-    <state width="1716" height="353" key="GridCell.Tab.0.left" timestamp="1575565929421">
+    <state width="1716" height="301" key="GridCell.Tab.0.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576170349631" />
+    <state width="1716" height="301" key="GridCell.Tab.0.left" timestamp="1576170349631">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="353" key="GridCell.Tab.0.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575565929421" />
-    <state width="1716" height="353" key="GridCell.Tab.0.right" timestamp="1575565929421">
+    <state width="1716" height="301" key="GridCell.Tab.0.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576170349631" />
+    <state width="1716" height="301" key="GridCell.Tab.0.right" timestamp="1576170349631">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="353" key="GridCell.Tab.0.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575565929421" />
+    <state width="1716" height="301" key="GridCell.Tab.0.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576170349631" />
     <state width="1716" height="353" key="GridCell.Tab.1.bottom" timestamp="1575565929421">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

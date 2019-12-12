@@ -5,15 +5,11 @@ import com.ola.utilities.TimeUtilities;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-import static com.ola.parsers.parserUtilities.GetNextRecordLines;
+import static com.ola.parsers.ParserUtilities.GetNextRecordLines;
 
 public class BookParser {
     private InputStream _inputStream;
@@ -79,28 +75,28 @@ public class BookParser {
                     author = value;
                     break;
                 case IsbnTag:
-                    isbn = Long.parseLong(value);
+                    isbn = ParserUtilities.ParseULong(value);
                     break;
                 case PageCountTag:
-                    pageCount = Integer.parseInt(value);
+                    pageCount = ParserUtilities.ParseUInt(value);
                     break;
                 case PriceTag:
-                    price = Float.parseFloat(value);
+                    price = ParserUtilities.ParseUFloat(value);
                     break;
                 case PublisherTag:
                     publisher = value;
                     break;
                 case YearTag:
-                    year = Integer.parseInt(value);
+                    year = ParserUtilities.ParseUInt(value);
                     break;
                 case GenreTag:
                     genre = value;
                     break;
                 case ReadingLevelTag:
-                    readingLevel = Integer.parseInt(value);
+                    readingLevel = ParserUtilities.ParseUInt(value);
                     break;
                 case CopyNumTag:
-                    copyNumber = Integer.parseInt(value);
+                    copyNumber = ParserUtilities.ParseUInt(value);
                     break;
                 case EntryDateTag:
                     entryDate = TimeUtilities.parseDate(value);
