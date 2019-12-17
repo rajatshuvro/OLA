@@ -53,6 +53,7 @@ public class LegacyBookParser {
                 if(isFirstLine){
                     ParseHeader(line);
                     isFirstLine = false;
+                    continue;
                 }
                 var book = GetBook(line);
                 if (book != null){
@@ -79,7 +80,7 @@ public class LegacyBookParser {
         PageCountIndex = wordsToIndex.get(PageCountTag);
         GenreIndex =  wordsToIndex.get(GenreTag);
         PriceIndex =  wordsToIndex.get(PriceTag);
-        CopyNumIndex = wordsToIndex.get(CopyNumTag);
+        //CopyNumIndex = wordsToIndex.get(CopyNumTag);
         FicNonFicIndex = wordsToIndex.get(FicNonFicTag);
         ReadingLevelIndex = wordsToIndex.get(ReadingLevelTag);
 
@@ -95,18 +96,20 @@ public class LegacyBookParser {
         var ficNonFic = words[FicNonFicIndex];
         var isbn = ParserUtilities.ParseULong(words[IsbnIndex]);
         var pageCount = ParserUtilities.ParseUInt(words[PageCountIndex]);
-        var readingLevel = ParserUtilities.ParseUInt(words[PageCountIndex]);
-        var copyNumber = ParserUtilities.ParseUInt(words[PageCountIndex]);
+        var readingLevel = ParserUtilities.ParseUInt(words[ReadingLevelIndex]);
+        //var copyNumber = ParserUtilities.ParseUInt(words[PageCountIndex]);
+        var copyNumber = -1;//no copy number in legacy tsv
         var year = ParserUtilities.ParseUInt(words[YearIndex]);
         var price = ParserUtilities.ParseUFloat(words[PriceIndex]);
 
         genre = GetGenre(genre, ficNonFic);
+        if(pageCount == -1) pageCount = 123;//so books don't have page count
         if(isbn == -1 || isbn == Long.MIN_VALUE)
         {
             isbn = Book.GenerateIsbn(title, author, publisher, year, pageCount);
             System.out.println("Generating ISBN for Title:"+title+"..."+ isbn);
         }
-        if(Book.IsValid(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber))
+        if(Book.IsLegacyValid(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber))
             return new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber,
                     TimeUtilities.GetCurrentTime(), null);
         else return null;

@@ -13,7 +13,7 @@ public class LegacyParserTests {
         var writer = new OutputStreamWriter(memStream);
 
         writer.write("ISBN\tTitle\tAnnotation\tAR_Level\tAR_Points\tAuthor\tBinding\tGrade_Level\tIllustrator\tInterest_Level_Minimum\tInterest_Level_Maximum\tLexile_0-1200\tList_Price\tFiction_Nonfiction_F_NF\tPage_Count\tPublication_Date\tPublisher\tReading_Level\tReading_Recovery_Level\tSpanish_Y_N\tTeachers_College\tWord_Count\tGuided_Reading_Level\tLocation\tGenre\tCondition\tUnique_ID\n");
-        writer.write("9848494226\tGattu Baajaar Korte Jaay Level-5 Book-1\t\t\t\tLorraine Li\t          \t\t\t\t\t\t5.0000\tF\t16\t\tWorld's of Children's Books Limited\t3\t\tN\t\t\t\t - None - \tGeneral\tGood\t318028\n");
+        writer.write("9848494226\tGattu Baajaar Korte Jaay\t\t\t\tLorraine Li\t          \t\t\t\t\t\t5.0000\tF\t16\t\tWorld's of Children's Books Limited\t3\t\tN\t\t\t\t - None - \tGeneral\tGood\t318028\n");
         writer.write("9848494336\tChhotto Murgi Chhaanaa\t\t\t\tSaamsi Haasaan\t          \t\t\t\t\t\t5.0000\t\t15\t\tWorld of Children's Books Ltd \t4\t\t\t\t\t\t - None - \tGeneral\tNew\t428013\n");
         writer.write("9848494944\tDaainir Jaadumontro\t\t\t\tVon Oi Chin\t          \t\t\t\t\t\t5.0000\tF\t12\t\tWorld's of Children's Books Limited\t3\t\tN\t\t\t\t - None - \t - None - \tGood\t318055\n");
         writer.write("9848494944\tDaainir Jaadumontro\t\t\t\tVon Oi Chin\t          \t\t\t\t\t\t5.0000\tF\t12\t\tWorld's of Children's Books Limited\t3\t\tN\t\t\t\t - None - \t - None - \t - None - \t3204\n");
@@ -53,7 +53,7 @@ public class LegacyParserTests {
         var books = bookParser.GetBooks();
         var count = books.size();
         bookParser.Close();
-        assertEquals(2, count);
+        assertEquals(20, count);
         assertNull(books.get(1).ExpiryDate);
     }
 }

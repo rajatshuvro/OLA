@@ -59,7 +59,7 @@
       <recent name="com.ola" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.com.ola.unitTests in OLA">
+  <component name="RunManager" selected="JUnit.LegacyParserTests.ParseBook">
     <configuration name="ola" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.ola.Main" />
       <module name="OLA" />
@@ -79,6 +79,22 @@
       <option name="PACKAGE_NAME" value="com.ola.unitTests" />
       <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookDbTests" />
       <option name="METHOD_NAME" value="Search_by_genre" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LegacyParserTests.ParseBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OLA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.LegacyParserTests" />
+      <option name="METHOD_NAME" value="ParseBook" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -132,21 +148,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StatusTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OLA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.StatusTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="com.ola.unitTests in OLA" type="JUnit" factoryName="JUnit">
       <module name="OLA" />
       <extension name="coverage">
@@ -168,15 +169,15 @@
       <item itemvalue="JUnit.SearchTests.Search_by_genre" />
       <item itemvalue="JUnit.SearchTests.Search_by_genre_level" />
       <item itemvalue="JUnit.SearchTests.Search_by_level" />
-      <item itemvalue="JUnit.StatusTests" />
+      <item itemvalue="JUnit.LegacyParserTests.ParseBook" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LegacyParserTests.ParseBook" />
         <item itemvalue="JUnit.SearchTests.Search_by_genre_level" />
         <item itemvalue="JUnit.SearchTests.Search_by_level" />
         <item itemvalue="JUnit.SearchTests.Search_by_genre" />
         <item itemvalue="JUnit.BookDbTests.Search_by_genre" />
-        <item itemvalue="JUnit.StatusTests" />
       </list>
     </recent_temporary>
   </component>
@@ -223,38 +224,42 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1051" y="308" key="#com.intellij.ide.util.MemberChooser/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575476835676" />
-    <state width="1716" height="301" key="GridCell.Tab.0.bottom" timestamp="1576170349631">
+    <state width="466" height="582" key="DebuggerActiveHint" timestamp="1576601444296">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="301" key="GridCell.Tab.0.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576170349631" />
-    <state width="1716" height="301" key="GridCell.Tab.0.center" timestamp="1576170349631">
+    <state width="466" height="582" key="DebuggerActiveHint/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576601444296" />
+    <state width="1716" height="301" key="GridCell.Tab.0.bottom" timestamp="1576602250503">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="301" key="GridCell.Tab.0.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576170349631" />
-    <state width="1716" height="301" key="GridCell.Tab.0.left" timestamp="1576170349631">
+    <state width="1716" height="301" key="GridCell.Tab.0.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576602250503" />
+    <state width="1716" height="301" key="GridCell.Tab.0.center" timestamp="1576602250502">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="301" key="GridCell.Tab.0.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576170349631" />
-    <state width="1716" height="301" key="GridCell.Tab.0.right" timestamp="1576170349631">
+    <state width="1716" height="301" key="GridCell.Tab.0.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576602250502" />
+    <state width="1716" height="301" key="GridCell.Tab.0.left" timestamp="1576602250502">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="301" key="GridCell.Tab.0.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576170349631" />
-    <state width="1716" height="353" key="GridCell.Tab.1.bottom" timestamp="1575565929421">
+    <state width="1716" height="301" key="GridCell.Tab.0.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576602250502" />
+    <state width="1716" height="301" key="GridCell.Tab.0.right" timestamp="1576602250502">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="353" key="GridCell.Tab.1.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575565929421" />
-    <state width="1716" height="353" key="GridCell.Tab.1.center" timestamp="1575565929421">
+    <state width="1716" height="301" key="GridCell.Tab.0.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576602250502" />
+    <state width="1716" height="353" key="GridCell.Tab.1.bottom" timestamp="1576602250498">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="353" key="GridCell.Tab.1.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575565929421" />
-    <state width="1716" height="353" key="GridCell.Tab.1.left" timestamp="1575565929421">
+    <state width="1716" height="353" key="GridCell.Tab.1.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576602250498" />
+    <state width="1716" height="353" key="GridCell.Tab.1.center" timestamp="1576602250498">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="353" key="GridCell.Tab.1.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575565929421" />
-    <state width="1716" height="353" key="GridCell.Tab.1.right" timestamp="1575565929421">
+    <state width="1716" height="353" key="GridCell.Tab.1.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576602250498" />
+    <state width="1716" height="353" key="GridCell.Tab.1.left" timestamp="1576602250498">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1716" height="353" key="GridCell.Tab.1.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575565929421" />
+    <state width="1716" height="353" key="GridCell.Tab.1.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576602250498" />
+    <state width="1716" height="353" key="GridCell.Tab.1.right" timestamp="1576602250498">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1716" height="353" key="GridCell.Tab.1.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576602250498" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -268,6 +273,16 @@
           <url>file://$PROJECT_DIR$/src/com/ola/unitTests/SearchTests.java</url>
           <line>30</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/parsers/LegacyBookParser.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/LegacyParserTests.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
