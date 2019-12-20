@@ -1,5 +1,6 @@
 package com.ola.dataStructures;
 
+import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.StringUtilities;
 import com.ola.utilities.TimeUtilities;
 
@@ -41,9 +42,9 @@ public class Book {
     public static boolean IsValid(long isbn, String author, String title, String publisher, int year,
                                   int pageCount, float price, String genre, int readingLevel, int copyNumber) {
         return isbn != 0 &&
-                !(author == null || author.equals("")) &&
-                !(title == null || title.equals("")) &&
-                !(publisher == null || publisher.equals("")) &&
+                !(ParserUtilities.IsNullOrEmpty(author)) &&
+                !(ParserUtilities.IsNullOrEmpty(title)) &&
+                !(ParserUtilities.IsNullOrEmpty(publisher)) &&
                 price > 0 &&
                 year > 0 &&
                 pageCount > 0 &&
@@ -54,9 +55,9 @@ public class Book {
     public static boolean IsLegacyValid(long isbn, String author, String title, String publisher, int year,
                                   int pageCount, float price, String genre, int readingLevel, int copyNumber) {
         return isbn != 0 &&
-                !(author == null || author.equals("")) &&
-                !(title == null || title.equals("")) &&
-                !(publisher == null || publisher.equals("")) &&
+                !(ParserUtilities.IsNullOrEmpty(author)) &&
+                !(ParserUtilities.IsNullOrEmpty(title)) &&
+                !(ParserUtilities.IsNullOrEmpty(publisher)) &&
                 price > 0 &&
                 pageCount > 0 &&
                 IsValidGenreTag(genre) &&
@@ -66,12 +67,13 @@ public class Book {
     public static long GenerateIsbn(String title, String author, String publisher, int year, int pageCount) {
         // since the spelling of the title, author and publisher is subjective,
         // we use a more reliable and stable parameter - word counts of these strings
-        if(year==-1)  year = 1789;
+        if(pageCount == -1) pageCount = 123;//some books don't have page count
+        if(year == -1) year = 1789;
         var titleWordCount = StringUtilities.GetWordCount(title);
         var authorWordCount = StringUtilities.GetWordCount(author);
         var publisherWordCount = StringUtilities.GetWordCount(publisher);
         var isbnString = Integer.toString(titleWordCount) + authorWordCount + publisherWordCount
-                        +  + pageCount;
+                        + year + pageCount;
         return Long.parseLong(isbnString);
     }
 

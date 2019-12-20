@@ -53,7 +53,7 @@ public class LegacyParserTests {
         var books = bookParser.GetBooks();
         var count = books.size();
         bookParser.Close();
-        assertEquals(20, count);
+        assertEquals(19, count);
         assertNull(books.get(1).ExpiryDate);
     }
 }

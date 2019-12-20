@@ -56,9 +56,11 @@ public class LegacyBookParser {
                     continue;
                 }
                 var book = GetBook(line);
-                if (book != null){
-                    books.add(book);
+                if(book == null){
+                    System.out.println("Failed to import\n"+line);
+                    continue;
                 }
+                books.add(book);
             }
         }
         return books;
@@ -103,7 +105,8 @@ public class LegacyBookParser {
         var price = ParserUtilities.ParseUFloat(words[PriceIndex]);
 
         genre = GetGenre(genre, ficNonFic);
-        if(pageCount == -1) pageCount = 123;//so books don't have page count
+        if(price == -1) price = (float)5.0;
+
         if(isbn == -1 || isbn == Long.MIN_VALUE)
         {
             isbn = Book.GenerateIsbn(title, author, publisher, year, pageCount);

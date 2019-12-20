@@ -38,6 +38,9 @@ public class Main {
                 case "find":
                     BookSearch.Run(subArgs, dataProvider.BookDb);
                     break;
+                case "legacy":
+                    LegacyImporter.Run(subArgs);
+                    break;
                 case "quit":
                     quit = true;
                     break;
