@@ -31,7 +31,7 @@ public class BookParser {
         _inputStream = inputStream;
     }
 
-    public ArrayList<Book> GetBooks() throws IOException {
+    public ArrayList<Book> GetBooks() {
         ArrayList<Book> books = new ArrayList<>();
 
         try (Scanner scanner =  new Scanner(_inputStream)){

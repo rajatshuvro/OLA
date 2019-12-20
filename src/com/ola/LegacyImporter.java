@@ -23,7 +23,7 @@ public class LegacyImporter {
         options.addOption(bookDat);
 
         CommandLineParser parser = new DefaultParser();
-        HelpFormatter formatter = new HelpFormatter();
+        HelpFormatter formatter  = new HelpFormatter();
         CommandLine cmd;
 
         if(args.length==1) {
@@ -33,13 +33,14 @@ public class LegacyImporter {
 
         try {
             cmd = parser.parse(options, args);
-            var inFilePath = cmd.getOptionValue("in");
-            var inputStream = new FileInputStream(inFilePath);
-            var bookParser = new LegacyBookParser(inputStream);
 
-            var outFilePath = cmd.getOptionValue("out");
+            var inFilePath  = cmd.getOptionValue("in");
+            var inputStream = new FileInputStream(inFilePath);
+            var bookParser  = new LegacyBookParser(inputStream);
+
+            var outFilePath  = cmd.getOptionValue("out");
             var outputStream = new FileOutputStream(outFilePath);
-            var writer = new OutputStreamWriter(outputStream);
+            var writer       = new OutputStreamWriter(outputStream);
             ConvertLegacyRecords(bookParser.GetBooks(), writer);
 
             bookParser.Close();
@@ -50,7 +51,7 @@ public class LegacyImporter {
         }
     }
 
-    private static void ConvertLegacyRecords(ArrayList<Book> books, OutputStreamWriter writer) throws IOException {
+    public static void ConvertLegacyRecords(ArrayList<Book> books, OutputStreamWriter writer) throws IOException {
         writer.write(ParserUtilities.GetBookFileHeader());
         writer.write(ParserUtilities.GetBookRecordDelimiter());
 

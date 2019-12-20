@@ -71,6 +71,6 @@ public class ParserUtilities {
     }
 
     public static String GetBookRecordDelimiter(){
-        return "***************************************************************\n";
+        return "***************************************************************";
     }
 }
