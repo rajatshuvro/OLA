@@ -102,8 +102,9 @@ public class Main {
         System.out.println("\tadd    (add new book to database)");
         System.out.println("\tco     (checkout book)");
         System.out.println("\tret    (return book)");
-        System.out.println("\tstat (checkout status)");
+        System.out.println("\tstat   (checkout status)");
         System.out.println("\tfind   (search book database)");
+        System.out.println("\tlegacy (import books from legacy tsv)");
         System.out.println("\tquit   (quit OLA)");
         System.out.println("\t[Type command to get detailed help]");
     }

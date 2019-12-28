@@ -33,7 +33,9 @@ public class AddBooks {
             var filePath = cmd.getOptionValue("in");
             InputStream stream = new FileInputStream(filePath);
             var bookParser = new BookParser(stream);
-            AddNewBook(bookParser.GetBooks(), bookDb);
+            var count = AddNewBook(bookParser.GetBooks(), bookDb);
+
+            System.out.println("Number of new books added: "+count);
         }
         catch (ParseException | IOException e) {
             System.out.println(e.getMessage());
@@ -41,9 +43,10 @@ public class AddBooks {
         }
     }
 
-    public static void AddNewBook(ArrayList<Book> books, BookDb bookDb) throws IOException {
+    public static int AddNewBook(ArrayList<Book> books, BookDb bookDb) throws IOException {
         for (Book book: books) {
             bookDb.AddNew(book);
         }
+        return books.size();
     }
 }

@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class LegacyImporter {
-    private static String commandSyntex = "add  -i [path to legacy TSV] -o [path of new book dat file]";
+    private static String commandSyntex = "legacy  -i [path to legacy TSV] -o [path of new book dat file]";
 
     public static void Run(String[] args) {
         Options options = new Options();
@@ -41,8 +41,9 @@ public class LegacyImporter {
             var outFilePath  = cmd.getOptionValue("out");
             var outputStream = new FileOutputStream(outFilePath);
             var writer       = new OutputStreamWriter(outputStream);
-            ConvertLegacyRecords(bookParser.GetBooks(), writer);
+            var count        = ConvertLegacyRecords(bookParser.GetBooks(), writer);
 
+            System.out.println("Number of legacy books extracted: "+ count);
             bookParser.Close();
         }
         catch (ParseException | IOException e) {
@@ -51,15 +52,16 @@ public class LegacyImporter {
         }
     }
 
-    public static void ConvertLegacyRecords(ArrayList<Book> books, OutputStreamWriter writer) throws IOException {
+    public static int ConvertLegacyRecords(ArrayList<Book> books, OutputStreamWriter writer) throws IOException {
         writer.write(ParserUtilities.GetBookFileHeader());
-        writer.write(ParserUtilities.GetBookRecordDelimiter());
+        writer.write(ParserUtilities.GetBookRecordDelimiter()+'\n');
 
         for (Book book: books) {
-            writer.write(book.toString());
-            writer.write(ParserUtilities.GetBookRecordDelimiter());
+            writer.write(book.toString()+'\n');
+            writer.write(ParserUtilities.GetBookRecordDelimiter()+'\n');
         }
 
         writer.close();
+        return books.size();
     }
 }

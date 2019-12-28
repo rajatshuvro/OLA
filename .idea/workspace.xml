@@ -59,7 +59,7 @@
       <recent name="com.ola" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LegacyImporterTests.WriteLegacyBooks">
+  <component name="RunManager" selected="JUnit.com.ola.unitTests in OLA">
     <configuration name="ola" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.ola.Main" />
       <module name="OLA" />
@@ -165,11 +165,11 @@
     <list>
       <item itemvalue="Application.ola" />
       <item itemvalue="JUnit.com.ola.unitTests in OLA" />
+      <item itemvalue="JUnit.LegacyImporterTests.WriteLegacyBooks" />
+      <item itemvalue="JUnit.LegacyParserTests.ParseBook" />
       <item itemvalue="JUnit.SearchTests.Search_by_genre" />
       <item itemvalue="JUnit.SearchTests.Search_by_genre_level" />
       <item itemvalue="JUnit.SearchTests.Search_by_level" />
-      <item itemvalue="JUnit.LegacyParserTests.ParseBook" />
-      <item itemvalue="JUnit.LegacyImporterTests.WriteLegacyBooks" />
     </list>
     <recent_temporary>
       <list>
@@ -220,6 +220,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="416" y="169" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577573613606">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="416" y="169" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577573613606" />
     <state x="1051" y="308" key="#com.intellij.ide.util.MemberChooser" timestamp="1575476835676">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -228,21 +232,25 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="530" height="582" key="DebuggerActiveHint/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862457558" />
-    <state width="1716" height="353" key="GridCell.Tab.0.bottom" timestamp="1576862867863">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1868" height="283" key="GridCell.Tab.0.bottom" timestamp="1577575718141">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1868" height="283" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577575718141" />
     <state width="1716" height="353" key="GridCell.Tab.0.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1716" height="353" key="GridCell.Tab.0.center" timestamp="1576862867862">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1868" height="283" key="GridCell.Tab.0.center" timestamp="1577575718141">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1868" height="283" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577575718141" />
     <state width="1716" height="353" key="GridCell.Tab.0.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867862" />
-    <state width="1716" height="353" key="GridCell.Tab.0.left" timestamp="1576862867862">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1868" height="283" key="GridCell.Tab.0.left" timestamp="1577575718141">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1868" height="283" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577575718141" />
     <state width="1716" height="353" key="GridCell.Tab.0.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867862" />
-    <state width="1716" height="353" key="GridCell.Tab.0.right" timestamp="1576862867863">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1868" height="283" key="GridCell.Tab.0.right" timestamp="1577575718141">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1868" height="283" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577575718141" />
     <state width="1716" height="353" key="GridCell.Tab.0.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
     <state width="1716" height="353" key="GridCell.Tab.1.bottom" timestamp="1576862867863">
       <screen x="0" y="0" width="2560" height="1400" />

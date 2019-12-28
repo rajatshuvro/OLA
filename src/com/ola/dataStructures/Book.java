@@ -46,7 +46,8 @@ public class Book {
                 !(ParserUtilities.IsNullOrEmpty(title)) &&
                 !(ParserUtilities.IsNullOrEmpty(publisher)) &&
                 price > 0 &&
-                year > 0 &&
+                //todo: many legacy books don't have year specified. need to manually fix this.
+                //year > 0 &&
                 pageCount > 0 &&
                 IsValidGenreTag(genre) &&
                 IsValidReadingLevel(readingLevel);
@@ -97,18 +98,18 @@ public class Book {
 
     @Override
     public String toString(){
-        return "Title:\t\t\t"+Title+'\n'+
-                "Author:\t\t\t"+Author+'\n'+
-                "ISBN:\t\t\t"+ Isbn+'\n'+
-                "Publisher:\t\t"+Publisher+'\n'+
-                "Year:\t\t\t"+Year+'\n'+
-                "Genre:\t\t\t"+Genre+'\n'+
-                "Copy number:\t"+CopyNum+'\n'+
-                "Page count:\t\t"+ PageCount+'\n'+
-                "Price:\t\t\t"+Price+'\n'+
-                "Reading level:\t"+ReadingLevel+'\n'+
-                "Entry date:\t\t"+ TimeUtilities.ToString(EntryDate)+'\n'+
-                "Expiry date:\t\t"+ TimeUtilities.ToString(ExpiryDate);
+        return  "Title:           "+Title+'\n'+
+                "Author:          "+Author+'\n'+
+                "ISBN:            "+ Isbn+'\n'+
+                "Publisher:       "+Publisher+'\n'+
+                "Year:            "+Year+'\n'+
+                "Genre:           "+Genre+'\n'+
+                "Copy number:     "+CopyNum+'\n'+
+                "Page count:      "+ PageCount+'\n'+
+                "Price:           "+Price+'\n'+
+                "Reading level:   "+ReadingLevel+'\n'+
+                "Entry date:      "+ TimeUtilities.ToString(EntryDate)+'\n'+
+                "Expiry date:     "+ TimeUtilities.ToString(ExpiryDate);
 
     }
     //static fields
