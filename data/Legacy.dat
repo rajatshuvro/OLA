@@ -1,0 +1,4158 @@
+#Onkur library books
+#Schema number: 1
+#Title = Book title. Value = <String>
+#Author = Author name. Value = <String>
+#ISBN = ISBN number (-1 if unknown). Value = <Integer>
+#Publisher = Publisher name. Value = <String>
+#Year = Year of publication. Value = <Integer>#Genre = Book genre. Value = General/Fiction/Science/Social/Religion/History/Geography/Culture/Biography/Fairy tale/Factual
+#Page count = Page count. Value = <Integer>
+#Price = Book price (to be charged if lost). Value = <Decimal>
+#Reading level = Estimated reading level. Value = [1,2,3...10]
+***************************************************************
+Title:			Gattu Baajaar Korte Jaay Level-5 Book-1
+Author:			Lorraine Li
+ISBN:			9848494226
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhotto Murgi Chhaanaa
+Author:			Saamsi Haasaan
+ISBN:			9848494336
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Daainir Jaadumontro
+Author:			Von Oi Chin
+ISBN:			9848494944
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Daainir Jaadumontro
+Author:			Von Oi Chin
+ISBN:			9848494944
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tusir Aamgaachh
+Author:			Limiyaa Dewaan
+ISBN:			221178916
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamraa khelaa kori
+Author:			Nirapod Sorkaar
+ISBN:			9789849125167
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamraa khelaa kori
+Author:			Nirapod Sorkaar
+ISBN:			9789849125167
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baagher Paalki Chorhaa
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9841900149
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		32
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baagher Paalki Chorhaa
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9841900149
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		32
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Graamer Naam Chougaachhee
+Author:			Aabu Saaleh
+ISBN:			9841900173
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Graamer Naam Chougaachhee
+Author:			Aabu Saaleh
+ISBN:			9841900173
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Graamer Naam Chougaachhee
+Author:			Aabu Saaleh
+ISBN:			9841900173
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Graamer Naam Chougaachhee
+Author:			Aabu Saaleh
+ISBN:			9841900173
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Shebaar Raani O Hudhud Paakhi
+Author:			Saniyasnain Khan    
+ISBN:			8943000005498
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Mitur Shopno
+Author:			Translated
+ISBN:			211178914
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		14
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baabaa Roj Deri Kore
+Author:			Von Oi Chin
+ISBN:			9848494872
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Aar Baabaa Cake Baanaai Level-3 Book-1
+Author:			Lorraine Li
+ISBN:			9848494108
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhotto Murgi Chhaanaa
+Author:			Saamsi Haasaan
+ISBN:			9848494336
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Piprher Aatongko
+Author:			Saniyasnain Khan
+ISBN:			9843000005344
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ikrir Ful
+Author:			M. Aaslaam Liton
+ISBN:			9841900963
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Icchaa Kore...
+Author:			Von Oi Chin
+ISBN:			9848494901
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Icchaa Kore...
+Author:			Von Oi Chin
+ISBN:			9848494901
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Icchaa Kore...
+Author:			Von Oi Chin
+ISBN:			9848494901
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kaar Kaar Fotaa Achhe?
+Author:			Von Oi Chin
+ISBN:			9848625038
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kaar Kaar Fotaa Achhe?
+Author:			Von Oi Chin
+ISBN:			9848625038
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kaar Kaar Fotaa Achhe?
+Author:			Von Oi Chin
+ISBN:			9848625038
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ujaairer Gaadhaa
+Author:			Saniyasnain Khan    
+ISBN:			8943000005429
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Haat. Level-1 Book-3
+Author:			Lorraine Li
+ISBN:			9848494012
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Raaino Gosol Kore
+Author:			Von Oi Chin
+ISBN:			9848625046
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Raaino Gosol Kore
+Author:			Von Oi Chin
+ISBN:			9848625046
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baabaa Roj Deri Kore
+Author:			Von Oi Chin
+ISBN:			9848494872
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Laal Murgi
+Author:			Jeeshan Rahman
+ISBN:			221178912
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhorhamaalaa
+Author:			Rizwanul Islam
+ISBN:			9789849234234
+Publisher:		IKRIMKRI BOOK STUDIO
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Pantaburi
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9841900378
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		32
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Pantaburi
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9841900378
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		32
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Pantaburi
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9841900378
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		32
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Pantaburi
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9841900378
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		32
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Prithhibeer Sobcheye Borho Pithaa
+Author:			Limiyaa Dewaan
+ISBN:			421178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Saahosee Khorgosh Chhaanaa
+Author:			Saamsi Haasaan
+ISBN:			325178915
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Petuk Robot Level-4 Book-4
+Author:			Lorraine Li
+ISBN:			9848494191
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Allahr Aalo
+Author:			Saniyasnain Khan    
+ISBN:			9843000007928
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhotto Murgi Chhaanaa
+Author:			Saamsi Haasaan
+ISBN:			9848494336
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ghorer Vetor Idur Level-4 Book-5
+Author:			Lorraine Li
+ISBN:			525178916
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Mojaar Poraa
+Author:			Sayed Nojmul Aabdaal
+ISBN:			98419010311
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tumi Ki Amaar Maa
+Author:			Saamsi Haasaan
+ISBN:			9848494285
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamraa Somudro Dekhte Giyechhilaam Level-5 Book-2
+Author:			Lorraine Li
+ISBN:			9848494234
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamraa Khelaa Kori Level-2 Book-2
+Author:			Lorraine Li
+ISBN:			9848494065
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamraa Khelaa Kori Level-2 Book-2
+Author:			Lorraine Li
+ISBN:			9848494065
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamraa Khelaa Kori Level-2 Book-2
+Author:			Lorraine Li
+ISBN:			9848494065
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Naamaaj Kivaabe Porte Hoy
+Author:			Saniyasnain Khan    
+ISBN:			9843000005375
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Jhik Jhik Train Chole Level-4 Book-6
+Author:			Lorraine Li
+ISBN:			9848494218
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Daadimaa O Aami
+Author:			Farzana Ahmed
+ISBN:			321178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baagher Upor Taag
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9789849113981
+Publisher:		Paathshaalaa
+Year:			-1
+Genre:			Fiction
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Notun Camera
+Author:			Von Oi Chin
+ISBN:			9848494960
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhotto Chhele Belaal
+Author:			Limiyaa Dewaan & Jeeshaan Rahman
+ISBN:			351178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Meenaa ki School Chhere Dibe
+Author:			Animation 
+ISBN:			511178926
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		26
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Shaantir Ghor
+Author:			Translation
+ISBN:			21117898
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tusir Aamgaachh
+Author:			Limiyaa Dewaan
+ISBN:			221178916
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Khorgosh Chhaanaa Berhaate Jaabe
+Author:			Von Oi Chin
+ISBN:			9848494952
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Prithhibeer Sobcheye Borho Pithaa
+Author:			Limiyaa Dewaan
+ISBN:			421178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamraa Saalaad Baanaate Paari Level-3 Book-2
+Author:			Lorraine Li
+ISBN:			9848494116
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Doitto Onek Kaaj Kore Level-4 Book-2
+Author:			Lorraine Li
+ISBN:			9848494175
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Rong Korte Paari. Level-1 Book-4
+Author:			Lorraine Li
+ISBN:			9848494006
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Rong Korte Paari. Level-1 Book-4
+Author:			Lorraine Li
+ISBN:			9848494006
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Rong Korte Paari. Level-1 Book-4
+Author:			Lorraine Li
+ISBN:			9848494006
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Petuk Robot Level-4 Book-4
+Author:			Lorraine Li
+ISBN:			9848494191
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kumrholota O Paakhi
+Author:			Biprodaash Borhuaa
+ISBN:			9841900998
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		31
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kumrholota O Paakhi
+Author:			Biprodaash Borhuaa
+ISBN:			9841900998
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		31
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kumrholota O Paakhi
+Author:			Biprodaash Borhuaa
+ISBN:			9841900998
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		31
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Ektaa Mojaar Sopno Dekhechhi Level-4 Book-3
+Author:			Lorraine Li
+ISBN:			9848494183
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamio paari
+Author:			Nirapod Sorkaar
+ISBN:			9789849125136
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamio paari
+Author:			Nirapod Sorkaar
+ISBN:			9789849125136
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Eeshoper Golpo
+Author:			Sayed Nojmul Aabdaal
+ISBN:			9841900289
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Doitter Khidhe Peyechhe
+Author:			Von Oi Chin
+ISBN:			984862502
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Khaabaar Aashaay Kumir Level-5 Book-5
+Author:			Lorraine Li
+ISBN:			9848494269
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Rong Beronger Praani
+Author:			Wildsmith, Brian
+ISBN:			9781595721358
+Publisher:		Star Bright Books
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	1
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Aachhe
+Author:			Nirapod Sorkaar
+ISBN:			9789849125143
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Aachhe
+Author:			Nirapod Sorkaar
+ISBN:			9789849125143
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Porichoy
+Author:			Monjur Kaader  Aamin
+ISBN:			13117898
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ujaairer Gaadhaa
+Author:			Saniyasnain Khan    
+ISBN:			8943000005429
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Haat. Level-1 Book-3
+Author:			Lorraine Li
+ISBN:			9848494012
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Laal Murgi
+Author:			Jeeshan Rahman
+ISBN:			221178912
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamraa Saalaad Baanaate Paari Level-3 Book-2
+Author:			Lorraine Li
+ISBN:			9848494116
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ekhon Khelaar Somoy!
+Author:			Von Oi Chin
+ISBN:			984849491
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Murgigulo Gune Raakho
+Author:			Animation 
+ISBN:			311178935
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		35
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Nodee Nebe
+Author:			Kakoli Prodhan
+ISBN:			9789849212799
+Publisher:		IKRIMKRI BOOK STUDIO
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Porichoy
+Author:			Monjur Kaader  Aamin
+ISBN:			13117898
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Ektaa Mojaar Sopno Dekhechhi Level-4 Book-3
+Author:			Lorraine Li
+ISBN:			9848494183
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dui Bon
+Author:			Limiyaa Dewaan & Jeeshaan Rahman
+ISBN:			251178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Naamaaj Kivaabe Porte Hoy
+Author:			Saniyasnain Khan    
+ISBN:			9843000005375
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Bondhur Khoje
+Author:			Tonimaa Afroj
+ISBN:			9841901022
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Porichoy
+Author:			Monjur Kaader  Aamin
+ISBN:			13117898
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamraa Somudro Dekhte Giyechhilaam Level-5 Book-2
+Author:			Lorraine Li
+ISBN:			9848494234
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Daasur Gaarhi
+Author:			Md. Rofikul Islam
+ISBN:			9841900394
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		28
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Daasur Gaarhi
+Author:			Md. Rofikul Islam
+ISBN:			9841900394
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		28
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Daasur Gaarhi
+Author:			Md. Rofikul Islam
+ISBN:			9841900394
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		28
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Daasur Gaarhi
+Author:			Md. Rofikul Islam
+ISBN:			9841900394
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		28
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Sobaai Mile Khelaa Kori
+Author:			Saamsi Haasaan
+ISBN:			9848494311
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Boloto Ki Dekhcho? Level-1 Book-5
+Author:			Lorraine Li
+ISBN:			9848494049
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Boloto Ki Dekhcho? Level-1 Book-5
+Author:			Lorraine Li
+ISBN:			9848494049
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Boloto Ki Dekhcho? Level-1 Book-5
+Author:			Lorraine Li
+ISBN:			9848494049
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Boloto Ki Dekhcho? Level-1 Book-5
+Author:			Lorraine Li
+ISBN:			9848494049
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Milir Party
+Author:			Von Oi Chin
+ISBN:			9848625003
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Milir Party
+Author:			Von Oi Chin
+ISBN:			9848625003
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ek Oloukik Ghotonaa
+Author:			Saniyasnain Khan    
+ISBN:			9843000000539
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhorhaay Chhorhaay
+Author:			Rhymes
+ISBN:			21117896
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		6
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Mohaanobi (S) Ebong Ondho Lokti
+Author:			Saniyasnain Khan    
+ISBN:			8943000005368
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Amaader Notun Baari Level-2 Book-3
+Author:			Lorraine Li
+ISBN:			9848494073
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Amaader Notun Baari Level-2 Book-3
+Author:			Lorraine Li
+ISBN:			9848494073
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Amaader Notun Baari Level-2 Book-3
+Author:			Lorraine Li
+ISBN:			9848494073
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Nokol Raajaa
+Author:			Md. Rofikul Islam
+ISBN:			9841900262
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Nokol Raajaa
+Author:			Md. Rofikul Islam
+ISBN:			9841900262
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Nokol Raajaa
+Author:			Md. Rofikul Islam
+ISBN:			9841900262
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Nokol Raajaa
+Author:			Md. Rofikul Islam
+ISBN:			9841900262
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Jeebon Baachaano
+Author:			Animation 
+ISBN:			211178926
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		26
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tusir Aamgaachh
+Author:			Limiyaa Dewaan
+ISBN:			221178916
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ujaairer Gaadhaa
+Author:			Saniyasnain Khan    
+ISBN:			8943000005429
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dui Bon
+Author:			Limiyaa Dewaan & Jeeshaan Rahman
+ISBN:			251178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Saabaar Baagaan
+Author:			Saniyasnain Khan    
+ISBN:			9843000007959
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Facebok
+Author:			Star Bright Books
+ISBN:			9781595726605
+Publisher:		Star Bright Books
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	1
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tusir Aamgaachh
+Author:			Limiyaa Dewaan
+ISBN:			221178916
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maayer Notun Fuldaani
+Author:			Von Oi Chin
+ISBN:			9848494928
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maayer Notun Fuldaani
+Author:			Von Oi Chin
+ISBN:			9848494928
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maayer Notun Fuldaani
+Author:			Von Oi Chin
+ISBN:			9848494928
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maayer Notun Fuldaani
+Author:			Von Oi Chin
+ISBN:			9848494928
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maayer Notun Fuldaani
+Author:			Von Oi Chin
+ISBN:			9848494928
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maayer Notun Fuldaani
+Author:			Von Oi Chin
+ISBN:			9848494928
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maayer Notun Fuldaani
+Author:			Von Oi Chin
+ISBN:			9848494928
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baabaa o Aami. Level-1 Book-2
+Author:			Lorraine Li
+ISBN:			9848494014
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baabaa o Aami. Level-1 Book-2
+Author:			Lorraine Li
+ISBN:			9848494014
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baabaa o Aami. Level-1 Book-2
+Author:			Lorraine Li
+ISBN:			9848494014
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baabaa o Aami. Level-1 Book-2
+Author:			Lorraine Li
+ISBN:			9848494014
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baabaa o Aami. Level-1 Book-2
+Author:			Lorraine Li
+ISBN:			9848494014
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Meenaa ki School Chhere Dibe
+Author:			Animation 
+ISBN:			511178926
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		26
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Raajaa Khaay Baeng Vaajaa
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9789849113843
+Publisher:		Paathshaalaa
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Voot Ki Odvoot
+Author:			Tushar Abdullah
+ISBN:			9789849212843
+Publisher:		IKRIMKRI BOOK STUDIO
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Thik Dukkur Bela
+Author:			Dhruba Esh
+ISBN:			9789849212874
+Publisher:		IKRIMKRI BOOK STUDIO
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Shaantir Ghor
+Author:			Translation
+ISBN:			21117898
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Briddher Praarthonaa
+Author:			Saniyasnain Khan    
+ISBN:			9789849209690
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhotto Murgi Chhaanaa
+Author:			Saamsi Haasaan
+ISBN:			9848494336
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Mitur Shopno
+Author:			Translated
+ISBN:			211178914
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		14
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Saabaar Baagaan
+Author:			Saniyasnain Khan    
+ISBN:			9843000007959
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Porichoy
+Author:			Monjur Kaader  Aamin
+ISBN:			13117898
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Sobaai Mile Khelaa Kori
+Author:			Saamsi Haasaan
+ISBN:			9848494311
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Shaantir Ghor
+Author:			Translation
+ISBN:			21117898
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dui Baagichaar Golpo
+Author:			Saniyasnain Khan    
+ISBN:			9843000007911
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Allah Sobkichhu Srishti Korechhen
+Author:			Saniyasnain Khan    
+ISBN:			8943000005436
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ghumonto Guhaabaasi
+Author:			Saniyasnain Khan    
+ISBN:			9843000005511
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chokleter Chaakaa
+Author:			Saamsi Haasaan
+ISBN:			9848494352
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Allahr Saathe Musaa (A) er Kothaabaartaa
+Author:			Saniyasnain Khan
+ISBN:			9843000005504
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhorhaay Chhorhaay
+Author:			Rhymes
+ISBN:			21117896
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		6
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Lotaa Paata
+Author:			Aal Kamal Abdul Wahab
+ISBN:			9841900157
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		20
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Lotaa Paata
+Author:			Aal Kamal Abdul Wahab
+ISBN:			9841900157
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		20
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ghorer Vetor Idur Level-4 Book-5
+Author:			Lorraine Li
+ISBN:			525178916
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kothhay Aamaar Khelnaa Vaaluk? Level-2 Book-4
+Author:			Lorraine Li
+ISBN:			9848494081
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kothhay Aamaar Khelnaa Vaaluk? Level-2 Book-4
+Author:			Lorraine Li
+ISBN:			9848494081
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Pushir Laal Boll
+Author:			Saamsi Haasaan
+ISBN:			9848494328
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Petuk Robot Level-4 Book-4
+Author:			Lorraine Li
+ISBN:			9848494191
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Laal Murgi
+Author:			Jeeshan Rahman
+ISBN:			221178912
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Saaraa Jokhon Chaand Gile Fello
+Author:			Aleem Aziz
+ISBN:			9789849244203
+Publisher:		IKRIMKRI BOOK STUDIO
+Year:			-1
+Genre:			Fiction
+Copy number:	-1
+Page count:		14
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Ektaa Mojaar Sopno Dekhechhi Level-4 Book-3
+Author:			Lorraine Li
+ISBN:			9848494183
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Mimir Jonmodin
+Author:			Saamsi Haasaan
+ISBN:			9848494379
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Bondhur Khoje
+Author:			Tonimaa Afroj
+ISBN:			9841901022
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Aar Baabaa Cake Baanaai Level-3 Book-1
+Author:			Lorraine Li
+ISBN:			9848494108
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Naamaaj Kivaabe Porte Hoy
+Author:			Saniyasnain Khan    
+ISBN:			9843000005375
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Sobaai Mile Khelaa Kori
+Author:			Saamsi Haasaan
+ISBN:			9848494311
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kusum Koli
+Author:			Dr. Joya Senguptaa
+ISBN:			9841900416
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kusum Koli
+Author:			Dr. Joya Senguptaa
+ISBN:			9841900416
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kusum Koli
+Author:			Dr. Joya Senguptaa
+ISBN:			9841900416
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kusum Koli
+Author:			Dr. Joya Senguptaa
+ISBN:			9841900416
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kochhoper Golpo Level-5 Book-3
+Author:			Lorraine Li
+ISBN:			9848494242
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Podmodighir Mukta
+Author:			Ronjon Haldar
+ISBN:			9841900793
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Podmodighir Mukta
+Author:			Ronjon Haldar
+ISBN:			9841900793
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tumi Ki Amaar Maa
+Author:			Saamsi Haasaan
+ISBN:			9848494285
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kochhoper Golpo Level-5 Book-3
+Author:			Lorraine Li
+ISBN:			9848494242
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamio Jaabo
+Author:			Nirapod Sorkaar
+ISBN:			9789849125181
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamio Jaabo
+Author:			Nirapod Sorkaar
+ISBN:			9789849125181
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Saathe Porho
+Author:			Niraapod Sorkaar
+ISBN:			9789849125228
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	1
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Saathe Porho
+Author:			Niraapod Sorkaar
+ISBN:			9789849125228
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	1
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Motuk Berhaal Level-4 Book-1
+Author:			Lorraine Li
+ISBN:			425178916
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Jeebon Baachaano
+Author:			Animation 
+ISBN:			211178926
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		26
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Uler Ball
+Author:			Saamsi Haasaan
+ISBN:			9848494344
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Jhor Elo Level-3 Book-6
+Author:			Lorraine Li
+ISBN:			9848494
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ghurhi Orhaanor Melaa
+Author:			Litu Sakhawaat
+ISBN:			9841900971
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ghurhi Orhaanor Melaa
+Author:			Litu Sakhawaat
+ISBN:			9841900971
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Jirodhnee
+Author:			Nikhil Chondro Daash
+ISBN:			9789849234197
+Publisher:		IKRIMKRI BOOK STUDIO
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Nekrhe Baagh O Verhaar Paal
+Author:			Polash Mondol
+ISBN:			9789849113867
+Publisher:		Isop Kothamaalaa
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Khudhaarto Haangor Level-5 Book-4
+Author:			Lorraine Li
+ISBN:			9848494250
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Hese Khele Porhi
+Author:			Nirapod Sorkaar
+ISBN:			9789849125112
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Hese Khele Porhi
+Author:			Nirapod Sorkaar
+ISBN:			9789849125112
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhorhaay Chhorhaay
+Author:			Rhymes
+ISBN:			21117896
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		6
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tusir Aamgaachh
+Author:			Limiyaa Dewaan
+ISBN:			221178916
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Uler Ball
+Author:			Saamsi Haasaan
+ISBN:			9848494344
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Hojrot Ibraahim (A) Keevaabe Allahr Sondhaan Pelen
+Author:			Saniyasnain Khan    
+ISBN:			9789849209638
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Fereshtaar Praarthonaa
+Author:			Saniyasnain Khan    
+ISBN:			9843000005467
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Doitter Khidhe Peyechhe
+Author:			Von Oi Chin
+ISBN:			984862502
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Pushir Laal Boll
+Author:			Saamsi Haasaan
+ISBN:			9848494328
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Saahosee Khorgosh Chhaanaa
+Author:			Saamsi Haasaan
+ISBN:			325178915
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Laal Murgi
+Author:			Jeeshan Rahman
+ISBN:			221178912
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Prithhibeer Sobcheye Borho Pithaa
+Author:			Limiyaa Dewaan
+ISBN:			421178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Paathor Soraano
+Author:			Saniyasnain Khan    
+ISBN:			9789849209713
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Motuk Berhaal Level-4 Book-1
+Author:			Lorraine Li
+ISBN:			9848494167
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Motuk Berhaal Level-4 Book-1
+Author:			Lorraine Li
+ISBN:			9848494167
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Mimir Jonmodin
+Author:			Saamsi Haasaan
+ISBN:			9848494379
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maataa Pitaar Proti Vaalobaasaa
+Author:			Saniyasnain Khan
+ISBN:			9789849209706
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tusir Aamgaachh
+Author:			Limiyaa Dewaan
+ISBN:			221178916
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Jhnaa Jhnaa Jhni Jhni
+Author:			Dhruba Esh
+ISBN:			9789849212812
+Publisher:		IKRIMKRI BOOK STUDIO
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dui Bon
+Author:			Limiyaa Dewaan & Jeeshaan Rahman
+ISBN:			251178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dui Bon
+Author:			Limiyaa Dewaan & Jeeshaan Rahman
+ISBN:			251178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kaalo Aar Dholo
+Author:			Polash Mondol
+ISBN:			9789849113904
+Publisher:		Isop Kothamaalaa
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ghorer Vetor Idur Level-4 Book-5
+Author:			Lorraine Li
+ISBN:			525178916
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Raajaar Jaadukoreraa
+Author:			Saniyasnain Khan    
+ISBN:			9843000005351
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Prithhibeer Sobcheye Borho Pithaa
+Author:			Limiyaa Dewaan
+ISBN:			421178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhorhaay Chhorhaay
+Author:			Rhymes
+ISBN:			21117896
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		6
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dui Bon
+Author:			Limiyaa Dewaan & Jeeshaan Rahman
+ISBN:			251178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Sobaai Mile Khelaa Kori
+Author:			Saamsi Haasaan
+ISBN:			9848494311
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Nuher Noukaa
+Author:			Saniyasnain Khan    
+ISBN:			9843000005412
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dudh O Modhur Nodi
+Author:			Saniyasnain Khan    
+ISBN:			9843000006655
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tusir Aamgaachh
+Author:			Limiyaa Dewaan
+ISBN:			221178916
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kujoburhi Saatporee
+Author:			Sayed Nojmul Aabdaal
+ISBN:			9841900297
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		28
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kujoburhi Saatporee
+Author:			Sayed Nojmul Aabdaal
+ISBN:			9841900297
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		28
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kujoburhi Saatporee
+Author:			Sayed Nojmul Aabdaal
+ISBN:			9841900297
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		28
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kujoburhi Saatporee
+Author:			Sayed Nojmul Aabdaal
+ISBN:			9841900297
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		28
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Haat timaa Tim
+Author:			Rokonujjaamaan Khan
+ISBN:			9841900904
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		22
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Haat timaa Tim
+Author:			Rokonujjaamaan Khan
+ISBN:			9841900904
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		22
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Haat timaa Tim
+Author:			Rokonujjaamaan Khan
+ISBN:			9841900904
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		22
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Sobkhaane Ronger Khelaa Level-2 Book-5
+Author:			Lorraine Li
+ISBN:			525178916
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Graamer Baari
+Author:			Von Oi Chin
+ISBN:			9848494936
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Graamer Baari
+Author:			Von Oi Chin
+ISBN:			9848494936
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Lohaar Deyaal
+Author:			Saniyasnain Khan
+ISBN:			9843000005320
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Meenaa O Dushtu Chheleraa
+Author:			Animation 
+ISBN:			411178926
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		26
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Mohaanobi (S) Ebong Ondho Lokti
+Author:			Saniyasnain Khan    
+ISBN:			8943000005368
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tuntunir Golpo
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9841900165
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tuntunir Golpo
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9841900165
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tuntunir Golpo
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9841900165
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tuntunir Golpo
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9841900165
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kochhoper Golpo Level-5 Book-3
+Author:			Lorraine Li
+ISBN:			9848494242
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Haatir Vitore Shiyaal
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9789849113911
+Publisher:		Paathshaalaa
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Mohaanobi (S) Ebong Ondho Lokti
+Author:			Saniyasnain Khan    
+ISBN:			8943000005368
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhotto Chhele Belaal
+Author:			Limiyaa Dewaan & Jeeshaan Rahman
+ISBN:			351178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kaabaar Sthopoti
+Author:			Saniyasnain Khan
+ISBN:			9843000007140
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Bondhur Khoje
+Author:			Tonimaa Afroj
+ISBN:			9841901022
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Doitto Onek Kaaj Kore Level-4 Book-2
+Author:			Lorraine Li
+ISBN:			9848494175
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Petuk Robot Level-4 Book-4
+Author:			Lorraine Li
+ISBN:			9848494191
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Saahosee Baalok
+Author:			Saniyasnain Khan    
+ISBN:			9843000005481
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Ki Daaktaar Dekhaate Paari?
+Author:			Von Oi Chin
+ISBN:			9848494880
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Idur Raajaar Juddho
+Author:			Polash Mondol
+ISBN:			9789849113874
+Publisher:		Isop Kothamaalaa
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaader Baarhi
+Author:			Nirapod Sorkaar
+ISBN:			9789849125105
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaader Baarhi
+Author:			Nirapod Sorkaar
+ISBN:			9789849125105
+Publisher:		Boi Porhi
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baager Paalki Chorhaa
+Author:			Upendrokishor Ray Chowdhury
+ISBN:			9789849113850
+Publisher:		Paathshaalaa
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Daadimaa O Aami
+Author:			Farzana Ahmed
+ISBN:			321178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dui Bon
+Author:			Limiyaa Dewaan & Jeeshaan Rahman
+ISBN:			251178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhotto Chhele Belaal
+Author:			Limiyaa Dewaan & Jeeshaan Rahman
+ISBN:			351178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Khudhaarto Haangor Level-5 Book-4
+Author:			Lorraine Li
+ISBN:			9848494250
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Baagh Sheyal O Gaadhaar Golpo
+Author:			Jhuma Baroi
+ISBN:			9789849113928
+Publisher:		Isop Kothamaalaa
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maachher Golpo
+Author:			Saniyasnain Khan    
+ISBN:			8943000006891
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Romjaan O Quraan
+Author:			Saniyasnain Khan    
+ISBN:			9843000006174
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Shaantir Ghor
+Author:			Translation
+ISBN:			21117898
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Petuk Robot Level-4 Book-4
+Author:			Lorraine Li
+ISBN:			9848494191
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Singho Idur O Tiktikir Golpo
+Author:			Jhuma Baroi
+ISBN:			9789849113935
+Publisher:		Isop Kothamaalaa
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Daadimaa O Aami
+Author:			Farzana Ahmed
+ISBN:			321178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Bolte Paaro Ki!
+Author:			Von Oi Chin
+ISBN:			9848625011
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Bolte Paaro Ki!
+Author:			Von Oi Chin
+ISBN:			9848625011
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Bolte Paaro Ki!
+Author:			Von Oi Chin
+ISBN:			9848625011
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Shishu Kishor Golpo Somaachaar 
+Author:			Inji Mohammad Shorafot Ali Fokir
+ISBN:			453178999
+Publisher:		Daarul Fukaaraa Foundation
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		99
+Price:			5.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Sobkhaane Ronger Khelaa Level-2 Book-5
+Author:			Lorraine Li
+ISBN:			525178916
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Mojaar Poraa
+Author:			Sayed Nojmul Aabdaal
+ISBN:			98419010311
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aangur Baagaane Sheyaal
+Author:			Polash Mondol
+ISBN:			9789849113898
+Publisher:		Isop Kothamaalaa
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chhelei Hote Hobe
+Author:			Animation 
+ISBN:			311178930
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		30
+Price:			10.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Chokleter Chaakaa
+Author:			Saamsi Haasaan
+ISBN:			9848494352
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Shaantir Ghor
+Author:			Translation
+ISBN:			21117898
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		8
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tumi Ki Amaar Maa
+Author:			Saamsi Haasaan
+ISBN:			9848494285
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Hojrot Ibraahim (A) Er Vromon
+Author:			Saniyasnain Khan    
+ISBN:			9843000005337
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Ki Daaktaar Dekhaate Paari?
+Author:			Von Oi Chin
+ISBN:			9848494880
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tusir Aamgaachh
+Author:			Limiyaa Dewaan
+ISBN:			221178916
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dui Bon
+Author:			Limiyaa Dewaan & Jeeshaan Rahman
+ISBN:			251178910
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		10
+Price:			10.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Tumi Ki Amaar Maa
+Author:			Saamsi Haasaan
+ISBN:			9848494285
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		15
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Porichoy
+Author:			Monjur Kaader  Aamin
+ISBN:			131178916
+Publisher:		Brac
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			5.0
+Reading level:	4
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maa Dekho
+Author:			Von Oi Chin
+ISBN:			9848626062
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Boi Porhi
+Author:			Von Oi Chin
+ISBN:			9848625054
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Boi Porhi
+Author:			Von Oi Chin
+ISBN:			9848625054
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Rhyno Gosol Kaure
+Author:			Von Oi Chin
+ISBN:			9848625046
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Bolte Paaro Ki!
+Author:			Von Oi Chin
+ISBN:			9848625011
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	2
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaake Ki Dekhte Paachcho?
+Author:			Von Oi Chin
+ISBN:			9848625987
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Doitter Khidhe Peyechhe
+Author:			Von Oi Chin
+ISBN:			984862502
+Publisher:		World's of Children's Books Limited
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aami Ki Doctor Dekhaate Paari?
+Author:			Von Oi Chin
+ISBN:			9848494880
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Notun Camera
+Author:			Von Oi Chin
+ISBN:			9848494960
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Notun Camera
+Author:			Von Oi Chin
+ISBN:			9848494960
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maayer Notun Fuldaani
+Author:			Von Oi Chin
+ISBN:			9848494928
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Maayer Notun Fuldaani
+Author:			Von Oi Chin
+ISBN:			9848494928
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ekhon Khelar Somoy
+Author:			Von Oi Chin
+ISBN:			335178912
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Graam Aamaar Khub Bhaalo Laage
+Author:			Von Oi Chin
+ISBN:			9848494898
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Graam Aamaar Khub Bhaalo Laage
+Author:			Von Oi Chin
+ISBN:			9848494898
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Graamer Baarhi
+Author:			Von Oi Chin
+ISBN:			9848494936
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Bhaaluk O Dui Bondhhu
+Author:			Saamsi Hasan
+ISBN:			9848494840006
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aulos Gaadhaa
+Author:			Saamsi Hasan
+ISBN:			9847000700131
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		16
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaake Ki Dekhte Paachcho?
+Author:			Von Oi Chin
+ISBN:			9848625987
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamra Dujon Bondhhu
+Author:			Von Oi Chin
+ISBN:			9848625995
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kaar Kaar Fota Aachhe?
+Author:			Von Oi Chin
+ISBN:			9848625038
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Daainir Jaadumontro
+Author:			Von Oi Chin
+ISBN:			9848494944
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aamaar Ichchaa Kaure
+Author:			Von Oi Chin
+ISBN:			9848494901
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Khaurgosh Chhaanaa Berhaate Jaabe
+Author:			Von Oi Chin
+ISBN:			9848494952
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Khaurgosh Chhaanaa Berhaate Jaabe
+Author:			Von Oi Chin
+ISBN:			9848494952
+Publisher:		World of Children's Books Ltd 
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		12
+Price:			5.0
+Reading level:	3
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Hingsute Montree
+Author:			Jahidul Islam
+ISBN:			9789849250463
+Publisher:		Panjeeri
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		31
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aanari Kumir
+Author:			Felicity Everet
+ISBN:			9847003802399
+Publisher:		Panjeeri
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		63
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Voot petneer golpo
+Author:			Russel Panter
+ISBN:			9847003802016
+Publisher:		Panjeeri
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		47
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Danober golpo
+Author:			Christopher Russen
+ISBN:			9847003801118
+Publisher:		panjeeri
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		48
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dotti Danor Golpo
+Author:			Russel Panter
+ISBN:			9847003800850
+Publisher:		Panjeeri
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		47
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Kaabaar Sthopoti
+Author:			Saniyasnain Khan
+ISBN:			9843000007140
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			5.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aallaahr Uttom Bondhu
+Author:			Saniyasnain Khan
+ISBN:			9843000005382
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dhaarmik Baekti O Taar Sontaaneraa
+Author:			Saniyasnain Khan
+ISBN:			9843000005450
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dhaarmik Baekti O Taar Sontaaneraa
+Author:			Saniyasnain Khan
+ISBN:			9843000005450
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Ek Oloukik Ghotonaa
+Author:			Saniyasnain Khan
+ISBN:			9843000000539
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dudh O Modhur Nodi
+Author:			Saniyasnain Khan
+ISBN:			9843000006655
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Dudh O Modhur Nodi
+Author:			Saniyasnain Khan
+ISBN:			9843000006655
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Lohaar Deyaal
+Author:			Saniyasnain Khan
+ISBN:			9843000005320
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Naamaaj Kivaabe Porte Hoy
+Author:			Saniyasnain Khan
+ISBN:			9843000005375
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	6
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Raajaar Jaadukoreraa
+Author:			Saniyasnain Khan
+ISBN:			9843000005351
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
+Title:			Aallaahr Saathhe Musaa (Aa) er Kothaabaartaa
+Author:			Saniyasnain Khan
+ISBN:			9843000005504
+Publisher:		Bangla Prokaash
+Year:			-1
+Genre:			General
+Copy number:	-1
+Page count:		24
+Price:			10.0
+Reading level:	5
+Entry date:		2019-12-28 15:04:52
+Expiry date:	
+***************************************************************
