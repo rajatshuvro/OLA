@@ -45,7 +45,8 @@ public class AddBooks {
 
     public static int AddNewBook(ArrayList<Book> books, BookDb bookDb) throws IOException {
         for (Book book: books) {
-            bookDb.AddNew(book);
+            var displayId = bookDb.AddNew(book);
+            System.out.println("New book added: "+displayId);
         }
         return books.size();
     }

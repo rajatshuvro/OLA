@@ -60,17 +60,17 @@ public class BookDb {
         else _latestCopyNumbers.put(book.Isbn, book.CopyNum);
     }
 
-    public boolean AddNew(Book book){
+    public String AddNew(Book book){
         book = StandardizeFields(book);
         var id = book.GetId();
         if(_books.containsKey(id)) {
             System.out.println("WARNING!! new book Id exists in database.\nSkipping book:"+book.Title);
-            return false;
+            return null;
         }
         _books.put(id, book);
         _newBooks.add(book);
         UpdateLatestCopyNum(book);
-        return true;
+        return book.GetUserFriendlyId();
     }
 
     public String GetTitle(String bookId) {
