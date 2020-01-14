@@ -4,19 +4,22 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 import com.ola.dataStructures.Book;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.document.FieldType;
+import org.apache.lucene.document.*;
 import org.apache.lucene.index.CorruptIndexException;
+import org.apache.lucene.index.IndexOptions;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.store.RAMDirectory;
 
 public class IndexBuilder {
 
     private IndexWriter _writer;
 
+    // build an index in memory with MemoryIndex.
+    // note: limited to one document per index
+    // have to present result by descending order of scores per index
     public IndexBuilder(String indexDirectoryPath) throws IOException {
         //this directory will contain the indexes
         Directory indexDirectory =
@@ -34,9 +37,9 @@ public class IndexBuilder {
         Document document = new Document();
 
         //book id field
-        Field idField = new Field(SearchCommons.BookIdTag, book.GetId(), new FieldType());
+        Field idField = new Field(SearchCommons.BookIdTag, book.GetId(), StringField.TYPE_STORED);
         // book contents
-        Field contentField = new Field(SearchCommons.BookIdTag, book.GetId(), new FieldType());
+        Field contentField = new Field(SearchCommons.BookRecordTag, book.toString(), TextField.TYPE_STORED);
 
         document.add(contentField);
         document.add(idField);

@@ -39,12 +39,21 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="C:/lucene-8.4.0/core/lucene-core-8.4.0.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -59,7 +68,7 @@
       <recent name="com.ola" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AddBooksTest">
+  <component name="RunManager" selected="JUnit.com.ola.unitTests in OLA">
     <configuration name="ola" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.ola.Main" />
       <module name="OLA" />
@@ -202,8 +211,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568409346448</updated>
+      <workItem from="1578681364483" duration="670000" />
+      <workItem from="1579020018156" duration="2195000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -231,32 +245,32 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="530" height="582" key="DebuggerActiveHint/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862457558" />
-    <state x="1011" y="399" key="FileChooserDialogImpl" timestamp="1578587824056">
+    <state x="1011" y="399" key="FileChooserDialogImpl" timestamp="1579020907069">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1011" y="399" key="FileChooserDialogImpl/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1578587824056" />
-    <state width="2507" height="406" key="GridCell.Tab.0.bottom" timestamp="1578416238575">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="1011" y="399" key="FileChooserDialogImpl/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579020907069" />
+    <state width="1344" height="267" key="GridCell.Tab.0.bottom" timestamp="1578682240604">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="283" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577577836003" />
+    <state width="1344" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
     <state width="2507" height="406" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1578416238575" />
     <state width="1716" height="353" key="GridCell.Tab.0.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="2507" height="406" key="GridCell.Tab.0.center" timestamp="1578416238575">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1344" height="267" key="GridCell.Tab.0.center" timestamp="1578682240604">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="283" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577577836003" />
+    <state width="1344" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
     <state width="2507" height="406" key="GridCell.Tab.0.center/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1578416238575" />
     <state width="1716" height="353" key="GridCell.Tab.0.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867862" />
-    <state width="2507" height="406" key="GridCell.Tab.0.left" timestamp="1578416238574">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1344" height="267" key="GridCell.Tab.0.left" timestamp="1578682240604">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="283" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577577836003" />
+    <state width="1344" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
     <state width="2507" height="406" key="GridCell.Tab.0.left/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1578416238574" />
     <state width="1716" height="353" key="GridCell.Tab.0.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867862" />
-    <state width="2507" height="406" key="GridCell.Tab.0.right" timestamp="1578416238575">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1344" height="267" key="GridCell.Tab.0.right" timestamp="1578682240604">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="283" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577577836003" />
+    <state width="1344" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
     <state width="2507" height="406" key="GridCell.Tab.0.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1578416238575" />
     <state width="1716" height="353" key="GridCell.Tab.0.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
     <state width="1716" height="353" key="GridCell.Tab.1.bottom" timestamp="1576862867863">
@@ -275,10 +289,15 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1716" height="353" key="GridCell.Tab.1.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state x="633" y="172" key="SettingsEditor" timestamp="1578587848407">
+    <state x="633" y="172" key="SettingsEditor" timestamp="1579020910054">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="633" y="172" key="SettingsEditor/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1578587848407" />
+    <state x="633" y="172" key="SettingsEditor/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579020910054" />
+    <state x="875" y="466" key="com.intellij.ide.util.TipDialog" timestamp="1579020088259">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="656" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578681370039" />
+    <state x="875" y="466" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579020088259" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
