@@ -5,10 +5,10 @@ import com.ola.luceneIndex.SearchIndex;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class SearchTests {
     public ArrayList<Book> GetNewBooks() {

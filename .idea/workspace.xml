@@ -7,16 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ed11dd1-2a19-4e69-88cf-ccc4bfd3ec6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/ola/Search.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Books.dat" beforeDir="false" afterPath="$PROJECT_DIR$/data/Books.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/BookSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/DataProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/DataProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/databases/BookDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/databases/BookDb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/Search.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ola/luceneIndex/SearchIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/luceneIndex/SearchIndex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/BookDbTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/BookDbTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/SearchTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/FilterTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/lucene/SearchTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/lucene/SearchTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +58,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -231,7 +224,8 @@
       <workItem from="1579051854226" duration="1622000" />
       <workItem from="1579106888545" duration="1628000" />
       <workItem from="1579217232957" duration="5092000" />
-      <workItem from="1579276592894" duration="3772000" />
+      <workItem from="1579276592894" duration="5143000" />
+      <workItem from="1579286498562" duration="85000" />
     </task>
     <task id="LOCAL-00001" summary="creating the search index in memory">
       <created>1579053469870</created>
@@ -272,6 +266,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="basic book searching passed tests" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="773" y="270" key="#Project_Structure" timestamp="1579281182905">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="773" y="270" key="#Project_Structure/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281182905" />
     <state x="555" y="228" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579277194170">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -290,58 +288,62 @@
     </state>
     <state width="530" height="582" key="DebuggerActiveHint/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579278012466" />
     <state width="530" height="582" key="DebuggerActiveHint/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862457558" />
-    <state x="1011" y="399" key="FileChooserDialogImpl" timestamp="1579108246422">
+    <state x="969" y="351" key="DetectedRootsChooserDialog" timestamp="1579281147065">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1011" y="399" key="FileChooserDialogImpl/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579108246422" />
-    <state width="1800" height="449" key="GridCell.Tab.0.bottom" timestamp="1579280282724">
+    <state x="969" y="351" key="DetectedRootsChooserDialog/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281147065" />
+    <state x="1011" y="399" key="FileChooserDialogImpl" timestamp="1579286569966">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1011" y="399" key="FileChooserDialogImpl/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579286569966" />
+    <state width="1800" height="364" key="GridCell.Tab.0.bottom" timestamp="1579281740917">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1344" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
-    <state width="1800" height="449" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
+    <state width="1800" height="364" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281740917" />
     <state width="1716" height="353" key="GridCell.Tab.0.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1800" height="449" key="GridCell.Tab.0.center" timestamp="1579280282724">
+    <state width="1800" height="364" key="GridCell.Tab.0.center" timestamp="1579281740917">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1344" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
-    <state width="1800" height="449" key="GridCell.Tab.0.center/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
+    <state width="1800" height="364" key="GridCell.Tab.0.center/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281740917" />
     <state width="1716" height="353" key="GridCell.Tab.0.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867862" />
-    <state width="1800" height="449" key="GridCell.Tab.0.left" timestamp="1579280282724">
+    <state width="1800" height="364" key="GridCell.Tab.0.left" timestamp="1579281740917">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1344" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
-    <state width="1800" height="449" key="GridCell.Tab.0.left/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
+    <state width="1800" height="364" key="GridCell.Tab.0.left/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281740917" />
     <state width="1716" height="353" key="GridCell.Tab.0.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867862" />
-    <state width="1800" height="449" key="GridCell.Tab.0.right" timestamp="1579280282724">
+    <state width="1800" height="364" key="GridCell.Tab.0.right" timestamp="1579281740917">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1344" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
-    <state width="1800" height="449" key="GridCell.Tab.0.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
+    <state width="1800" height="364" key="GridCell.Tab.0.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281740917" />
     <state width="1716" height="353" key="GridCell.Tab.0.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1800" height="449" key="GridCell.Tab.1.bottom" timestamp="1579280282724">
+    <state width="1800" height="449" key="GridCell.Tab.1.bottom" timestamp="1579281740914">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1800" height="449" key="GridCell.Tab.1.bottom/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
+    <state width="1800" height="449" key="GridCell.Tab.1.bottom/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281740914" />
     <state width="1716" height="353" key="GridCell.Tab.1.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1800" height="449" key="GridCell.Tab.1.center" timestamp="1579280282724">
+    <state width="1800" height="449" key="GridCell.Tab.1.center" timestamp="1579281740914">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1800" height="449" key="GridCell.Tab.1.center/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
+    <state width="1800" height="449" key="GridCell.Tab.1.center/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281740914" />
     <state width="1716" height="353" key="GridCell.Tab.1.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1800" height="449" key="GridCell.Tab.1.left" timestamp="1579280282724">
+    <state width="1800" height="449" key="GridCell.Tab.1.left" timestamp="1579281740914">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1800" height="449" key="GridCell.Tab.1.left/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
+    <state width="1800" height="449" key="GridCell.Tab.1.left/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281740914" />
     <state width="1716" height="353" key="GridCell.Tab.1.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1800" height="449" key="GridCell.Tab.1.right" timestamp="1579280282724">
+    <state width="1800" height="449" key="GridCell.Tab.1.right" timestamp="1579281740914">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1800" height="449" key="GridCell.Tab.1.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
+    <state width="1800" height="449" key="GridCell.Tab.1.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281740914" />
     <state width="1716" height="353" key="GridCell.Tab.1.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state x="633" y="172" key="SettingsEditor" timestamp="1579108250971">
+    <state x="633" y="172" key="SettingsEditor" timestamp="1579286581969">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="633" y="172" key="SettingsEditor/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579108250971" />
+    <state x="633" y="172" key="SettingsEditor/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579286581969" />
     <state x="875" y="466" key="com.intellij.ide.util.TipDialog" timestamp="1579106923211">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -380,7 +382,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/ola/luceneIndex/SearchIndex.java</url>
-          <line>73</line>
+          <line>76</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
