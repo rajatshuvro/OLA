@@ -7,8 +7,8 @@ import org.apache.commons.cli.*;
 
 import java.util.ArrayList;
 
-public class BookSearch {
-    private static String commandSyntax = "find  (-v) (-g [genre]) (-l [reading level]) (-t [title]) (-a [author])";
+public class Filter {
+    private static String commandSyntax = "filter  (-v) (-g [genre]) (-l [reading level]) (-t [title]) (-a [author])";
     public static void Run(String[] args, BookDb bookDb) {
         Options options = new Options();
         Option verboseOption = new Option("v", "verbose", false, "Optional: Report verbose results");
@@ -47,7 +47,7 @@ public class BookSearch {
             var author = cmd.hasOption('a')? cmd.getOptionValue('a'): null;
             var title = cmd.hasOption('t')? cmd.getOptionValue('t'): null;
 
-            var searchResults = bookDb.Search(genre, level, author, title);
+            var searchResults = bookDb.Filter(genre, level, author, title);
             System.out.println(SummarizeSearch(searchResults));
 
             if(!verbose) return;

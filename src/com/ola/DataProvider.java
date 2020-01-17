@@ -1,5 +1,6 @@
 package com.ola;
 
+import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
 import com.ola.databases.TransactionDb;
 import com.ola.databases.UserDb;
@@ -41,6 +42,11 @@ public class DataProvider {
         BookDb = new BookDb(_bookParser.GetBooks());
         UserDb = new UserDb(_userParser.GetUsers());
         TransactionsDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb.GetIds(), BookDb.GetIds());
+
+        System.out.print("Building search index on all books...");
+        BookDb.GetSearchIndex();
+        System.out.println("done");
+
 
         _userInputStream.close();
         _bookInputStream.close();

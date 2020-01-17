@@ -35,8 +35,11 @@ public class Main {
                 case "stat":
                     Status.Run(subArgs, dataProvider);
                     break;
-                case "find":
-                    BookSearch.Run(subArgs, dataProvider.BookDb);
+                case "filter":
+                    Filter.Run(subArgs, dataProvider.BookDb);
+                    break;
+                case "search":
+                    Search.Run(subArgs, dataProvider.BookDb);
                     break;
                 case "legacy":
                     LegacyImporter.Run(subArgs);
@@ -99,13 +102,14 @@ public class Main {
 
     private static void PrintMenu() {
         System.out.println("Please choose from the following options:");
-        System.out.println("\tadd    (add new book to database)");
-        System.out.println("\tco     (checkout book)");
-        System.out.println("\tret    (return book)");
-        System.out.println("\tstat   (checkout status)");
-        System.out.println("\tfind   (search book database)");
-        System.out.println("\tlegacy (import books from legacy tsv)");
-        System.out.println("\tquit   (quit OLA)");
+        System.out.println("\tadd     (add new book to database)");
+        System.out.println("\tco      (checkout book)");
+        System.out.println("\tret     (return book)");
+        System.out.println("\tstat    (checkout status)");
+        System.out.println("\tsearch  (search book database)");
+        System.out.println("\tfilter  (filter book database by genre, level, etc fields)");
+        System.out.println("\tlegacy  (import books from legacy tsv)");
+        System.out.println("\tquit    (quit OLA)");
         System.out.println("\t[Type command to get detailed help]");
     }
 

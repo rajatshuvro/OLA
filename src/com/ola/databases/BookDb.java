@@ -1,6 +1,8 @@
 package com.ola.databases;
 
+import com.ola.Search;
 import com.ola.dataStructures.Book;
+import com.ola.luceneIndex.SearchIndex;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
 import java.io.BufferedWriter;
@@ -21,7 +23,15 @@ public class BookDb {
         }
         return ids;
     }
+    private SearchIndex _searchIndex;
+    public SearchIndex GetSearchIndex() throws IOException {
+        if(_searchIndex == null) BuildSearchIndex();
+        return _searchIndex;
+    }
 
+    public Iterable<Book> GetAllBooks(){
+        return _books.values();
+    };
     public int Count(){
         return _books.size();
     }
@@ -39,6 +49,10 @@ public class BookDb {
 
     }
 
+    public Book GetBook(String id){
+        if(_books.containsKey(id)) return _books.get(id);
+        else return null;
+    }
     //return a list of all books having a isbn number
     public ArrayList<Book> GetBooks(long isbn){
         ArrayList<Book> books = new ArrayList<>();
@@ -77,7 +91,7 @@ public class BookDb {
         if(_books.containsKey(bookId)) return _books.get(bookId).Title;
         return null;
     }
-    private final String RecordSeparator = "***************************************************************";
+    public static final String RecordSeparator = "***************************************************************";
     public void Append(OutputStream stream)throws IOException {
         if(_newBooks.size()==0) return;
         var writer = new BufferedWriter(new OutputStreamWriter(stream));
@@ -144,18 +158,23 @@ public class BookDb {
                 canon.Genre, canon.ReadingLevel, copyNum, date, null );
     }
 
-    public ArrayList<Book> Search(String genre, int level, String author, String title) {
+    private void BuildSearchIndex() throws IOException {
+        var books = GetAllBooks();
+        _searchIndex = new SearchIndex(books);
+    }
+
+    public ArrayList<Book> Filter(String genre, int level, String author, String title) {
         //todo: build search indexes
         var isValidGenre = Book.IsValidGenre(genre);
         var isValidLevel = Book.IsValidReadingLevel(level);
         var books = _books.values();
-        if(isValidGenre & isValidLevel) return SearchByGenreAndLevel(books, genre, level);
-        if(isValidGenre) return SearchByGenre(books, genre);
-        if(isValidLevel) return SearchByLevel(books, level);
+        if(isValidGenre & isValidLevel) return FilterByGenreAndLevel(books, genre, level);
+        if(isValidGenre) return FilterByGenre(books, genre);
+        if(isValidLevel) return FilterByLevel(books, level);
         return null;
     }
 
-    private ArrayList<Book> SearchByLevel(Collection<Book> allBooks, int level) {
+    private ArrayList<Book> FilterByLevel(Collection<Book> allBooks, int level) {
         var books = new ArrayList<Book>();
         for (Book book:allBooks) {
             if(book.ReadingLevel== level)
@@ -164,7 +183,7 @@ public class BookDb {
         return books;
     }
 
-    private ArrayList<Book> SearchByGenre(Collection<Book> allBooks, String genre) {
+    private ArrayList<Book> FilterByGenre(Collection<Book> allBooks, String genre) {
         var books = new ArrayList<Book>();
         for (Book book:allBooks) {
             if(book.Genre.equals(genre) )
@@ -173,8 +192,8 @@ public class BookDb {
         return books;
     }
 
-    private ArrayList<Book> SearchByGenreAndLevel(Collection<Book> allBooks, String genre, int level) {
-        var booksByGenre = SearchByGenre(allBooks, genre);
-        return SearchByLevel(booksByGenre, level);
+    private ArrayList<Book> FilterByGenreAndLevel(Collection<Book> allBooks, String genre, int level) {
+        var booksByGenre = FilterByGenre(allBooks, genre);
+        return FilterByLevel(booksByGenre, level);
     }
 }

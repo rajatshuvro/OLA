@@ -7,10 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ed11dd1-2a19-4e69-88cf-ccc4bfd3ec6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/ola/unitTests/lucene/SearchTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ola/Search.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OLA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OLA.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Books.dat" beforeDir="false" afterPath="$PROJECT_DIR$/data/Books.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/BookSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/Filter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/DataProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/DataProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/databases/BookDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/databases/BookDb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ola/luceneIndex/SearchIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/luceneIndex/SearchIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/BookDbTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/BookDbTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/SearchTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/FilterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/lucene/SearchTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/lucene/SearchTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +83,7 @@
       <recent name="com.ola" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SearchTests.SearchAuthor">
+  <component name="RunManager" selected="Application.ola">
     <configuration name="ola" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.ola.Main" />
       <module name="OLA" />
@@ -223,7 +230,8 @@
       <workItem from="1579020018156" duration="2195000" />
       <workItem from="1579051854226" duration="1622000" />
       <workItem from="1579106888545" duration="1628000" />
-      <workItem from="1579217232957" duration="2246000" />
+      <workItem from="1579217232957" duration="5092000" />
+      <workItem from="1579276592894" duration="3772000" />
     </task>
     <task id="LOCAL-00001" summary="creating the search index in memory">
       <created>1579053469870</created>
@@ -232,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579053469870</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="basic book searching passed tests">
+      <created>1579219727925</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579219727925</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,73 +268,75 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="creating the search index in memory" />
-    <option name="LAST_COMMIT_MESSAGE" value="creating the search index in memory" />
+    <MESSAGE value="basic book searching passed tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic book searching passed tests" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="416" y="169" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577573613606">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="555" y="228" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579277194170">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="416" y="169" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577573613606" />
+    <state x="555" y="228" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579277194170" />
     <state x="1051" y="308" key="#com.intellij.ide.util.MemberChooser" timestamp="1575476835676">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1051" y="308" key="#com.intellij.ide.util.MemberChooser/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575476835676" />
-    <state x="758" y="220" key="CommitChangelistDialog2" timestamp="1579053468869">
+    <state x="758" y="220" key="CommitChangelistDialog2" timestamp="1579219726859">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="758" y="220" key="CommitChangelistDialog2/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579053468869" />
-    <state width="530" height="582" key="DebuggerActiveHint" timestamp="1579218815007">
+    <state x="758" y="220" key="CommitChangelistDialog2/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579219726859" />
+    <state width="530" height="582" key="DebuggerActiveHint" timestamp="1579278012466">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="530" height="582" key="DebuggerActiveHint/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579218815007" />
+    <state width="530" height="582" key="DebuggerActiveHint/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579278012466" />
     <state width="530" height="582" key="DebuggerActiveHint/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862457558" />
     <state x="1011" y="399" key="FileChooserDialogImpl" timestamp="1579108246422">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1011" y="399" key="FileChooserDialogImpl/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579108246422" />
-    <state width="1800" height="364" key="GridCell.Tab.0.bottom" timestamp="1579219646725">
+    <state width="1800" height="449" key="GridCell.Tab.0.bottom" timestamp="1579280282724">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1344" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
-    <state width="1800" height="364" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579219646725" />
+    <state width="1800" height="449" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
     <state width="1716" height="353" key="GridCell.Tab.0.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1800" height="364" key="GridCell.Tab.0.center" timestamp="1579219646725">
+    <state width="1800" height="449" key="GridCell.Tab.0.center" timestamp="1579280282724">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1344" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
-    <state width="1800" height="364" key="GridCell.Tab.0.center/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579219646725" />
+    <state width="1800" height="449" key="GridCell.Tab.0.center/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
     <state width="1716" height="353" key="GridCell.Tab.0.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867862" />
-    <state width="1800" height="364" key="GridCell.Tab.0.left" timestamp="1579219646725">
+    <state width="1800" height="449" key="GridCell.Tab.0.left" timestamp="1579280282724">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1344" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
-    <state width="1800" height="364" key="GridCell.Tab.0.left/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579219646725" />
+    <state width="1800" height="449" key="GridCell.Tab.0.left/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
     <state width="1716" height="353" key="GridCell.Tab.0.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867862" />
-    <state width="1800" height="364" key="GridCell.Tab.0.right" timestamp="1579219646725">
+    <state width="1800" height="449" key="GridCell.Tab.0.right" timestamp="1579280282724">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1344" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578682240604" />
-    <state width="1800" height="364" key="GridCell.Tab.0.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579219646725" />
+    <state width="1800" height="449" key="GridCell.Tab.0.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
     <state width="1716" height="353" key="GridCell.Tab.0.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1800" height="449" key="GridCell.Tab.1.bottom" timestamp="1579218838230">
+    <state width="1800" height="449" key="GridCell.Tab.1.bottom" timestamp="1579280282724">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1800" height="449" key="GridCell.Tab.1.bottom/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579218838230" />
+    <state width="1800" height="449" key="GridCell.Tab.1.bottom/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
     <state width="1716" height="353" key="GridCell.Tab.1.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1800" height="449" key="GridCell.Tab.1.center" timestamp="1579218838229">
+    <state width="1800" height="449" key="GridCell.Tab.1.center" timestamp="1579280282724">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1800" height="449" key="GridCell.Tab.1.center/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579218838229" />
+    <state width="1800" height="449" key="GridCell.Tab.1.center/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
     <state width="1716" height="353" key="GridCell.Tab.1.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1800" height="449" key="GridCell.Tab.1.left" timestamp="1579218838229">
+    <state width="1800" height="449" key="GridCell.Tab.1.left" timestamp="1579280282724">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1800" height="449" key="GridCell.Tab.1.left/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579218838229" />
+    <state width="1800" height="449" key="GridCell.Tab.1.left/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
     <state width="1716" height="353" key="GridCell.Tab.1.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1800" height="449" key="GridCell.Tab.1.right" timestamp="1579218838230">
+    <state width="1800" height="449" key="GridCell.Tab.1.right" timestamp="1579280282724">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1800" height="449" key="GridCell.Tab.1.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579218838230" />
+    <state width="1800" height="449" key="GridCell.Tab.1.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579280282724" />
     <state width="1716" height="353" key="GridCell.Tab.1.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
     <state x="633" y="172" key="SettingsEditor" timestamp="1579108250971">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -330,17 +347,24 @@
     </state>
     <state x="656" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578681370039" />
     <state x="875" y="466" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579106923211" />
+    <state x="1015" y="592" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579278382062">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1015" y="592" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579278382062" />
+    <state x="948" y="400" key="extract.method.dialog" timestamp="1579277750563">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="948" y="400" key="extract.method.dialog/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579277750563" />
+    <state x="859" y="321" width="840" height="1034" key="search.everywhere.popup" timestamp="1579220075488">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="859" y="321" width="840" height="1034" key="search.everywhere.popup/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579220075488" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/Main.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/SearchTests.java</url>
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/FilterTests.java</url>
           <line>30</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
@@ -356,8 +380,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/ola/luceneIndex/SearchIndex.java</url>
-          <line>66</line>
+          <line>73</line>
           <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/Main.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/lucene/SearchTests.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

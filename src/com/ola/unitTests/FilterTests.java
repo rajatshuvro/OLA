@@ -1,5 +1,5 @@
 package com.ola.unitTests;
-import com.ola.BookSearch;
+import com.ola.Filter;
 import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SearchTests {
+public class FilterTests {
     public static ArrayList<Book> GetBooks() {
         var books = new ArrayList<Book>();
         books.add(new Book(7890788,"Rajat Shuvro Roy","Amar Baba","Bonosree books and co",
@@ -24,25 +24,25 @@ public class SearchTests {
     }
 
     @Test
-    public void Search_by_genre(){
+    public void Filter_by_genre(){
         var bookDb = new BookDb(GetBooks());
         var args = new String[]{"find", "-g", "General", "-v"};
 
-        BookSearch.Run(args, bookDb);
+        Filter.Run(args, bookDb);
     }
 
     @Test
-    public void Search_by_level(){
+    public void Filter_by_level(){
         var bookDb = new BookDb(GetBooks());
         var args = new String[]{"find", "-l", "5", "-v"};
 
-        BookSearch.Run(args, bookDb);
+        Filter.Run(args, bookDb);
     }
     @Test
-    public void Search_by_genre_level(){
+    public void Filter_by_genre_level(){
         var bookDb = new BookDb(GetBooks());
         var args = new String[]{"find", "-g", "Fiction","-l", "6", "-v"};
 
-        BookSearch.Run(args, bookDb);
+        Filter.Run(args, bookDb);
     }
 }

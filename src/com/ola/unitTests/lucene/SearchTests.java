@@ -28,15 +28,15 @@ public class SearchTests {
     public void SearchReadingLevel() throws IOException, ParseException {
         var searcher = new SearchIndex(GetNewBooks());
 
-        var topHitsIndices = searcher.Search("reading level 5", 4);
-        assertArrayEquals(new int[]{1, 2, 0, 3}, topHitsIndices);
+        var topHitIds = searcher.Search("reading level 5", 4);
+        assertArrayEquals(new String[]{"678564-(-1)", "678564-(-1)", "7890788-(-1)", "456098-(-1)"}, topHitIds);
     }
 
     @Test
     public void SearchAuthor() throws IOException, ParseException {
         var searcher = new SearchIndex(GetNewBooks());
 
-        var topHitsIndices = searcher.Search("Nandana", 4);
-        assertArrayEquals(new int[]{3}, topHitsIndices);
+        var topHitIds = searcher.Search("Nandana", 4);
+        assertArrayEquals(new String[]{"456098-(-1)"}, topHitIds);
     }
 }

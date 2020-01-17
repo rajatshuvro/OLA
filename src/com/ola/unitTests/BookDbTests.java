@@ -38,16 +38,16 @@ public class BookDbTests {
     @Test
     public void Search(){
         var bookDb = new BookDb(GetBooks());
-        var result = bookDb.Search("Fiction", -1, null, null);
+        var result = bookDb.Filter("Fiction", -1, null, null);
         assertEquals(2, result.size());
 
-        result = bookDb.Search(null, 4, null, null);
+        result = bookDb.Filter(null, 4, null, null);
         assertEquals(2, result.size());
 
-        result = bookDb.Search("Fiction", 4, null, null);
+        result = bookDb.Filter("Fiction", 4, null, null);
         assertEquals(0, result.size());
 
-        result = bookDb.Search("Fiction", 5, null, null);
+        result = bookDb.Filter("Fiction", 5, null, null);
         assertEquals(1, result.size());
     }
 }
