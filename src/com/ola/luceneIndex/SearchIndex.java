@@ -1,11 +1,16 @@
 package com.ola.luceneIndex;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.ola.dataStructures.Book;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.*;
+import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.ByteBuffersDirectory;
 
 public class SearchIndex {
@@ -52,9 +57,18 @@ public class SearchIndex {
         _searcher = new IndexSearcher(DirectoryReader.open(_memDirectory));
     }
 
-    public void Search(String query){
+    public int[] Search(String queryString, int topHitCount) throws IOException, ParseException {
+        // Build a Query object
+        var parser = new QueryParser(SearchCommons.BookRecordTag, new StandardAnalyzer());
+        var query = parser.parse(queryString);
+        // Search for the query
+        var topDocs = _searcher.search(query, topHitCount);
 
-
+        var topHitIndexes = new int[(int)topDocs.totalHits.value];
+        for (var i=0; i< topDocs.totalHits.value; i++) {
+            topHitIndexes[i]= topDocs.scoreDocs[i].doc;
+        }
+        return topHitIndexes;
     }
 
 }
