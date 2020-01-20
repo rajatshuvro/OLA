@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ParserUtilities {
+    public static final String RecordSeparator = "***************************************************************";
+
     public static String[] GetNextRecordLines(Scanner scanner, String endOfRecordPrefix){
         ArrayList<String> lines = new ArrayList<>();
         while (scanner.hasNextLine()){

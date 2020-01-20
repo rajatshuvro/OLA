@@ -14,7 +14,7 @@ public class StatusTests {
     @Test
     public void Status_command_line() throws IOException {
         var args = new String[]{"status","-u","897"};
-        var provider = new DataProvider(GetBooksStream(), GetUsersStream(), GetTransactionsStream(),
+        var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream());
         provider.Load();
         //just run it to make sure it doesn't crash
@@ -23,7 +23,7 @@ public class StatusTests {
 
     @Test
     public void Status_by_user() throws IOException {
-        var provider = new DataProvider(GetBooksStream(), GetUsersStream(), GetTransactionsStream(),
+        var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream());
         provider.Load();
         var retString = Status.GetUserCheckouts(provider, 897);
@@ -32,7 +32,7 @@ public class StatusTests {
 
     @Test
     public void Status_all() throws IOException {
-        var provider = new DataProvider(GetBooksStream(), GetUsersStream(), GetTransactionsStream(),
+        var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream());
         provider.Load();
 

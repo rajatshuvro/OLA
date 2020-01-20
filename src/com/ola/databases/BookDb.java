@@ -3,6 +3,7 @@ package com.ola.databases;
 import com.ola.Search;
 import com.ola.dataStructures.Book;
 import com.ola.luceneIndex.SearchIndex;
+import com.ola.parsers.ParserUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
 import java.io.BufferedWriter;
@@ -91,13 +92,12 @@ public class BookDb {
         if(_books.containsKey(bookId)) return _books.get(bookId).Title;
         return null;
     }
-    public static final String RecordSeparator = "***************************************************************";
     public void Append(OutputStream stream)throws IOException {
         if(_newBooks.size()==0) return;
         var writer = new BufferedWriter(new OutputStreamWriter(stream));
         for (Book book: _newBooks) {
             writer.write(book.toString()+'\n');
-            writer.write(RecordSeparator+'\n');
+            writer.write(ParserUtilities.RecordSeparator+'\n');
         }
         writer.close();
 

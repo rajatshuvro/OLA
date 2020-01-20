@@ -15,6 +15,8 @@ public class UserParser {
     private final String IdTag = "Id";
     private final String NameTag = "Name";
     private final String RoleTag = "Role";
+    private final String EmailTag = "Email";
+    private final String PhoneTag = "Phone";
 
     public UserParser(InputStream inputStream){
         _inputStream = inputStream;
@@ -28,9 +30,16 @@ public class UserParser {
                 String[] lines = GetNextRecordLines(scanner,"*");
                 if(lines.length == 0) continue;
                 var user = GetUser(lines);
-                if (user != null){
-                    users.add(user);
+
+                if(user == null) {
+                    System.out.println("Invalid User record:");
+                    for (var line : lines) {
+                        System.out.println(line);
+                    }
+                    continue;
                 }
+                users.add(user);
+
             }
         }
         return users;
@@ -40,6 +49,8 @@ public class UserParser {
         int id = 0;
         String name = null;
         String role = null;
+        String email = null;
+        String phnNo = null;
         for (String line: lines) {
             var splits = line.split(":",2);
             var key = splits[0].strip();
@@ -55,12 +66,20 @@ public class UserParser {
                 case RoleTag:
                     role = value;
                     break;
-
+                case EmailTag:
+                    email = value;
+                    break;
+                case PhoneTag:
+                    phnNo = value;
+                    break;
             }
         }
 
-        if (!User.IsValid(id, name, role)) return null;
-        return new User(id, name, role);
+        if (!User.IsValid(id, name, role, email, phnNo)) {
+
+            return null;
+        };
+        return new User(id, name, role, email, phnNo);
     }
 
 
