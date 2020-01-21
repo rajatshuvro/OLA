@@ -16,14 +16,14 @@ import org.apache.lucene.store.ByteBuffersDirectory;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class SearchIndex {
+public class BookSearchIndex {
 
     private IndexWriter _writer;
     private ByteBuffersDirectory _memDirectory;
     private IndexSearcher _searcher;
     private ArrayList<String> _ids;
 
-    public SearchIndex(Iterable<Book> books) throws IOException {
+    public BookSearchIndex(Iterable<Book> books) throws IOException {
         //we need to have the index -> book id mapping
         _ids = new ArrayList<String>();
 

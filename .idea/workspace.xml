@@ -7,17 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ed11dd1-2a19-4e69-88cf-ccc4bfd3ec6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/ola/unitTests/TestStreams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/ola/utilities/FormatUtilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/Search.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/dataStructures/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/dataStructures/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OLA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OLA.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ola/databases/BookDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/databases/BookDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/parsers/UserParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/parsers/UserParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/parsers/parserUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/parsers/parserUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/DataProviderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/DataProviderTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/StatusTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/StatusTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/UserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/UserTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/luceneIndex/SearchIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/luceneIndex/BookSearchIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/lucene/SearchTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/lucene/SearchTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,14 +52,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="C:/lucene-8.4.0/queryparser/lucene-queryparser-8.4.0.jar!/" />
+    <property name="last_opened_file_path" value="C:/Program Files/Java/commons-csv-1.7/commons-csv-1.7.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -234,6 +228,7 @@
       <workItem from="1579276592894" duration="5143000" />
       <workItem from="1579286498562" duration="390000" />
       <workItem from="1579431321424" duration="2957000" />
+      <workItem from="1579569908585" duration="2260000" />
     </task>
     <task id="LOCAL-00001" summary="creating the search index in memory">
       <created>1579053469870</created>
@@ -287,6 +282,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1051" y="308" key="#com.intellij.ide.util.MemberChooser/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575476835676" />
+    <state x="613" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579569996971">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="613" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579569996971" />
     <state x="758" y="220" key="CommitChangelistDialog2" timestamp="1579219726859">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -300,10 +299,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="969" y="351" key="DetectedRootsChooserDialog/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281147065" />
-    <state x="1011" y="399" key="FileChooserDialogImpl" timestamp="1579286569966">
+    <state x="1011" y="399" key="FileChooserDialogImpl" timestamp="1579572803390">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1011" y="399" key="FileChooserDialogImpl/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579286569966" />
+    <state x="1011" y="399" key="FileChooserDialogImpl/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579572803390" />
     <state width="1714" height="413" key="GridCell.Tab.0.bottom" timestamp="1579540204439">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -348,10 +347,10 @@
     </state>
     <state width="1714" height="413" key="GridCell.Tab.1.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579540204439" />
     <state width="1716" height="353" key="GridCell.Tab.1.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state x="633" y="172" key="SettingsEditor" timestamp="1579286581969">
+    <state x="633" y="172" key="SettingsEditor" timestamp="1579572807738">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="633" y="172" key="SettingsEditor/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579286581969" />
+    <state x="633" y="172" key="SettingsEditor/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579572807738" />
     <state x="875" y="466" key="com.intellij.ide.util.TipDialog" timestamp="1579106923211">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -389,7 +388,7 @@
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/luceneIndex/SearchIndex.java</url>
+          <url>file://$PROJECT_DIR$/src/com/ola/luceneIndex/BookSearchIndex.java</url>
           <line>76</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>

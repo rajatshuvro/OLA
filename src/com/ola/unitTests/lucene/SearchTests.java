@@ -1,7 +1,7 @@
 package com.ola.unitTests.lucene;
 
 import com.ola.dataStructures.Book;
-import com.ola.luceneIndex.SearchIndex;
+import com.ola.luceneIndex.BookSearchIndex;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +26,7 @@ public class SearchTests {
     }
     @Test
     public void SearchReadingLevel() throws IOException, ParseException {
-        var searcher = new SearchIndex(GetNewBooks());
+        var searcher = new BookSearchIndex(GetNewBooks());
 
         var topHitIds = searcher.Search("reading level 5", 4);
         assertArrayEquals(new String[]{"678564-(-1)", "678564-(-1)", "7890788-(-1)", "456098-(-1)"}, topHitIds);
@@ -34,7 +34,7 @@ public class SearchTests {
 
     @Test
     public void SearchAuthor() throws IOException, ParseException {
-        var searcher = new SearchIndex(GetNewBooks());
+        var searcher = new BookSearchIndex(GetNewBooks());
 
         var topHitIds = searcher.Search("Nandana", 4);
         assertArrayEquals(new String[]{"456098-(-1)"}, topHitIds);

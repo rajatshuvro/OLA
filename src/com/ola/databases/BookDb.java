@@ -1,8 +1,7 @@
 package com.ola.databases;
 
-import com.ola.Search;
 import com.ola.dataStructures.Book;
-import com.ola.luceneIndex.SearchIndex;
+import com.ola.luceneIndex.BookSearchIndex;
 import com.ola.parsers.ParserUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
@@ -24,8 +23,8 @@ public class BookDb {
         }
         return ids;
     }
-    private SearchIndex _searchIndex;
-    public SearchIndex GetSearchIndex() throws IOException {
+    private BookSearchIndex _searchIndex;
+    public BookSearchIndex GetSearchIndex() throws IOException {
         if(_searchIndex == null) BuildSearchIndex();
         return _searchIndex;
     }
@@ -160,7 +159,7 @@ public class BookDb {
 
     private void BuildSearchIndex() throws IOException {
         var books = GetAllBooks();
-        _searchIndex = new SearchIndex(books);
+        _searchIndex = new BookSearchIndex(books);
     }
 
     public ArrayList<Book> Filter(String genre, int level, String author, String title) {
