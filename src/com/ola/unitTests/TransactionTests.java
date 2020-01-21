@@ -43,7 +43,7 @@ public class TransactionTests {
     }
     @Test
     public void TransactionDbTest() throws IOException{
-        var parser = new TransactionParser(TestStreams.GetTransactionsStream());
+        var parser = new TransactionParser(TestStreams.GetTransactionStreamReduced());
         var transactions = parser.GetTransactions();
 
         var transactionDb = new TransactionDb(transactions, GetUserIds(), GetBookIds());
@@ -55,7 +55,7 @@ public class TransactionTests {
 
     @Test
     public void TransactionDbTest_add_transactions() throws IOException{
-        var parser = new TransactionParser(TestStreams.GetTransactionsStream());
+        var parser = new TransactionParser(TestStreams.GetTransactionStreamReduced());
         var transactions = parser.GetTransactions();
 
         var transactionDb = new TransactionDb(transactions, GetUserIds(), GetBookIds());
@@ -97,7 +97,7 @@ public class TransactionTests {
     }
     @Test
     public void SkipInvalidUserAndBook() throws IOException{
-        var parser = new TransactionParser(TestStreams.GetTransactionsStream());
+        var parser = new TransactionParser(TestStreams.GetTransactionStreamReduced());
         var transactions = parser.GetTransactions();
 
         var transactionDb = new TransactionDb(transactions, GetUserIds_reduced(), GetBookIds_reduced());
