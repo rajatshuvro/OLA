@@ -23,7 +23,10 @@ public class Main {
 
             String subCommand = subArgs[0];
             switch (subCommand){
-                case "add":
+                case "add-books":
+                    AddBooks.Run(subArgs, dataProvider.BookDb);
+                    break;
+                case "add-user":
                     AddBooks.Run(subArgs, dataProvider.BookDb);
                     break;
                 case "co":
@@ -32,7 +35,7 @@ public class Main {
                 case "ret":
                     Return.Run(subArgs, dataProvider.TransactionsDb);
                     break;
-                case "stat":
+                case "co-stat":
                     Status.Run(subArgs, dataProvider);
                     break;
                 case "filter":
@@ -56,6 +59,20 @@ public class Main {
         dataProvider.Close();
 
     }
+    private static void PrintMenu() {
+        System.out.println("Please choose from the following options:");
+        System.out.println("\tadd-books      (add new books)");
+        System.out.println("\tadd-user       (add new user via command line)");
+        System.out.println("\tco             (checkout book)");
+        System.out.println("\tret            (return book)");
+        System.out.println("\tco-stat        (checkout status)");
+        System.out.println("\tsearch         (search book database)");
+        System.out.println("\tfilter         (filter book database by genre, level, etc fields)");
+        System.out.println("\tlegacy         (import books from legacy tsv)");
+        System.out.println("\tquit           (quit OLA)");
+        System.out.println("\t[Type command to get detailed help]");
+    }
+
     private static String commandSyntex = "ola -b [full path to books data file] " +
             "-u [full path to users data file] " +
             "-t [full path to transactions data file]";
@@ -100,17 +117,5 @@ public class Main {
 
     }
 
-    private static void PrintMenu() {
-        System.out.println("Please choose from the following options:");
-        System.out.println("\tadd     (add new book to database)");
-        System.out.println("\tco      (checkout book)");
-        System.out.println("\tret     (return book)");
-        System.out.println("\tstat    (checkout status)");
-        System.out.println("\tsearch  (search book database)");
-        System.out.println("\tfilter  (filter book database by genre, level, etc fields)");
-        System.out.println("\tlegacy  (import books from legacy tsv)");
-        System.out.println("\tquit    (quit OLA)");
-        System.out.println("\t[Type command to get detailed help]");
-    }
 
 }

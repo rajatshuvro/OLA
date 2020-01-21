@@ -28,7 +28,7 @@ public class User {
     }
 
     public String toString(){
-        return  "Id:       "+Integer.toString(Id) +
+        return  "Id:       "+ Id +
                 "\nName:   "+ Name +
                 "\nRole:   "+ Role +
                 "\nEmail:  "+ Email+
@@ -37,7 +37,7 @@ public class User {
 
     //static fields
     public static final String StudentRoleTag = "Student";
-    public static final String BorrowerRoleTag = "Borrower";
+    public static final String CitizenRoleTag = "Citizen";
     public static final String VolunteerRoleTag = "Volunteer";
     public static final String TeacherRoleTag = "Teacher";
     public static final String AdminRoleTag = "Administrator";
@@ -51,4 +51,6 @@ public class User {
     private static boolean IsValidRole(String role) {
         return RoleTags.contains(role);
     }
+
+
 }

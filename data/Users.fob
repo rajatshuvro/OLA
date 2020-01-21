@@ -2,7 +2,7 @@
 #schema Number = 1
 #Name = User name. Value = <String>
 #Id = User Id. Value = <Integer>
-#Role = User role. Value = Teacher/Student/Volunteer/Administrator
+#Role = User role. Value = Teacher/Student/Volunteer/Administrator/Citizen
 ***************************************************************
 Name:	Saber Nabil
 Id:		234

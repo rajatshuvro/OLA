@@ -6,6 +6,7 @@ import java.util.HashSet;
 
 public class UserDb {
     private HashMap<Integer, User> _users;
+    private int _maxId;
 
     public UserDb(Iterable<User> users){
         _users = new HashMap<>();
@@ -32,5 +33,14 @@ public class UserDb {
     public String GetUserName(int userId) {
         if(_users.containsKey(userId)) return _users.get(userId).Name;
         return null;
+    }
+
+    public int AddNewUser(String name, String role, String email, String phone) {
+        if (! User.IsValid(_maxId+1, name, role, email, phone)) return -1;
+        _maxId++;
+        var user = new User(_maxId, name, role, email, phone);
+        _users.put(user.Id, user);
+        return user.Id;
+        //todo: append to user file
     }
 }
