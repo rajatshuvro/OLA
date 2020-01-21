@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
-
-import static com.ola.parsers.ParserUtilities.GetNextRecordLines;
+import java.util.HashMap;
 
 public class TransactionParser {
     private InputStream _inputStream;
@@ -25,29 +23,30 @@ public class TransactionParser {
 
     public ArrayList<Transaction> GetTransactions() throws IOException {
         ArrayList<Transaction> transactions = new ArrayList<>();
+        var fobParser = new FlatObjectParser(_inputStream, new String[]{
+                BookIdTag, UserIdTag, DateTag, TypeTag
+        });
 
-        try (Scanner scanner =  new Scanner(_inputStream)){
-            while (scanner.hasNextLine()){
-                String[] lines = GetNextRecordLines(scanner,"*");
-                if(lines.length == 0) continue;
-                var transaction = GetTransaction(lines);
-                if (transaction != null){
-                    transactions.add(transaction);
-                }
-            }
+        var nextSetOfValues =fobParser.GetNextSetOfValues();
+        while ( nextSetOfValues != null){
+            var transaction = GetTransaction(nextSetOfValues);
+            if (transaction != null)  transactions.add(transaction);
+
+            nextSetOfValues = fobParser.GetNextSetOfValues();
         }
+        fobParser.close();
         return transactions;
     }
 
-    private Transaction GetTransaction(String[] lines) {
+    private Transaction GetTransaction(HashMap<String, String> keyValues) {
         String bookId = null;
         int userId = 0;
         Date date = null;
         String type = null;
-        for (String line: lines) {
-            var splits = line.split(":",2);
-            var key = splits[0].strip();
-            var value = splits[1].strip();
+
+        for (var entry: keyValues.entrySet()) {
+            var key = entry.getKey();
+            var value = entry.getValue();
 
             switch (key){
                 case BookIdTag:

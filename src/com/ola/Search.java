@@ -1,6 +1,7 @@
 package com.ola;
 
 import com.ola.databases.BookDb;
+import com.ola.parsers.FlatObjectParser;
 import com.ola.parsers.ParserUtilities;
 import org.apache.lucene.queryparser.classic.ParseException;
 
@@ -19,7 +20,7 @@ public class Search {
         var searcher = bookDb.GetSearchIndex();
 
         for (var id: searcher.Search(queryText, 10)) {
-            System.out.println(ParserUtilities.RecordSeparator);
+            System.out.println(FlatObjectParser.RecordSeparator);
             System.out.println(bookDb.GetBook(id).toString());
         }
     }

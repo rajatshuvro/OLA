@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
-
-import static com.ola.parsers.ParserUtilities.GetNextRecordLines;
+import java.util.HashMap;
 
 public class BookParser {
     private InputStream _inputStream;
@@ -31,24 +29,24 @@ public class BookParser {
         _inputStream = inputStream;
     }
 
-    public ArrayList<Book> GetBooks() {
+    public ArrayList<Book> GetBooks() throws IOException {
         ArrayList<Book> books = new ArrayList<>();
+        var fobParser = new FlatObjectParser(_inputStream, new String[]{
+                TitleTag, AuthorTag, IsbnTag, PageCountTag, PriceTag, PublisherTag, GenreTag, ReadingLevelTag,
+                CopyNumTag, YearTag, EntryDateTag, ExpiryDateTag
+        });
 
-        try (Scanner scanner =  new Scanner(_inputStream)){
-            while (scanner.hasNextLine()){
-                String[] lines = GetNextRecordLines(scanner,"*");
-                if(lines.length == 0) continue;
-                var book = GetBook(lines);
-                if (book != null){
-                    books.add(book);
-                }
-
-            }
+        var nextSetOfValues =fobParser.GetNextSetOfValues();
+        while ( nextSetOfValues != null){
+            var book = GetBook(nextSetOfValues);
+            if (book != null) books.add(book);
+            nextSetOfValues = fobParser.GetNextSetOfValues();
         }
+        fobParser.close();
         return books;
     }
 
-    private Book GetBook(String[] lines) {
+    private Book GetBook(HashMap<String, String> keyValues) {
         String title = null;
         String author = null;
         long isbn = -1;
@@ -63,10 +61,9 @@ public class BookParser {
         Date entryDate = null;
         Date expiryDate = null;
 
-        for (String line: lines) {
-            var splits = line.split(":",2);
-            var key = splits[0].strip();
-            var value = splits[1].strip();
+        for (var entry: keyValues.entrySet()) {
+            var key = entry.getKey();
+            var value = entry.getValue();
             switch (key){
                 case TitleTag:
                     title = value;
@@ -119,6 +116,7 @@ public class BookParser {
     }
 
     public void Close() throws IOException {
+
         _inputStream.close();
     }
 }

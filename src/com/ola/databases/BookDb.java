@@ -2,6 +2,7 @@ package com.ola.databases;
 
 import com.ola.dataStructures.Book;
 import com.ola.luceneIndex.BookSearchIndex;
+import com.ola.parsers.FlatObjectParser;
 import com.ola.parsers.ParserUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
@@ -96,7 +97,7 @@ public class BookDb {
         var writer = new BufferedWriter(new OutputStreamWriter(stream));
         for (Book book: _newBooks) {
             writer.write(book.toString()+'\n');
-            writer.write(ParserUtilities.RecordSeparator+'\n');
+            writer.write(FlatObjectParser.RecordSeparator+'\n');
         }
         writer.close();
 

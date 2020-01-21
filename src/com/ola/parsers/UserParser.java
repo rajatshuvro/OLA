@@ -5,9 +5,7 @@ import com.ola.dataStructures.User;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Scanner;
-
-import static com.ola.parsers.ParserUtilities.GetNextRecordLines;
+import java.util.HashMap;
 
 public class UserParser {
     private InputStream _inputStream;
@@ -24,37 +22,31 @@ public class UserParser {
 
     public ArrayList<User> GetUsers() throws IOException {
         ArrayList<User> users = new ArrayList<>();
+        var fobParser = new FlatObjectParser(_inputStream, new String[]{
+               IdTag, NameTag, RoleTag, EmailTag, PhoneTag
+        });
 
-        try (Scanner scanner =  new Scanner(_inputStream)){
-            while (scanner.hasNextLine()){
-                String[] lines = GetNextRecordLines(scanner,"*");
-                if(lines.length == 0) continue;
-                var user = GetUser(lines);
+        var nextSetOfValues =fobParser.GetNextSetOfValues();
+        while ( nextSetOfValues != null){
+            var user = GetUser(nextSetOfValues);
+            if (user != null)  users.add(user);
 
-                if(user == null) {
-                    System.out.println("Invalid User record:");
-                    for (var line : lines) {
-                        System.out.println(line);
-                    }
-                    continue;
-                }
-                users.add(user);
-
-            }
+            nextSetOfValues = fobParser.GetNextSetOfValues();
         }
+        fobParser.close();
+
         return users;
     }
 
-    private User GetUser(String[] lines){
+    private User GetUser(HashMap<String, String> keyValues){
         int id = 0;
         String name = null;
         String role = null;
         String email = null;
         String phnNo = null;
-        for (String line: lines) {
-            var splits = line.split(":",2);
-            var key = splits[0].strip();
-            var value = splits[1].strip();
+        for (var entry: keyValues.entrySet()) {
+            var key = entry.getKey();
+            var value = entry.getValue();
 
             switch (key){
                 case IdTag:
