@@ -42,7 +42,7 @@ public class AddUser
             var phone = cmd.getOptionValue("phone");
 
             int id = userDb.AddNewUser(name, role, email, phone);
-            if(id != -1) System.out.println("New user added. Id: "+id);
+            if(id != -1) System.out.println(name+" was added to the user database. Assigned Id: "+id);
             else System.out.println("Failed to add new user.");
         }
         catch (ParseException e) {

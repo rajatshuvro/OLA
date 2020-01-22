@@ -11,7 +11,14 @@ public class UserDb {
     public UserDb(Iterable<User> users){
         _users = new HashMap<>();
         for (User user: users) {
-            _users.put(user.Id, user);
+            if(user.IsValid())
+                _users.put(user.Id, user);
+            else {
+                System.out.println("Invalid User:");
+                System.out.println(user.toString());
+                continue;
+            }
+            if(user.Id > _maxId) _maxId = user.Id;
         }
     }
     public int size(){
@@ -19,6 +26,12 @@ public class UserDb {
     }
     public User GetUser(int id){
         if(_users.containsKey(id)) return _users.get(id);
+        return null;
+    }
+    public User GetUser(String name){
+        for (var user: _users.values()) {
+            if(user.Name.equals(name)) return user;
+        }
         return null;
     }
 

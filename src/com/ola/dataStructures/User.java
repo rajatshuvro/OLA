@@ -18,6 +18,9 @@ public class User {
         Email = email;
         Phone = phn;
     }
+    public boolean IsValid(){
+        return IsValid(Id, Name, Role, Email, Phone);
+    }
 
     public static boolean IsValid(int id, String name, String role, String email, String phn) {
         return id > 0 &&
@@ -28,11 +31,11 @@ public class User {
     }
 
     public String toString(){
-        return  "Id:       "+ Id +
-                "\nName:   "+ Name +
-                "\nRole:   "+ Role +
-                "\nEmail:  "+ Email+
-                "\nPhn:    "+ Phone;
+        return    "Id:       "+ Id +
+                "\nName:     "+ Name +
+                "\nRole:     "+ Role +
+                "\nEmail:    "+ Email+
+                "\nPhn:      "+ Phone;
     }
 
     //static fields
@@ -44,6 +47,7 @@ public class User {
 
     public static final HashSet<String> RoleTags = new HashSet<>(){{
         add(StudentRoleTag);
+        add(CitizenRoleTag);
         add(VolunteerRoleTag);
         add(TeacherRoleTag);
         add(AdminRoleTag);
