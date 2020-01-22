@@ -1,4 +1,4 @@
-package com.ola.unitTests;
+package com.ola.unitTests.parsers;
 import com.ola.parsers.LegacyBookParser;
 import org.junit.jupiter.api.Test;
 

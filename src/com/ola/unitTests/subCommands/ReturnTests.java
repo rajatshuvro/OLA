@@ -1,6 +1,7 @@
-package com.ola.unitTests;
+package com.ola.unitTests.subCommands;
 
 import com.ola.CheckOut;
+import com.ola.Return;
 import com.ola.dataStructures.Transaction;
 import com.ola.databases.TransactionDb;
 import com.ola.utilities.TimeUtilities;
@@ -9,9 +10,9 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CheckoutTests {
+public class ReturnTests {
     private HashSet<String> GetBookIds() {
         var books = new HashSet<String>();
         books.add("7890788-(2)");
@@ -40,40 +41,21 @@ public class CheckoutTests {
 
         return transactions;
     }
-
     @Test
-    public void Checkout_already_in_circulation(){
+    public void Return(){
         var transactionDb = new TransactionDb(GetTransactions(), GetUserIds(), GetBookIds());
-        var args = new String[]{"co", "-b", "7890788-(2)","-u","345"};
-        CheckOut.Run(args, transactionDb);
+        var args = new String[]{"ret", "-b", "456098-(1)"};
+        Return.Run(args, transactionDb);
 
-        assertEquals(Transaction.CheckoutTag, transactionDb.GetBookStatus("7890788-(2)"));
+        assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("456098-(1)"));
     }
 
     @Test
-    public void Checkout_new_book(){
+    public void Return_invalid_book(){
         var transactionDb = new TransactionDb(GetTransactions(), GetUserIds(), GetBookIds());
-        var args = new String[]{"co", "-b", "678564-(2)","-u","345"};
-        CheckOut.Run(args, transactionDb);
+        var args = new String[]{"ret", "-b", "456098-(4)"};
+        Return.Run(args, transactionDb);
 
-        assertEquals(Transaction.CheckoutTag, transactionDb.GetBookStatus("678564-(2)"));
-    }
-
-    @Test
-    public void Checkout_invalid_user(){
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserIds(), GetBookIds());
-        var args = new String[]{"co", "-b", "678564-(2)","-u","1345"};
-        CheckOut.Run(args, transactionDb);
-
-        assertEquals(Transaction.UnknownTag, transactionDb.GetBookStatus("678564-(2)"));
-    }
-
-    @Test
-    public void Checkout_invalid_book(){
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserIds(), GetBookIds());
-        var args = new String[]{"co", "-b", "678564-(3)","-u","345"};
-        CheckOut.Run(args, transactionDb);
-
-        assertEquals(Transaction.UnknownTag, transactionDb.GetBookStatus("678564-(2)"));
+        assertEquals(Transaction.UnknownTag, transactionDb.GetBookStatus("456098-(4)"));
     }
 }

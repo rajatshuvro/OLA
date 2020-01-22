@@ -1,4 +1,4 @@
-package com.ola.unitTests;
+package com.ola.unitTests.databases;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -7,13 +7,14 @@ import com.ola.dataStructures.User;
 import com.ola.databases.UserDb;
 import com.ola.parsers.ParserUtilities;
 import com.ola.parsers.UserParser;
+import com.ola.unitTests.TestStreams;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 
-public class UserTests {
+public class UserDbTests {
     @Test
     public void ParseUsersTest() throws IOException {
         var parser = new UserParser(TestStreams.GetUsersStream());

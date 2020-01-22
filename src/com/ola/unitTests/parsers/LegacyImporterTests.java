@@ -1,4 +1,4 @@
-package com.ola.unitTests;
+package com.ola.unitTests.parsers;
 import com.ola.LegacyImporter;
 import com.ola.dataStructures.Book;
 import com.ola.parsers.LegacyBookParser;

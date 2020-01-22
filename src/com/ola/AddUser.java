@@ -1,14 +1,7 @@
 package com.ola;
 
-import com.ola.dataStructures.User;
-import com.ola.databases.BookDb;
 import com.ola.databases.UserDb;
-import com.ola.parsers.BookParser;
 import org.apache.commons.cli.*;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class AddUser
 {

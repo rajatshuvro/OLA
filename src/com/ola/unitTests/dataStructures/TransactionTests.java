@@ -1,8 +1,9 @@
-package com.ola.unitTests;
+package com.ola.unitTests.dataStructures;
 
 import com.ola.dataStructures.Transaction;
 import com.ola.databases.TransactionDb;
 import com.ola.parsers.TransactionParser;
+import com.ola.unitTests.TestStreams;
 import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.api.Test;
 

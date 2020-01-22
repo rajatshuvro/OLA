@@ -1,8 +1,9 @@
-package com.ola.unitTests;
+package com.ola.unitTests.parsers;
 
 import java.io.*;
 
 import com.ola.parsers.BookParser;
+import com.ola.unitTests.TestStreams;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

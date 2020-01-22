@@ -7,13 +7,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ed11dd1-2a19-4e69-88cf-ccc4bfd3ec6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/ola/AddUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/ola/luceneIndex/TransactionSearchIndex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/ola/luceneIndex/UserSearchIndex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ola/unitTests/subCommands/AddUserTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/dataStructures/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/dataStructures/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ola/databases/UserDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/databases/UserDb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/AddUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/AddUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/AddBooksTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/subCommands/AddBooksTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/BookDbTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/databases/BookDbTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/BookParserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/parsers/BookParserTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/BookTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/dataStructures/BookTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/CheckoutTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/subCommands/CheckoutTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/DataProviderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/databases/DataProviderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/FilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/subCommands/FilterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/LegacyImporterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/parsers/LegacyImporterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/LegacyParserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/parsers/LegacyParserTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/ReturnTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/subCommands/ReturnTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/StatusTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/subCommands/StatusTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/TransactionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/dataStructures/TransactionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/unitTests/UserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/unitTests/databases/UserDbTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,12 +102,12 @@
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="PATTERN" value="com.ola.unitTests.subCommands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookParserTests" />
+      <option name="PACKAGE_NAME" value="com.ola.unitTests.parsers" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.parsers.BookParserTests" />
       <option name="METHOD_NAME" value="ParseAntiqueBooks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -108,12 +118,12 @@
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="PATTERN" value="com.ola.unitTests.subCommands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.BookParserTests" />
+      <option name="PACKAGE_NAME" value="com.ola.unitTests.parsers" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.parsers.BookParserTests" />
       <option name="METHOD_NAME" value="ParseBook" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -124,12 +134,12 @@
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="PATTERN" value="com.ola.unitTests.subCommands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.TransactionTests" />
+      <option name="PACKAGE_NAME" value="com.ola.unitTests.dataStructures" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.dataStructures.TransactionTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -139,28 +149,28 @@
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="PATTERN" value="com.ola.unitTests.subCommands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.TransactionTests" />
+      <option name="PACKAGE_NAME" value="com.ola.unitTests.dataStructures" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.dataStructures.TransactionTests" />
       <option name="METHOD_NAME" value="SkipInvalidUserAndBook" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserDbTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="PATTERN" value="com.ola.unitTests.subCommands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.UserTests" />
+      <option name="PACKAGE_NAME" value="com.ola.unitTests.databases" />
+      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.databases.UserDbTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -170,7 +180,7 @@
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ola.unitTests.*" />
+          <option name="PATTERN" value="com.ola.unitTests.subCommands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -187,11 +197,11 @@
       <item itemvalue="JUnit.BookParserTests.ParseAntiqueBooks" />
       <item itemvalue="JUnit.TransactionTests" />
       <item itemvalue="JUnit.TransactionTests.SkipInvalidUserAndBook" />
-      <item itemvalue="JUnit.UserTests" />
+      <item itemvalue="JUnit.UserDbTests" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserTests" />
+        <item itemvalue="JUnit.UserDbTests" />
         <item itemvalue="JUnit.TransactionTests" />
         <item itemvalue="JUnit.TransactionTests.SkipInvalidUserAndBook" />
         <item itemvalue="JUnit.BookParserTests.ParseAntiqueBooks" />
@@ -231,6 +241,7 @@
       <workItem from="1579431321424" duration="2957000" />
       <workItem from="1579569908585" duration="2260000" />
       <workItem from="1579613644626" duration="6830000" />
+      <workItem from="1579710419059" duration="1229000" />
     </task>
     <task id="LOCAL-00001" summary="creating the search index in memory">
       <created>1579053469870</created>
@@ -275,6 +286,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="773" y="270" key="#Project_Structure/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281182905" />
+    <state x="773" y="277" key="#Template_Data_Languages" timestamp="1579710988096">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="773" y="277" key="#Template_Data_Languages/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579710988096" />
     <state x="555" y="228" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579277194170">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -380,17 +395,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/FilterTests.java</url>
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/subCommands/FilterTests.java</url>
           <line>30</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/LegacyParserTests.java</url>
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/parsers/LegacyParserTests.java</url>
           <line>54</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/LegacyImporterTests.java</url>
+          <url>file://$PROJECT_DIR$/src/com/ola/unitTests/parsers/LegacyImporterTests.java</url>
           <line>24</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>

@@ -1,12 +1,13 @@
-package com.ola.unitTests;
+package com.ola.unitTests.subCommands;
 
 import com.ola.DataProvider;
 import com.ola.Status;
+import com.ola.unitTests.TestStreams;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static com.ola.unitTests.DataProviderTests.*;
+import static com.ola.unitTests.databases.DataProviderTests.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StatusTests {

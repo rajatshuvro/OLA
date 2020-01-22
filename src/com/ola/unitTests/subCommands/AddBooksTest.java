@@ -1,7 +1,8 @@
-package com.ola.unitTests;
+package com.ola.unitTests.subCommands;
 import com.ola.AddBooks;
 import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
+import com.ola.unitTests.databases.BookDbTests;
 import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.util.ArrayList;

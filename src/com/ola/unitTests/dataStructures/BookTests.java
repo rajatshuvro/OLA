@@ -1,4 +1,4 @@
-package com.ola.unitTests;
+package com.ola.unitTests.dataStructures;
 
 import com.ola.dataStructures.Book;
 import org.junit.jupiter.api.Test;

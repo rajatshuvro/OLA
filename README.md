@@ -17,11 +17,15 @@ Usage:<br/>
 Once OLA starts successfully, the following sub-commands will be available<br/>
 
 <pre><code>
-	add		Add new books 	[add -i {input file TSV with new book records}]<br/>
-	co		Checkout 	[co -i {book id} -b {borrower id}]<br/>
-	ret		return  	[ci -i {book id} -b {borrower_id}]<br/>
-	status	checkout status	[status]<br/>
-	help		detailed help	[help {command}]
+	add-books      (add new books)<br/>
+	add-user       (add new user via command line)<br/>
+	co             (checkout book)<br/>
+	ret            (return book)<br/>
+	co-stat        (checkout status)<br/>
+	search         (free text search on book database)<br/>
+	filter         (filter book database by genre, level, etc fields)<br/>
+	legacy         (import books from legacy tsv)<br/>
+	[Type command to get detailed help]<br/>
 </pre></code>
 
 
