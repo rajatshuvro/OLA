@@ -3,6 +3,7 @@ package com.ola.databases;
 import com.ola.dataStructures.User;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Random;
 
 public class UserDb {
     private HashMap<Integer, User> _users;
@@ -49,8 +50,11 @@ public class UserDb {
     }
 
     public int AddNewUser(String name, String role, String email, String phone) {
-        if (! User.IsValid(_maxId+1, name, role, email, phone)) return -1;
-        _maxId++;
+        var rand = new Random(13);
+        var idIncrement = rand.nextInt(20);
+
+        if (! User.IsValid(_maxId+idIncrement, name, role, email, phone)) return -1;
+        _maxId+=idIncrement;
         var user = new User(_maxId, name, role, email, phone);
         _users.put(user.Id, user);
         return user.Id;

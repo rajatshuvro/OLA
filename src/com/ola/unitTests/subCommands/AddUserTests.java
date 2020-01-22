@@ -25,6 +25,6 @@ public class AddUserTests {
         AddUser.Run(new String[]{"add-user", "-n","Shawroth Shuvro", "-r", "Student", "-e", "shawroth.shuvro@onkur.com", "-p", "(858) 666 7242"}, userDb);
         var user = userDb.GetUser("Shawroth Shuvro");
         assertNotNull(user);
-        assertEquals(346,user.Id);
+        assertEquals(357,user.Id);
     }
 }
