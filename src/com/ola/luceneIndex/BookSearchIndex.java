@@ -34,6 +34,21 @@ public class BookSearchIndex {
 
         BuildIndex(books);
     }
+    private void BuildIndex(Iterable<Book> books) throws IOException {
+        for (Book book : books) {
+            _ids.add(book.GetId());
+            Add(book);
+        }
+        _writer.close();
+        // Build an IndexSearcher using the in-memory index
+        _searcher = new IndexSearcher(DirectoryReader.open(_memDirectory));
+    }
+
+    private void Add(Book book) throws IOException {
+        //System.out.println("Indexing "+book.GetId());
+        Document document = GetDocument(book);
+        _writer.addDocument(document);
+    }
 
     private Document GetDocument(Book book) throws IOException {
         Document document = new Document();
@@ -47,22 +62,6 @@ public class BookSearchIndex {
         //document.add(idField);
 
         return document;
-    }
-
-    private void Add(Book book) throws IOException {
-        //System.out.println("Indexing "+book.GetId());
-        Document document = GetDocument(book);
-        _writer.addDocument(document);
-    }
-
-    private void BuildIndex(Iterable<Book> books) throws IOException {
-        for (Book book : books) {
-                _ids.add(book.GetId());
-               Add(book);
-            }
-        _writer.close();
-        // Build an IndexSearcher using the in-memory index
-        _searcher = new IndexSearcher(DirectoryReader.open(_memDirectory));
     }
 
     public String[] Search(String queryString, int topHitCount) throws IOException, ParseException {

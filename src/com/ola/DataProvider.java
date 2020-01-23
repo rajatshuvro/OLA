@@ -1,6 +1,5 @@
 package com.ola;
 
-import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
 import com.ola.databases.TransactionDb;
 import com.ola.databases.UserDb;
@@ -13,7 +12,7 @@ import java.io.*;
 public class DataProvider {
     public BookDb BookDb;
     public UserDb UserDb;
-    public TransactionDb TransactionsDb;
+    public TransactionDb TransactionDb;
 
     private BookParser _bookParser;
     private UserParser _userParser;
@@ -41,12 +40,19 @@ public class DataProvider {
     public void Load() throws IOException{
         BookDb = new BookDb(_bookParser.GetBooks());
         UserDb = new UserDb(_userParser.GetUsers());
-        TransactionsDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb.GetIds(), BookDb.GetIds());
+        TransactionDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb.GetIds(), BookDb.GetIds());
 
         System.out.print("Building search index on all books...");
         BookDb.GetSearchIndex();
         System.out.println("done");
 
+        System.out.print("Building search index on all users...");
+        UserDb.GetSearchIndex();
+        System.out.println("done");
+
+        System.out.print("Building search index on all transactions...");
+        TransactionDb.GetSearchIndex();
+        System.out.println("done");
 
         _userInputStream.close();
         _bookInputStream.close();
@@ -54,7 +60,7 @@ public class DataProvider {
     }
 
     public void Close() throws IOException {
-        TransactionsDb.Append(_transactionAppendStream);
+        TransactionDb.Append(_transactionAppendStream);
         _transactionAppendStream.close();
 
         BookDb.Append(_bookAppendStream);

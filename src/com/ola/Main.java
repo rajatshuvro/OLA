@@ -15,8 +15,9 @@ public class Main {
         System.out.println("Welcome to OLA (Onkur Library Application");
 
         boolean quit=false;
+        PrintMenu();
+
         while (!quit){
-            PrintMenu();
             Scanner in = new Scanner(System.in);
             String command = in.nextLine();
             String[] subArgs = command.split("\\s+");
@@ -30,10 +31,10 @@ public class Main {
                     AddBooks.Run(subArgs, dataProvider.BookDb);
                     break;
                 case "co":
-                    CheckOut.Run(subArgs, dataProvider.TransactionsDb);
+                    CheckOut.Run(subArgs, dataProvider.TransactionDb);
                     break;
                 case "ret":
-                    Return.Run(subArgs, dataProvider.TransactionsDb);
+                    Return.Run(subArgs, dataProvider.TransactionDb);
                     break;
                 case "co-stat":
                     Status.Run(subArgs, dataProvider);
@@ -42,13 +43,16 @@ public class Main {
                     Filter.Run(subArgs, dataProvider.BookDb);
                     break;
                 case "search":
-                    Search.Run(subArgs, dataProvider.BookDb);
+                    Search.Run(subArgs, dataProvider);
                     break;
                 case "legacy":
                     LegacyImporter.Run(subArgs);
                     break;
                 case "quit":
                     quit = true;
+                    break;
+                case "help":
+                    PrintMenu();
                     break;
                 default:
                     System.out.println("Type {quit} to exit");
@@ -70,6 +74,7 @@ public class Main {
         System.out.println("\tfilter         (filter book database by genre, level, etc fields)");
         System.out.println("\tlegacy         (import books from legacy tsv)");
         System.out.println("\tquit           (quit OLA)");
+        System.out.println("\thelp           (print this menu)");
         System.out.println("\t[Type command to get detailed help]");
     }
 

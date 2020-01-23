@@ -1,6 +1,9 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.User;
+import com.ola.luceneIndex.UserSearchIndex;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
@@ -8,6 +11,7 @@ import java.util.Random;
 public class UserDb {
     private HashMap<Integer, User> _users;
     private int _maxId;
+    private UserSearchIndex _searchIndex;
 
     public UserDb(Iterable<User> users){
         _users = new HashMap<>();
@@ -59,5 +63,14 @@ public class UserDb {
         _users.put(user.Id, user);
         return user.Id;
         //todo: append to user file
+    }
+
+    public UserSearchIndex GetSearchIndex() throws IOException {
+        if(_searchIndex == null) BuildSearchIndex();
+        return _searchIndex;
+    }
+
+    private void BuildSearchIndex() throws IOException {
+        _searchIndex = new UserSearchIndex(_users.values());
     }
 }

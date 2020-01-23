@@ -22,9 +22,11 @@ Once OLA starts successfully, the following sub-commands will be available<br/>
 	co             (checkout book)<br/>
 	ret            (return book)<br/>
 	co-stat        (checkout status)<br/>
-	search         (free text search on book database)<br/>
+	search         (free text search on books, users and transactions)<br/>
 	filter         (filter book database by genre, level, etc fields)<br/>
 	legacy         (import books from legacy tsv)<br/>
+	quit           (quit OLA)<br/>
+	help           (print this menu)<br/>
 	[Type command to get detailed help]<br/>
 </pre></code>
 

@@ -36,7 +36,7 @@ public class Status {
     }
 
     public static String GetUserCheckouts(DataProvider dataProvider, int userId) {
-        var transactionDb = dataProvider.TransactionsDb;
+        var transactionDb = dataProvider.TransactionDb;
         var userDb = dataProvider.UserDb;
         var bookDb = dataProvider.BookDb;
         var userName = userDb.GetUserName(userId);
@@ -46,16 +46,16 @@ public class Status {
         for (Transaction record: transactionDb.GetPendingCheckouts()) {
             if(userId != record.UserId) continue;
             var bookTitle = bookDb.GetTitle(record.BookId);
-            sb.append("User:\t\t\t" + userName + " [id:"+ record.UserId+"]\n");
-            sb.append("Title:\t\t\t" + bookTitle + " [id:"+ record.BookId+"]\n");
-            sb.append("Borrowed on:\t"+ TimeUtilities.ToString(record.Date)+"\n");
+            sb.append("User:          " + userName + " [id:"+ record.UserId+"]\n");
+            sb.append("Title:         " + bookTitle + " [id:"+ record.BookId+"]\n");
+            sb.append("Borrowed on:   "+ TimeUtilities.ToString(record.Date)+"\n");
             sb.append("**********************************************\n");
         }
         return sb.toString();
     }
 
     public static String GetAllCheckouts(DataProvider dataProvider) {
-        var transactionDb = dataProvider.TransactionsDb;
+        var transactionDb = dataProvider.TransactionDb;
         var userDb = dataProvider.UserDb;
         var bookDb = dataProvider.BookDb;
         var sb = new StringBuilder();
@@ -64,9 +64,9 @@ public class Status {
         for (Transaction record: transactionDb.GetPendingCheckouts()) {
             var userName = userDb.GetUserName(record.UserId);
             var bookTitle = bookDb.GetTitle(record.BookId);
-            sb.append("User:\t\t\t" + userName + " [id:"+ record.UserId+"]\n");
-            sb.append("Title:\t\t\t" + bookTitle + " [id:"+ record.BookId+"]\n");
-            sb.append("Borrowed on:\t"+ TimeUtilities.ToString(record.Date)+"\n");
+            sb.append("User:            " + userName + " [id:"+ record.UserId+"]\n");
+            sb.append("Title:           " + bookTitle + " [id:"+ record.BookId+"]\n");
+            sb.append("Borrowed on:     "+ TimeUtilities.ToString(record.Date)+"\n");
             sb.append("**********************************************\n");
         }
         return sb.toString();

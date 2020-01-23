@@ -1,6 +1,10 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Transaction;
+import com.ola.luceneIndex.TransactionSearchIndex;
+import com.ola.luceneIndex.UserSearchIndex;
+import com.ola.parsers.FlatObjectParser;
+import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.TimeUtilities;
 
 import java.io.BufferedWriter;
@@ -17,6 +21,7 @@ public class TransactionDb {
     private HashSet<Integer> _userIds;
     private HashSet<String> _bookIds;
     private int _newRecordIndex;//keep track of where the new records start from
+    private TransactionSearchIndex _searchIndex;
 
     public TransactionDb(Iterable<Transaction> transactions, HashSet<Integer> userIds, HashSet<String> bookIds){
         //transactions are assumed to ordered by increasing timestamps
@@ -46,6 +51,11 @@ public class TransactionDb {
         _newRecordIndex = _transactions.size();
     }
 
+    public Transaction Get(int index){
+        if(index < 0 || index >= _transactions.size()) return null;
+        return _transactions.get(index);
+    }
+
     public boolean Add(Transaction record){
         //make sure the book exists in the book database and the user in user database
         if(!_bookIds.contains(record.BookId)){
@@ -72,18 +82,14 @@ public class TransactionDb {
         _transactions.add(record);
         return true;
     }
-    private final String RecordSeparator = "************************************";
 
     public void Append(OutputStream stream) throws IOException {
         if(_newRecordIndex == _transactions.size()) return;
         var writer = new BufferedWriter(new OutputStreamWriter(stream));
         for (int i = _newRecordIndex; i < _transactions.size(); i++) {
             var record = _transactions.get(i);
-            writer.write("Book Id:\t"+record.BookId+'\n');
-            writer.write("User Id:\t"+record.UserId+'\n');
-            writer.write("Date:\t\t"+ TimeUtilities.ToString(record.Date)+'\n');
-            writer.write("Type:\t\t"+record.Type+'\n');
-            writer.write(RecordSeparator+'\n');
+            writer.write(record.toString()+'\n');
+            writer.write(FlatObjectParser.RecordSeparator +'\n');
             _newRecordIndex++;
         }
         writer.close();
@@ -105,13 +111,10 @@ public class TransactionDb {
             writer.write(line);
         }
         //not required, but for aesthetics
-        writer.write(RecordSeparator+'\n');
+        writer.write(FlatObjectParser.RecordSeparator+'\n');
         for (Transaction record: _transactions) {
-            writer.write("Book Id:\t"+record.BookId+'\n');
-            writer.write("User Id:\t"+record.UserId+'\n');
-            writer.write("Date:\t\t"+ TimeUtilities.ToString(record.Date)+'\n');
-            writer.write("Type:\t\t"+record.Type+'\n');
-            writer.write(RecordSeparator+'\n');
+            writer.write(record.toString()+'\n');
+            writer.write(FlatObjectParser.RecordSeparator+'\n');
         }
         writer.close();
     }
@@ -128,5 +131,14 @@ public class TransactionDb {
                 checkouts.add(record);
         }
         return checkouts;
+    }
+
+    public TransactionSearchIndex GetSearchIndex() throws IOException {
+        if(_searchIndex == null) BuildSearchIndex();
+        return _searchIndex;
+    }
+
+    private void BuildSearchIndex() throws IOException {
+        _searchIndex = new TransactionSearchIndex(_transactions);
     }
 }

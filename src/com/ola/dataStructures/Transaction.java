@@ -1,5 +1,8 @@
 package com.ola.dataStructures;
 
+import com.ola.DataProvider;
+import com.ola.utilities.TimeUtilities;
+
 import java.util.Date;
 import java.util.HashSet;
 
@@ -8,22 +11,20 @@ public class Transaction {
     public final int UserId;
     public final Date Date; // use the transaction time stamp
     public final String Type;
+    public final long Id;
 
     public Transaction(String bookId, int userId, Date date, String type){
         BookId = bookId;
         UserId = userId;
         Date = date;
         Type = type;
+        Id = date.getTime();
     }
 
     public static boolean IsValid(String bookId, int userId, Date date, String type){
         return bookId != null &&
                 userId != 0 &&
                 IsValidType(type);
-    }
-    public String toString(){
-        return "BookId: "+BookId + "UserId: "+UserId + "Time: "+ Date.toString()
-                + "Transaction type: "+ Type;
     }
 
     //static fields
@@ -41,5 +42,15 @@ public class Transaction {
 
     public boolean OlderThan(Transaction record) {
         return Date.before(record.Date);
+    }
+
+    @Override
+    public String toString(){
+        return "Id:            "+ Date.getTime()+'\n'+
+               "Book Id:       "+ BookId+'\n'+
+               "User Id:       "+ UserId+'\n'+
+               "Date:          "+ TimeUtilities.ToString(Date)+'\n'+
+               "Type:          "+Type;
+
     }
 }

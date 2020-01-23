@@ -4,7 +4,6 @@ import com.ola.CheckOut;
 import com.ola.DataProvider;
 import com.ola.Return;
 import com.ola.dataStructures.Transaction;
-import com.ola.parsers.ParserUtilities;
 import com.ola.unitTests.TestStreams;
 import org.junit.jupiter.api.Test;
 
@@ -18,13 +17,13 @@ public class DataProviderTests {
                 GetAppendStream(), GetAppendStream());
         provider.Load();
         var checkoutArgs = new String[]{"co", "-b", "7890788-(2)","-u","564"};
-        CheckOut.Run(checkoutArgs, provider.TransactionsDb);
+        CheckOut.Run(checkoutArgs, provider.TransactionDb);
 
-        assertEquals(Transaction.CheckoutTag, provider.TransactionsDb.GetBookStatus("7890788-(2)"));
+        assertEquals(Transaction.CheckoutTag, provider.TransactionDb.GetBookStatus("7890788-(2)"));
 
         var returnArgs = new String[]{"ret", "-b", "456098-(1)"};
-        Return.Run(returnArgs, provider.TransactionsDb);
-        assertEquals(Transaction.ReturnTag, provider.TransactionsDb.GetBookStatus("456098-(1)"));
+        Return.Run(returnArgs, provider.TransactionDb);
+        assertEquals(Transaction.ReturnTag, provider.TransactionDb.GetBookStatus("456098-(1)"));
 
     }
 
