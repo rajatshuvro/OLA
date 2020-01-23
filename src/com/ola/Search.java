@@ -4,9 +4,10 @@ import com.ola.parsers.FlatObjectParser;
 import org.apache.lucene.queryparser.classic.ParseException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Search {
-    private static String commandSyntax = "find  \"query text\"";
+    private static String commandSyntax = "search  [query text]";
 
     public static void Run(String[] args, DataProvider dataProvider) throws IOException, ParseException {
         if(args.length <= 1) {
@@ -14,34 +15,44 @@ public class Search {
             return;
         }
         String queryText = ConstructQuery(args);
+        var results = new ArrayList<String>();
 
         var bookDb = dataProvider.BookDb;
         var bookSearchIndex = bookDb.GetSearchIndex();
-        System.out.println("----------------------Books----------------------");
-        for (var id: bookSearchIndex.Search(queryText, 10)) {
-            System.out.println(bookDb.GetBook(id).toString());
-            System.out.println(FlatObjectParser.RecordSeparator);
+
+        for (var id: bookSearchIndex.Search(queryText, 5)) {
+            results.add(bookDb.GetBook(id).toString());
         }
+        OutputResults(results, "----------------------Books----------------------");
 
         var userDb = dataProvider.UserDb;
         var userSearchIndex = userDb.GetSearchIndex();
-        System.out.println('\n');
-        System.out.println("----------------------Users----------------------");
-        for(var id: userSearchIndex.Search(queryText, 10)){
-            System.out.println(userDb.GetUser(id).toString());
-            System.out.println(FlatObjectParser.RecordSeparator);
+
+        for(var id: userSearchIndex.Search(queryText, 5)){
+            results.add(userDb.GetUser(id).toString());
         }
+        OutputResults(results, "----------------------Users----------------------");
 
         var transactionDb = dataProvider.TransactionDb;
         var transactionsSearchIndex = transactionDb.GetSearchIndex();
-        System.out.println('\n');
-        System.out.println("----------------------Transactions--------------------");
-        for(var index: transactionsSearchIndex.Search(queryText, 10)){
-            System.out.println(transactionDb.Get(index).toString());
-            System.out.println(FlatObjectParser.RecordSeparator);
+        for(var index: transactionsSearchIndex.Search(queryText, 5)){
+            results.add(transactionDb.Get(index).toString());
         }
+        OutputResults(results, "----------------------Transactions--------------------");
         System.out.println('\n');
         System.out.println("=========================End of search results=====================");
+    }
+
+    private static void OutputResults(ArrayList<String> results, String banner) {
+        if (results.size() <= 0) return;
+
+        System.out.println(banner);
+        for (var result: results) {
+            System.out.println(result);
+            System.out.println(FlatObjectParser.RecordSeparator);
+        }
+
+        results.clear();
     }
 
     private static String ConstructQuery(String[] args) {
