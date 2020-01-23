@@ -4,7 +4,7 @@ import com.ola.dataStructures.Transaction;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
-public class Status {
+public class CheckoutStatus {
     private static String commandSyntax = "stat  (-u [user id])";
     public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();

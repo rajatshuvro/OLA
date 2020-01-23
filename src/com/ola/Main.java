@@ -37,7 +37,7 @@ public class Main {
                     Return.Run(subArgs, dataProvider.TransactionDb);
                     break;
                 case "co-stat":
-                    Status.Run(subArgs, dataProvider);
+                    CheckoutStatus.Run(subArgs, dataProvider);
                     break;
                 case "filter":
                     Filter.Run(subArgs, dataProvider.BookDb);
