@@ -92,6 +92,7 @@ public class BookDb {
         if(_books.containsKey(bookId)) return _books.get(bookId).Title;
         return null;
     }
+
     public void Append(OutputStream stream)throws IOException {
         if(_newBooks.size()==0) return;
         var writer = new BufferedWriter(new OutputStreamWriter(stream));

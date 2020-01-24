@@ -1,5 +1,5 @@
 package com.ola.unitTests.subCommands;
-import com.ola.AddBooks;
+import com.ola.Add;
 import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
 import com.ola.unitTests.databases.BookDbTests;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AddBooksTest {
+public class AddTest {
     public ArrayList<Book> GetNewBooks() {
         var books = new ArrayList<Book>();
         books.add(new Book(7890788,"Rajat Shuvro Roy","Amar Baba","Bonosree books and co",
@@ -41,7 +41,7 @@ public class AddBooksTest {
     public void AddBooks() throws IOException {
         var bookDb = new BookDb(BookDbTests.GetBooks());
 
-        AddBooks.AddNewBook(GetNewBooks(), bookDb);
+        Add.AddNewBook(GetNewBooks(), bookDb);
 
         assertEquals(3, bookDb.GetCopyCount(7890788));
         assertEquals(3, bookDb.GetCopyCount(678564));
@@ -52,7 +52,7 @@ public class AddBooksTest {
     @Test
     public void AddBooks_details_mismatch() throws IOException {
         var bookDb = new BookDb(BookDbTests.GetBooks());
-        AddBooks.AddNewBook(GetMismatchingBook(), bookDb);
+        Add.AddNewBook(GetMismatchingBook(), bookDb);
 
         assertEquals(8, bookDb.Count());
     }
