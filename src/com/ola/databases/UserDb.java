@@ -1,9 +1,15 @@
 package com.ola.databases;
 
+import com.ola.dataStructures.Book;
 import com.ola.dataStructures.User;
 import com.ola.luceneIndex.UserSearchIndex;
+import com.ola.parsers.FlatObjectParser;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
@@ -12,6 +18,8 @@ public class UserDb {
     private HashMap<Integer, User> _users;
     private int _maxId;
     private UserSearchIndex _searchIndex;
+    private ArrayList<User> _newUsers;
+
 
     public UserDb(Iterable<User> users){
         _users = new HashMap<>();
@@ -25,6 +33,7 @@ public class UserDb {
             }
             if(user.Id > _maxId) _maxId = user.Id;
         }
+        _newUsers = new ArrayList<>();
     }
     public int size(){
         return _users.size();
@@ -61,6 +70,7 @@ public class UserDb {
         _maxId+=idIncrement;
         var user = new User(_maxId, name, role, email, phone);
         _users.put(user.Id, user);
+        _newUsers.add(user);
         return user.Id;
         //todo: append to user file
     }
@@ -72,5 +82,15 @@ public class UserDb {
 
     private void BuildSearchIndex() throws IOException {
         _searchIndex = new UserSearchIndex(_users.values());
+    }
+
+    public void Append(OutputStream stream) throws IOException {
+        if(_newUsers.size()==0) return;
+        var writer = new BufferedWriter(new OutputStreamWriter(stream));
+        for (User user: _newUsers) {
+            writer.write(user.toString()+'\n');
+            writer.write(FlatObjectParser.RecordSeparator+'\n');
+        }
+        writer.close();
     }
 }

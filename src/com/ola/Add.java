@@ -3,13 +3,17 @@ import com.ola.dataStructures.Book;
 import com.ola.dataStructures.User;
 import com.ola.databases.BookDb;
 import com.ola.databases.UserDb;
+import com.ola.parsers.BookCsvParser;
 import com.ola.parsers.BookParser;
 import com.ola.parsers.UserCsvParser;
 import org.apache.commons.cli.*;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 
@@ -40,13 +44,13 @@ public class Add {
             if (cmd.hasOption("book")){
                 var filePath = cmd.getOptionValue("book");
                 InputStream stream = new FileInputStream(filePath);
-                var bookParser = new BookParser(stream);
+                var bookParser = new BookCsvParser(stream);
                 var count = AddNewBook(bookParser.GetBooks(), bookDb);
 
                 System.out.println("Number of new books added: "+count);
             }
             if(cmd.hasOption("user")){
-                var filePath = cmd.getOptionValue("book");
+                var filePath = cmd.getOptionValue("user");
                 InputStream stream = new FileInputStream(filePath);
                 var userParser = new UserCsvParser(stream);
                 var count = AddNewUsers(userParser.GetUsers(), userDb);

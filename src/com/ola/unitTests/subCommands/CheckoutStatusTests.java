@@ -16,7 +16,7 @@ public class CheckoutStatusTests {
     public void Status_command_line() throws IOException {
         var args = new String[]{"status","-u","897"};
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
-                GetAppendStream(), GetAppendStream());
+                GetAppendStream(), GetAppendStream(), GetAppendStream());
         provider.Load();
         //just run it to make sure it doesn't crash
         CheckoutStatus.Run(args, provider);
@@ -25,7 +25,7 @@ public class CheckoutStatusTests {
     @Test
     public void Status_by_user() throws IOException {
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
-                GetAppendStream(), GetAppendStream());
+                GetAppendStream(), GetAppendStream(), GetAppendStream());
         provider.Load();
         var retString = CheckoutStatus.GetUserCheckouts(provider, 897);
         assertTrue(retString.contains("Checkout status for: Zohir Chowdhury"));
@@ -34,7 +34,7 @@ public class CheckoutStatusTests {
     @Test
     public void Status_all() throws IOException {
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
-                GetAppendStream(), GetAppendStream());
+                GetAppendStream(), GetAppendStream(), GetAppendStream());
         provider.Load();
 
         var retString = CheckoutStatus.GetAllCheckouts(provider);

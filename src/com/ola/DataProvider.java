@@ -23,14 +23,16 @@ public class DataProvider {
     private InputStream _transactionInputStream;
     private OutputStream _transactionAppendStream;
     private OutputStream _bookAppendStream;
+    private OutputStream _userAppendStream;
 
     public DataProvider(InputStream bookInputStream, InputStream userInputStream, InputStream transactionInputStream
-                        , OutputStream transactionAppendStream, OutputStream bookAppendStream) {
+                        , OutputStream transactionAppendStream, OutputStream bookAppendStream, OutputStream userAppendStream) {
         _bookInputStream = bookInputStream;
         _userInputStream = userInputStream;
         _transactionInputStream = transactionInputStream;
         _transactionAppendStream = transactionAppendStream;
         _bookAppendStream = bookAppendStream;
+        _userAppendStream = userAppendStream;
 
         _bookParser = new BookParser(bookInputStream);
         _userParser = new UserParser(userInputStream);
@@ -65,5 +67,8 @@ public class DataProvider {
 
         BookDb.Append(_bookAppendStream);
         _bookAppendStream.close();
+
+        UserDb.Append(_userAppendStream);
+        _userAppendStream.close();
     }
 }

@@ -24,7 +24,7 @@ public class Main {
 
             String subCommand = subArgs[0];
             switch (subCommand){
-                case "add-books":
+                case "add":
                     Add.Run(subArgs, dataProvider.BookDb, dataProvider.UserDb);
                     break;
                 case "add-user":
@@ -55,7 +55,7 @@ public class Main {
                     PrintMenu();
                     break;
                 default:
-                    System.out.println("Type {quit} to exit");
+                    System.out.println("Type {help} for the help menu or {quit} to exit");
             }
 
         }
@@ -65,7 +65,7 @@ public class Main {
     }
     private static void PrintMenu() {
         System.out.println("Please choose from the following options:");
-        System.out.println("\tadd-books      (add new books)");
+        System.out.println("\tadd            (add new books or users)");
         System.out.println("\tadd-user       (add new user via command line)");
         System.out.println("\tco             (checkout book)");
         System.out.println("\tret            (return book)");
@@ -112,7 +112,8 @@ public class Main {
             String transactionFileName = cmd.getOptionValue("transactions");
             return new DataProvider(new FileInputStream(bookFileName), new FileInputStream(userFileName),
                     new FileInputStream(transactionFileName), new FileOutputStream(transactionFileName,true),
-                    new FileOutputStream(bookFileName, true));
+                    new FileOutputStream(bookFileName, true),
+                    new FileOutputStream(userFileName, true));
         }
         catch (ParseException | FileNotFoundException e) {
             System.out.println(e.getMessage());

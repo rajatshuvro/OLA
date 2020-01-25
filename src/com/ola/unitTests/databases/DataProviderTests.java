@@ -14,7 +14,7 @@ public class DataProviderTests {
     @Test
     public void DataProvider_basic() throws IOException {
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
-                GetAppendStream(), GetAppendStream());
+                GetAppendStream(), GetAppendStream(), GetAppendStream());
         provider.Load();
         var checkoutArgs = new String[]{"co", "-b", "7890788-(2)","-u","564"};
         CheckOut.Run(checkoutArgs, provider.TransactionDb);
