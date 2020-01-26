@@ -6,6 +6,7 @@ import com.ola.databases.UserDb;
 import com.ola.parsers.BookCsvParser;
 import com.ola.parsers.BookParser;
 import com.ola.parsers.UserCsvParser;
+import com.ola.utilities.FileUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.File;
@@ -43,6 +44,10 @@ public class Add {
             cmd = parser.parse(options, args);
             if (cmd.hasOption("book")){
                 var filePath = cmd.getOptionValue("book");
+                if(!FileUtilities.Exists(filePath)){
+                    System.out.println("Specified file does not exist: "+filePath);
+                }
+
                 InputStream stream = new FileInputStream(filePath);
                 var bookParser = new BookCsvParser(stream);
                 var count = AddNewBook(bookParser.GetBooks(), bookDb);
@@ -51,6 +56,9 @@ public class Add {
             }
             if(cmd.hasOption("user")){
                 var filePath = cmd.getOptionValue("user");
+                if(!FileUtilities.Exists(filePath)){
+                    System.out.println("Specified file does not exist: "+filePath);
+                }
                 InputStream stream = new FileInputStream(filePath);
                 var userParser = new UserCsvParser(stream);
                 var count = AddNewUsers(userParser.GetUsers(), userDb);

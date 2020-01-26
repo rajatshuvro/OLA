@@ -1,4 +1,5 @@
 package com.ola;
+import com.ola.utilities.FileUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.FileInputStream;
@@ -11,6 +12,7 @@ public class Main {
     public static void main(String[] args) throws Exception{
 
         DataProvider dataProvider = Initialize(args);
+        if(dataProvider == null) return;
         dataProvider.Load();
         System.out.println("Welcome to OLA (Onkur Library Application");
 
@@ -55,7 +57,7 @@ public class Main {
                     PrintMenu();
                     break;
                 default:
-                    System.out.println("Type {help} for the help menu or {quit} to exit");
+                    System.out.println("Unrecognized command: "+subCommand+"\nType \"help\" for the help menu or \"quit\" to exit");
             }
 
         }
@@ -108,8 +110,20 @@ public class Main {
         try {
             cmd = parser.parse(options, args);
             String bookFileName = cmd.getOptionValue("books");
+            if(!FileUtilities.Exists(bookFileName)){
+                System.out.println("Failed to find file: "+bookFileName);
+                return null;
+            }
             String userFileName = cmd.getOptionValue("users");
+            if(!FileUtilities.Exists(userFileName)){
+                System.out.println("Failed to find file: "+userFileName);
+                return null;
+            }
             String transactionFileName = cmd.getOptionValue("transactions");
+            if(!FileUtilities.Exists(transactionFileName)){
+                System.out.println("Failed to find file: "+transactionFileName);
+                return null;
+            }
             return new DataProvider(new FileInputStream(bookFileName), new FileInputStream(userFileName),
                     new FileInputStream(transactionFileName), new FileOutputStream(transactionFileName,true),
                     new FileOutputStream(bookFileName, true),

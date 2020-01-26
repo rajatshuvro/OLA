@@ -4,6 +4,7 @@ import com.ola.parsers.ParserUtilities;
 
 public  class FormatUtilities {
     public static boolean IsValidPhoneNumber(String phnString){
+        if(phnString== null) return false;
         var phn = phnString.replace("-", "");
         phn = phn.replace("(", "");
         phn = phn.replace(")", "");
