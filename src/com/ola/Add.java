@@ -73,7 +73,7 @@ public class Add {
         }
     }
 
-    private static int AddNewUsers(ArrayList<User> users, UserDb userDb) {
+    private static int AddNewUsers(ArrayList<User> users, UserDb userDb) throws IOException {
         var count =0;
         for(var user: users){
             var id = userDb.AddNewUser(user.Name, user.Role, user.Email, user.Phone);
@@ -83,6 +83,9 @@ public class Add {
             }
             else System.out.println("Failed to add new user "+user.Name);
         }
+        System.out.print("Rebuilding user search index...");
+        userDb.BuildSearchIndex();
+        System.out.println("done");
         return count;
     }
 
@@ -91,6 +94,9 @@ public class Add {
             var displayId = bookDb.AddNew(book);
             System.out.println("New book added: "+displayId);
         }
+        System.out.print("Rebuilding book search index...");
+        bookDb.BuildSearchIndex();
+        System.out.println("done");
         return books.size();
     }
 }

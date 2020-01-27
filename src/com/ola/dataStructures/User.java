@@ -35,7 +35,7 @@ public class User {
                 "\nName:     "+ Name +
                 "\nRole:     "+ Role +
                 "\nEmail:    "+ Email+
-                "\nPhn:      "+ Phone;
+                "\nPhone:    "+ Phone;
     }
 
     //static fields

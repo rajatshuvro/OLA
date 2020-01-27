@@ -80,7 +80,7 @@ public class UserDb {
         return _searchIndex;
     }
 
-    private void BuildSearchIndex() throws IOException {
+    public void BuildSearchIndex() throws IOException {
         _searchIndex = new UserSearchIndex(_users.values());
     }
 
@@ -93,4 +93,5 @@ public class UserDb {
         }
         writer.close();
     }
+
 }
