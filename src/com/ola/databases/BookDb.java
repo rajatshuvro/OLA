@@ -2,9 +2,7 @@ package com.ola.databases;
 
 import com.ola.dataStructures.Book;
 import com.ola.luceneIndex.BookSearchIndex;
-import com.ola.luceneIndex.UserSearchIndex;
 import com.ola.parsers.FlatObjectParser;
-import com.ola.parsers.ParserUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
 import java.io.BufferedWriter;
