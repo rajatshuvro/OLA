@@ -44,7 +44,7 @@ public class BookCsvParser {
                 isHeaderRecord = false;
                 continue;
             }
-            long isbn = ParserUtilities.ParseULong(record.get(IsbnTag));
+            long isbn = ParserUtilities.ParseIsbn(record.get(IsbnTag));
             String title = record.get(TitleTag);
             String author = record.get(AuthorTag);
             String publisher  = record.get(PublisherTag);
@@ -54,10 +54,16 @@ public class BookCsvParser {
             var readingLevel = ParserUtilities.ParseUInt(record.get(ReadingLevelTag));
             int pageCount = ParserUtilities.ParseUInt(record.get(PageCountTag));
             float price = ParserUtilities.ParseUFloat(record.get(PriceTag));
-            var entryDate = TimeUtilities.parseDate(record.get(TimeTag));
+            //var entryDate = TimeUtilities.parseDate(record.get(TimeTag));
+
+            if(isbn == -1)
+            {
+                isbn = Book.GenerateIsbn(title, author, publisher, year, pageCount);
+                System.out.println("Generating ISBN for Title:"+title+"..."+ isbn);
+            }
 
             books.add( new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, -1,
-                    entryDate, null));
+                    null, null));
         }
         return books;
     }

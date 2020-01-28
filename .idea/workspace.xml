@@ -7,8 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ed11dd1-2a19-4e69-88cf-ccc4bfd3ec6a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/OLA_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OLA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OLA.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Books.fob" beforeDir="false" afterPath="$PROJECT_DIR$/data/Books.fob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Users.fob" beforeDir="false" afterPath="$PROJECT_DIR$/data/Users.fob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/CheckOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/CheckOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/dataStructures/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/dataStructures/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/parsers/BookCsvParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/parsers/BookCsvParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/parsers/BookParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/parsers/BookParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/parsers/LegacyBookParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/parsers/LegacyBookParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ola/parsers/ParserUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ola/parsers/ParserUtilities.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,20 +72,21 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dependencies/lucene-queryparser-8.4.1.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/META-INF" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -100,7 +110,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AddUserTests.AddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookParserTests" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="OLA" />
       <extension name="coverage">
         <pattern>
@@ -108,10 +118,11 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ola.unitTests.subCommands" />
-      <option name="MAIN_CLASS_NAME" value="com.ola.unitTests.subCommands.AddUserTests" />
-      <option name="METHOD_NAME" value="AddUser" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.ola.unitTests" />
+      <option name="TEST_OBJECT" value="uniqueId" />
+      <uniqueIds>
+        <uniqueId value="[engine:junit-jupiter]/[class:com.ola.unitTests.parsers.BookParserTests]" />
+      </uniqueIds>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -195,19 +206,19 @@
     <list>
       <item itemvalue="Application.ola" />
       <item itemvalue="JUnit.com.ola.unitTests in OLA" />
-      <item itemvalue="JUnit.AddUserTests.AddUser" />
       <item itemvalue="JUnit.com.ola in OLA" />
       <item itemvalue="JUnit.SearchTests.SearchUser" />
       <item itemvalue="JUnit.SearchTests.SearchTransactions" />
       <item itemvalue="JUnit.UserCsvParserTests.GetNewUsers" />
+      <item itemvalue="JUnit.BookParserTests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BookParserTests" />
         <item itemvalue="JUnit.UserCsvParserTests.GetNewUsers" />
         <item itemvalue="JUnit.com.ola in OLA" />
         <item itemvalue="JUnit.SearchTests.SearchTransactions" />
         <item itemvalue="JUnit.SearchTests.SearchUser" />
-        <item itemvalue="JUnit.AddUserTests.AddUser" />
       </list>
     </recent_temporary>
   </component>
@@ -250,7 +261,8 @@
       <workItem from="1579882213480" duration="3721000" />
       <workItem from="1579911601374" duration="3427000" />
       <workItem from="1580045455690" duration="3593000" />
-      <workItem from="1580174548271" duration="502000" />
+      <workItem from="1580174548271" duration="2585000" />
+      <workItem from="1580211486396" duration="2091000" />
     </task>
     <task id="LOCAL-00001" summary="creating the search index in memory">
       <created>1579053469870</created>
@@ -308,6 +320,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1051" y="308" key="#com.intellij.ide.util.MemberChooser/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1575476835676" />
+    <state x="887" y="770" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1580176378278">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="887" y="770" key="#com.intellij.ide.util.TreeClassChooserDialog/3840.0.1707.933/0.0.2560.1400@0.0.2560.1400" timestamp="1580176378278" />
     <state x="1128" y="328" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1580174630073">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -330,35 +346,43 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="969" y="351" key="DetectedRootsChooserDialog/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579281147065" />
-    <state x="1011" y="398" key="FileChooserDialogImpl" timestamp="1580174708257">
+    <state x="1011" y="398" key="FileChooserDialogImpl" timestamp="1580176403228">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="758" y="296" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1580046433518" />
     <state x="1011" y="399" key="FileChooserDialogImpl/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579572803390" />
-    <state x="1011" y="398" key="FileChooserDialogImpl/3840.0.1707.933/0.0.2560.1400@0.0.2560.1400" timestamp="1580174708257" />
-    <state width="1868" height="332" key="GridCell.Tab.0.bottom" timestamp="1580049790027">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1011" y="398" key="FileChooserDialogImpl/3840.0.1707.933/0.0.2560.1400@0.0.2560.1400" timestamp="1580176403228" />
+    <state width="1664" height="365" key="GridCell.Tab.0.bottom" timestamp="1580213580135">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
+    <state width="1664" height="365" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1580213580135" />
     <state width="1868" height="332" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580049790027" />
     <state width="2507" height="381" key="GridCell.Tab.0.bottom/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579915031480" />
+    <state width="1817" height="266" key="GridCell.Tab.0.bottom/3840.0.1707.933/0.0.2560.1400@0.0.2560.1400" timestamp="1580177695299" />
     <state width="1716" height="353" key="GridCell.Tab.0.bottom/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state width="1868" height="332" key="GridCell.Tab.0.center" timestamp="1580049790027">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1664" height="365" key="GridCell.Tab.0.center" timestamp="1580213580134">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
+    <state width="1664" height="365" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1580213580134" />
     <state width="1868" height="332" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580049790027" />
     <state width="2507" height="381" key="GridCell.Tab.0.center/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579915031480" />
+    <state width="1817" height="266" key="GridCell.Tab.0.center/3840.0.1707.933/0.0.2560.1400@0.0.2560.1400" timestamp="1580177695299" />
     <state width="1716" height="353" key="GridCell.Tab.0.center/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867862" />
-    <state width="1868" height="332" key="GridCell.Tab.0.left" timestamp="1580049790027">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1664" height="365" key="GridCell.Tab.0.left" timestamp="1580213580134">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
+    <state width="1664" height="365" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1580213580134" />
     <state width="1868" height="332" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580049790027" />
     <state width="2507" height="381" key="GridCell.Tab.0.left/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579915031480" />
+    <state width="1817" height="266" key="GridCell.Tab.0.left/3840.0.1707.933/0.0.2560.1400@0.0.2560.1400" timestamp="1580177695299" />
     <state width="1716" height="353" key="GridCell.Tab.0.left/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867862" />
-    <state width="1868" height="332" key="GridCell.Tab.0.right" timestamp="1580049790027">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1664" height="365" key="GridCell.Tab.0.right" timestamp="1580213580135">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
+    <state width="1664" height="365" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1580213580135" />
     <state width="1868" height="332" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580049790027" />
     <state width="2507" height="381" key="GridCell.Tab.0.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579915031480" />
+    <state width="1817" height="266" key="GridCell.Tab.0.right/3840.0.1707.933/0.0.2560.1400@0.0.2560.1400" timestamp="1580177695299" />
     <state width="1716" height="353" key="GridCell.Tab.0.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
     <state width="1868" height="332" key="GridCell.Tab.1.bottom" timestamp="1580049790027">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -384,12 +408,12 @@
     <state width="1868" height="332" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580049790027" />
     <state width="2507" height="476" key="GridCell.Tab.1.right/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579915031476" />
     <state width="1716" height="353" key="GridCell.Tab.1.right/3840.0.1920.1050/0.0.2560.1400@0.0.2560.1400" timestamp="1576862867863" />
-    <state x="778" y="189" key="SettingsEditor" timestamp="1580175050315">
+    <state x="638" y="558" key="SettingsEditor" timestamp="1580176517861">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="475" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580046438886" />
     <state x="633" y="172" key="SettingsEditor/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579882294018" />
-    <state x="778" y="189" key="SettingsEditor/3840.0.1707.933/0.0.2560.1400@0.0.2560.1400" timestamp="1580175050315" />
+    <state x="638" y="558" key="SettingsEditor/3840.0.1707.933/0.0.2560.1400@0.0.2560.1400" timestamp="1580176517861" />
     <state x="875" y="466" key="com.intellij.ide.util.TipDialog" timestamp="1580174554526">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -404,13 +428,18 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1015" y="592" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579741528191" />
+    <state x="381" y="119" width="1051" height="685" key="dock-window-1" timestamp="1580211514305">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="381" y="119" width="1051" height="685" key="dock-window-1/0.0.1707.920@0.0.1707.920" timestamp="1580211514305" />
     <state x="948" y="400" key="extract.method.dialog" timestamp="1579797217687">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="948" y="400" key="extract.method.dialog/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579797217687" />
-    <state x="649" y="243" width="840" height="769" key="search.everywhere.popup" timestamp="1580052063595">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="577" y="215" width="747" height="681" key="search.everywhere.popup" timestamp="1580212704963">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
+    <state x="577" y="215" width="747" height="681" key="search.everywhere.popup/0.0.1707.920@0.0.1707.920" timestamp="1580212704963" />
     <state x="649" y="243" width="840" height="769" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580052063595" />
     <state x="859" y="321" width="840" height="1034" key="search.everywhere.popup/0.0.2560.1400/3840.0.1920.1040@0.0.2560.1400" timestamp="1579914083199" />
   </component>

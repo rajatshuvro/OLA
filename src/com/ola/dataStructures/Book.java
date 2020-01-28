@@ -98,14 +98,14 @@ public class Book {
 
     @Override
     public String toString(){
-        return  "Id:              "+GetId()+'\n'+
+        return  //"Id:              "+GetId()+'\n'+
                 "Title:           "+Title+'\n'+
                 "Author:          "+Author+'\n'+
                 "ISBN:            "+Isbn+'\n'+
                 "Publisher:       "+Publisher+'\n'+
                 "Year:            "+Year+'\n'+
                 "Genre:           "+Genre+'\n'+
-                //"Copy number:     "+CopyNum+'\n'+
+                "Copy number:     "+CopyNum+'\n'+
                 "Page count:      "+ PageCount+'\n'+
                 "Price:           "+Price+'\n'+
                 "Reading level:   "+ReadingLevel+'\n'+

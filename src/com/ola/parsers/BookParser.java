@@ -72,7 +72,7 @@ public class BookParser {
                     author = value;
                     break;
                 case IsbnTag:
-                    isbn = ParserUtilities.ParseULong(value);
+                    isbn = ParserUtilities.ParseIsbn(value);
                     break;
                 case PageCountTag:
                     pageCount = ParserUtilities.ParseUInt(value);

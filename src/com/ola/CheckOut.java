@@ -32,7 +32,10 @@ public class CheckOut {
             var bookId = cmd.getOptionValue('b');
             var userId = Integer.parseInt(cmd.getOptionValue('u'));
             var date = TimeUtilities.GetCurrentTime();
-            transactionDb.Add(new Transaction(bookId, userId, date, Transaction.CheckoutTag));
+            if(transactionDb.Add(new Transaction(bookId, userId, date, Transaction.CheckoutTag)))
+                System.out.println(bookId +" has been checked out by "+ userId);
+            else System.out.println("Checkout attempt was unsuccessful!!");
+
         }
         catch (ParseException e) {
             System.out.println(e.getMessage());

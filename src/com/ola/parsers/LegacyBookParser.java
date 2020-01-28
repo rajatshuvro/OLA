@@ -96,7 +96,7 @@ public class LegacyBookParser {
         var publisher = words[PublisherIndex];
         var genre = words[GenreIndex];
         var ficNonFic = words[FicNonFicIndex];
-        var isbn = ParserUtilities.ParseULong(words[IsbnIndex]);
+        var isbn = ParserUtilities.ParseIsbn(words[IsbnIndex]);
         var pageCount = ParserUtilities.ParseUInt(words[PageCountIndex]);
         var readingLevel = ParserUtilities.ParseUInt(words[ReadingLevelIndex]);
         //var copyNumber = ParserUtilities.ParseUInt(words[PageCountIndex]);
