@@ -1,7 +1,11 @@
 package com.ola.unitTests.dataStructures;
 
+import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Transaction;
+import com.ola.dataStructures.User;
+import com.ola.databases.BookDb;
 import com.ola.databases.TransactionDb;
+import com.ola.databases.UserDb;
 import com.ola.parsers.TransactionParser;
 import com.ola.unitTests.TestStreams;
 import com.ola.utilities.TimeUtilities;
@@ -9,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,28 +29,31 @@ public class TransactionTests {
         assertEquals("7890788-(2)", transactions.get(0).BookId);
         assertEquals("Checkout", transactions.get(0).Type);
     }
-    private HashSet<String> GetBookIds() {
-        var books = new HashSet<String>();
-        books.add("7890788-(2)");
-        books.add("678564-(1)");
-        books.add("456098-(1)");
+    private BookDb GetBookDb() {
+        var books = new ArrayList<Book>();
+        books.add(new Book(7890788L,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+                2016,16, 5, "Fiction", 3, 2, null, null));
+        books.add(new Book(678564,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+                2016,16, 5, "Fiction", 3, 1, null, null));
+        books.add(new Book(456098,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+                2016,16, 5, "Fiction", 3, 1, null, null));
 
-        return books;
+        return new BookDb(books);
     }
 
-    private HashSet<Integer> GetUserIds() {
-        var users = new HashSet<Integer>();
-        users.add(234);
-        users.add(123);
-        users.add(345);
-        return users;
+    private UserDb GetUserDb() {
+        var users = new ArrayList<User>();
+        users.add(new User(234, "name1", User.StudentRoleTag, "name1@onkur.com", "4568932678"));
+        users.add(new User(123, "name2", User.StudentRoleTag, "name2@onkur.com", "4568732678"));
+        users.add(new User(345, "name2", User.VolunteerRoleTag, "name3@onkur.com", "4568732676"));
+        return new UserDb(users);
     }
     @Test
     public void TransactionDbTest() throws IOException{
         var parser = new TransactionParser(TestStreams.GetTransactionStreamReduced());
         var transactions = parser.GetTransactions();
 
-        var transactionDb = new TransactionDb(transactions, GetUserIds(), GetBookIds());
+        var transactionDb = new TransactionDb(transactions, GetUserDb(), GetBookDb());
 
         assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("7890788-(2)"));
         assertEquals(Transaction.CheckoutTag, transactionDb.GetBookStatus("678564-(1)"));
@@ -59,7 +65,7 @@ public class TransactionTests {
         var parser = new TransactionParser(TestStreams.GetTransactionStreamReduced());
         var transactions = parser.GetTransactions();
 
-        var transactionDb = new TransactionDb(transactions, GetUserIds(), GetBookIds());
+        var transactionDb = new TransactionDb(transactions, GetUserDb(), GetBookDb());
 
         //cannot return a book that is already returned
         assertFalse(transactionDb.Add(new Transaction("7890788-(2)", 234, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
@@ -73,35 +79,35 @@ public class TransactionTests {
         var parser = new TransactionParser(TestStreams.GetTransactionsStream());
         var transactions = parser.GetTransactions();
 
-        var transactionDb = new TransactionDb(transactions, GetUserIds(), GetBookIds());
+        var transactionDb = new TransactionDb(transactions, GetUserDb(), GetBookDb());
 
         assertTrue(transactionDb.Add(new Transaction("678564-(1)", Integer.MIN_VALUE, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
 
         assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("678564-(1)"));
     }
 
-    private HashSet<String> GetBookIds_reduced() {
-        var books = new HashSet<String>();
-        books.add("7890788-(2)");
-        //books.add("678564-(1)");
-        books.add("456098-(1)");
+    private BookDb GetBookDb_reduced() {
+        var books = new ArrayList<Book>();
+        books.add(new Book(7890788L,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+                2016,16, 5, "Fiction", 3, 2, null, null));
+        books.add(new Book(456098,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+                2016,16, 5, "Fiction", 3, 1, null, null));
 
-        return books;
+        return new BookDb(books);
     }
 
-    private HashSet<Integer> GetUserIds_reduced() {
-        var users = new HashSet<Integer>();
-        users.add(234);
-        users.add(123);
-        //users.add(345);
-        return users;
+    private UserDb GetUserDb_reduced() {
+        var users = new ArrayList<User>();
+        users.add(new User(234, "name1", User.StudentRoleTag, "name1@onkur.com", "4568932678"));
+        users.add(new User(123, "name2", User.StudentRoleTag, "name2@onkur.com", "4568732678"));
+        return new UserDb(users);
     }
     @Test
     public void SkipInvalidUserAndBook() throws IOException{
         var parser = new TransactionParser(TestStreams.GetTransactionStreamReduced());
         var transactions = parser.GetTransactions();
 
-        var transactionDb = new TransactionDb(transactions, GetUserIds_reduced(), GetBookIds_reduced());
+        var transactionDb = new TransactionDb(transactions, GetUserDb_reduced(), GetBookDb_reduced());
 
         assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("7890788-(2)"));
     }
@@ -118,7 +124,7 @@ public class TransactionTests {
     public void AppendNewTransactions() throws IOException{
         var memStream = new ByteArrayOutputStream();
         //initializing with empty transaction list
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserIds(), GetBookIds());
+        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb());
         //adding new transactions
         transactionDb.Add(new Transaction("7890788-(2)", 234, TimeUtilities.parseDate("2019-11-13 10:39:31"), Transaction.CheckoutTag));
         transactionDb.Add(new Transaction("678564-(1)", 123, TimeUtilities.parseDate("2019-11-15 11:01:22"), Transaction.ReturnTag));

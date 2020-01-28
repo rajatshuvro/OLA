@@ -63,7 +63,7 @@ public class Add {
                 var userParser = new UserCsvParser(stream);
                 var count = AddNewUsers(userParser.GetUsers(), userDb);
 
-                System.out.println("Number of new books added: "+count);
+                System.out.println("Number of new users added: "+count);
             }
 
         }

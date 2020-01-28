@@ -2,10 +2,7 @@ package com.ola.databases;
 
 import com.ola.dataStructures.Transaction;
 import com.ola.luceneIndex.TransactionSearchIndex;
-import com.ola.luceneIndex.UserSearchIndex;
 import com.ola.parsers.FlatObjectParser;
-import com.ola.parsers.ParserUtilities;
-import com.ola.utilities.TimeUtilities;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -13,28 +10,27 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class TransactionDb {
     private ArrayList<Transaction> _transactions;
     public HashMap<String, Transaction> _latestTransaction;
-    private HashSet<Integer> _userIds;
-    private HashSet<String> _bookIds;
+    private UserDb _userDb;
+    private BookDb _bookDb;
     private int _newRecordIndex;//keep track of where the new records start from
     private TransactionSearchIndex _searchIndex;
 
-    public TransactionDb(Iterable<Transaction> transactions, HashSet<Integer> userIds, HashSet<String> bookIds){
+    public TransactionDb(Iterable<Transaction> transactions, UserDb userDb, BookDb bookDb){
         //transactions are assumed to ordered by increasing timestamps
-        _userIds = userIds;
-        _bookIds = bookIds;
+        _userDb = userDb;
+        _bookDb = bookDb;
         _transactions = new ArrayList<>();
         _latestTransaction = new HashMap<>();
         for (Transaction record: transactions) {
-            if(!bookIds.contains(record.BookId)) {
+            if(_bookDb.GetBook(record.BookId)== null) {
                 System.out.println("WARNING: Invalid book id:"+record.BookId+". Ignoring transaction.");
                 continue;
             }
-            if(!userIds.contains(record.UserId)){
+            if(_userDb.GetUser(record.UserId) == null){
                 System.out.println("WARNING: Invalid user id:"+record.UserId+". Ignoring transaction.");
                 continue;
             }
@@ -58,11 +54,11 @@ public class TransactionDb {
 
     public boolean Add(Transaction record){
         //make sure the book exists in the book database and the user in user database
-        if(!_bookIds.contains(record.BookId)){
+        if(_bookDb.GetBook(record.BookId)== null){
             System.out.println("WARNING:Unknown book id: "+ record.BookId);
             return false;
         }
-        if(!_userIds.contains(record.UserId) && record.UserId != Integer.MIN_VALUE){
+        if(_userDb.GetUser(record.UserId) == null && record.UserId != Integer.MIN_VALUE){
             System.out.println("WARNING:Unknown user id: "+ record.UserId);
             return false;
         }

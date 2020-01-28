@@ -42,7 +42,7 @@ public class DataProvider {
     public void Load() throws IOException{
         BookDb = new BookDb(_bookParser.GetBooks());
         UserDb = new UserDb(_userParser.GetUsers());
-        TransactionDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb.GetIds(), BookDb.GetIds());
+        TransactionDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb, BookDb);
 
         System.out.print("Building search index on all books...");
         BookDb.GetSearchIndex();
