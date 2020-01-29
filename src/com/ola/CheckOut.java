@@ -5,6 +5,8 @@ import com.ola.databases.TransactionDb;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
+import java.io.IOException;
+
 public class CheckOut {
     private static String commandSyntax = "co  -b [book id] -u [user id]";
     public static void Run(String[] args, TransactionDb transactionDb){
@@ -37,7 +39,7 @@ public class CheckOut {
             else System.out.println("Checkout attempt was unsuccessful!!");
 
         }
-        catch (ParseException e) {
+        catch (ParseException | IOException e) {
             System.out.println(e.getMessage());
             formatter.printHelp(commandSyntax, options);
         }

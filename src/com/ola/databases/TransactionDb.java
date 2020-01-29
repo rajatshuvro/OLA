@@ -1,5 +1,6 @@
 package com.ola.databases;
 
+import com.ola.Appender;
 import com.ola.dataStructures.Transaction;
 import com.ola.luceneIndex.TransactionSearchIndex;
 import com.ola.parsers.FlatObjectParser;
@@ -10,20 +11,20 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class TransactionDb {
     private ArrayList<Transaction> _transactions;
     public HashMap<String, Transaction> _latestTransaction;
     private UserDb _userDb;
     private BookDb _bookDb;
-    private int _newRecordIndex;//keep track of where the new records start from
+    private Appender _appender;
     private TransactionSearchIndex _searchIndex;
 
-    public TransactionDb(Iterable<Transaction> transactions, UserDb userDb, BookDb bookDb){
+    public TransactionDb(Iterable<Transaction> transactions, UserDb userDb, BookDb bookDb, Appender appender){
         //transactions are assumed to ordered by increasing timestamps
         _userDb = userDb;
         _bookDb = bookDb;
+        _appender = appender;
         _transactions = new ArrayList<>();
         _latestTransaction = new HashMap<>();
         for (Transaction record: transactions) {
@@ -45,7 +46,6 @@ public class TransactionDb {
             var existingRecord = _latestTransaction.get(record.BookId);
             if(existingRecord.OlderThan(record)) _latestTransaction.replace(record.BookId, record);
         }
-        _newRecordIndex = _transactions.size();
     }
 
     public Transaction Get(int index){
@@ -53,7 +53,7 @@ public class TransactionDb {
         return _transactions.get(index);
     }
 
-    public boolean Add(Transaction record){
+    public boolean Add(Transaction record) throws IOException {
         //make sure the book exists in the book database and the user in user database
         if(_bookDb.GetBook(record.BookId)== null){
             System.out.println("WARNING:Unknown book id: "+ record.BookId);
@@ -77,11 +77,8 @@ public class TransactionDb {
 
         _latestTransaction.replace(record.BookId, record);
         _transactions.add(record);
+        _appender.AppendTransactions(record);
         return true;
-    }
-
-    public List<Transaction> GetNewRecords(){
-        return _newRecordIndex < _transactions.size()-1? _transactions.subList(_newRecordIndex, _transactions.size()-1):null;
     }
 
     public final String[] HeaderLines = new String[]{

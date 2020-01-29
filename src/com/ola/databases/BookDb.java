@@ -1,15 +1,10 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Book;
-import com.ola.dataStructures.Transaction;
 import com.ola.luceneIndex.BookSearchIndex;
-import com.ola.parsers.FlatObjectParser;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.*;
 
 public class BookDb {
@@ -75,7 +70,7 @@ public class BookDb {
         else _latestCopyNumbers.put(book.Isbn, book.CopyNum);
     }
 
-    public String AddNew(Book book){
+    public String Add(Book book){
         book = StandardizeFields(book);
         var id = book.GetId();
         if(_books.containsKey(id)) {
@@ -93,18 +88,11 @@ public class BookDb {
         return null;
     }
 
-    public void Append(OutputStream stream)throws IOException {
-        if(_newBooks.size()==0) return;
-        var writer = new BufferedWriter(new OutputStreamWriter(stream));
-        for (Book book: _newBooks) {
-            writer.write(book.toString()+'\n');
-            writer.write(FlatObjectParser.RecordSeparator+'\n');
-        }
-        writer.close();
-
-    }
     public List<Book> GetNewRecords(){
-        return _newBooks.size()==0? null: _newBooks;
+        if(_newBooks.size()==0) return null;
+        var newBooks = new ArrayList<>(_newBooks);
+        _newBooks.clear();
+        return newBooks;
     }
 
 

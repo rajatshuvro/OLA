@@ -27,7 +27,7 @@ public class Main {
             String subCommand = subArgs[0];
             switch (subCommand){
                 case "add":
-                    Add.Run(subArgs, dataProvider.BookDb, dataProvider.UserDb);
+                    Add.Run(subArgs, dataProvider.BookDb, dataProvider.UserDb, dataProvider.Appender);
                     break;
                 case "add-user":
                     AddUser.Run(subArgs, dataProvider.UserDb);

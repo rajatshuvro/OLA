@@ -4,23 +4,19 @@ import com.ola.dataStructures.User;
 import com.ola.databases.BookDb;
 import com.ola.databases.UserDb;
 import com.ola.parsers.BookCsvParser;
-import com.ola.parsers.BookParser;
 import com.ola.parsers.UserCsvParser;
 import com.ola.utilities.FileUtilities;
 import org.apache.commons.cli.*;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 
 public class Add {
     private static String commandSyntex = "add  -b [books CSV file] -u [users CSV file]";
-    public static void Run(String[] args, BookDb bookDb, UserDb userDb){
+    public static void Run(String[] args, BookDb bookDb, UserDb userDb, Appender appender){
         Options options = new Options();
 
         Option bookOption = new Option("b", "book", true, "file with book details");
@@ -51,6 +47,7 @@ public class Add {
                 InputStream stream = new FileInputStream(filePath);
                 var bookParser = new BookCsvParser(stream);
                 var count = AddNewBook(bookParser.GetBooks(), bookDb);
+                appender.AppendBooks(bookDb.GetNewRecords());
 
                 System.out.println("Number of new books added: "+count);
             }
@@ -62,6 +59,7 @@ public class Add {
                 InputStream stream = new FileInputStream(filePath);
                 var userParser = new UserCsvParser(stream);
                 var count = AddNewUsers(userParser.GetUsers(), userDb);
+                appender.AppendUsers(userDb.GetNewRecords());
 
                 System.out.println("Number of new users added: "+count);
             }
@@ -83,6 +81,7 @@ public class Add {
             }
             else System.out.println("Failed to add new user "+user.Name);
         }
+
         System.out.print("Rebuilding user search index...");
         userDb.BuildSearchIndex();
         System.out.println("done");
@@ -91,7 +90,7 @@ public class Add {
 
     public static int AddNewBook(ArrayList<Book> books, BookDb bookDb) throws IOException {
         for (Book book: books) {
-            var displayId = bookDb.AddNew(book);
+            var displayId = bookDb.Add(book);
             System.out.println("New book added: "+displayId);
         }
         System.out.print("Rebuilding book search index...");

@@ -1,5 +1,6 @@
 package com.ola.unitTests.dataStructures;
 
+import com.ola.Appender;
 import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
@@ -52,8 +53,8 @@ public class TransactionTests {
     public void TransactionDbTest() throws IOException{
         var parser = new TransactionParser(TestStreams.GetTransactionStreamReduced());
         var transactions = parser.GetTransactions();
-
-        var transactionDb = new TransactionDb(transactions, GetUserDb(), GetBookDb());
+        var appender = new Appender(null, null, new ByteArrayOutputStream());
+        var transactionDb = new TransactionDb(transactions, GetUserDb(), GetBookDb(), appender);
 
         assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("7890788-(2)"));
         assertEquals(Transaction.CheckoutTag, transactionDb.GetBookStatus("678564-(1)"));
@@ -64,8 +65,8 @@ public class TransactionTests {
     public void TransactionDbTest_add_transactions() throws IOException{
         var parser = new TransactionParser(TestStreams.GetTransactionStreamReduced());
         var transactions = parser.GetTransactions();
-
-        var transactionDb = new TransactionDb(transactions, GetUserDb(), GetBookDb());
+        var appender = new Appender(null, null, new ByteArrayOutputStream());
+        var transactionDb = new TransactionDb(transactions, GetUserDb(), GetBookDb(), appender);
 
         //cannot return a book that is already returned
         assertFalse(transactionDb.Add(new Transaction("7890788-(2)", 234, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
@@ -78,8 +79,8 @@ public class TransactionTests {
     public void TransactionDbTest_match_user_on_return() throws IOException{
         var parser = new TransactionParser(TestStreams.GetTransactionsStream());
         var transactions = parser.GetTransactions();
-
-        var transactionDb = new TransactionDb(transactions, GetUserDb(), GetBookDb());
+        var appender = new Appender(null, null, new ByteArrayOutputStream());
+        var transactionDb = new TransactionDb(transactions, GetUserDb(), GetBookDb(), appender);
 
         assertTrue(transactionDb.Add(new Transaction("678564-(1)", Integer.MIN_VALUE, TimeUtilities.GetCurrentTime(), Transaction.ReturnTag)));
 
@@ -106,8 +107,9 @@ public class TransactionTests {
     public void SkipInvalidUserAndBook() throws IOException{
         var parser = new TransactionParser(TestStreams.GetTransactionStreamReduced());
         var transactions = parser.GetTransactions();
+        var appender = new Appender(null, null, new ByteArrayOutputStream());
 
-        var transactionDb = new TransactionDb(transactions, GetUserDb_reduced(), GetBookDb_reduced());
+        var transactionDb = new TransactionDb(transactions, GetUserDb_reduced(), GetBookDb_reduced(), appender);
 
         assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("7890788-(2)"));
     }
@@ -123,13 +125,13 @@ public class TransactionTests {
     @Test
     public void AppendNewTransactions() throws IOException{
         var memStream = new ByteArrayOutputStream();
+        var appender = new Appender(null, null, memStream);
         //initializing with empty transaction list
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb());
+        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
         //adding new transactions
         transactionDb.Add(new Transaction("7890788-(2)", 234, TimeUtilities.parseDate("2019-11-13 10:39:31"), Transaction.CheckoutTag));
         transactionDb.Add(new Transaction("678564-(1)", 123, TimeUtilities.parseDate("2019-11-15 11:01:22"), Transaction.ReturnTag));
 
-        transactionDb.Append(memStream);
         var buffer = memStream.toByteArray();
         memStream.close();
         var inputStream =  new ByteArrayInputStream(buffer);
@@ -146,7 +148,7 @@ public class TransactionTests {
                 }
             }
         }
-
+        appender.Close();
         assertTrue(hasTimeStamp1);
         assertTrue(hasTimeStamp2);
     }

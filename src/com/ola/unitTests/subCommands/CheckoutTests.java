@@ -1,5 +1,6 @@
 package com.ola.unitTests.subCommands;
 
+import com.ola.Appender;
 import com.ola.CheckOut;
 import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Transaction;
@@ -10,10 +11,10 @@ import com.ola.databases.UserDb;
 import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.HashSet;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CheckoutTests {
     private BookDb GetBookDb() {
@@ -53,7 +54,8 @@ public class CheckoutTests {
 
     @Test
     public void Checkout_already_in_circulation(){
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb());
+        var appender = new Appender(null, null, new ByteArrayOutputStream());
+        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
         var args = new String[]{"co", "-b", "7890788-(2)","-u","345"};
         CheckOut.Run(args, transactionDb);
 
@@ -62,7 +64,8 @@ public class CheckoutTests {
 
     @Test
     public void Checkout_new_book(){
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb());
+        var appender = new Appender(null, null, new ByteArrayOutputStream());
+        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
         var args = new String[]{"co", "-b", "678564-(2)","-u","345"};
         CheckOut.Run(args, transactionDb);
 
@@ -71,7 +74,8 @@ public class CheckoutTests {
 
     @Test
     public void Checkout_invalid_user(){
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb());
+        var appender = new Appender(null, null, new ByteArrayOutputStream());
+        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
         var args = new String[]{"co", "-b", "678564-(2)","-u","1345"};
         CheckOut.Run(args, transactionDb);
 
@@ -80,7 +84,8 @@ public class CheckoutTests {
 
     @Test
     public void Checkout_invalid_book(){
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb());
+        var appender = new Appender(null, null, new ByteArrayOutputStream());
+        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
         var args = new String[]{"co", "-b", "678564-(3)","-u","345"};
         CheckOut.Run(args, transactionDb);
 

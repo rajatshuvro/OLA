@@ -5,7 +5,7 @@ import com.ola.databases.TransactionDb;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
-import java.util.Date;
+import java.io.IOException;
 
 public class Return {
     private static String commandSyntex = "ret  -b [book id]";
@@ -31,7 +31,7 @@ public class Return {
             var date = TimeUtilities.GetCurrentTime();
             transactionDb.Add(new Transaction(bookId, Integer.MIN_VALUE, date, Transaction.ReturnTag));
         }
-        catch (ParseException e) {
+        catch (ParseException | IOException e) {
             System.out.println(e.getMessage());
             formatter.printHelp(commandSyntex, options);
         }

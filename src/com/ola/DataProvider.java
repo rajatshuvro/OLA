@@ -18,11 +18,15 @@ public class DataProvider {
     private UserParser _userParser;
     private TransactionParser _transactionParser;
 
-    private Appender _appender;
+    public final Appender Appender;
 
     private InputStream _bookInputStream;
     private InputStream _userInputStream;
     private InputStream _transactionInputStream;
+
+    private OutputStream _bookAppendStream;
+    private OutputStream _userAppendStream;
+    private OutputStream _transactionAppendStream;
 
     public DataProvider(InputStream bookInputStream, InputStream userInputStream, InputStream transactionInputStream
                         , OutputStream transactionAppendStream, OutputStream bookAppendStream, OutputStream userAppendStream) {
@@ -30,17 +34,22 @@ public class DataProvider {
         _userInputStream = userInputStream;
         _transactionInputStream = transactionInputStream;
 
-        _appender = new Appender(bookAppendStream, userAppendStream, transactionAppendStream);
+        _bookAppendStream = bookAppendStream;
+        _userAppendStream = userAppendStream;
+        _transactionAppendStream = transactionAppendStream;
+
+        Appender = new Appender(bookAppendStream, userAppendStream, transactionAppendStream);
 
         _bookParser = new BookParser(bookInputStream);
         _userParser = new UserParser(userInputStream);
         _transactionParser = new TransactionParser(transactionInputStream);
+
     }
 
     public void Load() throws IOException{
         BookDb = new BookDb(_bookParser.GetBooks());
         UserDb = new UserDb(_userParser.GetUsers());
-        TransactionDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb, BookDb);
+        TransactionDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb, BookDb, Appender);
 
         System.out.print("Indexing books...");
         BookDb.GetSearchIndex();
@@ -60,9 +69,9 @@ public class DataProvider {
     }
 
     public void Close() throws IOException {
-        _appender.AppendTransactions(TransactionDb.GetNewRecords());
-        _appender.AppendBooks(BookDb.GetNewRecords());
-        _appender.AppendUsers(UserDb.GetNewRecords());
-        _appender.Close();
+        Appender.Close();
+        _userAppendStream.close();
+        _bookAppendStream.close();
+        _transactionAppendStream.close();
     }
 }

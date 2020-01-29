@@ -1,6 +1,6 @@
 package com.ola.unitTests.subCommands;
 
-import com.ola.CheckOut;
+import com.ola.Appender;
 import com.ola.Return;
 import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Transaction;
@@ -11,8 +11,8 @@ import com.ola.databases.UserDb;
 import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -52,7 +52,8 @@ public class ReturnTests {
     }
     @Test
     public void Return(){
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb());
+        var appender = new Appender(null, null, new ByteArrayOutputStream());
+        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
         var args = new String[]{"ret", "-b", "456098-(1)"};
         Return.Run(args, transactionDb);
 
@@ -61,7 +62,8 @@ public class ReturnTests {
 
     @Test
     public void Return_invalid_book(){
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb());
+        var appender = new Appender(null, null, new ByteArrayOutputStream());
+        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
         var args = new String[]{"ret", "-b", "456098-(4)"};
         Return.Run(args, transactionDb);
 

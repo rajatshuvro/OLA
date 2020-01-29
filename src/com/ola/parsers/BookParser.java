@@ -115,8 +115,4 @@ public class BookParser {
         else return null;
     }
 
-    public void Close() throws IOException {
-
-        _inputStream.close();
-    }
 }

@@ -16,22 +16,20 @@ public class Appender {
     private BufferedWriter _userAppender;
     
     public Appender(OutputStream bookStream, OutputStream userStream, OutputStream transactionStream){
-        _userAppender = new BufferedWriter(new OutputStreamWriter(userStream));
-        _bookAppender = new BufferedWriter(new OutputStreamWriter(bookStream));
-        _transactionAppender = new BufferedWriter(new OutputStreamWriter(transactionStream));
+        _userAppender = userStream == null? null: new BufferedWriter(new OutputStreamWriter(userStream));
+        _bookAppender = bookStream == null? null: new BufferedWriter(new OutputStreamWriter(bookStream));
+        _transactionAppender = transactionStream == null? null: new BufferedWriter(new OutputStreamWriter(transactionStream));
     }
 
-    public void AppendTransactions(Iterable<Transaction> transactions) throws IOException {
-        if(transactions == null) return;
-        for (var transaction: transactions) {
-            _transactionAppender.write(transaction.toString()+'\n');
-            _transactionAppender.write(FlatObjectParser.RecordSeparator +'\n');
-        }
+    public void AppendTransactions(Transaction transaction) throws IOException {
+        if(transaction == null || _transactionAppender == null) return;
+        _transactionAppender.write(transaction.toString()+'\n');
+        _transactionAppender.write(FlatObjectParser.RecordSeparator +'\n');
         _transactionAppender.flush();
     }
 
     public void AppendBooks(Iterable<Book> books) throws IOException {
-        if(books == null) return;
+        if(books == null || _bookAppender == null) return;
         for (var book: books) {
             _bookAppender.write(book.toString()+'\n');
             _bookAppender.write(FlatObjectParser.RecordSeparator +'\n');
@@ -39,7 +37,7 @@ public class Appender {
         _bookAppender.flush();
     }
     public void AppendUsers(Iterable<User> users) throws IOException {
-        if(users == null) return;
+        if(users == null || _userAppender == null) return;
         for (var user: users) {
             _userAppender.write(user.toString()+'\n');
             _userAppender.write(FlatObjectParser.RecordSeparator +'\n');

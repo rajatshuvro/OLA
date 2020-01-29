@@ -1,15 +1,9 @@
 package com.ola.databases;
 
-import com.ola.dataStructures.Book;
-import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
 import com.ola.luceneIndex.UserSearchIndex;
-import com.ola.parsers.FlatObjectParser;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.*;
 
 public class UserDb {
@@ -83,7 +77,10 @@ public class UserDb {
     }
 
     public List<User> GetNewRecords(){
-        return _newUsers.size()==0? null:_newUsers;
+        if(_newUsers.size()==0) return null;
+        var newUsers = new ArrayList<>(_newUsers);
+        _newUsers.clear();
+        return newUsers;
     }
 
 
