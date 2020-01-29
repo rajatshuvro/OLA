@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class TransactionDb {
     private ArrayList<Transaction> _transactions;
@@ -79,17 +80,8 @@ public class TransactionDb {
         return true;
     }
 
-    public void Append(OutputStream stream) throws IOException {
-        if(_newRecordIndex == _transactions.size()) return;
-        var writer = new BufferedWriter(new OutputStreamWriter(stream));
-        for (int i = _newRecordIndex; i < _transactions.size(); i++) {
-            var record = _transactions.get(i);
-            writer.write(record.toString()+'\n');
-            writer.write(FlatObjectParser.RecordSeparator +'\n');
-            _newRecordIndex++;
-        }
-        writer.close();
-
+    public List<Transaction> GetNewRecords(){
+        return _newRecordIndex < _transactions.size()-1? _transactions.subList(_newRecordIndex, _transactions.size()-1):null;
     }
 
     public final String[] HeaderLines = new String[]{

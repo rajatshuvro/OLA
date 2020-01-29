@@ -1,6 +1,7 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Book;
+import com.ola.dataStructures.Transaction;
 import com.ola.luceneIndex.BookSearchIndex;
 import com.ola.parsers.FlatObjectParser;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
@@ -101,6 +102,9 @@ public class BookDb {
         }
         writer.close();
 
+    }
+    public List<Book> GetNewRecords(){
+        return _newBooks.size()==0? null: _newBooks;
     }
 
 

@@ -1,6 +1,7 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Book;
+import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
 import com.ola.luceneIndex.UserSearchIndex;
 import com.ola.parsers.FlatObjectParser;
@@ -9,10 +10,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 
 public class UserDb {
     private HashMap<Integer, User> _users;
@@ -84,14 +82,9 @@ public class UserDb {
         _searchIndex = new UserSearchIndex(_users.values());
     }
 
-    public void Append(OutputStream stream) throws IOException {
-        if(_newUsers.size()==0) return;
-        var writer = new BufferedWriter(new OutputStreamWriter(stream));
-        for (User user: _newUsers) {
-            writer.write(user.toString()+'\n');
-            writer.write(FlatObjectParser.RecordSeparator+'\n');
-        }
-        writer.close();
+    public List<User> GetNewRecords(){
+        return _newUsers.size()==0? null:_newUsers;
     }
+
 
 }
