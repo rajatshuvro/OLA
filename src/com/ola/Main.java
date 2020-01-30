@@ -30,7 +30,7 @@ public class Main {
                     Add.Run(subArgs, dataProvider.BookDb, dataProvider.UserDb, dataProvider.Appender);
                     break;
                 case "add-user":
-                    AddUser.Run(subArgs, dataProvider.UserDb);
+                    AddUser.Run(subArgs, dataProvider.UserDb, dataProvider.Appender);
                     break;
                 case "co":
                     CheckOut.Run(subArgs, dataProvider.TransactionDb);

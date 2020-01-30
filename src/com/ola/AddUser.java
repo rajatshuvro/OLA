@@ -3,10 +3,13 @@ package com.ola;
 import com.ola.databases.UserDb;
 import org.apache.commons.cli.*;
 
+import java.io.IOException;
+
 public class AddUser
 {
     private static String commandSyntex = "add-user  -n [Name] -r [Role] -e [Email] -p [Phone]";
-    public static void Run(String[] args, UserDb userDb){
+    public static void Run(String[] args, UserDb userDb, Appender appender){
+        var name = GetName(args);
         Options options = new Options();
 
         Option nameOption = new Option("n", "name", true, "user name");
@@ -36,18 +39,45 @@ public class AddUser
 
         try {
             cmd = parser.parse(options, args);
-            var name = cmd.getOptionValue("name");
+            //var name = cmd.getOptionValue("name");
             var role = cmd.getOptionValue("role");
             var email = cmd.getOptionValue("email");
             var phone = cmd.getOptionValue("phone");
 
             int id = userDb.AddNewUser(name, role, email, phone);
-            if(id != -1) System.out.println(name+" was added to the user database. Assigned Id: "+id);
+            if(id != -1) {
+                System.out.println(name+" was added to the user database. Assigned Id: "+id);
+                appender.AppendUsers(userDb.GetNewRecords());
+                System.out.print("Rebuilding user search index...");
+                userDb.BuildSearchIndex();
+                System.out.println("done");
+
+            }
             else System.out.println("Failed to add new user.");
         }
-        catch (ParseException e) {
+        catch (ParseException | IOException e) {
             System.out.println(e.getMessage());
             formatter.printHelp(commandSyntex, options);
         }
+    }
+
+    //name componets will be split into components. Those need to be stitched back
+    private static String GetName(String[] args) {
+        var nameBuilder = new StringBuilder();
+        int i=0;
+        while (i < args.length ){
+            if(args[i].equals("-n") || args[i].equals("--name")) break;
+            i++;
+        }
+
+        i++;
+        if (i == args.length) return null;
+
+        while (i < args.length){
+            if(args[i].startsWith("-")) break;
+            if(nameBuilder.length()>0) nameBuilder.append(' ');
+            nameBuilder.append(args[i++]);
+        }
+        return nameBuilder.toString();
     }
 }

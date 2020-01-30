@@ -1,9 +1,11 @@
 package com.ola.unitTests.subCommands;
 import com.ola.AddUser;
+import com.ola.Appender;
 import com.ola.dataStructures.User;
 import com.ola.databases.UserDb;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -21,8 +23,9 @@ public class AddUserTests {
     @Test
     public void AddUser(){
         var userDb = new UserDb(GetUsers());
+        var appender = new Appender(null, new ByteArrayOutputStream(), null);
 
-        AddUser.Run(new String[]{"add-user", "-n","Shawroth Shuvro", "-r", "Student", "-e", "shawroth.shuvro@onkur.com", "-p", "(858) 666 7242"}, userDb);
+        AddUser.Run(new String[]{"add-user", "-n","Shawroth","Shuvro", "-r", "Student", "-e", "shawroth.shuvro@onkur.com", "-p", "(858) 666 7242"}, userDb, appender);
         var user = userDb.GetUser("Shawroth Shuvro");
         assertNotNull(user);
         assertEquals(357,user.Id);

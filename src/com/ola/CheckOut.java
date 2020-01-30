@@ -35,7 +35,12 @@ public class CheckOut {
             var userId = Integer.parseInt(cmd.getOptionValue('u'));
             var date = TimeUtilities.GetCurrentTime();
             if(transactionDb.Add(new Transaction(bookId, userId, date, Transaction.CheckoutTag)))
+            {
                 System.out.println(bookId +" has been checked out by "+ userId);
+                System.out.print("Rebuilding transaction search index...");
+                transactionDb.GetSearchIndex();
+                System.out.println("done");
+            }
             else System.out.println("Checkout attempt was unsuccessful!!");
 
         }

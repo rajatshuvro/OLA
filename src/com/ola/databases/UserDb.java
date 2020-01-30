@@ -64,7 +64,6 @@ public class UserDb {
         _users.put(user.Id, user);
         _newUsers.add(user);
         return user.Id;
-        //todo: append to user file
     }
 
     public UserSearchIndex GetSearchIndex() throws IOException {
