@@ -1,7 +1,6 @@
 package com.ola.luceneIndex;
 
 import com.ola.dataStructures.Transaction;
-import com.ola.dataStructures.User;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;

@@ -66,6 +66,7 @@ public class TransactionDb {
         if(!_latestTransaction.containsKey(record.BookId)){
             _latestTransaction.put(record.BookId, record);
             _transactions.add(record);
+            _appender.AppendTransactions(record);
             return true;
         }
         //if the latest transaction is of type checkout you cannot add another checkout and similarly for return

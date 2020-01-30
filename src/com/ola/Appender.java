@@ -42,7 +42,7 @@ public class Appender {
             _userAppender.write(user.toString()+'\n');
             _userAppender.write(FlatObjectParser.RecordSeparator +'\n');
         }
-        _bookAppender.flush();
+        _userAppender.flush();
     }
 
     public void Close() throws IOException {

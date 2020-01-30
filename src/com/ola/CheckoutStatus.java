@@ -48,7 +48,7 @@ public class CheckoutStatus {
             var bookTitle = bookDb.GetTitle(record.BookId);
             sb.append("User:          " + userName + " [id:"+ record.UserId+"]\n");
             sb.append("Title:         " + bookTitle + " [id:"+ record.BookId+"]\n");
-            sb.append("Borrowed on:   "+ TimeUtilities.ToString(record.Date)+"\n");
+            sb.append("Borrowed on:   " + TimeUtilities.ToString(record.Date)+"\n");
             sb.append("**********************************************\n");
         }
         return sb.toString();
@@ -66,7 +66,7 @@ public class CheckoutStatus {
             var bookTitle = bookDb.GetTitle(record.BookId);
             sb.append("User:            " + userName + " [id:"+ record.UserId+"]\n");
             sb.append("Title:           " + bookTitle + " [id:"+ record.BookId+"]\n");
-            sb.append("Borrowed on:     "+ TimeUtilities.ToString(record.Date)+"\n");
+            sb.append("Borrowed on:     " + TimeUtilities.ToString(record.Date)+"\n");
             sb.append("**********************************************\n");
         }
         return sb.toString();

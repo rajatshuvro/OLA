@@ -124,8 +124,10 @@ public class Main {
                 System.out.println("Failed to find file: "+transactionFileName);
                 return null;
             }
-            return new DataProvider(new FileInputStream(bookFileName), new FileInputStream(userFileName),
-                    new FileInputStream(transactionFileName), new FileOutputStream(transactionFileName,true),
+            return new DataProvider(new FileInputStream(bookFileName),
+                    new FileInputStream(userFileName),
+                    new FileInputStream(transactionFileName),
+                    new FileOutputStream(transactionFileName,true),
                     new FileOutputStream(bookFileName, true),
                     new FileOutputStream(userFileName, true));
         }

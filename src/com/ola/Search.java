@@ -21,7 +21,7 @@ public class Search {
         var bookSearchIndex = bookDb.GetSearchIndex();
 
         for (var id: bookSearchIndex.Search(queryText, 5)) {
-            results.add(bookDb.GetBook(id).toString());
+            results.add(bookDb.GetBook(id).GetSearchOutput());
         }
         OutputResults(results, "----------------------Books----------------------");
 

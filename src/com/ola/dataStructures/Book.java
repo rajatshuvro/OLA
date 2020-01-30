@@ -98,8 +98,7 @@ public class Book {
 
     @Override
     public String toString(){
-        return  //"Id:              "+GetId()+'\n'+
-                "Title:           "+Title+'\n'+
+        return  "Title:           "+Title+'\n'+
                 "Author:          "+Author+'\n'+
                 "ISBN:            "+Isbn+'\n'+
                 "Publisher:       "+Publisher+'\n'+
@@ -111,6 +110,12 @@ public class Book {
                 "Reading level:   "+ReadingLevel+'\n'+
                 "Entry date:      "+ TimeUtilities.ToString(EntryDate)+'\n'+
                 "Expiry date:     "+ TimeUtilities.ToString(ExpiryDate);
+
+    }
+
+    public String GetSearchOutput(){
+        return  "Id:              "+GetId()+'\n'+
+                toString();
 
     }
     //static fields

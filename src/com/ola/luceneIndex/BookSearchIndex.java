@@ -56,7 +56,7 @@ public class BookSearchIndex {
         //book id field
         //Field idField = new Field(SearchCommons.BookIdTag, book.GetId(), StringField.TYPE_NOT_STORED);
         // book contents
-        Field contentField = new Field(SearchCommons.BookRecordTag, book.toString(), TextField.TYPE_NOT_STORED);
+        Field contentField = new Field(SearchCommons.BookRecordTag, book.GetSearchOutput(), TextField.TYPE_NOT_STORED);
 
         document.add(contentField);
         //document.add(idField);
