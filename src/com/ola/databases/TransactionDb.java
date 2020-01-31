@@ -124,7 +124,7 @@ public class TransactionDb {
         return _searchIndex;
     }
 
-    private void BuildSearchIndex() throws IOException {
+    public void BuildSearchIndex() throws IOException {
         _searchIndex = new TransactionSearchIndex(_transactions);
     }
 }

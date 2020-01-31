@@ -7,11 +7,7 @@ public  class FormatUtilities {
         if(phnString== null)
             return false;
         var phn = phnString.replace("-", "");
-        phn = phn.replace("(", "");
-        phn = phn.replace(")", "");
-        phn = phn.replace(" ", "");
-
-        if(phn.length() > 10) return false;
+        if(phn.length() != 10) return false;
         return true;
     }
 

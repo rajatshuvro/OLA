@@ -25,7 +25,7 @@ public class AddUserTests {
         var userDb = new UserDb(GetUsers());
         var appender = new Appender(null, new ByteArrayOutputStream(), null);
 
-        AddUser.Run(new String[]{"add-user", "-n","Shawroth","Shuvro", "-r", "Student", "-e", "shawroth.shuvro@onkur.com", "-p", "(858) 666 7242"}, userDb, appender);
+        AddUser.Run(new String[]{"add-user", "-n","Shawroth","Shuvro", "-r", "Student", "-e", "shawroth.shuvro@onkur.com", "-p", "858-666-7242"}, userDb, appender);
         var user = userDb.GetUser("Shawroth Shuvro");
         assertNotNull(user);
         assertEquals(357,user.Id);

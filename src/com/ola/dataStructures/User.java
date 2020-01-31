@@ -1,5 +1,6 @@
 package com.ola.dataStructures;
 
+import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.FormatUtilities;
 
 import java.util.HashSet;
@@ -23,11 +24,23 @@ public class User {
     }
 
     public static boolean IsValid(int id, String name, String role, String email, String phn) {
-        return id > 0 &&
-                name != null &&
-                IsValidRole(role) &&
-                FormatUtilities.IsValidEmail(email) &&
-                FormatUtilities.IsValidPhoneNumber(phn);
+        if(ParserUtilities.IsNullOrEmpty(name)){
+            System.out.println("User name cannot be empty");
+            return false;
+        }
+        if(!IsValidRole(role)){
+            System.out.println("Role has to be one of:"+ String.join("/",RoleTags));
+            return false;
+        }
+        if(!FormatUtilities.IsValidEmail(email)){
+            System.out.println("Please provide a valid email address. e.g. user@onkur.com");
+            return false;
+        }
+        if(!FormatUtilities.IsValidPhoneNumber(phn)){
+            System.out.println("Please provide a valid phone number. e.g. XXX-XXX-XXXX");
+            return false;
+        }
+        return id > 0;
     }
 
     public String toString(){
