@@ -4,54 +4,6 @@
 #Id = User Id. Value = <Integer>
 #Role = User role. Value = Teacher/Student/Volunteer/Administrator/Citizen
 ***************************************************************
-Name:	Saber Nabil
-Id:		234
-Role:	Teacher
-Email:	saber.nabil@onkur.com
-Phone:	858-278-3984
-***************************************************************
-Name:	Rajat Shuvro Roy
-Id:		678
-Role:	Volunteer
-Email:	rajat.shuvro@onkur.com
-Phone:	858-278-3948
-***************************************************************
-Name:	Zohir Chowdhury
-Id:		897
-Role:	Administrator
-Email:	zohir.chowdhury@onkur.com
-Phone:	858-278-3884
-***************************************************************
-Name:	Totini Tonu
-Id:		564
-Role:	Student
-Email:	totini.tonu@onkur.com
-Phone:	858-278-7984
-***************************************************************
-Name:	Ishal Khan
-Id:		157
-Role:	Student
-Email:	ishal.khan@onkur.com
-Phone:	858-278-3664
-***************************************************************
-Name:	Ayrah Khan
-Id:		167
-Role:	Student
-Email:	ayrah.khan@onkur.com
-Phone:	858-278-8884
-***************************************************************
-Name:	Noureen Chowdhury
-Id:		169
-Role:	Student
-Email:	noureen.chowdhury@onkur.com
-Phone:	858-278-3977
-***************************************************************
-Name:	Darayush Ahmed
-Id:		456
-Role:	Student
-Email:	darayush.ahmed@onkur.com
-Phone:	858-278-9984
-***************************************************************
 Id:       909
 Name:     Tanni Chakraborty
 Role:     Teacher
@@ -69,16 +21,4 @@ Name:     Homayara Chowdhury
 Role:     Administrator
 Email:    sharmin@onkur.com
 Phone:    619-204-5111
-***************************************************************
-Id:       945
-Name:     Shawroth Shuvro
-Role:     Student
-Email:    shawroth@onkur.com
-Phone:    732-666-7242
-***************************************************************
-Id:       957
-Name:     Agniv Das
-Role:     Student
-Email:    agniv.das@onkur.com
-Phone:    858-666-7242
 ***************************************************************
