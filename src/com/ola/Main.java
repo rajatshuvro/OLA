@@ -29,6 +29,7 @@ public class Main {
                 case "add":
                     Add.Run(subArgs, dataProvider.BookDb, dataProvider.UserDb, dataProvider.Appender);
                     break;
+                case "au":
                 case "add-user":
                     AddUser.Run(subArgs, dataProvider.UserDb, dataProvider.Appender);
                     break;
@@ -38,6 +39,7 @@ public class Main {
                 case "ret":
                     Return.Run(subArgs, dataProvider.TransactionDb);
                     break;
+                case "cs":
                 case "co-stat":
                     CheckoutStatus.Run(subArgs, dataProvider);
                     break;
@@ -46,6 +48,9 @@ public class Main {
                     break;
                 case "search":
                     Search.Run(subArgs, dataProvider);
+                    break;
+                case "label":
+                    LabelPrinter.Run(subArgs, dataProvider.BookDb);
                     break;
                 case "legacy":
                     LegacyImporter.Run(subArgs);
@@ -68,12 +73,13 @@ public class Main {
     private static void PrintMenu() {
         System.out.println("Please choose from the following options:");
         System.out.println("\tadd            (add new books or users)");
-        System.out.println("\tadd-user       (add new user via command line)");
+        System.out.println("\tadd-user/au    (add new user via command line)");
         System.out.println("\tco             (checkout book)");
         System.out.println("\tret            (return book)");
-        System.out.println("\tco-stat        (checkout status)");
+        System.out.println("\tco-stat/cs     (checkout status)");
         System.out.println("\tsearch         (search book database)");
         System.out.println("\tfilter         (filter book database by genre, level, etc fields)");
+        System.out.println("\tlabel          (print out book titles and Ids)");
         System.out.println("\tlegacy         (import books from legacy tsv)");
         System.out.println("\tquit           (quit OLA)");
         System.out.println("\thelp           (print this menu)");
