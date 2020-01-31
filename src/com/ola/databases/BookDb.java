@@ -72,6 +72,7 @@ public class BookDb {
 
     public String Add(Book book){
         book = StandardizeFields(book);
+        if (book == null) return null;
         var id = book.GetId();
         if(_books.containsKey(id)) {
             System.out.println("WARNING!! new book Id exists in database.\nSkipping book:"+book.Title);
@@ -100,7 +101,7 @@ public class BookDb {
         var copyNum = GetCopyCount(book.Isbn) + 1;
         Date date = new Date(System.currentTimeMillis());
 
-        //getting canonical id
+        //getting canonical id (id for the first copy of this book)
         var canonicalId = Book.GenerateId(book.Isbn, 1);
         var canon = _books.get(canonicalId);
         if (canon == null) {
@@ -109,24 +110,41 @@ public class BookDb {
                     book.Publisher,book.Year, book.PageCount, book.Price,
                     book.Genre, book.ReadingLevel, copyNum, date, null );
         }
+        boolean hasGeneratedIsbn = IsGeneratedIsbn(book.Isbn);
 
         if(!canon.Title.equals(book.Title)){
+            if(hasGeneratedIsbn) {
+                System.out.println("ERROR!! Title mismatch found for entry without ISBN. Skipping entry.");
+                return null;
+            }
             System.out.println("WARNING!! Title mismatch found. New value will be overwritten with existing value.");
             System.out.println("Existing Title:"+canon.Title);
             System.out.println("new Title:"+ book.Title);
         }
         if(!canon.Author.equals(book.Author)){
+            if(hasGeneratedIsbn) {
+                System.out.println("ERROR!! Author mismatch found for entry without ISBN. Skipping entry.");
+                return null;
+            }
             System.out.println("WARNING!! Author mismatch found. New value will be overwritten with existing value.");
             System.out.println("Existing Author:"+canon.Author);
             System.out.println("new Author:"+ book.Author);
         }
         if(canon.Year != book.Year){
+            if(hasGeneratedIsbn) {
+                System.out.println("ERROR!! Year mismatch found for entry without ISBN. Skipping entry.");
+                return null;
+            }
             System.out.println("WARNING!! Year mismatch found. New value will be overwritten with existing value.");
             System.out.println("Existing Year:"+canon.Year);
             System.out.println("new Year:"+ book.Year);
 
         }
         if(canon.PageCount != book.PageCount){
+            if(hasGeneratedIsbn) {
+                System.out.println("ERROR!! PageCount mismatch found for entry without ISBN. Skipping entry.");
+                return null;
+            }
             System.out.println("WARNING!! PageCount mismatch found. New value will be overwritten with existing value.");
             System.out.println("Existing PageCount:"+canon.PageCount);
             System.out.println("new PageCount:"+ book.PageCount);
@@ -134,12 +152,20 @@ public class BookDb {
         }
 
         if(!canon.Genre.equals(book.Genre)){
+            if(hasGeneratedIsbn) {
+                System.out.println("ERROR!! Genre mismatch found for entry without ISBN. Skipping entry.");
+                return null;
+            }
             System.out.println("WARNING!! Genre mismatch found. New value will be overwritten with existing value.");
             System.out.println("Existing Genre:"+canon.Genre);
             System.out.println("new Genre:"+ book.Genre);
 
         }
         if(canon.ReadingLevel != book.ReadingLevel){
+            if(hasGeneratedIsbn) {
+                System.out.println("ERROR!! ReadingLevel mismatch found for entry without ISBN. Skipping entry.");
+                return null;
+            }
             System.out.println("WARNING!! ReadingLevel mismatch found. New value will be overwritten with existing value.");
             System.out.println("Existing ReadingLevel:"+canon.ReadingLevel);
             System.out.println("new ReadingLevel:"+ book.ReadingLevel);
@@ -150,13 +176,17 @@ public class BookDb {
                 canon.Genre, canon.ReadingLevel, copyNum, date, null );
     }
 
+    private boolean IsGeneratedIsbn(Long isbn) {
+        var s = isbn.toString();
+        return s.length() < 10;
+    }
+
     public void BuildSearchIndex() throws IOException {
         var books = GetAllBooks();
         _searchIndex = new BookSearchIndex(books);
     }
 
-    public ArrayList<Book> Filter(String genre, int level, String author, String title) {
-        //todo: build search indexes
+    public ArrayList<Book> Filter(String genre, int level) {
         var isValidGenre = Book.IsValidGenre(genre);
         var isValidLevel = Book.IsValidReadingLevel(level);
         var books = _books.values();

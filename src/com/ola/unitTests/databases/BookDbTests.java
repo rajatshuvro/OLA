@@ -1,10 +1,11 @@
 package com.ola.unitTests.databases;
 import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
-import java.io.*;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BookDbTests {
@@ -38,16 +39,16 @@ public class BookDbTests {
     @Test
     public void Search(){
         var bookDb = new BookDb(GetBooks());
-        var result = bookDb.Filter("Fiction", -1, null, null);
+        var result = bookDb.Filter("Fiction", -1);
         assertEquals(2, result.size());
 
-        result = bookDb.Filter(null, 4, null, null);
+        result = bookDb.Filter(null, 4);
         assertEquals(2, result.size());
 
-        result = bookDb.Filter("Fiction", 4, null, null);
+        result = bookDb.Filter("Fiction", 4);
         assertEquals(0, result.size());
 
-        result = bookDb.Filter("Fiction", 5, null, null);
+        result = bookDb.Filter("Fiction", 5);
         assertEquals(1, result.size());
     }
 }

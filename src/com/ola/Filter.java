@@ -8,7 +8,7 @@ import org.apache.commons.cli.*;
 import java.util.ArrayList;
 
 public class Filter {
-    private static String commandSyntax = "filter  (-v) (-g [genre]) (-l [reading level]) (-t [title]) (-a [author])";
+    private static String commandSyntax = "filter  (-v) (-g [genre]) (-l [reading level])";
     public static void Run(String[] args, BookDb bookDb) {
         Options options = new Options();
         Option verboseOption = new Option("v", "verbose", false, "Optional: Report verbose results");
@@ -23,14 +23,6 @@ public class Filter {
         levelOption.setRequired(false);
         options.addOption(levelOption);
 
-        Option authorOption = new Option("a", "author", true, "Optional: Author name");
-        authorOption.setRequired(false);
-        options.addOption(authorOption);
-
-        Option titleOption = new Option("t", "title", true, "Optional: Title");
-        titleOption.setRequired(false);
-        options.addOption(titleOption);
-
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd;
@@ -44,10 +36,8 @@ public class Filter {
             var verbose = cmd.hasOption('v');
             var genre = cmd.hasOption('g')? cmd.getOptionValue('g'): null;
             var level = cmd.hasOption('l')? Integer.parseInt(cmd.getOptionValue('l')): -1;
-            var author = cmd.hasOption('a')? cmd.getOptionValue('a'): null;
-            var title = cmd.hasOption('t')? cmd.getOptionValue('t'): null;
 
-            var searchResults = bookDb.Filter(genre, level, author, title);
+            var searchResults = bookDb.Filter(genre, level);
             System.out.println(SummarizeSearch(searchResults));
 
             if(!verbose) return;
@@ -64,6 +54,6 @@ public class Filter {
     }
 
     private static String SummarizeSearch(ArrayList<Book> searchResults) {
-        return searchResults.size() + " books matched the search criteria";
+        return searchResults.size() + " matches found";
     }
 }

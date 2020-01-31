@@ -54,7 +54,7 @@ public class AddTest {
         var bookDb = new BookDb(BookDbTests.GetBooks());
         Add.AddNewBook(GetMismatchingBook(), bookDb);
 
-        assertEquals(8, bookDb.Count());
+        assertEquals(5, bookDb.Count());
     }
 
 }

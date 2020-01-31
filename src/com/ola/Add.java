@@ -91,7 +91,8 @@ public class Add {
     public static int AddNewBook(ArrayList<Book> books, BookDb bookDb) throws IOException {
         for (Book book: books) {
             var displayId = bookDb.Add(book);
-            System.out.println("New book added: "+displayId);
+            if(displayId!=null) System.out.println("New book added: "+displayId);
+            else System.out.println("Failed to add: "+ book.Title);
         }
         System.out.print("Rebuilding book search index...");
         bookDb.BuildSearchIndex();
