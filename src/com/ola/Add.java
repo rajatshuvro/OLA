@@ -6,6 +6,7 @@ import com.ola.databases.UserDb;
 import com.ola.parsers.BookCsvParser;
 import com.ola.parsers.UserCsvParser;
 import com.ola.utilities.FileUtilities;
+import com.ola.utilities.PrintUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.FileInputStream;
@@ -76,10 +77,10 @@ public class Add {
         for(var user: users){
             var id = userDb.AddNewUser(user.Name, user.Role, user.Email, user.Phone);
             if(id != -1) {
-                System.out.println(user.Name +" was added to the user database. Assigned Id: "+id);
+                PrintUtilities.PrintSuccessLine(user.Name +" was added to the user database. Assigned Id: "+id);
                 count++;
             }
-            else System.out.println("Failed to add new user "+user.Name);
+            else PrintUtilities.PrintErrorLine("Failed to add new user "+user.Name);
         }
 
         System.out.print("Rebuilding user search index...");
@@ -91,8 +92,8 @@ public class Add {
     public static int AddNewBook(ArrayList<Book> books, BookDb bookDb) throws IOException {
         for (Book book: books) {
             var displayId = bookDb.Add(book);
-            if(displayId!=null) System.out.println("New book added: "+displayId);
-            else System.out.println("Failed to add: "+ book.Title);
+            if(displayId!=null) PrintUtilities.PrintSuccessLine("New book added: "+displayId);
+            else PrintUtilities.PrintErrorLine("Failed to add: "+ book.Title);
         }
         System.out.print("Rebuilding book search index...");
         bookDb.BuildSearchIndex();

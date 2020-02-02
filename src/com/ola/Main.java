@@ -1,5 +1,6 @@
 package com.ola;
 import com.ola.utilities.FileUtilities;
+import com.ola.utilities.PrintUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.FileInputStream;
@@ -20,6 +21,7 @@ public class Main {
         PrintMenu();
 
         while (!quit){
+            PrintUtilities.PrintPrompt();
             Scanner in = new Scanner(System.in);
             String command = in.nextLine();
             String[] subArgs = command.split("\\s+");
@@ -58,6 +60,8 @@ public class Main {
                 case "quit":
                     quit = true;
                     break;
+                case "":
+                    break;//user pressed enter
                 case "help":
                     PrintMenu();
                     break;
@@ -71,19 +75,19 @@ public class Main {
 
     }
     private static void PrintMenu() {
-        System.out.println("Please choose from the following options:");
-        System.out.println("\tadd            (add new books or users)");
-        System.out.println("\tadd-user/au    (add new user via command line)");
-        System.out.println("\tco             (checkout book)");
-        System.out.println("\tret            (return book)");
-        System.out.println("\tco-stat/cs     (checkout status)");
-        System.out.println("\tsearch         (search book database)");
-        System.out.println("\tfilter         (filter book database by genre, level, etc fields)");
-        System.out.println("\tlabel          (print out book titles and Ids)");
-        System.out.println("\tlegacy         (import books from legacy tsv)");
-        System.out.println("\tquit           (quit OLA)");
-        System.out.println("\thelp           (print this menu)");
-        System.out.println("\t[Type command to get detailed help]");
+        PrintUtilities.PrintInfoLine("Please choose from the following options:");
+        PrintUtilities.PrintInfoLine("\tadd            (add new books or users)");
+        PrintUtilities.PrintInfoLine("\tadd-user/au    (add new user via command line)");
+        PrintUtilities.PrintInfoLine("\tco             (checkout book)");
+        PrintUtilities.PrintInfoLine("\tret            (return book)");
+        PrintUtilities.PrintInfoLine("\tco-stat/cs     (checkout status)");
+        PrintUtilities.PrintInfoLine("\tsearch         (search book database)");
+        PrintUtilities.PrintInfoLine("\tfilter         (filter book database by genre, level, etc fields)");
+        PrintUtilities.PrintInfoLine("\tlabel          (print out book titles and Ids)");
+        PrintUtilities.PrintInfoLine("\tlegacy         (import books from legacy tsv)");
+        PrintUtilities.PrintInfoLine("\tquit           (quit OLA)");
+        PrintUtilities.PrintInfoLine("\thelp           (print this menu)");
+        PrintUtilities.PrintInfoLine("\t[Type command to get detailed help]");
     }
 
     private static String commandSyntex = "ola -b [full path to books data file] " +
@@ -117,17 +121,17 @@ public class Main {
             cmd = parser.parse(options, args);
             String bookFileName = cmd.getOptionValue("books");
             if(!FileUtilities.Exists(bookFileName)){
-                System.out.println("Failed to find file: "+bookFileName);
+                PrintUtilities.PrintErrorLine("Failed to find file: "+bookFileName);
                 return null;
             }
             String userFileName = cmd.getOptionValue("users");
             if(!FileUtilities.Exists(userFileName)){
-                System.out.println("Failed to find file: "+userFileName);
+                PrintUtilities.PrintErrorLine("Failed to find file: "+userFileName);
                 return null;
             }
             String transactionFileName = cmd.getOptionValue("transactions");
             if(!FileUtilities.Exists(transactionFileName)){
-                System.out.println("Failed to find file: "+transactionFileName);
+                PrintUtilities.PrintErrorLine("Failed to find file: "+transactionFileName);
                 return null;
             }
             return new DataProvider(new FileInputStream(bookFileName),
@@ -138,7 +142,7 @@ public class Main {
                     new FileOutputStream(userFileName, true));
         }
         catch (ParseException | FileNotFoundException e) {
-            System.out.println(e.getMessage());
+            PrintUtilities.PrintErrorLine(e.getMessage());
             formatter.printHelp(commandSyntex, options);
             return null;
         }

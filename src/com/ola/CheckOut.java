@@ -2,6 +2,7 @@ package com.ola;
 
 import com.ola.dataStructures.Transaction;
 import com.ola.databases.TransactionDb;
+import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
@@ -36,12 +37,12 @@ public class CheckOut {
             var date = TimeUtilities.GetCurrentTime();
             if(transactionDb.Add(new Transaction(bookId, userId, date, Transaction.CheckoutTag)))
             {
-                System.out.println(bookId +" has been checked out by "+ userId);
+                PrintUtilities.PrintSuccessLine(bookId +" has been checked out by "+ userId);
                 System.out.print("Rebuilding transaction search index...");
                 transactionDb.BuildSearchIndex();
                 System.out.println("done");
             }
-            else System.out.println("Checkout attempt was unsuccessful!!");
+            else PrintUtilities.PrintWarningLine("Checkout attempt was unsuccessful!!");
 
         }
         catch (ParseException | IOException e) {
