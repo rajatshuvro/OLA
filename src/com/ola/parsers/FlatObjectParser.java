@@ -29,7 +29,7 @@ public class FlatObjectParser {
             for (var line : lines) {
                 var keyValue = line.split(":",2);
                 if(keyValue.length ==2)
-                    _keyValues.put(keyValue[0].strip(), keyValue[1].strip());
+                    _keyValues.put(keyValue[0].trim(), keyValue[1].trim());
             }
             for (var entry: _keyValues.entrySet()) {
                 if(entry.getValue()!=null) return _keyValues;
