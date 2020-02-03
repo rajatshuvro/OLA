@@ -90,14 +90,18 @@ public class Add {
     }
 
     public static int AddNewBook(ArrayList<Book> books, BookDb bookDb) throws IOException {
+        var count=0;
         for (Book book: books) {
             var displayId = bookDb.Add(book);
-            if(displayId!=null) PrintUtilities.PrintSuccessLine("New book added: "+displayId);
+            if(displayId!=null) {
+                PrintUtilities.PrintSuccessLine("New book added: "+displayId);
+                count++;
+            }
             else PrintUtilities.PrintErrorLine("Failed to add: "+ book.Title);
         }
         System.out.print("Rebuilding book search index...");
         bookDb.BuildSearchIndex();
         System.out.println("done");
-        return books.size();
+        return count;
     }
 }

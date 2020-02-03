@@ -4,6 +4,7 @@ import com.ola.Appender;
 import com.ola.dataStructures.Transaction;
 import com.ola.luceneIndex.TransactionSearchIndex;
 import com.ola.parsers.FlatObjectParser;
+import com.ola.utilities.PrintUtilities;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -56,11 +57,11 @@ public class TransactionDb {
     public boolean Add(Transaction record) throws IOException {
         //make sure the book exists in the book database and the user in user database
         if(_bookDb.GetBook(record.BookId)== null){
-            System.out.println("WARNING:Unknown book id: "+ record.BookId);
+            PrintUtilities.PrintWarningLine("WARNING:Unknown book id: "+ record.BookId);
             return false;
         }
         if(_userDb.GetUser(record.UserId) == null && record.UserId != Integer.MIN_VALUE){
-            System.out.println("WARNING:Unknown user id: "+ record.UserId);
+            PrintUtilities.PrintWarningLine("WARNING:Unknown user id: "+ record.UserId);
             return false;
         }
         if(!_latestTransaction.containsKey(record.BookId)){
@@ -72,7 +73,7 @@ public class TransactionDb {
         //if the latest transaction is of type checkout you cannot add another checkout and similarly for return
         var latestRecord = _latestTransaction.get(record.BookId);
         if (latestRecord.Type.equals(record.Type)) {
-            System.out.println("WARNING: cannot "+record.Type+ " a book that is already in that state. Book id:" + record.BookId);
+            PrintUtilities.PrintWarningLine("WARNING: cannot "+record.Type+ " a book that is already in that state. Book id:" + record.BookId);
             return false;
         }
 

@@ -11,6 +11,7 @@ public class BookDb {
     private HashMap<String, Book> _books;
     private HashMap<Long, Integer> _latestCopyNumbers;
     private ArrayList<Book> _newBooks;
+    private BookSearchIndex _searchIndex;
 
     public HashSet<String> GetIds() {
         var ids = new HashSet<String>();
@@ -19,7 +20,7 @@ public class BookDb {
         }
         return ids;
     }
-    private BookSearchIndex _searchIndex;
+
     public BookSearchIndex GetSearchIndex() throws IOException {
         if(_searchIndex == null) BuildSearchIndex();
         return _searchIndex;

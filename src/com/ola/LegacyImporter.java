@@ -1,6 +1,7 @@
 package com.ola;
 
 import com.ola.dataStructures.Book;
+import com.ola.parsers.FlatObjectParser;
 import com.ola.parsers.LegacyBookParser;
 import com.ola.parsers.ParserUtilities;
 import org.apache.commons.cli.*;
@@ -54,11 +55,11 @@ public class LegacyImporter {
 
     public static int ConvertLegacyRecords(ArrayList<Book> books, OutputStreamWriter writer) throws IOException {
         writer.write(ParserUtilities.GetBookFileHeader());
-        writer.write(ParserUtilities.GetBookRecordDelimiter()+'\n');
+        writer.write(FlatObjectParser.RecordSeparator +'\n');
 
         for (Book book: books) {
             writer.write(book.toString()+'\n');
-            writer.write(ParserUtilities.GetBookRecordDelimiter()+'\n');
+            writer.write(FlatObjectParser.RecordSeparator+'\n');
         }
 
         writer.close();

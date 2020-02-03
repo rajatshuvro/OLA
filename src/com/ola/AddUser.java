@@ -1,6 +1,7 @@
 package com.ola;
 
 import com.ola.databases.UserDb;
+import com.ola.utilities.PrintUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
@@ -39,21 +40,20 @@ public class AddUser
 
         try {
             cmd = parser.parse(options, args);
-            //var name = cmd.getOptionValue("name");
             var role = cmd.getOptionValue("role");
             var email = cmd.getOptionValue("email");
             var phone = cmd.getOptionValue("phone");
 
             int id = userDb.AddNewUser(name, role, email, phone);
             if(id != -1) {
-                System.out.println(name+" was added to the user database. Assigned Id: "+id);
+                PrintUtilities.PrintSuccessLine(name+" was added to the user database. Assigned Id: "+id);
                 appender.AppendUsers(userDb.GetNewRecords());
                 System.out.print("Rebuilding user search index...");
                 userDb.BuildSearchIndex();
                 System.out.println("done");
 
             }
-            else System.out.println("Failed to add new user.");
+            else PrintUtilities.PrintErrorLine("Failed to add new user.");
         }
         catch (ParseException | IOException e) {
             System.out.println(e.getMessage());

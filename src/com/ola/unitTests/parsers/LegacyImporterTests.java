@@ -1,6 +1,7 @@
 package com.ola.unitTests.parsers;
 import com.ola.LegacyImporter;
 import com.ola.dataStructures.Book;
+import com.ola.parsers.FlatObjectParser;
 import com.ola.parsers.LegacyBookParser;
 import com.ola.parsers.ParserUtilities;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ public class LegacyImporterTests {
         var recordCount = 0;
         while (scanner.hasNextLine()){
             String line = scanner.nextLine();
-            if (line.equals(ParserUtilities.GetBookRecordDelimiter())) recordCount++;
+            if (line.equals(FlatObjectParser.RecordSeparator)) recordCount++;
         }
 
         assertEquals(20,recordCount);

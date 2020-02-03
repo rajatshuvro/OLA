@@ -59,10 +59,6 @@ public class ParserUtilities {
         return sb.toString();
     }
 
-    public static String GetBookRecordDelimiter(){
-        return "***************************************************************";
-    }
-
     public static long ParseIsbn(String isbnString) {
         if(IsNullOrEmpty(isbnString) || isbnString.equals("-1")) return -1;
         if(isbnString.contains("-")) isbnString = isbnString.replace("-","");

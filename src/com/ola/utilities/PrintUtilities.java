@@ -13,16 +13,21 @@ public class PrintUtilities {
     public static final String PURPLE = "\033[0;35m";  // PURPLE
     public static final String CYAN = "\033[0;36m";    // CYAN
     public static final String WHITE = "\033[0;37m";   // WHITE
-    
+
+    public static void PrintLine(String s){
+        System.out.println(s);
+    }
+    public static void Print(String s){
+        System.out.print(s);
+    }
     public static void PrintErrorLine(String s){
         System.out.println(RED + s + RESET);
     }
     public static void PrintWarningLine(String s){
         System.out.println(YELLOW + s + RESET);
     }
-    public static void PrintSuccessLine(String s){
-        System.out.println(GREEN + s + RESET);
-    }
+    public static void PrintSuccessLine(String s){ System.out.println(GREEN + s + RESET);}
+    public static void PrintDelimiterLine(String s){ System.out.println(PURPLE + s + RESET);}
     public static void PrintInfoLine(String s){
         System.out.println(CYAN + s + RESET);
     }

@@ -24,6 +24,7 @@ public class Main {
             PrintUtilities.PrintPrompt();
             Scanner in = new Scanner(System.in);
             String command = in.nextLine();
+            command = command.trim();
             String[] subArgs = command.split("\\s+");
 
             String subCommand = subArgs[0];

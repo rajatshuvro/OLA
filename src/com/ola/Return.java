@@ -2,6 +2,7 @@ package com.ola;
 
 import com.ola.dataStructures.Transaction;
 import com.ola.databases.TransactionDb;
+import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
@@ -29,10 +30,15 @@ public class Return {
             cmd = parser.parse(options, args);
             var bookId = cmd.getOptionValue('b');
             var date = TimeUtilities.GetCurrentTime();
-            transactionDb.Add(new Transaction(bookId, Integer.MIN_VALUE, date, Transaction.ReturnTag));
+            if(transactionDb.Add(new Transaction(bookId, Integer.MIN_VALUE, date, Transaction.ReturnTag))){
+                PrintUtilities.PrintSuccessLine(bookId +" has been returned.");
+                PrintUtilities.Print("Rebuilding transaction search index...");
+                transactionDb.BuildSearchIndex();
+                PrintUtilities.PrintLine("done");
+            }
         }
         catch (ParseException | IOException e) {
-            System.out.println(e.getMessage());
+            PrintUtilities.PrintLine(e.getMessage());
             formatter.printHelp(commandSyntex, options);
         }
     }

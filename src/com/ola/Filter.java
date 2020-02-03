@@ -2,7 +2,9 @@ package com.ola;
 
 import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
+import com.ola.parsers.FlatObjectParser;
 import com.ola.parsers.ParserUtilities;
+import com.ola.utilities.PrintUtilities;
 import org.apache.commons.cli.*;
 
 import java.util.ArrayList;
@@ -42,10 +44,10 @@ public class Filter {
 
             if(!verbose) return;
             for (Book book: searchResults) {
-                System.out.println(ParserUtilities.GetBookRecordDelimiter());
+                PrintUtilities.PrintDelimiterLine(FlatObjectParser.RecordSeparator);
                 System.out.println(book.toString());
             }
-            System.out.println(ParserUtilities.GetBookRecordDelimiter());
+            System.out.println(FlatObjectParser.RecordSeparator);
         }
         catch (ParseException e) {
             System.out.println(e.getMessage());

@@ -38,15 +38,15 @@ public class CheckOut {
             if(transactionDb.Add(new Transaction(bookId, userId, date, Transaction.CheckoutTag)))
             {
                 PrintUtilities.PrintSuccessLine(bookId +" has been checked out by "+ userId);
-                System.out.print("Rebuilding transaction search index...");
+                PrintUtilities.Print("Rebuilding transaction search index...");
                 transactionDb.BuildSearchIndex();
-                System.out.println("done");
+                PrintUtilities.PrintLine("done");
             }
             else PrintUtilities.PrintWarningLine("Checkout attempt was unsuccessful!!");
 
         }
         catch (ParseException | IOException e) {
-            System.out.println(e.getMessage());
+            PrintUtilities.PrintLine(e.getMessage());
             formatter.printHelp(commandSyntax, options);
         }
     }
