@@ -44,12 +44,13 @@ public class BookCsvParser {
                 isHeaderRecord = false;
                 continue;
             }
+
             long isbn = ParserUtilities.ParseIsbn(record.get(IsbnTag));
-            String title = record.get(TitleTag);
-            String author = record.get(AuthorTag);
-            String publisher  = record.get(PublisherTag);
+            String title = record.get(TitleTag).trim();
+            String author = record.get(AuthorTag).trim();
+            String publisher  = record.get(PublisherTag).trim();
             int year =ParserUtilities.ParseUInt(record.get(YearTag));
-            var summary = record.get(SummaryTag);
+            var summary = record.get(SummaryTag).trim();
             var genre = record.get(GenreTag);
             var readingLevel = ParserUtilities.ParseUInt(record.get(ReadingLevelTag));
             int pageCount = ParserUtilities.ParseUInt(record.get(PageCountTag));

@@ -15,5 +15,6 @@ public class UserCsvParserTests {
 
         var user = parser.GetUsers();
         assertEquals(3, user.size());
+        assertEquals("Tanni Chakraborty", user.get(0).Name);
     }
 }

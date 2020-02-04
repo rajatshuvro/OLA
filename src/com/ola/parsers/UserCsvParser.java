@@ -36,10 +36,10 @@ public class UserCsvParser {
                 isHeaderRecord = false;
                 continue;
             }
-            var name = record.get(NameTag);
+            var name = record.get(NameTag).trim();
             var role = record.get(RoleTag);
-            var email = record.get(EmailTag);
-            var phone = record.get(PhoneTag);
+            var email = record.get(EmailTag).trim();
+            var phone = record.get(PhoneTag).trim();
 
             users.add(new User(-1,name, role, email, phone));
         }

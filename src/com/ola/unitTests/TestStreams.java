@@ -10,7 +10,7 @@ public class TestStreams {
         var writer = new OutputStreamWriter(memStream);
 
         writer.write("\"Timestamp\",\"Name\",\"Role\",\"Email\",\"Phone\"\n");
-        writer.write("\"2020/01/24 8:37:32 AM PST\",\"Tanni Chakraborty\",\"Teacher\",\"tanni.chakraborty@gmail.com\",\"732-668-7269\"\n");
+        writer.write("\"2020/01/24 8:37:32 AM PST\",\"Tanni Chakraborty \",\"Teacher\",\"tanni.chakraborty@gmail.com\",\"732-668-7269\"\n");
         writer.write("\"2020/01/24 8:38:11 AM PST\",\"Totini Tonu\",\"Student\",\"rajatshuvro@gmail.com\",\"732-666-7242\"\n");
         writer.write("\"2020/01/24 8:39:31 AM PST\",\"Homayara Chowdhury\",\"Administrator\",\"sharmin@onkur.com\",\"(619) 204-5111\"\n");
         writer.close();

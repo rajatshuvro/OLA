@@ -73,13 +73,22 @@ public class Book {
         var titleWordCount = StringUtilities.GetWordCount(title);
         var authorWordCount = StringUtilities.GetWordCount(author);
         var publisherWordCount = StringUtilities.GetWordCount(publisher);
-        var isbnString = Integer.toString(titleWordCount) + authorWordCount + publisherWordCount
+        var titleNumeric = GetNumericChars(title);
+        var isbnString = Integer.toString(titleWordCount+titleNumeric) + authorWordCount + publisherWordCount
                         + year + pageCount;
         if(isbnString.length()>9) {
             System.out.println("Failed to generate isbn smaller than 10 characters");
             return 999999999L;
         }
         return Long.parseLong(isbnString);
+    }
+
+    private static int GetNumericChars(String title) {
+        var s = "";
+        for(var c: title.toCharArray()){
+            if(Character.isDigit(c))  s+=c;
+        }
+        return s.equals("")? 0: ParserUtilities.ParseUInt(s);
     }
 
     public String GetUserFriendlyId(){
