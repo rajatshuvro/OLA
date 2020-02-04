@@ -55,7 +55,6 @@ public class BookCsvParser {
             var readingLevel = ParserUtilities.ParseUInt(record.get(ReadingLevelTag));
             int pageCount = ParserUtilities.ParseUInt(record.get(PageCountTag));
             float price = ParserUtilities.ParseUFloat(record.get(PriceTag));
-            //var entryDate = TimeUtilities.parseDate(record.get(TimeTag));
 
             if(isbn == -1)
             {
@@ -63,8 +62,10 @@ public class BookCsvParser {
                 System.out.println("Generating ISBN for Title:"+title+"..."+ isbn);
             }
 
-            books.add( new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, -1,
-                    null, null));
+            var book = new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, -1,
+                    null, null, null);
+            book.SetSummary(summary);
+            books.add(book);
         }
         return books;
     }

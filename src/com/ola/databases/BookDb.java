@@ -109,7 +109,7 @@ public class BookDb {
             //this is the first copy of this book
             return new Book(book.Isbn, book.Author, book.Title,
                     book.Publisher,book.Year, book.PageCount, book.Price,
-                    book.Genre, book.ReadingLevel, copyNum, date, null );
+                    book.Genre, book.ReadingLevel, copyNum, date, null, book.Summary );
         }
         boolean hasGeneratedIsbn = IsGeneratedIsbn(book.Isbn);
 
@@ -174,7 +174,7 @@ public class BookDb {
         }
         return new Book(book.Isbn, canon.Author, canon.Title,
                 canon.Publisher,canon.Year, canon.PageCount, canon.Price,
-                canon.Genre, canon.ReadingLevel, copyNum, date, null );
+                canon.Genre, canon.ReadingLevel, copyNum, date, null , null);
     }
 
     private boolean IsGeneratedIsbn(Long isbn) {

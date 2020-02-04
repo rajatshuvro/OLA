@@ -50,17 +50,12 @@ public class BookSearchIndex {
         _writer.addDocument(document);
     }
 
-    private Document GetDocument(Book book) throws IOException {
+    private Document GetDocument(Book book) {
         Document document = new Document();
 
-        //book id field
-        //Field idField = new Field(SearchCommons.BookIdTag, book.GetId(), StringField.TYPE_NOT_STORED);
-        // book contents
-        Field contentField = new Field(SearchCommons.BookRecordTag, book.GetSearchOutput(), TextField.TYPE_NOT_STORED);
+        Field contentField = new Field(SearchCommons.BookRecordTag, book.toString(), TextField.TYPE_NOT_STORED);
 
         document.add(contentField);
-        //document.add(idField);
-
         return document;
     }
 

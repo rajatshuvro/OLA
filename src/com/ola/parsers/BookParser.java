@@ -24,6 +24,7 @@ public class BookParser {
     private final String YearTag = "Year";
     private final String EntryDateTag = "Entry date";
     private final String ExpiryDateTag = "Expiry date";
+    private final String SummaryTag = "Summary";
 
     public BookParser(InputStream inputStream){
         _inputStream = inputStream;
@@ -53,6 +54,7 @@ public class BookParser {
         int pageCount = -1;
         float price = (float) 0.0;
         String publisher  = null;
+        String summary = null;
         int year =0;
         String genre = null;
         int readingLevel = -1;
@@ -83,6 +85,9 @@ public class BookParser {
                 case PublisherTag:
                     publisher = value;
                     break;
+                case SummaryTag:
+                    summary = value;
+                    break;
                 case YearTag:
                     year = ParserUtilities.ParseUInt(value);
                     break;
@@ -111,7 +116,7 @@ public class BookParser {
         }
         if(Book.IsValid(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber))
             return new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber,
-                    entryDate, expiryDate);
+                    entryDate, expiryDate, summary);
         else return null;
     }
 

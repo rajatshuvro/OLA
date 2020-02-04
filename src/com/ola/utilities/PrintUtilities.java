@@ -32,6 +32,6 @@ public class PrintUtilities {
         System.out.println(CYAN + s + RESET);
     }
     public static void PrintPrompt(){
-        System.out.print("$");
+        System.out.print("OLA>");
     }
 }

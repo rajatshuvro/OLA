@@ -114,7 +114,7 @@ public class LegacyBookParser {
         }
         if(Book.IsLegacyValid(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber))
             return new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber,
-                    TimeUtilities.GetCurrentTime(), null);
+                    TimeUtilities.GetCurrentTime(), null, null);
         else return null;
     }
 

@@ -1,6 +1,7 @@
 package com.ola.dataStructures;
 
 import com.ola.parsers.ParserUtilities;
+import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.StringUtilities;
 import com.ola.utilities.TimeUtilities;
 
@@ -18,13 +19,14 @@ public class Book {
     public final int PageCount;
     public final float Price;
     public final String Genre;
+    public String Summary;
     public final int ReadingLevel;
     private final Date EntryDate;
     public final Date ExpiryDate;
 
     public Book(long isbn, String author, String title, String publisher, int year, int pageCount,
                 float price, String genre, int readingLevel, int copyNum,
-                Date entryDate, Date expiryDate){
+                Date entryDate, Date expiryDate, String summary){
         Isbn = isbn;
         Author = author;
         Title = title;
@@ -37,6 +39,15 @@ public class Book {
         ReadingLevel = readingLevel;
         EntryDate = entryDate;
         ExpiryDate = expiryDate;
+        Summary = summary==null? "":summary;
+    }
+
+    public boolean SetSummary(String s){
+        if(ParserUtilities.IsNullOrEmpty(Summary)) {
+            Summary=s;
+            return true;
+        }
+        return false;
     }
 
     public static boolean IsValid(long isbn, String author, String title, String publisher, int year,
@@ -122,15 +133,11 @@ public class Book {
                 "Price:           "+Price+'\n'+
                 "Reading level:   "+ReadingLevel+'\n'+
                 "Entry date:      "+ TimeUtilities.ToString(EntryDate)+'\n'+
-                "Expiry date:     "+ TimeUtilities.ToString(ExpiryDate);
+                "Expiry date:     "+ TimeUtilities.ToString(ExpiryDate)+'\n'+
+                "Summary:         "+ Summary;
 
     }
 
-    public String GetSearchOutput(){
-        return  "Id:              "+GetId()+'\n'+
-                toString();
-
-    }
     //static fields
     // Tags in the files should be user friendly. they may be abbreviated in IDs.
     public static final String FictionTag = "Fiction";
@@ -194,7 +201,7 @@ public class Book {
         var genreArray = genres.split("/");
         for (String genre: genreArray) {
             if (!GenreTags.contains(genre)) {
-                System.out.println("WARNING!! Invalid genre:" + genre);
+                PrintUtilities.PrintWarningLine("WARNING!! Invalid genre:" + genre);
                 return false;
             }
         }

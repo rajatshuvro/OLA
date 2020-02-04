@@ -20,15 +20,15 @@ public class CheckoutTests {
     private BookDb GetBookDb() {
         var books = new ArrayList<Book>();
         books.add(new Book(7890788L,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
-                2016,16, 5, "Fiction", 3, 2, null, null));
+                2016,16, 5, "Fiction", 3, 2, null, null, null));
         books.add(new Book(678564,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
-                2016,16, 5, "Fiction", 3, 1, null, null));
+                2016,16, 5, "Fiction", 3, 1, null, null, null));
         books.add(new Book(678564,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
-                2016,16, 5, "Fiction", 3, 2, null, null));
+                2016,16, 5, "Fiction", 3, 2, null, null, null));
         books.add(new Book(456098,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
-                2016,16, 5, "Fiction", 3, 1, null, null));
+                2016,16, 5, "Fiction", 3, 1, null, null, null));
         books.add(new Book(456098,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
-                2016,16, 5, "Fiction", 3, 2, null, null));
+                2016,16, 5, "Fiction", 3, 2, null, null, null));
 
         return new BookDb(books);
     }
