@@ -27,12 +27,12 @@ public class TransactionParser {
                 BookIdTag, UserIdTag, DateTag, TypeTag
         });
 
-        var nextSetOfValues =fobParser.GetNextSetOfValues();
+        var nextSetOfValues =fobParser.GetNextRecord();
         while ( nextSetOfValues != null){
             var transaction = GetTransaction(nextSetOfValues);
             if (transaction != null)  transactions.add(transaction);
 
-            nextSetOfValues = fobParser.GetNextSetOfValues();
+            nextSetOfValues = fobParser.GetNextRecord();
         }
         fobParser.close();
         return transactions;

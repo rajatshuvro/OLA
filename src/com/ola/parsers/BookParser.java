@@ -34,81 +34,35 @@ public class BookParser {
         ArrayList<Book> books = new ArrayList<>();
         var fobParser = new FlatObjectParser(_inputStream, new String[]{
                 TitleTag, AuthorTag, IsbnTag, PageCountTag, PriceTag, PublisherTag, GenreTag, ReadingLevelTag,
-                CopyNumTag, YearTag, EntryDateTag, ExpiryDateTag
+                CopyNumTag, YearTag, EntryDateTag, ExpiryDateTag, SummaryTag
         });
 
-        var nextSetOfValues =fobParser.GetNextSetOfValues();
-        while ( nextSetOfValues != null){
-            var book = GetBook(nextSetOfValues);
+        var record =fobParser.GetNextRecord();
+        while ( record != null){
+            var book = GetBook(record);
             if (book != null) books.add(book);
-            nextSetOfValues = fobParser.GetNextSetOfValues();
+            record = fobParser.GetNextRecord();
         }
         fobParser.close();
         return books;
     }
 
-    private Book GetBook(HashMap<String, String> keyValues) {
-        String title = keyValues.get(TitleTag);
-        String author = keyValues.get(TitleTag);
-        long isbn = -1;
-        int pageCount = -1;
-        float price = (float) 0.0;
-        String publisher  = null;
-        String summary = null;
-        int year =0;
-        String genre = null;
-        int readingLevel = -1;
+    private Book GetBook(HashMap<String, String> record) {
+        var title       = record.get(TitleTag);
+        var author      = record.get(AuthorTag);
+        long isbn       = ParserUtilities.ParseIsbn(record.get(IsbnTag));
+        var publisher   = record.get(PublisherTag);
+        var summary     = record.get(SummaryTag);
+        var year        = ParserUtilities.ParseUInt(record.get(YearTag));
+        var genre       = record.get(GenreTag);
+        var readingLevel = ParserUtilities.ParseUInt(record.get(ReadingLevelTag));
+        var pageCount   = ParserUtilities.ParseUInt(record.get(PageCountTag));
+        var price       = ParserUtilities.ParseUFloat(record.get(PriceTag));
         //when adding new books, the copy number field may be absent
-        int copyNumber = -1;
-        Date entryDate = null;
-        Date expiryDate = null;
+        var copyNumber  = record.containsKey(CopyNumTag)?ParserUtilities.ParseUInt(record.get(CopyNumTag)):-1;
+        Date entryDate  = TimeUtilities.parseDate(record.get(EntryDateTag));
+        Date expiryDate = TimeUtilities.parseDate(record.get(ExpiryDateTag));
 
-        for (var entry: keyValues.entrySet()) {
-            var key = entry.getKey();
-            var value = entry.getValue();
-            switch (key){
-                case TitleTag:
-                    title = value;
-                    break;
-                case AuthorTag:
-                    author = value;
-                    break;
-                case IsbnTag:
-                    isbn = ParserUtilities.ParseIsbn(value);
-                    break;
-                case PageCountTag:
-                    pageCount = ParserUtilities.ParseUInt(value);
-                    break;
-                case PriceTag:
-                    price = ParserUtilities.ParseUFloat(value);
-                    break;
-                case PublisherTag:
-                    publisher = value;
-                    break;
-                case SummaryTag:
-                    summary = value;
-                    break;
-                case YearTag:
-                    year = ParserUtilities.ParseUInt(value);
-                    break;
-                case GenreTag:
-                    genre = value;
-                    break;
-                case ReadingLevelTag:
-                    readingLevel = ParserUtilities.ParseUInt(value);
-                    break;
-                case CopyNumTag:
-                    copyNumber = ParserUtilities.ParseUInt(value);
-                    break;
-                case EntryDateTag:
-                    entryDate = TimeUtilities.parseDate(value);
-                    break;
-                case ExpiryDateTag:
-                    expiryDate = TimeUtilities.parseDate(value);
-                    break;
-
-            }
-        }
         if(isbn == -1)
         {
             isbn = Book.GenerateIsbn(title, author, publisher, year, pageCount);

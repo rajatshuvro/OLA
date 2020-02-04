@@ -26,12 +26,12 @@ public class UserParser {
                IdTag, NameTag, RoleTag, EmailTag, PhoneTag
         });
 
-        var nextSetOfValues =fobParser.GetNextSetOfValues();
+        var nextSetOfValues =fobParser.GetNextRecord();
         while ( nextSetOfValues != null){
             var user = GetUser(nextSetOfValues);
             if (user != null)  users.add(user);
 
-            nextSetOfValues = fobParser.GetNextSetOfValues();
+            nextSetOfValues = fobParser.GetNextRecord();
         }
         fobParser.close();
 

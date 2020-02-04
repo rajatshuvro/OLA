@@ -21,7 +21,7 @@ public class FlatObjectParser {
             _keyValues.put(key, null);
         }
     }
-    public HashMap<String, String> GetNextSetOfValues(){
+    public HashMap<String, String> GetNextRecord(){
         Clear();
         while (_scanner.hasNextLine()){
             String[] lines = GetNextRecordLines(_scanner);
