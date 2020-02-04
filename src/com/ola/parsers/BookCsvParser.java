@@ -48,8 +48,8 @@ public class BookCsvParser {
             long isbn = ParserUtilities.ParseIsbn(record.get(IsbnTag));
             String title = record.get(TitleTag).trim();
             String author = record.get(AuthorTag).trim();
-            String publisher  = record.get(PublisherTag).trim();
-            int year =ParserUtilities.ParseUInt(record.get(YearTag));
+            String publisher = record.get(PublisherTag).trim();
+            int year = ParserUtilities.ParseUInt(record.get(YearTag));
             var summary = record.get(SummaryTag).trim();
             var genre = record.get(GenreTag);
             var readingLevel = ParserUtilities.ParseUInt(record.get(ReadingLevelTag));

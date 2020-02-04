@@ -48,8 +48,8 @@ public class BookParser {
     }
 
     private Book GetBook(HashMap<String, String> keyValues) {
-        String title = null;
-        String author = null;
+        String title = keyValues.get(TitleTag);
+        String author = keyValues.get(TitleTag);
         long isbn = -1;
         int pageCount = -1;
         float price = (float) 0.0;
