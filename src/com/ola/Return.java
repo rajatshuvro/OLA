@@ -32,9 +32,7 @@ public class Return {
             var date = TimeUtilities.GetCurrentTime();
             if(transactionDb.Add(new Transaction(bookId, Integer.MIN_VALUE, date, Transaction.ReturnTag))){
                 PrintUtilities.PrintSuccessLine(bookId +" has been returned.");
-                PrintUtilities.Print("Rebuilding transaction search index...");
-                transactionDb.BuildSearchIndex();
-                PrintUtilities.PrintLine("done");
+
             }
         }
         catch (ParseException | IOException e) {

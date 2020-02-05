@@ -38,9 +38,6 @@ public class CheckOut {
             if(transactionDb.Add(new Transaction(bookId, userId, date, Transaction.CheckoutTag)))
             {
                 PrintUtilities.PrintSuccessLine(bookId +" has been checked out by "+ userId);
-                PrintUtilities.Print("Rebuilding transaction search index...");
-                transactionDb.BuildSearchIndex();
-                PrintUtilities.PrintLine("done");
             }
             else PrintUtilities.PrintWarningLine("Checkout attempt was unsuccessful!!");
 

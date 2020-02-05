@@ -4,7 +4,6 @@ import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
 import com.ola.luceneIndex.BookSearchIndex;
-import com.ola.luceneIndex.TransactionSearchIndex;
 import com.ola.luceneIndex.UserSearchIndex;
 import com.ola.utilities.TimeUtilities;
 import org.apache.lucene.queryparser.classic.ParseException;
@@ -60,23 +59,6 @@ public class SearchTests {
         var searcher = new UserSearchIndex(GetUsers());
         var topHitIds = searcher.Search("Zohir", 4);
         assertArrayEquals(new int[]{456}, topHitIds);
-    }
-
-    private ArrayList<Transaction> GetTransactions(){
-        var transactions = new ArrayList<Transaction>();
-        transactions.add(new Transaction("7890788-(2)", 234, TimeUtilities.parseDate("2019-09-13 10:30:31"), Transaction.CheckoutTag));
-        transactions.add(new Transaction("678564-(1)", 123, TimeUtilities.parseDate("2019-10-15 11:01:22"), Transaction.ReturnTag));
-        transactions.add(new Transaction("456098-(1)", 345, TimeUtilities.parseDate("2019-11-03 10:33:22"), Transaction.CheckoutTag));
-        transactions.add(new Transaction("7890788-(2)", 234, TimeUtilities.parseDate("2019-11-13 10:30:25"), Transaction.ReturnTag));
-
-        return transactions;
-    }
-
-    @Test
-    public void SearchTransactions()throws IOException, ParseException {
-        var searcher = new TransactionSearchIndex(GetTransactions());
-        var topHitIds = searcher.Search(Transaction.CheckoutTag, 4);
-        assertArrayEquals(new int[]{0,2}, topHitIds);
     }
 
 }

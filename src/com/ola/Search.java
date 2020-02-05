@@ -33,12 +33,6 @@ public class Search {
         }
         OutputResults(results, "----------------------Users----------------------");
 
-        var transactionDb = dataProvider.TransactionDb;
-        var transactionsSearchIndex = transactionDb.GetSearchIndex();
-        for(var index: transactionsSearchIndex.Search(queryText, 5)){
-            results.add(transactionDb.Get(index).toString());
-        }
-        OutputResults(results, "----------------------Transactions--------------------");
         System.out.println('\n');
         System.out.println("=========================End of search results=====================");
     }

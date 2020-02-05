@@ -2,7 +2,6 @@ package com.ola.databases;
 
 import com.ola.Appender;
 import com.ola.dataStructures.Transaction;
-import com.ola.luceneIndex.TransactionSearchIndex;
 import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.PrintUtilities;
 
@@ -19,7 +18,6 @@ public class TransactionDb {
     private UserDb _userDb;
     private BookDb _bookDb;
     private Appender _appender;
-    private TransactionSearchIndex _searchIndex;
 
     public TransactionDb(Iterable<Transaction> transactions, UserDb userDb, BookDb bookDb, Appender appender){
         //transactions are assumed to ordered by increasing timestamps
@@ -122,14 +120,5 @@ public class TransactionDb {
                 checkouts.add(record);
         }
         return checkouts;
-    }
-
-    public TransactionSearchIndex GetSearchIndex() throws IOException {
-        if(_searchIndex == null) BuildSearchIndex();
-        return _searchIndex;
-    }
-
-    public void BuildSearchIndex() throws IOException {
-        _searchIndex = new TransactionSearchIndex(_transactions);
     }
 }

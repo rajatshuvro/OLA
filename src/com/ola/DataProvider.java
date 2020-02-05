@@ -59,10 +59,6 @@ public class DataProvider {
         UserDb.GetSearchIndex();
         System.out.println("done");
 
-        System.out.print("Indexing transactions...");
-        TransactionDb.GetSearchIndex();
-        System.out.println("done");
-
         _userInputStream.close();
         _bookInputStream.close();
         _transactionInputStream.close();
