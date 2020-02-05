@@ -49,6 +49,7 @@ public class Main {
                 case "filter":
                     Filter.Run(subArgs, dataProvider.BookDb);
                     break;
+                case "$":
                 case "search":
                     Search.Run(subArgs, dataProvider);
                     break;
@@ -82,7 +83,7 @@ public class Main {
         PrintUtilities.PrintInfoLine("\tco             (checkout book)");
         PrintUtilities.PrintInfoLine("\tret            (return book)");
         PrintUtilities.PrintInfoLine("\tco-stat/cs     (checkout status)");
-        PrintUtilities.PrintInfoLine("\tsearch         (search book database)");
+        PrintUtilities.PrintInfoLine("\tsearch/$       (search book database)");
         PrintUtilities.PrintInfoLine("\tfilter         (filter book database by genre, level, etc fields)");
         PrintUtilities.PrintInfoLine("\tlabel          (print out book titles and Ids)");
         PrintUtilities.PrintInfoLine("\tlegacy         (import books from legacy tsv)");

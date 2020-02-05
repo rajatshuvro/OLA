@@ -32,6 +32,15 @@ public class CheckoutStatusTests {
     }
 
     @Test
+    public void Status_by_book() throws IOException {
+        var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
+                GetAppendStream(), GetAppendStream(), GetAppendStream());
+        provider.Load();
+        var retString = CheckoutStatus.GetLatestBookTransaction(provider, "7890788-(2)");
+        assertNotNull(retString);
+        assertTrue(retString.contains("Transaction status for book: 7890788-(2)"));
+    }
+    @Test
     public void Status_all() throws IOException {
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
