@@ -43,6 +43,7 @@ public class User {
         return id > 0;
     }
 
+    @Override
     public String toString(){
         return    "Id:       "+ Id +
                 "\nName:     "+ Name +

@@ -1,6 +1,7 @@
 package com.ola.databases;
 
 import com.ola.Appender;
+import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Transaction;
 import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.PrintUtilities;
@@ -51,6 +52,26 @@ public class TransactionDb {
         if(_latestTransactions.containsKey(bookId)) return _latestTransactions.get(bookId);
         return null;
     }
+
+    public ArrayList<Transaction> GetUserActivity(int userId){
+        var transactions = new ArrayList<Transaction>();
+        for(var transaction: _transactions){
+            if(transaction.UserId != userId) continue;
+            transactions.add(transaction);
+        }
+        return transactions;
+    }
+
+    public ArrayList<Transaction> GetBookActivity(long isbn){
+        var transactions = new ArrayList<Transaction>();
+        for(var transaction: _transactions){
+            var bookIsbn = Book.GetIsbn(transaction.BookId);
+            if( bookIsbn!= isbn) continue;
+            transactions.add(transaction);
+        }
+        return transactions;
+    }
+
     public Transaction Get(int index){
         if(index < 0 || index >= _transactions.size()) return null;
         return _transactions.get(index);

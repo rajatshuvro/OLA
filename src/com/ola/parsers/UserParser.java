@@ -26,46 +26,24 @@ public class UserParser {
                IdTag, NameTag, RoleTag, EmailTag, PhoneTag
         });
 
-        var nextSetOfValues =fobParser.GetNextRecord();
-        while ( nextSetOfValues != null){
-            var user = GetUser(nextSetOfValues);
+        var record =fobParser.GetNextRecord();
+        while ( record != null){
+            var user = GetUser(record);
             if (user != null)  users.add(user);
 
-            nextSetOfValues = fobParser.GetNextRecord();
+            record = fobParser.GetNextRecord();
         }
         fobParser.close();
 
         return users;
     }
 
-    private User GetUser(HashMap<String, String> keyValues){
-        int id = 0;
-        String name = null;
-        String role = null;
-        String email = null;
-        String phnNo = null;
-        for (var entry: keyValues.entrySet()) {
-            var key = entry.getKey();
-            var value = entry.getValue();
-
-            switch (key){
-                case IdTag:
-                    id = Integer.parseInt(value);
-                    break;
-                case NameTag:
-                    name = value;
-                    break;
-                case RoleTag:
-                    role = value;
-                    break;
-                case EmailTag:
-                    email = value;
-                    break;
-                case PhoneTag:
-                    phnNo = value;
-                    break;
-            }
-        }
+    private User GetUser(HashMap<String, String> record){
+        int id       = Integer.parseInt(record.get(IdTag));
+        String name  = record.get(NameTag);
+        String role  = record.get(RoleTag);
+        String email = record.get(EmailTag);
+        String phnNo = record.get(PhoneTag);
 
         if (!User.IsValid(id, name, role, email, phnNo)) {
 

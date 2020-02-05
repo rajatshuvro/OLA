@@ -42,6 +42,13 @@ public class Book {
         Summary = summary==null? "":summary;
     }
 
+    public static long GetIsbn(String bookId) {
+        if(ParserUtilities.IsNullOrEmpty(bookId)) return -1;
+
+        var isbnString = bookId.split("-")[0];
+        return ParserUtilities.ParseULong(isbnString);
+    }
+
     public boolean SetSummary(String s){
         if(ParserUtilities.IsNullOrEmpty(Summary)) {
             Summary=s;
