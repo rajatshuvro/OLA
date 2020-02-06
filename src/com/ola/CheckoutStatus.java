@@ -2,12 +2,13 @@ package com.ola;
 
 import com.ola.dataStructures.Transaction;
 import com.ola.parsers.FlatObjectParser;
+import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
 public class CheckoutStatus {
-    private static String commandSyntax = "stat  (-u [user id]) (-b [book id])";
+    private static String commandSyntax = "stat  (-u [user id]) (-b [book id]) (-i [isbn])";
     public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
 
@@ -18,6 +19,10 @@ public class CheckoutStatus {
         Option bookIdOption = new Option("b", "book", true, "Optional: book id");
         bookIdOption.setRequired(false);
         options.addOption(bookIdOption);
+
+        Option isbnOption = new Option("i", "isbn", true, "Optional: isbn");
+        isbnOption.setRequired(false);
+        options.addOption(isbnOption);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -43,6 +48,18 @@ public class CheckoutStatus {
                     PrintUtilities.PrintLine(latestTransaction);
                 else PrintUtilities.PrintLine("No transaction found for book id:"+bookId);
             }
+            if(cmd.hasOption('i')){
+                var isbn = ParserUtilities.ParseIsbn(cmd.getOptionValue('i'));
+                for(var book: dataProvider.BookDb.GetBooks(isbn)){
+                    var bookId = book.GetId();
+                    var latestTransaction = dataProvider.TransactionDb.GetLatest(bookId);
+                    if (latestTransaction != null && latestTransaction.Type.equals(Transaction.CheckoutTag))
+                    {
+                        PrintUtilities.PrintWarningLine("Title: "+ book.Title + " [id:" +bookId + "] is checked out");
+                    }
+                    else PrintUtilities.PrintSuccessLine("Title: "+ book.Title + " [id:" +bookId + "] in stock");
+                }
+            }
         }
         catch (ParseException e) {
             System.out.println(e.getMessage());
@@ -58,7 +75,7 @@ public class CheckoutStatus {
         if (record== null) return null;
 
         var sb = new StringBuilder();
-        sb.append("Transaction status for book: " +bookId+'\n');
+        //sb.append("Transaction status for book: " +bookId+'\n');
         sb.append(FlatObjectParser.RecordSeparator+'\n');
         var userName = userDb.GetUserName(record.UserId);
         var bookTitle = bookDb.GetTitle(bookId);

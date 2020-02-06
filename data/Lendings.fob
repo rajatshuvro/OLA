@@ -4,3 +4,9 @@
 #Date = Date of transaction. Value = <YYYY-MM-DD HH:MM:ss>
 #Type = Type of transaction. Value = Checkout/Return
 ***************************************************************
+Id:            1581008497237
+Book Id:       9789849195115-(1)
+User Id:       264
+Date:          2020-02-06 09:01:37
+Type:          Checkout
+***************************************************************
