@@ -13,7 +13,7 @@ public class Transaction {
     public final String Type;
     public final long Id;
 
-    public Transaction(String bookId, int userId, Date date, String type){
+    private Transaction(String bookId, int userId, Date date, String type){
         BookId = bookId;
         UserId = userId;
         Date = date;
@@ -21,10 +21,15 @@ public class Transaction {
         Id = date.getTime();
     }
 
-    public static boolean IsValid(String bookId, int userId, Date date, String type){
+    private static boolean IsValid(String bookId, int userId, Date date, String type){
         return bookId != null &&
                 userId != 0 &&
                 IsValidType(type);
+    }
+
+    public static Transaction Create(String bookId, int userId, Date date, String type){
+        if(!IsValid( bookId, userId, date, type)) return null;
+        return new Transaction(bookId, userId, date, type);
     }
 
     //static fields

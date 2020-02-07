@@ -30,7 +30,7 @@ public class Return {
             cmd = parser.parse(options, args);
             var bookId = cmd.getOptionValue('b');
             var date = TimeUtilities.GetCurrentTime();
-            if(transactionDb.Add(new Transaction(bookId, Integer.MIN_VALUE, date, Transaction.ReturnTag))){
+            if(transactionDb.Add(Transaction.Create(bookId, Integer.MIN_VALUE, date, Transaction.ReturnTag))){
                 PrintUtilities.PrintSuccessLine(bookId +" has been returned.");
 
             }

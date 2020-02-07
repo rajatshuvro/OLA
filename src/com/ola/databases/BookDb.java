@@ -107,7 +107,7 @@ public class BookDb {
         var canon = _books.get(canonicalId);
         if (canon == null) {
             //this is the first copy of this book
-            return new Book(book.Isbn, book.Author, book.Title,
+            return Book.Create(book.Isbn, book.Author, book.Title,
                     book.Publisher,book.Year, book.PageCount, book.Price,
                     book.Genre, book.ReadingLevel, copyNum, date, null, book.Summary );
         }
@@ -172,7 +172,7 @@ public class BookDb {
             System.out.println("new ReadingLevel:"+ book.ReadingLevel);
 
         }
-        return new Book(book.Isbn, canon.Author, canon.Title,
+        return Book.Create(book.Isbn, canon.Author, canon.Title,
                 canon.Publisher,canon.Year, canon.PageCount, canon.Price,
                 canon.Genre, canon.ReadingLevel, copyNum, date, null , null);
     }

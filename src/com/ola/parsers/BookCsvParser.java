@@ -62,7 +62,7 @@ public class BookCsvParser {
                 System.out.println("Generating ISBN for Title:"+title+"..."+ isbn);
             }
 
-            var book = new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, -1,
+            var book = Book.Create(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, -1,
                     null, null, null);
             book.SetSummary(summary);
             books.add(book);

@@ -24,7 +24,7 @@ public class Book {
     private final Date EntryDate;
     public final Date ExpiryDate;
 
-    public Book(long isbn, String author, String title, String publisher, int year, int pageCount,
+    private Book(long isbn, String author, String title, String publisher, int year, int pageCount,
                 float price, String genre, int readingLevel, int copyNum,
                 Date entryDate, Date expiryDate, String summary){
         Isbn = isbn;
@@ -57,7 +57,17 @@ public class Book {
         return false;
     }
 
-    public static boolean IsValid(long isbn, String author, String title, String publisher, int year,
+    public static Book Create(long isbn, String author, String title, String publisher, int year, int pageCount,
+                              float price, String genre, int readingLevel, int copyNum,
+                              Date entryDate, Date expiryDate, String summary)
+    {
+        if(!IsValid(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNum)) return null;
+
+        return new Book(isbn, author, title, publisher, year, pageCount,
+                        price, genre, readingLevel, copyNum,
+                        entryDate, expiryDate, summary);
+    }
+    private static boolean IsValid(long isbn, String author, String title, String publisher, int year,
                                   int pageCount, float price, String genre, int readingLevel, int copyNumber) {
         return isbn != 0 &&
                 !(ParserUtilities.IsNullOrEmpty(author)) &&

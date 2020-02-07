@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BookTests {
     @Test
     public void GetBookId(){
-        Book book = new Book(9_789_849_195_290L,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+        Book book = Book.Create(9_789_849_195_290L,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
                 2016,16, 5, "Fiction", 3, 1, null, null, "learning to swim");
 
-        Book book2 = new Book(9_789_849_195_290L,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+        Book book2 = Book.Create(9_789_849_195_290L,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
                 2016,16, 5, "Fiction/Social", 3, 2, null, null, "learning to swim");
 
         assertEquals("9789849195290-FIC-3-(1)", book.GetUserFriendlyId());

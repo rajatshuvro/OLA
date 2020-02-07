@@ -18,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SearchTests {
     public ArrayList<Book> GetNewBooks() {
         var books = new ArrayList<Book>();
-        books.add(new Book(7890788,"Rajat Shuvro Roy","Amar Baba","Bonosree books and co",
+        books.add(Book.Create(7890788,"Rajat Shuvro Roy","Amar Baba","Bonosree books and co",
                 2015, 5, 5, "General", 4,-1, null, null, "How great is baba"));
-        books.add(new Book(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
+        books.add(Book.Create(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
                 2017, 10, 10, "Fiction", 5,-1, null, null, "Story of a broken heart"));
-        books.add(new Book(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
+        books.add(Book.Create(678564,"Saber Nabil","Bhua Bhalobasha","Dakkhin Khan Publishers",
                 2017, 10, 10, "Fiction", 5,-1, null, null, "Story of a broken man"));
-        books.add(new Book(456098,"Nandana Mitra","Robindra Prem","Bakura Publishers",
+        books.add(Book.Create(456098,"Nandana Mitra","Robindra Prem","Bakura Publishers",
                 2018, 15, 12, "Fiction", 6,-1, null, null, "Bengali gir's fetish with Robi dadu"));
 
         return books;

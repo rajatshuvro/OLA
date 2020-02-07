@@ -113,7 +113,7 @@ public class LegacyBookParser {
             System.out.println("Generating ISBN for Title:"+title+"..."+ isbn);
         }
         if(Book.IsLegacyValid(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber))
-            return new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber,
+            return Book.Create(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber,
                     TimeUtilities.GetCurrentTime(), null, null);
         else return null;
     }

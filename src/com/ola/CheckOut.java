@@ -35,7 +35,7 @@ public class CheckOut {
             var bookId = cmd.getOptionValue('b');
             var userId = Integer.parseInt(cmd.getOptionValue('u'));
             var date = TimeUtilities.GetCurrentTime();
-            if(transactionDb.Add(new Transaction(bookId, userId, date, Transaction.CheckoutTag)))
+            if(transactionDb.Add(Transaction.Create(bookId, userId, date, Transaction.CheckoutTag)))
             {
                 PrintUtilities.PrintSuccessLine(bookId +" has been checked out by "+ userId);
             }

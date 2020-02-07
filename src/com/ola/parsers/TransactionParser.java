@@ -64,8 +64,8 @@ public class TransactionParser {
             }
 
         }
-        if(!Transaction.IsValid(bookId, userId, date, type)) return null;
-        return new Transaction(bookId, userId, date, type);
+
+        return Transaction.Create(bookId, userId, date, type);
     }
 
 

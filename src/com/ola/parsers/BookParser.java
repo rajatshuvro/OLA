@@ -68,10 +68,9 @@ public class BookParser {
             isbn = Book.GenerateIsbn(title, author, publisher, year, pageCount);
             System.out.println("Generating ISBN for Title:"+title+"..."+ isbn);
         }
-        if(Book.IsValid(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber))
-            return new Book(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber,
+        return Book.Create(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber,
                     entryDate, expiryDate, summary);
-        else return null;
+
     }
 
 }
