@@ -12,9 +12,9 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/dependencies/commons-cli-1.4.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/dependencies/commons-csv-1.7.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/dependencies/lucene-core-8.4.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/dependencies/lucene-queryparser-8.4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/dependencies/commons-csv-1.8.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
