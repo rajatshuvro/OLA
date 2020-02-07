@@ -45,11 +45,7 @@ public class UserParser {
         String email = record.get(EmailTag);
         String phnNo = record.get(PhoneTag);
 
-        if (!User.IsValid(id, name, role, email, phnNo)) {
-
-            return null;
-        };
-        return new User(id, name, role, email, phnNo);
+        return User.Create(id, name, role, email, phnNo);
     }
 
 

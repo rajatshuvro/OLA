@@ -47,10 +47,10 @@ public class SearchTests {
 
     public ArrayList<User> GetUsers(){
         var users = new ArrayList<User>();
-        users.add(new User(123, "Totini", User.StudentRoleTag, "totini.tonu@onkur.com", "732-666-7242"));
-        users.add(new User(234, "Nabil", User.TeacherRoleTag, "saber.nabil@onkur.com", "858-345-1234"));
-        users.add(new User(345, "Rajat", User.VolunteerRoleTag, "rajat.shuvro@onkur.com", "(732) 666-7242"));
-        users.add(new User(456, "Zohir", User.AdminRoleTag, "zohir.choudhury@onkur.com","987-145-3456"));
+        users.add(User.Create(123, "Totini", User.StudentRoleTag, "totini.tonu@onkur.com", "732-666-7242"));
+        users.add(User.Create(234, "Nabil", User.TeacherRoleTag, "saber.nabil@onkur.com", "858-345-1234"));
+        users.add(User.Create(345, "Rajat", User.VolunteerRoleTag, "rajat.shuvro@onkur.com", "(732) 666-7242"));
+        users.add(User.Create(456, "Zohir", User.AdminRoleTag, "zohir.choudhury@onkur.com","987-145-3456"));
 
         return users;
     }

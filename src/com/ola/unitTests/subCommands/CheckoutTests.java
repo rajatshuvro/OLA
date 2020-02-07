@@ -35,9 +35,9 @@ public class CheckoutTests {
 
     private UserDb GetUserDb() {
         var users = new ArrayList<User>();
-        users.add(new User(234, "name1", User.StudentRoleTag, "name1@onkur.com", "4568932678"));
-        users.add(new User(123, "name2", User.StudentRoleTag, "name2@onkur.com", "4568732678"));
-        users.add(new User(345, "name2", User.VolunteerRoleTag, "name3@onkur.com", "4568732676"));
+        users.add(User.Create(234, "name1", User.StudentRoleTag, "name1@onkur.com", "4568932678"));
+        users.add(User.Create(123, "name2", User.StudentRoleTag, "name2@onkur.com", "4568732678"));
+        users.add(User.Create(345, "name2", User.VolunteerRoleTag, "name3@onkur.com", "4568732676"));
         return new UserDb(users);
     }
 

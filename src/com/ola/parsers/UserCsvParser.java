@@ -1,6 +1,7 @@
 package com.ola.parsers;
 
 import com.ola.dataStructures.User;
+import com.ola.databases.UserDb;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
@@ -41,7 +42,7 @@ public class UserCsvParser {
             var email = record.get(EmailTag).trim();
             var phone = record.get(PhoneTag).trim();
 
-            users.add(new User(-1,name, role, email, phone));
+            users.add(User.Create(UserDb.NewUserId,name, role, email, phone));
         }
         return users;
     }

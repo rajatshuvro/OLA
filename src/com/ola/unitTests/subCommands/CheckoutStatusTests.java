@@ -38,7 +38,7 @@ public class CheckoutStatusTests {
         provider.Load();
         var retString = CheckoutStatus.GetLatestBookTransaction(provider, "7890788-(2)");
         assertNotNull(retString);
-        assertTrue(retString.contains("Transaction status for book: 7890788-(2)"));
+        assertTrue(retString.contains("7890788-(2)"));
     }
     @Test
     public void Status_all() throws IOException {

@@ -13,8 +13,8 @@ public class UserCsvParserTests {
     public void GetNewUsers() throws IOException {
         var parser = new UserCsvParser(TestStreams.GetNewUserCsvStream());
 
-        var user = parser.GetUsers();
-        assertEquals(3, user.size());
-        assertEquals("Tanni Chakraborty", user.get(0).Name);
+        var users = parser.GetUsers();
+        assertEquals(3, users.size());
+        assertEquals("Tanni Chakraborty", users.get(0).Name);
     }
 }

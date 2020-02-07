@@ -11,19 +11,15 @@ public class UserDb {
     private int _maxId;
     private UserSearchIndex _searchIndex;
     private ArrayList<User> _newUsers;
-
+    public static final int NewUserId=99999;
 
     public UserDb(Iterable<User> users){
         _users = new HashMap<>();
         for (User user: users) {
-            if(user.IsValid())
-                _users.put(user.Id, user);
-            else {
-                System.out.println("Invalid User:");
-                System.out.println(user.toString());
-                continue;
-            }
-            if(user.Id > _maxId) _maxId = user.Id;
+            if(user== null) continue;
+
+            _users.put(user.Id, user);
+            if(user.Id != NewUserId && user.Id > _maxId) _maxId = user.Id;
         }
         _newUsers = new ArrayList<>();
     }
@@ -58,9 +54,9 @@ public class UserDb {
         var rand = new Random(13);
         var idIncrement = rand.nextInt(20);
 
-        if (! User.IsValid(_maxId+idIncrement, name, role, email, phone)) return -1;
+        var user = User.Create(_maxId+idIncrement, name, role, email, phone);
+        if(user == null) return -1;//invalid user data
         _maxId+=idIncrement;
-        var user = new User(_maxId, name, role, email, phone);
         _users.put(user.Id, user);
         _newUsers.add(user);
         return user.Id;

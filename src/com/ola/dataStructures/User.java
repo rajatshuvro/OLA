@@ -12,12 +12,16 @@ public class User {
     public final String Email;
     public final String Phone;
 
-    public User(int id, String name, String role, String email, String phn){
+    private User(int id, String name, String role, String email, String phn){
         Id = id;
         Name = name;
         Role = role;
         Email = email;
         Phone = phn;
+    }
+    public static User Create(int id, String name, String role, String email, String phn){
+        if(!IsValid(id, name, role, email, phn)) return null;
+        return new User(id, name, role, email, phn);
     }
     public boolean IsValid(){
         return IsValid(Id, Name, Role, Email, Phone);
