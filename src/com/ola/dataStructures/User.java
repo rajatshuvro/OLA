@@ -19,15 +19,13 @@ public class User {
         Email = email;
         Phone = phn;
     }
+
     public static User Create(int id, String name, String role, String email, String phn){
         if(!IsValid(id, name, role, email, phn)) return null;
         return new User(id, name, role, email, phn);
     }
-    public boolean IsValid(){
-        return IsValid(Id, Name, Role, Email, Phone);
-    }
 
-    public static boolean IsValid(int id, String name, String role, String email, String phn) {
+    private static boolean IsValid(int id, String name, String role, String email, String phn) {
         if(ParserUtilities.IsNullOrEmpty(name)){
             System.out.println("User name cannot be empty");
             return false;
@@ -73,6 +71,4 @@ public class User {
     private static boolean IsValidRole(String role) {
         return RoleTags.contains(role);
     }
-
-
 }
