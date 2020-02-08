@@ -15,7 +15,8 @@ public class Main {
         DataProvider dataProvider = Initialize(args);
         if(dataProvider == null) return;
         dataProvider.Load();
-        PrintUtilities.PrintSuccessLine("Welcome to OLA (Onkur Library Application)");
+        PrintUtilities.PrintBanner();
+        PrintUtilities.PrintSuccessLine("Welcome to Onkur Library Application");
 
         boolean quit=false;
         PrintMenu();

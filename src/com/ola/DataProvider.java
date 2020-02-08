@@ -51,13 +51,8 @@ public class DataProvider {
         UserDb = new UserDb(_userParser.GetUsers());
         TransactionDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb, BookDb, Appender);
 
-        System.out.print("Indexing books...");
         BookDb.GetSearchIndex();
-        System.out.println("done");
-
-        System.out.print("Indexing users...");
         UserDb.GetSearchIndex();
-        System.out.println("done");
 
         _userInputStream.close();
         _bookInputStream.close();

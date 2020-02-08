@@ -34,4 +34,21 @@ public class PrintUtilities {
     public static void PrintPrompt(){
         System.out.print("OLA>");
     }
+
+    public static void PrintBanner() {
+        PrintDelimiterLine("**************************************");
+        PrintDelimiterLine("      ___           ___       ___     ");
+        PrintDelimiterLine("     /\\  \\         /\\__\\     /\\  \\    ");
+        PrintDelimiterLine("    /::\\  \\       /:/  /    /::\\  \\   ");
+        PrintDelimiterLine("   /:/\\:\\  \\     /:/  /    /:/\\:\\  \\  ");
+        PrintDelimiterLine("  /:/  \\:\\  \\   /:/  /    /::\\~\\:\\  \\ ");
+        PrintDelimiterLine(" /:/__/ \\:\\__\\ /:/__/    /:/\\:\\ \\:\\__\\");
+        PrintDelimiterLine(" \\:\\  \\ /:/  / \\:\\  \\    \\/__\\:\\/:/  /");
+        PrintDelimiterLine("  \\:\\  /:/  /   \\:\\  \\        \\::/  / ");
+        PrintDelimiterLine("   \\:\\/:/  /     \\:\\  \\       /:/  /  ");
+        PrintDelimiterLine("    \\::/  /       \\:\\__\\     /:/  /   ");
+        PrintDelimiterLine("     \\/__/         \\/__/     \\/__/    ");
+        PrintDelimiterLine("**************************************");
+
+    }
 }
