@@ -1,13 +1,19 @@
 package com.ola;
 
+import com.ola.dataStructures.Book;
+import com.ola.dataStructures.Transaction;
 import com.ola.databases.BookDb;
 import com.ola.databases.TransactionDb;
 import com.ola.databases.UserDb;
 import com.ola.parsers.BookParser;
+import com.ola.parsers.FlatObjectParser;
 import com.ola.parsers.TransactionParser;
 import com.ola.parsers.UserParser;
+import com.ola.utilities.TimeUtilities;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DataProvider {
     public BookDb BookDb;
@@ -65,4 +71,37 @@ public class DataProvider {
         _bookAppendStream.close();
         _transactionAppendStream.close();
     }
+
+    public String GetTransactionString(Transaction record) {
+        var sb = new StringBuilder();
+        var userName = UserDb.GetUserName(record.UserId);
+        var bookTitle = BookDb.GetTitle(record.BookId);
+        sb.append("Name:      " + userName + "]\n");
+        sb.append("User id:   " + record.UserId + "]\n");
+        sb.append("Title:     " + bookTitle + "]\n");
+        sb.append("Book id:   " + record.BookId + "]\n");
+        sb.append("Type:      " + record.Type + "]\n");
+        sb.append("Date:      " + TimeUtilities.ToString(record.Date) + "\n");
+        //print due date if this is a checkout
+        if(record.Type.equals(Transaction.CheckoutTag)){
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(record.Date);
+            cal.add(Calendar.DATE, 14);
+            var dueDate = cal.getTime();
+            sb.append("Due:       " + TimeUtilities.ToString(dueDate) + "\n");
+        }
+        sb.append(FlatObjectParser.RecordSeparator + '\n');
+        return sb.toString();
+    }
+
+    public ArrayList<Transaction> GetPendingCheckouts(int userId) {
+        var checkouts = new ArrayList<Transaction>();
+        for (Transaction record: TransactionDb.GetPendingCheckouts()) {
+            if(userId != record.UserId) continue;
+            checkouts.add(record);
+        }
+        return checkouts.size()==0? null: checkouts;
+    }
+
+
 }

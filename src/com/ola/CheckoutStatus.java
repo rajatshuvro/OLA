@@ -1,14 +1,12 @@
 package com.ola;
 
 import com.ola.dataStructures.Transaction;
-import com.ola.parsers.FlatObjectParser;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
-import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
 public class CheckoutStatus {
-    private static String commandSyntax = "stat  (-u [user id]) (-b [book id]) (-i [isbn])";
+    private static String commandSyntax = "co  (-u [user id]) OR (-b [book id]) OR (-i [isbn])";
     public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
 
@@ -29,7 +27,10 @@ public class CheckoutStatus {
         CommandLine cmd;
 
         if(args.length==1) {
-            System.out.print(GetAllCheckouts(dataProvider));
+            for(var record: dataProvider.TransactionDb.GetPendingCheckouts())
+            {
+                PrintTransaction(dataProvider, record);
+            }
             return;
         }
 
@@ -37,16 +38,20 @@ public class CheckoutStatus {
             cmd = parser.parse(options, args);
             if(cmd.hasOption('u') ){
                 var userId = Integer.parseInt(cmd.getOptionValue('u'));
-                var userRecords = GetUserCheckouts(dataProvider, userId);
-                if (userRecords != null)  PrintUtilities.PrintLine(userRecords);
-                else PrintUtilities.PrintLine("No checkouts found for user id:"+userId);
+                if(dataProvider.UserDb.GetUser(userId) == null)
+                    PrintUtilities.PrintErrorLine("Unknown user id: "+userId);
+
+                else PrintUserCheckouts(dataProvider, userId);
+                return;
+
             }
             if(cmd.hasOption('b')){
                 var bookId = cmd.getOptionValue('b');
-                var latestTransaction = GetLatestBookTransaction(dataProvider, bookId);
+                var latestTransaction = dataProvider.TransactionDb.GetLatest(bookId);;
                 if (latestTransaction!=null)
-                    PrintUtilities.PrintLine(latestTransaction);
+                    PrintTransaction(dataProvider, latestTransaction);
                 else PrintUtilities.PrintLine("No transaction found for book id:"+bookId);
+                return;
             }
             if(cmd.hasOption('i')){
                 var isbn = ParserUtilities.ParseIsbn(cmd.getOptionValue('i'));
@@ -67,58 +72,25 @@ public class CheckoutStatus {
         }
     }
 
-     public static String GetLatestBookTransaction(DataProvider dataProvider, String bookId) {
-        var transactionDb = dataProvider.TransactionDb;
-        var userDb = dataProvider.UserDb;
-        var bookDb = dataProvider.BookDb;
-        var record = transactionDb.GetLatest(bookId);
-        if (record== null) return null;
-
-        var sb = new StringBuilder();
-        //sb.append("Transaction status for book: " +bookId+'\n');
-        sb.append(FlatObjectParser.RecordSeparator+'\n');
-        var userName = userDb.GetUserName(record.UserId);
-        var bookTitle = bookDb.GetTitle(bookId);
-        AppendTransactionDetails(record, sb, userName, bookTitle);
-        return sb.toString();
-    }
-
-    private static void AppendTransactionDetails(Transaction record, StringBuilder sb, String userName, String bookTitle) {
-        sb.append("User:   " + userName + " [id:" + record.UserId + "]\n");
-        sb.append("Title:  " + bookTitle + " [id:" + record.BookId + "]\n");
-        sb.append("Date:   " + TimeUtilities.ToString(record.Date) + "\n");
-        sb.append(FlatObjectParser.RecordSeparator + '\n');
-    }
-
-    public static String GetUserCheckouts(DataProvider dataProvider, int userId) {
-        var transactionDb = dataProvider.TransactionDb;
-        var userDb = dataProvider.UserDb;
-        var bookDb = dataProvider.BookDb;
-        var userName = userDb.GetUserName(userId);
-        if(userName==null) return null;
-        var sb = new StringBuilder();
-        sb.append("Checkout status for: " +userName+'\n');
-        sb.append(FlatObjectParser.RecordSeparator+'\n');
-        for (Transaction record: transactionDb.GetPendingCheckouts()) {
-            if(userId != record.UserId) continue;
-            var bookTitle = bookDb.GetTitle(record.BookId);
-            AppendTransactionDetails(record, sb, userName, bookTitle);
+    private static void PrintUserCheckouts(DataProvider dataProvider, int userId) {
+        PrintUtilities.PrintLine("Pending checkouts for: "+ dataProvider.UserDb.GetUserName(userId));
+        var pendingCheckouts = dataProvider.GetPendingCheckouts(userId);
+        if (pendingCheckouts == null) {
+            PrintUtilities.PrintLine("No checkouts found for user id:"+userId);
         }
-        return sb.toString();
+
+        for(var checkout: pendingCheckouts){
+            PrintTransaction(dataProvider, checkout);
+        }
     }
 
-    public static String GetAllCheckouts(DataProvider dataProvider) {
-        var transactionDb = dataProvider.TransactionDb;
-        var userDb = dataProvider.UserDb;
-        var bookDb = dataProvider.BookDb;
-        var sb = new StringBuilder();
-        sb.append("Checkout status\n");
-        sb.append(FlatObjectParser.RecordSeparator+'\n');
-        for (Transaction record: transactionDb.GetPendingCheckouts()) {
-            var userName = userDb.GetUserName(record.UserId);
-            var bookTitle = bookDb.GetTitle(record.BookId);
-            AppendTransactionDetails(record, sb, userName, bookTitle);
-        }
-        return sb.toString();
+
+
+    private static void PrintTransaction(DataProvider dataProvider, Transaction transaction){
+        var recordString = dataProvider.GetTransactionString(transaction);
+        if(recordString.contains("Due:")) PrintUtilities.PrintWarningLine(recordString);
+        else PrintUtilities.PrintSuccessLine(recordString);
     }
+
+
 }
