@@ -13,41 +13,44 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CheckoutStatusTests {
 
     @Test
-    public void Status_command_line() throws IOException {
+    public void Status_user() throws IOException {
         var args = new String[]{"status","-u","897"};
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
         provider.Load();
         //just run it to make sure it doesn't crash
-        CheckoutStatus.Run(args, provider);
+        assertEquals(0, CheckoutStatus.Run(args, provider));
     }
 
     @Test
-    public void Status_by_user() throws IOException {
+    public void Status_book() throws IOException {
+        var args = new String[]{"status","-b","7890788-(2)"};
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
         provider.Load();
-        var retString = CheckoutStatus.GetUserCheckouts(provider, 897);
-        assertTrue(retString.contains("Checkout status for: Zohir Chowdhury"));
+        //just run it to make sure it doesn't crash
+        assertEquals(0, CheckoutStatus.Run(args, provider));
+
     }
 
     @Test
-    public void Status_by_book() throws IOException {
+    public void Status_isbn() throws IOException {
+        var args = new String[]{"status","-b","7890788"};
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
         provider.Load();
-        var retString = CheckoutStatus.GetLatestBookTransaction(provider, "7890788-(2)");
-        assertNotNull(retString);
-        assertTrue(retString.contains("7890788-(2)"));
+        //just run it to make sure it doesn't crash
+        assertEquals(0, CheckoutStatus.Run(args, provider));
     }
+
     @Test
     public void Status_all() throws IOException {
+        var args = new String[]{"status"};
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
         provider.Load();
-
-        var retString = CheckoutStatus.GetAllCheckouts(provider);
-        assertTrue(retString.contains("id:456098-(1)"));
-        assertTrue(retString.contains("2019-10-15 11:01:22"));
+        //just run it to make sure it doesn't crash
+        assertEquals(0, CheckoutStatus.Run(args, provider));
     }
+
 }

@@ -14,6 +14,7 @@ import com.ola.utilities.TimeUtilities;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class DataProvider {
     public BookDb BookDb;
@@ -72,25 +73,26 @@ public class DataProvider {
         _transactionAppendStream.close();
     }
 
+    private static final int CheckoutDurationInDays = 14;
     public String GetTransactionString(Transaction record) {
         var sb = new StringBuilder();
         var userName = UserDb.GetUserName(record.UserId);
         var bookTitle = BookDb.GetTitle(record.BookId);
-        sb.append("Name:      " + userName + "]\n");
-        sb.append("User id:   " + record.UserId + "]\n");
-        sb.append("Title:     " + bookTitle + "]\n");
-        sb.append("Book id:   " + record.BookId + "]\n");
-        sb.append("Type:      " + record.Type + "]\n");
+        sb.append("Name:      " + userName + " ("+record.UserId+")\n");
+        sb.append("Title:     " + bookTitle +" ("+record.BookId+")\n");
+        sb.append("Type:      " + record.Type + "\n");
         sb.append("Date:      " + TimeUtilities.ToString(record.Date) + "\n");
         //print due date if this is a checkout
         if(record.Type.equals(Transaction.CheckoutTag)){
             Calendar cal = Calendar.getInstance();
             cal.setTime(record.Date);
-            cal.add(Calendar.DATE, 14);
+            cal.add(Calendar.DATE, CheckoutDurationInDays);
             var dueDate = cal.getTime();
+            var now = TimeUtilities.GetCurrentTime();
             sb.append("Due:       " + TimeUtilities.ToString(dueDate) + "\n");
+            if(dueDate.before(now))
+                sb.append("Return OVERDUE!!\n");
         }
-        sb.append(FlatObjectParser.RecordSeparator + '\n');
         return sb.toString();
     }
 

@@ -1,13 +1,14 @@
 package com.ola;
 
 import com.ola.dataStructures.Transaction;
+import com.ola.parsers.FlatObjectParser;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
 import org.apache.commons.cli.*;
 
 public class CheckoutStatus {
     private static String commandSyntax = "co  (-u [user id]) OR (-b [book id]) OR (-i [isbn])";
-    public static void Run(String[] args, DataProvider dataProvider){
+    public static int Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
 
         Option userIdOption = new Option("u", "user", true, "Optional: user id");
@@ -29,9 +30,10 @@ public class CheckoutStatus {
         if(args.length==1) {
             for(var record: dataProvider.TransactionDb.GetPendingCheckouts())
             {
+                PrintUtilities.PrintLine(FlatObjectParser.RecordSeparator);
                 PrintTransaction(dataProvider, record);
             }
-            return;
+            return 0;
         }
 
         try {
@@ -42,16 +44,17 @@ public class CheckoutStatus {
                     PrintUtilities.PrintErrorLine("Unknown user id: "+userId);
 
                 else PrintUserCheckouts(dataProvider, userId);
-                return;
+                return 0;
 
             }
             if(cmd.hasOption('b')){
                 var bookId = cmd.getOptionValue('b');
-                var latestTransaction = dataProvider.TransactionDb.GetLatest(bookId);;
+                var latestTransaction = dataProvider.TransactionDb.GetLatest(bookId);
+                PrintUtilities.PrintLine(FlatObjectParser.RecordSeparator);
                 if (latestTransaction!=null)
                     PrintTransaction(dataProvider, latestTransaction);
                 else PrintUtilities.PrintLine("No transaction found for book id:"+bookId);
-                return;
+                return 0;
             }
             if(cmd.hasOption('i')){
                 var isbn = ParserUtilities.ParseIsbn(cmd.getOptionValue('i'));
@@ -64,12 +67,15 @@ public class CheckoutStatus {
                     }
                     else PrintUtilities.PrintSuccessLine("Title: "+ book.Title + " [id:" +bookId + "] in stock");
                 }
+                return 0;
             }
         }
         catch (ParseException e) {
             System.out.println(e.getMessage());
             formatter.printHelp(commandSyntax, options);
+            return -1;
         }
+        return 0;
     }
 
     private static void PrintUserCheckouts(DataProvider dataProvider, int userId) {
@@ -84,13 +90,10 @@ public class CheckoutStatus {
         }
     }
 
-
-
     private static void PrintTransaction(DataProvider dataProvider, Transaction transaction){
         var recordString = dataProvider.GetTransactionString(transaction);
-        if(recordString.contains("Due:")) PrintUtilities.PrintWarningLine(recordString);
+        if(recordString.contains("OVERDUE")) PrintUtilities.PrintWarningLine(recordString);
         else PrintUtilities.PrintSuccessLine(recordString);
     }
-
 
 }
