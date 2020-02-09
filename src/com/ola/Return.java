@@ -30,9 +30,9 @@ public class Return {
             cmd = parser.parse(options, args);
             var bookId = cmd.getOptionValue('b');
             var date = TimeUtilities.GetCurrentTime();
-            if(transactionDb.Add(Transaction.Create(bookId, Integer.MIN_VALUE, date, Transaction.ReturnTag))){
+            var userId = transactionDb.GetLatest(bookId).UserId;
+            if(transactionDb.Add(Transaction.Create(bookId, userId, date, Transaction.ReturnTag))){
                 PrintUtilities.PrintSuccessLine(bookId +" has been returned.");
-
             }
         }
         catch (ParseException | IOException e) {

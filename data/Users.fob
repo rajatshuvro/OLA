@@ -3,6 +3,8 @@
 #Name = User name. Value = <String>
 #Id = User Id. Value = <Integer>
 #Role = User role. Value = Teacher/Student/Volunteer/Administrator/Citizen
+#Email = email id. Value = <String>
+#Phone = Phone number. Value = <String> (containing 10 digits)
 ***************************************************************
 Id:       36
 Name:     Homayara Chowdhury

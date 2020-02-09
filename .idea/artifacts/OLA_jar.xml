@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="OLA:jar">
+  <artifact type="jar" build-on-make="true" name="OLA:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/OLA_jar</output-path>
     <root id="archive" name="OLA.jar">
       <element id="module-output" name="OLA" />
