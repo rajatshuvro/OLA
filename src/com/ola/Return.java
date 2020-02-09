@@ -30,7 +30,12 @@ public class Return {
             cmd = parser.parse(options, args);
             var bookId = cmd.getOptionValue('b');
             var date = TimeUtilities.GetCurrentTime();
-            var userId = transactionDb.GetLatest(bookId).UserId;
+            var transaction = transactionDb.GetLatest(bookId);
+            if(transaction == null) {
+                PrintUtilities.PrintErrorLine("Could not locate a checkout for: "+bookId);
+                return;
+            }
+            var userId = transaction.UserId;
             if(transactionDb.Add(Transaction.Create(bookId, userId, date, Transaction.ReturnTag))){
                 PrintUtilities.PrintSuccessLine(bookId +" has been returned.");
             }
