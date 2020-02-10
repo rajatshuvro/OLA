@@ -54,12 +54,10 @@ public class LegacyImporter {
     }
 
     public static int ConvertLegacyRecords(ArrayList<Book> books, OutputStreamWriter writer) throws IOException {
-        writer.write(ParserUtilities.GetBookFileHeader());
-        writer.write(FlatObjectParser.RecordSeparator +'\n');
+        writer.write("\"Timestamp\",\"ISBN\",\"Title\",\"Author\",\"Publisher\",\"Year\",\"Summary\",\"Genre\",\"Reading level\",\"Page count\",\"Price\"\n");//header
 
         for (Book book: books) {
-            writer.write(book.toString()+'\n');
-            writer.write(FlatObjectParser.RecordSeparator+'\n');
+            writer.write(book.ToCsvString()+'\n');
         }
 
         writer.close();
