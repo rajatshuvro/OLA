@@ -2,6 +2,7 @@ package com.ola.parsers;
 
 import com.ola.dataStructures.Book;
 import com.ola.dataStructures.User;
+import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.StringUtilities;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.csv.CSVFormat;
@@ -66,6 +67,10 @@ public class BookCsvParser {
 
             var book = Book.Create(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, -1,
                     null, null, null);
+            if(book==null) {
+                PrintUtilities.PrintWarningLine("Unable to import:"+title);
+                continue;
+            }
             book.SetSummary(summary);
             books.add(book);
         }
