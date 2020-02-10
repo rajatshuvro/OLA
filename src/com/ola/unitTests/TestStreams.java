@@ -26,6 +26,7 @@ public class TestStreams {
         writer.write("\"Timestamp\",\"ISBN\",\"Title\",\"Author\",\"Publisher\",\"Year\",\"Summary\",\"Genre\",\"Reading level\",\"Page count\",\"Price\"\n");
         writer.write("\"2020/01/31 3:45:48 PM PST\",\"\",\"Golper Asor (4)\",\"Brac\",\"Brac\",\"2017\",\"Koto boro shalgom\",\"General\",\"4\",\"10\",\"5\"\n");
         writer.write("\"2020/01/31 3:54:45 PM PST\",\"\",\"Golper Asor (2)\",\"Brac\",\"Brac\",\"2017\",\"Bera O chagol \",\"General\",\"2\",\"10\",\"5\"\n");
+        writer.write("\"2020/01/25 7:01:51 PM PST\",\"\",\"Pani\",\"Md.shah alam\",\"Sisemi workshop \",\"2013\",\"\",\"Science\",\"5\",\"10\",\"5\"\n");
         writer.close();
 
         var buffer = memStream.toByteArray();

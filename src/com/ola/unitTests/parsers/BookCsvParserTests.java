@@ -14,7 +14,7 @@ public class BookCsvParserTests {
         var parser = new BookCsvParser(TestStreams.GetBookCsvStream());
 
         var books = parser.GetBooks();
-        assertEquals(2, books.size());
+        assertEquals(3, books.size());
         assertEquals("Koto boro shalgom", books.get(0).Summary);
     }
 }
