@@ -43,10 +43,10 @@ public class ReturnTests {
 
     private ArrayList<Transaction> GetTransactions(){
         var transactions = new ArrayList<Transaction>();
-        transactions.add(Transaction.Create("7890788-(2)", 234, TimeUtilities.parseDate("2019-09-13 10:30:31"), Transaction.CheckoutTag));
-        transactions.add(Transaction.Create("678564-(1)", 123, TimeUtilities.parseDate("2019-10-15 11:01:22"), Transaction.CheckoutTag));
-        transactions.add(Transaction.Create("456098-(1)", 345, TimeUtilities.parseDate("2019-11-03 10:33:22"), Transaction.CheckoutTag));
-        transactions.add(Transaction.Create("7890788-(2)", 234, TimeUtilities.parseDate("2019-11-13 10:30:25"), Transaction.ReturnTag));
+        transactions.add(Transaction.Create("7890788-(2)", 234, TimeUtilities.parseDateTime("2019-09-13 10:30:31"), Transaction.CheckoutTag));
+        transactions.add(Transaction.Create("678564-(1)", 123, TimeUtilities.parseDateTime("2019-10-15 11:01:22"), Transaction.CheckoutTag));
+        transactions.add(Transaction.Create("456098-(1)", 345, TimeUtilities.parseDateTime("2019-11-03 10:33:22"), Transaction.CheckoutTag));
+        transactions.add(Transaction.Create("7890788-(2)", 234, TimeUtilities.parseDateTime("2019-11-13 10:30:25"), Transaction.ReturnTag));
 
         return transactions;
     }

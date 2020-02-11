@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Book {
+public class Book implements Comparable<Book>{
     public final long Isbn;
     public final String Author;
     public final String Title;
@@ -21,7 +21,7 @@ public class Book {
     public final String Genre;
     public String Summary;
     public final int ReadingLevel;
-    private final Date EntryDate;
+    public final Date EntryDate;
     public final Date ExpiryDate;
 
     private Book(long isbn, String author, String title, String publisher, int year, int pageCount,
@@ -41,7 +41,10 @@ public class Book {
         ExpiryDate = expiryDate;
         Summary = summary==null? "":summary;
     }
-
+    @Override
+    public int compareTo(Book other) {
+        return Title.compareTo(other.Title);
+    }
     public static long GetIsbn(String bookId) {
         if(ParserUtilities.IsNullOrEmpty(bookId)) return -1;
 

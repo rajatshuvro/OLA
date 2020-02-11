@@ -60,8 +60,8 @@ public class BookParser {
         var price       = ParserUtilities.ParseUFloat(record.get(PriceTag));
         //when adding new books, the copy number field may be absent
         var copyNumber  = record.containsKey(CopyNumTag)?ParserUtilities.ParseUInt(record.get(CopyNumTag)):-1;
-        Date entryDate  = TimeUtilities.parseDate(record.get(EntryDateTag));
-        Date expiryDate = TimeUtilities.parseDate(record.get(ExpiryDateTag));
+        Date entryDate  = TimeUtilities.parseDateTime(record.get(EntryDateTag));
+        Date expiryDate = TimeUtilities.parseDateTime(record.get(ExpiryDateTag));
 
         if(isbn == -1)
         {

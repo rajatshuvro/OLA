@@ -56,7 +56,7 @@ public class TransactionParser {
                     userId = Integer.parseInt(value);
                     break;
                 case DateTag:
-                    date = TimeUtilities.parseDate(value);
+                    date = TimeUtilities.parseDateTime(value);
                     break;
                 case TypeTag:
                     type = value;

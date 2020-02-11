@@ -40,7 +40,7 @@ public class DepositParser {
 
     private Deposit GetMembership(HashMap<String, String> record) {
         var userId = ParserUtilities.ParseUInt(record.get(UserIdTag));
-        var date  = TimeUtilities.parseDate(record.get(DateTag));
+        var date  = TimeUtilities.parseDateTime(record.get(DateTag));
         var amount = ParserUtilities.ParseUFloat(record.get(AmountTag));
         var type = record.get(TypeTag);
 
