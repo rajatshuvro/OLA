@@ -42,8 +42,8 @@ public class LabelPrinter {
 
         try {
             cmd = parser.parse(options, args);
-            Date afterDate = cmd.hasOption('a')?TimeUtilities.parseDateTime(cmd.getOptionValue('a')): null;
-            Date beforeDate = cmd.hasOption('b')?TimeUtilities.parseDateTime(cmd.getOptionValue('b')): null;;
+            Date afterDate = cmd.hasOption('a')?TimeUtilities.parseDate(cmd.getOptionValue('a')): null;
+            Date beforeDate = cmd.hasOption('b')?TimeUtilities.parseDate(cmd.getOptionValue('b')): null;
 
             var outFilePath  = cmd.getOptionValue("out");
             var outputStream = new FileOutputStream(outFilePath);
