@@ -2,6 +2,8 @@ package com.ola.parsers;
 
 import com.ola.dataStructures.Book;
 import com.ola.dataStructures.User;
+import com.ola.utilities.PrintUtilities;
+import com.ola.utilities.StringUtilities;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -61,9 +63,14 @@ public class BookCsvParser {
                 isbn = Book.GenerateIsbn(title, author, publisher, year, pageCount);
                 System.out.println("Generating ISBN for Title:"+title+"..."+ isbn);
             }
+            if(ParserUtilities.IsNullOrEmpty(genre)) genre = Book.GeneralTag;
 
             var book = Book.Create(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, -1,
                     null, null, null);
+            if(book==null) {
+                PrintUtilities.PrintWarningLine("Unable to import:"+title);
+                continue;
+            }
             book.SetSummary(summary);
             books.add(book);
         }

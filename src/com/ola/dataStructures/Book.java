@@ -155,6 +155,20 @@ public class Book {
 
     }
 
+    public String ToCsvString(){
+        return "\""+TimeUtilities.ToString(EntryDate)+"\"," +
+                "\""+Isbn+"\"," +
+                "\""+Title+"\"," +
+                "\""+Author+"\"," +
+                "\""+Publisher+"\"," +
+                "\""+Year+"\"," +
+                "\""+Summary+"\"," +
+                "\""+Genre+"\"," +
+                "\""+ReadingLevel+"\"," +
+                "\""+PageCount+"\"," +
+                "\""+Price;
+    }
+
     //static fields
     // Tags in the files should be user friendly. they may be abbreviated in IDs.
     public static final String FictionTag = "Fiction";

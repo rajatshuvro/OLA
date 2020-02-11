@@ -57,9 +57,6 @@ public class Main {
                 case "label":
                     LabelPrinter.Run(subArgs, dataProvider.BookDb);
                     break;
-                case "legacy":
-                    LegacyImporter.Run(subArgs);
-                    break;
                 case "quit":
                     quit = true;
                     break;
@@ -87,7 +84,6 @@ public class Main {
         PrintUtilities.PrintInfoLine("\tsearch/$       (search book database)");
         PrintUtilities.PrintInfoLine("\tfilter         (filter book database by genre, level, etc fields)");
         PrintUtilities.PrintInfoLine("\tlabel          (print out book titles and Ids)");
-        PrintUtilities.PrintInfoLine("\tlegacy         (import books from legacy tsv)");
         PrintUtilities.PrintInfoLine("\tquit           (quit OLA)");
         PrintUtilities.PrintInfoLine("\thelp           (print this menu)");
         PrintUtilities.PrintInfoLine("\t[Type command to get detailed help]");
