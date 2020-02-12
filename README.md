@@ -30,15 +30,15 @@ Once OLA starts successfully, the following sub-commands will be available<br/>
 	[Type command to get detailed help]<br/>
 </pre></code>
 
-##How To:
-###Search for a user or book:
+## How To:
+### Search for a user or book:
 User and book records are searchable records in OLA. This is a free text search, i.e. you can look for any text. 
 This is very useful for looking up book or user records (that contains their ids) during checkout, return or for checkout status query.
-###Checkout a book:
+### Checkout a book:
 Please use the 'co' command. If you need to lookup the user id or book id, please use the 'search' command.
 <br/>
-###Return a book:
+### Return a book:
 Please use the 'ret' command.
-###Add books/users:
+### Add books/users:
 We provide Google forms to make book/user entries. 
 Entries can then be downloaded as CSV files and imported via the 'add' command.
