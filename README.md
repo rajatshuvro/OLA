@@ -42,17 +42,20 @@ Although free text search is very powerful, but it may return irrelevant entries
 The filter command is more appropriate in this case. 
 
 ### Checkout a book:
-Please use the <code>'co'</code> command. If you need to lookup the user id or book id, please use the 'search' command.
+Please use the <code>co</code> command. If you need to lookup the user id or book id, please use the <code>search</code> command.
 
 ### Return a book:
-Please use the 'ret' command.
+Please use the <code>ret</code> command.
 
 ### Add books/users:
 We provide Google forms to make book/user entries. 
-Entries can then be downloaded as CSV files and imported via the 'add' command.
+Entries can then be downloaded as CSV files and imported via the <code>add</code> command.
+
+### Add a user:
+If you wish to add a user via the CLI, please use the <code>add-user/au</code> command.
 
 ### Check user/book status:
-To check how many books a user has checked out or if a book is in stock, please use the 'co-stat/cs' command. 
+To check how many books a user has checked out or if a book is in stock, please use the <code>co-stat/cs</code> command. 
 You can specify a user id, or a book id or ISBN. 
 When ISBN is provided, status for all copies of books with that ISBN number will be reported.
 
