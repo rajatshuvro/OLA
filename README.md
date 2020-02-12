@@ -23,22 +23,38 @@ Once OLA starts successfully, the following sub-commands will be available<br/>
 	ret            (return book)<br/>
 	co-stat/cs     (checkout status)<br/>
 	search/$       (free text search on books and user records)<br/>
-	filter         (filter book database by genre, level, etc fields)<br/>
-	legacy         (import books from legacy tsv)<br/>
+	filter         (filter book database by genre and/or reading level)<br/>
+	label          (print out book titles and Ids)<br/>
 	quit           (quit OLA)<br/>
 	help           (print this menu)<br/>
 	[Type command to get detailed help]<br/>
 </pre></code>
 
 ## How To:
+
 ### Search for a user or book:
-User and book records are searchable records in OLA. This is a free text search, i.e. you can look for any text. 
+User and book records are searchable in OLA. This is a free text search, i.e. you can look for any text. 
 This is very useful for looking up book or user records (that contains their ids) during checkout, return or for checkout status query.
+
+### Filter books:
+This is a more accurate (but limited) way of searching for book records by genre and/or reading level. 
+Although free text search is very powerful, but it may return irrelevant entries while searching by reading level and genre.
+The filter command is more appropriate in this case. 
+
 ### Checkout a book:
-Please use the 'co' command. If you need to lookup the user id or book id, please use the 'search' command.
-<br/>
+Please use the <code>'co'</code> command. If you need to lookup the user id or book id, please use the 'search' command.
+
 ### Return a book:
 Please use the 'ret' command.
+
 ### Add books/users:
 We provide Google forms to make book/user entries. 
 Entries can then be downloaded as CSV files and imported via the 'add' command.
+
+### Check user/book status:
+To check how many books a user has checked out or if a book is in stock, please use the 'co-stat/cs' command. 
+You can specify a user id, or a book id or ISBN. 
+When ISBN is provided, status for all copies of books with that ISBN number will be reported.
+
+### Print labels:
+Print out labels/tags for books with the title and user friendly book id.
