@@ -28,6 +28,6 @@ public class AddUserTests {
         AddUser.Run(new String[]{"add-user", "-n","Shawroth","Shuvro", "-r", "Student", "-e", "shawroth.shuvro@onkur.com", "-p", "858-666-7242"}, userDb, appender);
         var user = userDb.GetUser("Shawroth Shuvro");
         assertNotNull(user);
-        assertEquals(357,user.Id);
+        assertEquals(User.StudentRoleTag,user.Role);
     }
 }

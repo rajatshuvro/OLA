@@ -50,9 +50,9 @@ public class UserDb {
         return null;
     }
 
+    private Random _rand = new Random();
     public int AddNewUser(String name, String role, String email, String phone) {
-        var rand = new Random(13);
-        var idIncrement = rand.nextInt(20);
+        var idIncrement = _rand.nextInt(20)+1;//preventing having a inc of 0
 
         var user = User.Create(_maxId+idIncrement, name, role, email, phone);
         if(user == null) return -1;//invalid user data
