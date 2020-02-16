@@ -1,5 +1,6 @@
 package com.ola.dataStructures;
 
+import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.StringUtilities;
@@ -9,7 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Book implements Comparable<Book>{
+public class Book implements Comparable<Book>, ISearchDocument {
     public final long Isbn;
     public final String Author;
     public final String Title;
@@ -41,6 +42,11 @@ public class Book implements Comparable<Book>{
         ExpiryDate = expiryDate;
         Summary = summary==null? "":summary;
     }
+
+    public String GetId(){
+        return GenerateId(Isbn, CopyNum);
+    }
+
     @Override
     public int compareTo(Book other) {
         return Title.compareTo(other.Title);
@@ -124,10 +130,6 @@ public class Book implements Comparable<Book>{
 
     public String GetUserFriendlyId(){
         return String.join("-", Long.toString(Isbn), GetAbbreviation(Genre), Integer.toString(ReadingLevel), '('+Integer.toString(CopyNum)+')');
-    }
-
-    public String GetId(){
-        return GenerateId(Isbn, CopyNum);
     }
 
     public static String GenerateId(long isbn, int copyNum){

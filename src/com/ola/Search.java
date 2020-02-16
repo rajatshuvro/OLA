@@ -1,10 +1,13 @@
 package com.ola;
 
+import com.ola.luceneIndex.IdAndScore;
 import com.ola.parsers.FlatObjectParser;
+import com.ola.parsers.ParserUtilities;
 import org.apache.lucene.queryparser.classic.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Search {
     private static String commandSyntax = "search  [query text]";
@@ -15,26 +18,35 @@ public class Search {
             return;
         }
         String queryText = ConstructQuery(args);
+
+        var results = GetUnifiedSearchResults(dataProvider, queryText, 5);
+
+        OutputResults(results, "-----------------------Showing top 5 search results --------------------");
+        System.out.println('\n');
+        System.out.println("=========================End of search results=====================");
+    }
+
+    private static ArrayList<String> GetUnifiedSearchResults(DataProvider dataProvider, String query, int maxCount) throws IOException, ParseException {
         var results = new ArrayList<String>();
+        var idAndScores = new ArrayList<IdAndScore>();
 
         var bookDb = dataProvider.BookDb;
         var bookSearchIndex = bookDb.GetSearchIndex();
-
-        for (var id: bookSearchIndex.Search(queryText, 5)) {
-            results.add(bookDb.GetBook(id).toString());
-        }
-        OutputResults(results, "----------------------Books----------------------");
+        idAndScores.addAll(bookSearchIndex.Search(query, maxCount));
 
         var userDb = dataProvider.UserDb;
         var userSearchIndex = userDb.GetSearchIndex();
+        idAndScores.addAll(userSearchIndex.Search(query, maxCount));
 
-        for(var id: userSearchIndex.Search(queryText, 5)){
-            results.add(userDb.GetUser(id).toString());
+        Collections.sort(idAndScores, Collections.reverseOrder());
+
+        for (var i=0; i < maxCount && i < idAndScores.size(); i++){
+            var userId = ParserUtilities.ParseUInt(idAndScores.get(i).Id);
+            var isUserId =  userId > 0;
+            var result = isUserId ? userDb.GetUser(userId).toString() : bookDb.GetBook(idAndScores.get(i).Id).toString();
+            results.add(result);
         }
-        OutputResults(results, "----------------------Users----------------------");
-
-        System.out.println('\n');
-        System.out.println("=========================End of search results=====================");
+        return results;
     }
 
     private static void OutputResults(ArrayList<String> results, String banner) {

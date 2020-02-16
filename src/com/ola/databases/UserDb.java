@@ -1,7 +1,8 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.User;
-import com.ola.luceneIndex.UserSearchIndex;
+import com.ola.luceneIndex.DocumentSearchIndex;
+import com.ola.luceneIndex.ISearchDocument;
 
 import java.io.IOException;
 import java.util.*;
@@ -9,7 +10,7 @@ import java.util.*;
 public class UserDb {
     private HashMap<Integer, User> _users;
     private int _maxId;
-    private UserSearchIndex _searchIndex;
+    private DocumentSearchIndex _searchIndex;
     private ArrayList<User> _newUsers;
     public static final int NewUserId=99999;
 
@@ -62,13 +63,17 @@ public class UserDb {
         return user.Id;
     }
 
-    public UserSearchIndex GetSearchIndex() throws IOException {
+    public DocumentSearchIndex GetSearchIndex() throws IOException {
         if(_searchIndex == null) BuildSearchIndex();
         return _searchIndex;
     }
 
+    public Iterable<ISearchDocument> GetAllDocuments(){
+        return new ArrayList<>(_users.values());
+    }
+
     public void BuildSearchIndex() throws IOException {
-        _searchIndex = new UserSearchIndex(_users.values());
+        _searchIndex = new DocumentSearchIndex(GetAllDocuments());
     }
 
     public List<User> GetNewRecords(){
