@@ -3,9 +3,11 @@ import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
 import org.apache.commons.cli.*;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Main {
@@ -89,23 +91,17 @@ public class Main {
         PrintUtilities.PrintInfoLine("\t[Type command to get detailed help]");
     }
 
-    private static String commandSyntex = "ola -b [full path to books data file] " +
-            "-u [full path to users data file] " +
-            "-t [full path to transactions data file]";
+    private static String commandSyntex = "ola -d [full path data directory] ";
+    private static String UsersFileName = "Users.fob";
+    private static String BooksFileName = "Books.fob";
+    private static String TransactionsFileName = "Transactions.fob";
+
     private static DataProvider Initialize(String[] args) {
         Options options = new Options();
 
-        Option bookDbFile = new Option("b", "books", true, "book database file");
-        bookDbFile.setRequired(true);
-        options.addOption(bookDbFile);
-
-        Option userDbFile = new Option("u", "users", true, "user database file");
-        userDbFile.setRequired(true);
-        options.addOption(userDbFile);
-
-        Option transactionsFile = new Option("t", "transactions", true, "transactions records file");
-        transactionsFile.setRequired(true);
-        options.addOption(transactionsFile);
+        Option dataDirOption = new Option("d", "dir", true, "data directory path");
+        dataDirOption.setRequired(true);
+        options.addOption(dataDirOption);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -118,17 +114,19 @@ public class Main {
 
         try {
             cmd = parser.parse(options, args);
-            String bookFileName = cmd.getOptionValue("books");
+            String dataDir = cmd.getOptionValue('d');
+
+            String bookFileName = dataDir+ File.separatorChar+BooksFileName;
             if(!FileUtilities.Exists(bookFileName)){
                 PrintUtilities.PrintErrorLine("Failed to find file: "+bookFileName);
                 return null;
             }
-            String userFileName = cmd.getOptionValue("users");
+            String userFileName = dataDir+ File.separatorChar+UsersFileName;
             if(!FileUtilities.Exists(userFileName)){
                 PrintUtilities.PrintErrorLine("Failed to find file: "+userFileName);
                 return null;
             }
-            String transactionFileName = cmd.getOptionValue("transactions");
+            String transactionFileName = dataDir+ File.separatorChar+TransactionsFileName;
             if(!FileUtilities.Exists(transactionFileName)){
                 PrintUtilities.PrintErrorLine("Failed to find file: "+transactionFileName);
                 return null;
