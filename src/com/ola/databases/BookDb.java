@@ -3,6 +3,8 @@ package com.ola.databases;
 import com.ola.dataStructures.Book;
 import com.ola.luceneIndex.DocumentSearchIndex;
 import com.ola.luceneIndex.ISearchDocument;
+import com.ola.parsers.ParserUtilities;
+import com.ola.utilities.PrintUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
 import java.io.IOException;
@@ -51,9 +53,22 @@ public class BookDb {
     }
 
     public Book GetBook(String id){
+        if(! IsValidId(id)){
+            PrintUtilities.PrintWarningLine("Invalid book id. Book id format: ISBN-(copy_number). e.g. 123456789-(2)");
+            return null;
+        }
         if(_books.containsKey(id)) return _books.get(id);
         else return null;
     }
+
+    public static boolean IsValidId(String id) {
+        var idParts = id.split("-");
+        if(idParts.length != 2) return false;
+        if(ParserUtilities.ParseULong(idParts[0]) < 1) return false;
+        var copyNumString = idParts[1].substring(1, idParts[1].length()-1);
+        return ParserUtilities.ParseUInt(copyNumString) > 0;
+    }
+
     //return a list of all books having a isbn number
     public ArrayList<Book> GetBooks(long isbn){
         ArrayList<Book> books = new ArrayList<>();

@@ -7,9 +7,13 @@ import com.ola.utilities.PrintUtilities;
 import org.apache.commons.cli.*;
 
 public class CheckoutStatus {
-    private static String commandSyntax = "co  (-u [user id]) OR (-b [book id]) OR (-i [isbn])";
+    private static String commandSyntax = "cs (-a) (-u [user id]) OR (-b [book id]) OR (-i [isbn])";
     public static int Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
+
+        Option allOption = new Option("a", "all", false, "Optional: show all checkouts");
+        allOption.setRequired(false);
+        options.addOption(allOption);
 
         Option userIdOption = new Option("u", "user", true, "Optional: user id");
         userIdOption.setRequired(false);
@@ -28,16 +32,20 @@ public class CheckoutStatus {
         CommandLine cmd;
 
         if(args.length==1) {
-            for(var record: dataProvider.TransactionDb.GetPendingCheckouts())
-            {
-                PrintUtilities.PrintLine(FlatObjectParser.RecordSeparator);
-                PrintTransaction(dataProvider, record);
-            }
+            formatter.printHelp(commandSyntax, options);
             return 0;
         }
 
         try {
             cmd = parser.parse(options, args);
+            if(cmd.hasOption('a')){
+                for(var record: dataProvider.TransactionDb.GetPendingCheckouts())
+                {
+                    PrintUtilities.PrintLine(FlatObjectParser.RecordSeparator);
+                    PrintTransaction(dataProvider, record);
+                }
+                return 0;
+            }
             if(cmd.hasOption('u') ){
                 var userId = Integer.parseInt(cmd.getOptionValue('u'));
                 if(dataProvider.UserDb.GetUser(userId) == null)
