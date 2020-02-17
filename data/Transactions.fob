@@ -1,0 +1,6 @@
+#Onkur library book lending records
+#Book Id = Onkur book id. Value = <String>
+#User Id = Onkur user id. Value = <Integer>
+#Date = Date of transaction. Value = <YYYY-MM-DD HH:MM:ss>
+#Type = Type of transaction. Value = Checkout/Return
+***************************************************************
