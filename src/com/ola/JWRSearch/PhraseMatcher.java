@@ -1,4 +1,4 @@
-package com.ola.nativeSearch;
+package com.ola.JWRSearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;

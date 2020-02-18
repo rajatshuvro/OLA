@@ -1,4 +1,4 @@
-package com.ola.nativeSearch;
+package com.ola.JWRSearch;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more

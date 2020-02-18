@@ -1,7 +1,7 @@
 package com.ola.unitTests.nativeIndex;
 
-import com.ola.nativeSearch.JaroWinkler;
-import com.ola.nativeSearch.PhraseMatcher;
+import com.ola.JWRSearch.JaroWinkler;
+import com.ola.JWRSearch.PhraseMatcher;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

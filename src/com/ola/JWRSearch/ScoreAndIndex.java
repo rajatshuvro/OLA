@@ -1,4 +1,4 @@
-package com.ola.nativeSearch;
+package com.ola.JWRSearch;
 
 public class ScoreAndIndex implements Comparable<ScoreAndIndex> {
     public final Float Score;
