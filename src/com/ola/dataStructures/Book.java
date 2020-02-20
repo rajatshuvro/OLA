@@ -160,6 +160,22 @@ public class Book implements Comparable<Book>, ISearchDocument {
 
     }
 
+    public String GetContent(){
+        return  Title+'\n'+
+                Author+'\n'+
+                Isbn+'\n'+
+                Publisher+'\n'+
+                Year+'\n'+
+                Genre+'\n'+
+                CopyNum+'\n'+
+                PageCount+'\n'+
+                Price+'\n'+
+                ReadingLevel+'\n'+
+                TimeUtilities.ToString(EntryDate)+'\n'+
+                TimeUtilities.ToString(ExpiryDate)+'\n'+
+                Summary;
+    }
+
     public String ToCsvString(){
         return "\""+TimeUtilities.ToString(EntryDate)+"\"," +
                 "\""+Isbn+"\"," +

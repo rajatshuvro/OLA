@@ -92,7 +92,7 @@ public class JaroWinkler {
         return new int[] { matches, transpositions / 2, prefix, max.length() };
     }
 
-    public float getDistance(String s1, String s2) {
+    public float getSimilarity(String s1, String s2) {
         int[] mtp = matches(s1, s2);
         float m = mtp[0];
         if (m == 0) {
@@ -102,10 +102,6 @@ public class JaroWinkler {
         float jw = j < getThreshold() ? j : j + Math.min(0.1f, 1f / mtp[3]) * mtp[2]
                 * (1 - j);
         return jw;
-    }
-
-    public float getSimilarity(String s1, String s2){
-        return 1.0f - getDistance(s1, s2);
     }
 
     /**

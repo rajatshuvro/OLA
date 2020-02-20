@@ -58,6 +58,10 @@ public class User implements ISearchDocument {
                 "\nPhone:    "+ Phone;
     }
 
+    public String GetContent(){
+        return   Id +"\n"+ Name +"\n"+ Role +"\n"+ Email+"\n"+ Phone;
+    }
+
     //static fields
     public static final String StudentRoleTag = "Student";
     public static final String CitizenRoleTag = "Citizen";
