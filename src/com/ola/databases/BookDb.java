@@ -18,9 +18,7 @@ public class BookDb {
 
     public HashSet<String> GetIds() {
         var ids = new HashSet<String>();
-        for (String bookId:_books.keySet()) {
-            ids.add(bookId);
-        }
+        ids.addAll(_books.keySet());
         return ids;
     }
 

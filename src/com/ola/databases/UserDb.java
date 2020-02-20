@@ -40,9 +40,7 @@ public class UserDb {
 
     public HashSet<Integer> GetIds() {
         var ids = new HashSet<Integer>();
-        for (int id: _users.keySet()) {
-            ids.add(id);
-        }
+        ids.addAll(_users.keySet());
         return ids;
     }
 

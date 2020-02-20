@@ -1,6 +1,5 @@
 package com.ola.dataStructures;
 
-import com.ola.DataProvider;
 import com.ola.utilities.TimeUtilities;
 
 import java.util.Date;

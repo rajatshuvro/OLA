@@ -2,8 +2,6 @@ package com.ola.unitTests.JWRSearchTests;
 
 import com.ola.JWRSearch.JWRInvertedIndex;
 import com.ola.dataStructures.Book;
-import com.ola.parsers.BookParser;
-import com.ola.unitTests.TestStreams;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

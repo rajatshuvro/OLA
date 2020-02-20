@@ -28,11 +28,10 @@ public class Search {
 
     private static ArrayList<String> GetUnifiedSearchResults(DataProvider dataProvider, String query, int maxCount) throws IOException, ParseException {
         var results = new ArrayList<String>();
-        var idAndScores = new ArrayList<IdAndScore>();
 
         var bookDb = dataProvider.BookDb;
         var bookSearchIndex = bookDb.GetSearchIndex();
-        idAndScores.addAll(bookSearchIndex.Search(query, maxCount));
+        var idAndScores = new ArrayList<IdAndScore>(bookSearchIndex.Search(query, maxCount));
 
         var userDb = dataProvider.UserDb;
         var userSearchIndex = userDb.GetSearchIndex();

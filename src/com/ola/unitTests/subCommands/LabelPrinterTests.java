@@ -6,7 +6,6 @@ import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.sql.Time;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

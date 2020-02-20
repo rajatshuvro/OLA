@@ -1,7 +1,6 @@
 package com.ola.unitTests.databases;
 
 import com.ola.CheckOut;
-import com.ola.CheckoutStatus;
 import com.ola.DataProvider;
 import com.ola.Return;
 import com.ola.dataStructures.Transaction;
@@ -29,8 +28,7 @@ public class DataProviderTests {
     }
 
     public static OutputStream GetAppendStream() {
-        var memStream = new ByteArrayOutputStream();
-        return memStream;
+        return new ByteArrayOutputStream();
     }
     @Test
     public void Status_by_book() throws IOException {

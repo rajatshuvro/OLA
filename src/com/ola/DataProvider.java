@@ -1,12 +1,10 @@
 package com.ola;
 
-import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Transaction;
 import com.ola.databases.BookDb;
 import com.ola.databases.TransactionDb;
 import com.ola.databases.UserDb;
 import com.ola.parsers.BookParser;
-import com.ola.parsers.FlatObjectParser;
 import com.ola.parsers.TransactionParser;
 import com.ola.parsers.UserParser;
 import com.ola.utilities.TimeUtilities;
@@ -14,7 +12,6 @@ import com.ola.utilities.TimeUtilities;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class DataProvider {
     public BookDb BookDb;

@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class FilterTests {
     public static ArrayList<Book> GetBooks() {
         var books = new ArrayList<Book>();
