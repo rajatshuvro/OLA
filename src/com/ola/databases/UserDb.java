@@ -38,6 +38,10 @@ public class UserDb {
         return null;
     }
 
+    public Iterable<User> GetAllUsers(){
+        return _users.values();
+    }
+
     public HashSet<Integer> GetIds() {
         var ids = new HashSet<Integer>();
         ids.addAll(_users.keySet());

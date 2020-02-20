@@ -19,6 +19,10 @@ public class InvertedIndexTests {
                 2017, 10, 10, "Fiction", 5,1, null, null, null));
         books.add(Book.Create(456098,"Nanda Mitra","Robindra Prem","Bakura Publishers",
                 2018, 15, 12, "Fiction", 6,1, null, null, null));
+        books.add(Book.Create(9789849195290l,"Binoy bormon","Panite jopath jopath","Sisemi workshop",
+                2017, 16, 10, "Science", 5,1, null, null, null));
+        books.add(Book.Create(421201710l,"Limia dewan","Phritibir sobcheye Boro pitha","Brac",
+                2017, 15, 12, "General", 6,1, null, null, null));
 
         return books;
     }
@@ -35,6 +39,12 @@ public class InvertedIndexTests {
         var topDocs = jwrIndex.Search("amar bonosre");
 
         Assertions.assertEquals(books.size(), topDocs.length);
-        Assertions.assertArrayEquals(new int[]{0,1,2,3}, topDocs);
+        Assertions.assertArrayEquals(new int[]{0,1,2,3, 4, 5}, topDocs);
+
+        topDocs = jwrIndex.Search("jhopat jhopat");
+        Assertions.assertEquals(books.size(), topDocs.length);
+        Assertions.assertArrayEquals(new int[]{4, 0,1,2,3, 5}, topDocs);
     }
+
+
 }
