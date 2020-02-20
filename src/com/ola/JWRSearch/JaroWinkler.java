@@ -92,7 +92,15 @@ public class JaroWinkler {
         return new int[] { matches, transpositions / 2, prefix, max.length() };
     }
 
+    public float GetThresholdSimilarity(String s1, String s2){
+        //filtering out strings that are too large or smaller
+        if(LengthRatio(s1, s2) < threshold) return 0;
+        var similarity = getSimilarity(s1, s2);
+        return similarity < threshold ? 0:similarity;
+    }
+
     public float getSimilarity(String s1, String s2) {
+
         int[] mtp = matches(s1, s2);
         float m = mtp[0];
         if (m == 0) {
@@ -102,6 +110,10 @@ public class JaroWinkler {
         float jw = j < getThreshold() ? j : j + Math.min(0.1f, 1f / mtp[3]) * mtp[2]
                 * (1 - j);
         return jw;
+    }
+
+    private double LengthRatio(String s1, String s2) {
+        return s1.length() < s2.length() ? 1.0*s1.length()/s2.length() : 1.0*s2.length()/s1.length();
     }
 
     /**

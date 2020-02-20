@@ -43,7 +43,7 @@ public class JWRInvertedIndex {
 
         for(var qToken : queryTokens){
             for( var iToken : _tokenToDocIndices.keySet()){
-                var similarity = _jw.getSimilarity(qToken, iToken);
+                var similarity = _jw.GetThresholdSimilarity(qToken, iToken);
                 if (similarity > _tokenSimilarities.get(iToken))
                     _tokenSimilarities.replace(iToken,similarity);
             }

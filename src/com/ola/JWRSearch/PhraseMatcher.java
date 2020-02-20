@@ -20,7 +20,7 @@ public class PhraseMatcher {
 
         for(var i=0; i < queryWords.length; i++){
             for(var cWord: contentWords){
-                var similarity = _jwMatcher.getSimilarity(queryWords[i], cWord);
+                var similarity = _jwMatcher.GetThresholdSimilarity(queryWords[i], cWord);
                 if(scores[i] < similarity) scores[i] = similarity;
             }
         }
