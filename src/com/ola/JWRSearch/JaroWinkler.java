@@ -26,7 +26,7 @@ import java.util.Arrays;
  */
 public class JaroWinkler {
 
-    public float threshold = 0.7f;
+    public float threshold = 0.8f;
 
     /**
      * Creates a new distance metric with the default threshold
