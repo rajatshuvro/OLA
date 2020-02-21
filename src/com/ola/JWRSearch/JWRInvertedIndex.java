@@ -65,17 +65,27 @@ public class JWRInvertedIndex {
         return docScores;
     }
 
+
     public int[] Search(String query){
+        var threshold = GetThreshold(query);
         var scores = GetDocumentScores(query);
         var scoresAndIndices = new ArrayList<ScoreAndIndex>();
         for(var i=0; i < scores.length; i++)
+        {
+            if(scores[i] < threshold) continue;
             scoresAndIndices.add(new ScoreAndIndex(scores[i], i));
+        }
 
         Collections.sort(scoresAndIndices, Collections.reverseOrder());
-        var indices = new int[scores.length];
-        for(var i=0; i < scores.length; i++)
+        var indices = new int[scoresAndIndices.size()];
+        for(var i=0; i < indices.length; i++)
             indices[i]= scoresAndIndices.get(i).Index;
 
         return indices;
+    }
+
+    private float GetThreshold(String query) {
+        var tokens = JWRUtilities.GetTokens(query);
+        return tokens.size()*_jw.threshold;
     }
 }

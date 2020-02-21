@@ -43,7 +43,7 @@ public class Find {
         var results = new ArrayList<String>();
 
         for(var i=0; i < maxCount && i < topDocs.length; i++)
-            results.add(docs.get(i).toString());
+            results.add(docs.get(topDocs[i]).toString());
 
         return results;
     }

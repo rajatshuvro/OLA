@@ -38,12 +38,12 @@ public class InvertedIndexTests {
 
         var topDocs = jwrIndex.Search("amar bonosre");
 
-        Assertions.assertEquals(books.size(), topDocs.length);
-        Assertions.assertArrayEquals(new int[]{0,1,2,3, 4, 5}, topDocs);
+        Assertions.assertEquals(2, topDocs.length);
+        Assertions.assertArrayEquals(new int[]{0,1,}, topDocs);
 
         topDocs = jwrIndex.Search("jhopat jhopat");
-        Assertions.assertEquals(books.size(), topDocs.length);
-        Assertions.assertArrayEquals(new int[]{4, 0,1,2,3, 5}, topDocs);
+        Assertions.assertEquals(1, topDocs.length);
+        Assertions.assertArrayEquals(new int[]{4}, topDocs);
     }
 
 
