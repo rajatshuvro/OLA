@@ -5,6 +5,7 @@ import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Transaction;
 import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.PrintUtilities;
+import com.ola.utilities.TimeUtilities;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -19,6 +20,7 @@ public class TransactionDb {
     private UserDb _userDb;
     private BookDb _bookDb;
     private Appender _appender;
+    public final int CheckoutLimit = 5;
 
     public TransactionDb(Iterable<Transaction> transactions, UserDb userDb, BookDb bookDb, Appender appender){
         //transactions are assumed to ordered by increasing timestamps
@@ -77,6 +79,32 @@ public class TransactionDb {
         return _transactions.get(index);
     }
 
+    public boolean Checkout(String bookId, int userId) throws IOException {
+        var date = TimeUtilities.GetCurrentTime();
+        var checkouts = GetPendingCheckouts(userId);
+        var checkoutCount = checkouts==null? 0: checkouts.size();
+        if(checkoutCount >= CheckoutLimit)
+        {
+            PrintUtilities.PrintWarningLine("Checkout limit reached. Cannot issue more books to user id:"+userId);
+            return false;
+        }
+        return Add(Transaction.Create(bookId, userId, date, Transaction.CheckoutTag));
+    }
+
+    public boolean Return(String bookId) throws IOException {
+        var transaction = GetLatest(bookId);
+        if(transaction == null) {
+            PrintUtilities.PrintErrorLine("Could not locate a checkout for: "+bookId);
+            return false;
+        }
+
+        var date = TimeUtilities.GetCurrentTime();
+        var userId = transaction.UserId;
+        if(Add(Transaction.Create(bookId, userId, date, Transaction.ReturnTag))){
+            return true;
+        }
+        return false;
+    }
     public boolean Add(Transaction record) throws IOException {
         //make sure the book exists in the book database and the user in user database
         if(_bookDb.GetBook(record.BookId)== null){
@@ -133,7 +161,14 @@ public class TransactionDb {
         if(_latestTransactions.containsKey(bookId)) return _latestTransactions.get(bookId).Type;
         return Transaction.UnknownTag;
     }
-
+    public ArrayList<Transaction> GetPendingCheckouts(int userId) {
+        var checkouts = new ArrayList<Transaction>();
+        for (Transaction record: GetPendingCheckouts()) {
+            if(userId != record.UserId) continue;
+            checkouts.add(record);
+        }
+        return checkouts.size()==0? null: checkouts;
+    }
     public ArrayList<Transaction> GetPendingCheckouts() {
         var checkouts = new ArrayList<Transaction>();
         for (Transaction record: _latestTransactions.values()) {
