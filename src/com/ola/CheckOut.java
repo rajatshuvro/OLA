@@ -1,9 +1,7 @@
 package com.ola;
 
-import com.ola.dataStructures.Transaction;
 import com.ola.databases.TransactionDb;
 import com.ola.utilities.PrintUtilities;
-import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
@@ -34,8 +32,7 @@ public class CheckOut {
             cmd = parser.parse(options, args);
             var bookId = cmd.getOptionValue('b');
             var userId = Integer.parseInt(cmd.getOptionValue('u'));
-            var date = TimeUtilities.GetCurrentTime();
-            if(transactionDb.Add(Transaction.Create(bookId, userId, date, Transaction.CheckoutTag)))
+            if(transactionDb.Checkout(bookId, userId))
             {
                 PrintUtilities.PrintSuccessLine(bookId +" has been checked out by "+ userId);
             }

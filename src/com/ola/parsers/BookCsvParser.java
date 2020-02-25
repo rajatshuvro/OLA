@@ -50,7 +50,7 @@ public class BookCsvParser {
             String publisher = record.get(PublisherTag).trim();
             int year = ParserUtilities.ParseUInt(record.get(YearTag));
             var summary = record.get(SummaryTag).trim();
-            var genre = record.get(GenreTag);
+            var genre = record.get(GenreTag).trim();
             var readingLevel = ParserUtilities.ParseUInt(record.get(ReadingLevelTag));
             int pageCount = ParserUtilities.ParseUInt(record.get(PageCountTag));
             float price = ParserUtilities.ParseUFloat(record.get(PriceTag));

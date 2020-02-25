@@ -94,13 +94,7 @@ public class DataProvider {
     }
 
     public ArrayList<Transaction> GetPendingCheckouts(int userId) {
-        var checkouts = new ArrayList<Transaction>();
-        for (Transaction record: TransactionDb.GetPendingCheckouts()) {
-            if(userId != record.UserId) continue;
-            checkouts.add(record);
-        }
-        return checkouts.size()==0? null: checkouts;
+         return TransactionDb.GetPendingCheckouts(userId);
     }
-
 
 }

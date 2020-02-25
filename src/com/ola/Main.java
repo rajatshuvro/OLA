@@ -1,12 +1,10 @@
 package com.ola;
 import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
+import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
@@ -22,12 +20,15 @@ public class Main {
         boolean quit=false;
         PrintMenu();
 
+        var logger = GetLogger();
         while (!quit){
             PrintUtilities.PrintPrompt();
             Scanner in = new Scanner(System.in);
             String command = in.nextLine();
             command = command.trim();
             String[] subArgs = command.split("\\s+");
+
+            logger.write(command);
 
             String subCommand = subArgs[0];
             switch (subCommand){
@@ -73,12 +74,20 @@ public class Main {
                 default:
                     System.out.println("Unrecognized command: "+subCommand+"\nType \"help\" for the help menu or \"quit\" to exit");
             }
+            logger.write("\tsuccess\n");
+            logger.flush();
 
         }
         //save changes to file
         dataProvider.Close();
-
+        logger.close();
     }
+
+    private static OutputStreamWriter GetLogger() throws FileNotFoundException {
+        var time = TimeUtilities.GetCurrentTime().getTime();
+        return new OutputStreamWriter(new FileOutputStream(time+".log"));
+    }
+
     private static void PrintMenu() {
         PrintUtilities.PrintInfoLine("Please choose from the following options:");
         PrintUtilities.PrintInfoLine("\tadd            (add new books or users)");
