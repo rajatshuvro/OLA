@@ -1,26 +1,26 @@
-package com.ola.JWRSearch;
+package com.ola.NativeSearch;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class JWRInvertedIndex {
+public class InvertedIndex {
     private HashMap<String, ArrayList<Integer>> _tokenToDocIndices;
     private HashMap<String, Float> _tokenSimilarities;
-    private JaroWinkler _jw;
+    private IWordMatcher _wordMatcher;
     private int _docCount;
 
-    public JWRInvertedIndex(){
+    public InvertedIndex(IWordMatcher wordMatcher){
         _tokenToDocIndices = new HashMap<>();
         _tokenSimilarities = new HashMap<>();
-        _jw = new JaroWinkler();
+        _wordMatcher = wordMatcher;
         _docCount = 0;
     }
 
     public void Add(String document){
         // if the same token exists multiple times in a document, we will add it multiple times to the inv index.
         // so, if 'xyz' occurs 10 times in doc_i, the inv index entry for 'xyz' will contain doc_i 10 times.
-        for(var token: JWRUtilities.GetTokens(document)){
+        for(var token: Utilities.GetTokens(document)){
             if(!_tokenToDocIndices.containsKey(token)) {
                 _tokenToDocIndices.put(token, new ArrayList<>());
                 _tokenSimilarities.put(token, 0.0f);
@@ -39,11 +39,11 @@ public class JWRInvertedIndex {
 
     public void ScoreIndexTokens(String query){
         ClearScores();
-        var queryTokens = JWRUtilities.GetTokens(query);
+        var queryTokens = Utilities.GetTokens(query);
 
         for(var qToken : queryTokens){
             for( var iToken : _tokenToDocIndices.keySet()){
-                var similarity = _jw.GetThresholdSimilarity(qToken, iToken);
+                var similarity = _wordMatcher.getSimilarity(qToken, iToken);
                 if (similarity > _tokenSimilarities.get(iToken))
                     _tokenSimilarities.replace(iToken,similarity);
             }
@@ -85,7 +85,7 @@ public class JWRInvertedIndex {
     }
 
     private float GetThreshold(String query) {
-        var tokens = JWRUtilities.GetTokens(query);
-        return tokens.size()*_jw.threshold;
+        var tokens = Utilities.GetTokens(query);
+        return tokens.size()* _wordMatcher.getThreshold();
     }
 }

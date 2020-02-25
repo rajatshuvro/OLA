@@ -1,4 +1,4 @@
-package com.ola.JWRSearch;
+package com.ola.NativeSearch;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -24,7 +24,7 @@ import java.util.Arrays;
  * <p>
  * @see <a href="http://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance">http://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance</a>
  */
-public class JaroWinkler {
+public class JaroWinkler implements IWordMatcher{
 
     public float threshold = 0.8f;
 
@@ -92,14 +92,14 @@ public class JaroWinkler {
         return new int[] { matches, transpositions / 2, prefix, max.length() };
     }
 
-    public float GetThresholdSimilarity(String s1, String s2){
+    public float getSimilarity(String s1, String s2){
         //filtering out strings that are too large or smaller
         if(LengthRatio(s1, s2) < threshold) return 0;
-        var similarity = getSimilarity(s1, s2);
+        var similarity = getDistance(s1, s2);
         return similarity < threshold ? 0:similarity;
     }
 
-    public float getSimilarity(String s1, String s2) {
+    public float getDistance(String s1, String s2) {
 
         int[] mtp = matches(s1, s2);
         float m = mtp[0];

@@ -1,16 +1,27 @@
-package com.ola.JWRSearch;
+package com.ola.NativeSearch;
 
 
-public class SmithWaterman {
+
+public class SmithWaterman implements IWordMatcher {
     public final int SubstitutionCost = 1;
     public final int DeletionCost =1;
     public final int InsertionCost =1;
 
-    public float GetSimilarity(String s1, String s2){
+    public float threshold = 0.8f;
+
+    public void setThreshold(float threshold) {
+        this.threshold = threshold;
+    }
+    public float getThreshold() {
+        return threshold;
+    }
+
+    public float getSimilarity(String s1, String s2){
         var distance = GetDistance(s1, s2);
         if (distance == 0) return 1;
         var maxLength = Math.max(s1.length(), s2.length());
-        return 1.0f - (1.0f*distance)/maxLength;
+        var similarity =  1.0f - (1.0f*distance)/maxLength;
+        return similarity > threshold ? similarity : 0;
     }
     //determine the edit distance between strings using dynamic programming
     public int GetDistance(String s1, String s2){

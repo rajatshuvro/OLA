@@ -1,6 +1,7 @@
 package com.ola;
 
-import com.ola.JWRSearch.JWRInvertedIndex;
+import com.ola.NativeSearch.InvertedIndex;
+import com.ola.NativeSearch.JaroWinkler;
 import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.FlatObjectParser;
 import org.apache.lucene.queryparser.classic.ParseException;
@@ -18,7 +19,7 @@ public class Find {
         }
         String queryText = ConstructQuery(args);
 
-        var jwrIndex = new JWRInvertedIndex();
+        var jwrIndex = new InvertedIndex(new JaroWinkler());
         var docs = new ArrayList<ISearchDocument>();
         for(var book: dataProvider.BookDb.GetAllBooks())
         {

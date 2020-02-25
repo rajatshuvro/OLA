@@ -1,6 +1,7 @@
 package com.ola.unitTests.JWRSearchTests;
 
-import com.ola.JWRSearch.JWRInvertedIndex;
+import com.ola.NativeSearch.InvertedIndex;
+import com.ola.NativeSearch.JaroWinkler;
 import com.ola.dataStructures.Book;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ public class InvertedIndexTests {
     public void AddDocsAndGetScores() throws IOException {
         var books = GetBooks();
 
-        var jwrIndex = new JWRInvertedIndex();
+        var jwrIndex = new InvertedIndex(new JaroWinkler());
         for(var book:books){
             jwrIndex.Add(book.GetContent());
         }

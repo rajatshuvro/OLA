@@ -1,7 +1,7 @@
 package com.ola.unitTests.JWRSearchTests;
 
-import com.ola.JWRSearch.JaroWinkler;
-import com.ola.JWRSearch.PhraseMatcher;
+import com.ola.NativeSearch.JaroWinkler;
+import com.ola.NativeSearch.PhraseMatcher;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,9 +10,9 @@ public class WordMatchTests {
     public void Similarity_jwTests(){
         var jw = new JaroWinkler();
 
-        Assertions.assertEquals(1.0, jw.getSimilarity("aamar", "aamar"));
-        Assertions.assertEquals(0.9399999976158142, jw.getSimilarity("aamar", "amaar"));
-        Assertions.assertEquals(0.0, jw.getSimilarity("aamar", "totini"));
+        Assertions.assertEquals(1.0, jw.getDistance("aamar", "aamar"));
+        Assertions.assertEquals(0.9399999976158142, jw.getDistance("aamar", "amaar"));
+        Assertions.assertEquals(0.0, jw.getDistance("aamar", "totini"));
     }
 
     @Test

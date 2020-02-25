@@ -1,8 +1,8 @@
-package com.ola.JWRSearch;
+package com.ola.NativeSearch;
 
 import java.util.ArrayList;
 
-public class JWRUtilities {
+public class Utilities {
     public static String TokenSplitterRegex = "[\\p{P} \\t\\n\\r]";
 
     public static ArrayList<String> GetTokens(String s){
