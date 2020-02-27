@@ -7,7 +7,7 @@ public class SmithWaterman implements IWordMatcher {
     public final int DeletionCost =1;
     public final int InsertionCost =1;
 
-    public float threshold = 0.8f;
+    public float threshold = 0.5f;
 
     public void setThreshold(float threshold) {
         this.threshold = threshold;

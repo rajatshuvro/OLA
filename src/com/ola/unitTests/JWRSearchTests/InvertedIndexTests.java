@@ -2,6 +2,7 @@ package com.ola.unitTests.JWRSearchTests;
 
 import com.ola.NativeSearch.InvertedIndex;
 import com.ola.NativeSearch.JaroWinkler;
+import com.ola.NativeSearch.SmithWaterman;
 import com.ola.dataStructures.Book;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -29,23 +30,40 @@ public class InvertedIndexTests {
     }
 
     @Test
-    public void AddDocsAndGetScores() throws IOException {
+    public void JWscoringTest() throws IOException {
         var books = GetBooks();
 
-        var jwrIndex = new InvertedIndex(new JaroWinkler());
+        var invertedIndex = new InvertedIndex(new JaroWinkler());
         for(var book:books){
-            jwrIndex.Add(book.GetContent());
+            invertedIndex.Add(book.GetContent());
         }
 
-        var topDocs = jwrIndex.Search("amar bonosre");
+        var topDocs = invertedIndex.Search("amar bonosre");
 
         Assertions.assertEquals(2, topDocs.length);
         Assertions.assertArrayEquals(new int[]{0,1,}, topDocs);
 
-        topDocs = jwrIndex.Search("jhopat jhopat");
+        topDocs = invertedIndex.Search("jhopat jhopat");
         Assertions.assertEquals(1, topDocs.length);
         Assertions.assertArrayEquals(new int[]{4}, topDocs);
     }
+    @Test
+    public void SWscoringTest() throws IOException {
+        var books = GetBooks();
 
+        var invertedIndex = new InvertedIndex(new SmithWaterman());
+        for(var book:books){
+            invertedIndex.Add(book.GetContent());
+        }
+
+        var topDocs = invertedIndex.Search("amar bonosre");
+
+        Assertions.assertEquals(2, topDocs.length);
+        Assertions.assertArrayEquals(new int[]{0,1,}, topDocs);
+
+        topDocs = invertedIndex.Search("jhopat jhopat");
+        Assertions.assertEquals(1, topDocs.length);
+        Assertions.assertArrayEquals(new int[]{4}, topDocs);
+    }
 
 }
