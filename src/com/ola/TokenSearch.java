@@ -2,6 +2,7 @@ package com.ola;
 
 import com.ola.NativeSearch.InvertedIndex;
 import com.ola.NativeSearch.JaroWinkler;
+import com.ola.NativeSearch.SmithWaterman;
 import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.FlatObjectParser;
 import org.apache.lucene.queryparser.classic.ParseException;
@@ -9,7 +10,7 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Find {
+public class TokenSearch {
     private static String commandSyntax = "find  [query text]";
 
     public static void Run(String[] args, DataProvider dataProvider) throws IOException, ParseException {
@@ -19,20 +20,20 @@ public class Find {
         }
         String queryText = ConstructQuery(args);
 
-        var jwrIndex = new InvertedIndex(new JaroWinkler());
+        var invertedIndex = new InvertedIndex(new SmithWaterman());
         var docs = new ArrayList<ISearchDocument>();
         for(var book: dataProvider.BookDb.GetAllBooks())
         {
-            jwrIndex.Add(book.GetContent());
+            invertedIndex.Add(book.GetContent());
             docs.add(book);
         }
         for(var user: dataProvider.UserDb.GetAllUsers())
         {
-            jwrIndex.Add(user.GetContent());
+            invertedIndex.Add(user.GetContent());
             docs.add(user);
         }
 
-        var topDocs = jwrIndex.Search(queryText);
+        var topDocs = invertedIndex.Search(queryText);
         var results = GetResults(docs, topDocs, 5);
 
         OutputResults(results, "-----------------------Showing top 5 search results --------------------");

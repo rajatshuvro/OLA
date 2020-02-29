@@ -1,4 +1,4 @@
-package com.ola.unitTests.JWRSearchTests;
+package com.ola.unitTests.NativeSearchTests;
 
 import com.ola.NativeSearch.JaroWinkler;
 import com.ola.NativeSearch.PhraseMatcher;
