@@ -20,34 +20,10 @@ public class TokenSearch {
         }
         String queryText = ConstructQuery(args);
 
-        var invertedIndex = new InvertedIndex(new SmithWaterman());
-        var docs = new ArrayList<ISearchDocument>();
-        for(var book: dataProvider.BookDb.GetAllBooks())
-        {
-            invertedIndex.Add(book.GetContent());
-            docs.add(book);
-        }
-        for(var user: dataProvider.UserDb.GetAllUsers())
-        {
-            invertedIndex.Add(user.GetContent());
-            docs.add(user);
-        }
-
-        var topDocs = invertedIndex.Search(queryText);
-        var results = GetResults(docs, topDocs, 5);
-
+        var results = dataProvider.Search(queryText);
         OutputResults(results, "-----------------------Showing top 5 search results --------------------");
         System.out.println('\n');
         System.out.println("=========================End of search results=====================");
-    }
-
-    private static ArrayList<String> GetResults(ArrayList<ISearchDocument> docs, int[] topDocs, int maxCount) {
-        var results = new ArrayList<String>();
-
-        for(var i=0; i < maxCount && i < topDocs.length; i++)
-            results.add(docs.get(topDocs[i]).toString());
-
-        return results;
     }
 
     private static void OutputResults(ArrayList<String> results, String banner) {

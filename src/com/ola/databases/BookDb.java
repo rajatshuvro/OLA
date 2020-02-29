@@ -1,30 +1,22 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Book;
-import com.ola.luceneIndex.DocumentSearchIndex;
 import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
-import java.io.IOException;
 import java.util.*;
 
 public class BookDb {
     private HashMap<String, Book> _books;
     private HashMap<Long, Integer> _latestCopyNumbers;
     private ArrayList<Book> _newBooks;
-    private DocumentSearchIndex _searchIndex;
 
     public HashSet<String> GetIds() {
         var ids = new HashSet<String>();
         ids.addAll(_books.keySet());
         return ids;
-    }
-
-    public DocumentSearchIndex GetSearchIndex() throws IOException {
-        if(_searchIndex == null) BuildSearchIndex();
-        return _searchIndex;
     }
 
     public Iterable<ISearchDocument> GetAllDocuments(){
@@ -197,11 +189,6 @@ public class BookDb {
     private boolean IsGeneratedIsbn(Long isbn) {
         var s = isbn.toString();
         return s.length() < 10;
-    }
-
-    public void BuildSearchIndex() throws IOException {
-        var books = GetAllDocuments();
-        _searchIndex = new DocumentSearchIndex(books);
     }
 
     public ArrayList<Book> Filter(String genre, int level) {

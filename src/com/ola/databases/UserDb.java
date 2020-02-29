@@ -10,7 +10,6 @@ import java.util.*;
 public class UserDb {
     private HashMap<Integer, User> _users;
     private int _maxId;
-    private DocumentSearchIndex _searchIndex;
     private ArrayList<User> _newUsers;
     public static final int NewUserId=99999;
 
@@ -63,19 +62,6 @@ public class UserDb {
         _users.put(user.Id, user);
         _newUsers.add(user);
         return user.Id;
-    }
-
-    public DocumentSearchIndex GetSearchIndex() throws IOException {
-        if(_searchIndex == null) BuildSearchIndex();
-        return _searchIndex;
-    }
-
-    public Iterable<ISearchDocument> GetAllDocuments(){
-        return new ArrayList<>(_users.values());
-    }
-
-    public void BuildSearchIndex() throws IOException {
-        _searchIndex = new DocumentSearchIndex(GetAllDocuments());
     }
 
     public List<User> GetNewRecords(){
