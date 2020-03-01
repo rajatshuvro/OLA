@@ -1,6 +1,5 @@
 package com.ola;
 
-import com.ola.databases.UserDb;
 import com.ola.utilities.PrintUtilities;
 import org.apache.commons.cli.*;
 
@@ -9,7 +8,7 @@ import java.io.IOException;
 public class AddUser
 {
     private static String commandSyntex = "add-user  -n [Name] -r [Role] -e [Email] -p [Phone]";
-    public static void Run(String[] args, UserDb userDb, Appender appender){
+    public static void Run(String[] args, DataProvider dataProvider){
         var name = GetName(args);
         Options options = new Options();
 
@@ -44,16 +43,11 @@ public class AddUser
             var email = cmd.getOptionValue("email");
             var phone = cmd.getOptionValue("phone");
 
-            int id = userDb.AddNewUser(name, role, email, phone);
-            if(id != -1) {
+            var id = dataProvider.AddNewUser(name, role, email, phone);
+            if(id != -1)
                 PrintUtilities.PrintSuccessLine(name+" was added to the user database. Assigned Id: "+id);
-                appender.AppendUsers(userDb.GetNewRecords());
-                System.out.print("Rebuilding user search index...");
-                userDb.BuildSearchIndex();
-                System.out.println("done");
-
-            }
             else PrintUtilities.PrintErrorLine("Failed to add new user.");
+
         }
         catch (ParseException | IOException e) {
             System.out.println(e.getMessage());

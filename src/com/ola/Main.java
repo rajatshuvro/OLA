@@ -33,11 +33,11 @@ public class Main {
             String subCommand = subArgs[0];
             switch (subCommand){
                 case "add":
-                    Add.Run(subArgs, dataProvider.BookDb, dataProvider.UserDb, dataProvider.Appender);
+                    Add.Run(subArgs, dataProvider);
                     break;
                 case "au":
                 case "add-user":
-                    AddUser.Run(subArgs, dataProvider.UserDb, dataProvider.Appender);
+                    AddUser.Run(subArgs, dataProvider);
                     break;
                 case "co":
                     CheckOut.Run(subArgs, dataProvider.TransactionDb);

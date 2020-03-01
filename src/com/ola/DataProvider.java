@@ -2,7 +2,9 @@ package com.ola;
 
 import com.ola.NativeSearch.InvertedIndex;
 import com.ola.NativeSearch.SmithWaterman;
+import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Transaction;
+import com.ola.dataStructures.User;
 import com.ola.databases.BookDb;
 import com.ola.databases.TransactionDb;
 import com.ola.databases.UserDb;
@@ -10,6 +12,7 @@ import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.BookParser;
 import com.ola.parsers.TransactionParser;
 import com.ola.parsers.UserParser;
+import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 
 import java.io.*;
@@ -38,8 +41,18 @@ public class DataProvider {
     private InvertedIndex _searchIndex;
     private ArrayList<ISearchDocument> _docs;
 
+    public DataProvider(BookDb bookDb, UserDb userDb, TransactionDb transactionDb, Appender appender){
+        BookDb = bookDb;
+        UserDb = userDb;
+        TransactionDb = transactionDb;
+        Appender = appender;
+        _searchIndex = new InvertedIndex(new SmithWaterman());
+        _docs = new ArrayList<>();
+
+    }
+
     public DataProvider(InputStream bookInputStream, InputStream userInputStream, InputStream transactionInputStream
-                        , OutputStream transactionAppendStream, OutputStream bookAppendStream, OutputStream userAppendStream) {
+            , OutputStream transactionAppendStream, OutputStream bookAppendStream, OutputStream userAppendStream) {
         _bookInputStream = bookInputStream;
         _userInputStream = userInputStream;
         _transactionInputStream = transactionInputStream;
@@ -54,8 +67,6 @@ public class DataProvider {
         _userParser = new UserParser(userInputStream);
         _transactionParser = new TransactionParser(transactionInputStream);
 
-        _searchIndex = new InvertedIndex(new SmithWaterman());
-        _docs = new ArrayList<>();
     }
 
     public void Load() throws IOException{
@@ -71,6 +82,8 @@ public class DataProvider {
     }
 
     private void BuildSearchIndex() {
+        _searchIndex = new InvertedIndex(new SmithWaterman());
+        _docs = new ArrayList<>();
         for(var book: BookDb.GetAllBooks())
         {
             _searchIndex.Add(book.GetContent());
@@ -81,6 +94,52 @@ public class DataProvider {
             _searchIndex.Add(user.GetContent());
             _docs.add(user);
         }
+    }
+
+    public int AddBooks(ArrayList<Book> books) throws IOException {
+        var count=0;
+        for (Book book: books) {
+            var displayId = BookDb.Add(book);
+            if(displayId!=null) {
+                PrintUtilities.PrintSuccessLine("New book added: "+displayId);
+                _searchIndex.Add(book.GetContent());
+                _docs.add(book);
+                count++;
+            }
+            else PrintUtilities.PrintErrorLine("Failed to add: "+ book.Title);
+        }
+        Appender.AppendBooks(BookDb.GetNewRecords());
+        return count;
+    }
+
+    public int AddNewUser(String name, String role, String email, String phone) throws IOException {
+        int id = UserDb.AddNewUser(name, role, email, phone);
+        if(id != -1) {
+            var newUsers = UserDb.GetNewRecords();
+            Appender.AppendUsers(newUsers);
+            _searchIndex.Add(newUsers.get(0).GetContent());
+            _docs.add(newUsers.get(0));
+            return id;
+        }
+        else return -1;
+    }
+
+    public int AddUsers(ArrayList<User> users) throws IOException {
+        var count =0;
+        for(var user: users){
+            var id = UserDb.AddNewUser(user.Name, user.Role, user.Email, user.Phone);
+            if(id != -1) {
+                PrintUtilities.PrintSuccessLine(user.Name +" was added to the user database. Assigned Id: "+id);
+                _searchIndex.Add(user.GetContent());
+                _docs.add(user);
+                count++;
+            }
+            else PrintUtilities.PrintErrorLine("Failed to add new user "+user.Name);
+        }
+
+        Appender.AppendUsers(UserDb.GetNewRecords());
+        return count;
+
     }
 
     public void Close() throws IOException {

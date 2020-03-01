@@ -19,9 +19,6 @@ public class BookDb {
         return ids;
     }
 
-    public Iterable<ISearchDocument> GetAllDocuments(){
-        return new ArrayList<>(_books.values());
-    }
     public Iterable<Book> GetAllBooks(){
         return _books.values();
     };
