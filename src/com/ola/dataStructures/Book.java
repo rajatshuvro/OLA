@@ -147,6 +147,7 @@ public class Book implements Comparable<Book>, ISearchDocument {
         return  "Title:           "+Title+'\n'+
                 "Author:          "+Author+'\n'+
                 "ISBN:            "+Isbn+'\n'+
+                "ID:              "+GetUserFriendlyId()+'\n'+
                 "Publisher:       "+Publisher+'\n'+
                 "Year:            "+Year+'\n'+
                 "Genre:           "+Genre+'\n'+
