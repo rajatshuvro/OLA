@@ -3,6 +3,7 @@ package com.ola;
 import com.ola.NativeSearch.InvertedIndex;
 import com.ola.NativeSearch.SmithWaterman;
 import com.ola.dataStructures.Book;
+import com.ola.dataStructures.Checkout;
 import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
 import com.ola.databases.BookDb;
@@ -187,5 +188,19 @@ public class DataProvider {
             results.add(_docs.get(topDocs[i]).toString());
 
         return results;
+    }
+
+    public int AddCheckouts(ArrayList<Checkout> checkouts) throws IOException {
+        var count=0;
+        for (var checkout:
+             checkouts) {
+            if(TransactionDb.Checkout(checkout))
+            {
+                count++;
+                PrintUtilities.PrintSuccessLine(checkout.BookId +" has been checked out by "+ checkout.UserId);
+            }
+            else PrintUtilities.PrintWarningLine("Checkout attempt was unsuccessful!!");
+        }
+        return count;
     }
 }

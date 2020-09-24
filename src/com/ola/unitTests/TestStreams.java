@@ -5,6 +5,20 @@ import com.ola.parsers.FlatObjectParser;
 import java.io.*;
 
 public class TestStreams {
+    public static InputStream GetCheckoutCsvStream() throws IOException{
+        var memStream = new ByteArrayOutputStream();
+        var writer = new OutputStreamWriter(memStream);
+
+        writer.write("\"Timestamp\",\"Book id\",\"User id\"\n");
+        writer.write("\"2020/09/22 8:05:04 AM MDT\",\"9848494226-FIC-5-(1)\",\"474\"\n");
+        writer.write("\"2020/09/22 8:09:24 AM MDT\",\"9848494234-SOC-5-(1)\",\"472\"\n");
+        writer.write("\"2020/09/22 8:11:44 AM MDT\",\"9848494049-FIC-1-(1)\",\"480\"\n");
+        writer.close();
+
+        var buffer = memStream.toByteArray();
+        memStream.close();
+        return new ByteArrayInputStream(buffer);
+    }
     public static InputStream GetNewUserCsvStream() throws IOException{
         var memStream = new ByteArrayOutputStream();
         var writer = new OutputStreamWriter(memStream);

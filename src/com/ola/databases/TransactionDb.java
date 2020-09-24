@@ -2,6 +2,7 @@ package com.ola.databases;
 
 import com.ola.Appender;
 import com.ola.dataStructures.Book;
+import com.ola.dataStructures.Checkout;
 import com.ola.dataStructures.Transaction;
 import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.PrintUtilities;
@@ -91,6 +92,9 @@ public class TransactionDb {
         return Add(Transaction.Create(bookId, userId, date, Transaction.CheckoutTag));
     }
 
+    public boolean Checkout(Checkout co) throws IOException {
+        return Checkout(co.BookId, co.UserId);
+    }
     public boolean Return(String bookId) throws IOException {
         var transaction = GetLatest(bookId);
         if(transaction == null) {
