@@ -89,6 +89,7 @@ public class TransactionDb {
             PrintUtilities.PrintWarningLine("Checkout limit reached. Cannot issue more books to user id:"+userId);
             return false;
         }
+        bookId = Book.GetReducedId(bookId);
         return Add(Transaction.Create(bookId, userId, date, Transaction.CheckoutTag));
     }
 

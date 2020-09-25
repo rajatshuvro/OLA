@@ -42,6 +42,12 @@ public class Book implements Comparable<Book>, ISearchDocument {
         ExpiryDate = expiryDate;
         Summary = summary==null? "":summary;
     }
+    //if a user friendly bookId is provided, it needs to be reduced to isbn-(copy num) format
+    public static String GetReducedId(String bookId) {
+        var splits = bookId.split("-");
+        if (splits.length == 2) return bookId;
+        else return splits[0]+'-'+splits[splits.length-1];
+    }
 
     public String GetId(){
         return GenerateId(Isbn, CopyNum);
