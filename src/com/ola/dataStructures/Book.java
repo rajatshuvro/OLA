@@ -40,7 +40,7 @@ public class Book implements Comparable<Book>, ISearchDocument {
         ReadingLevel = readingLevel;
         EntryDate = entryDate;
         ExpiryDate = expiryDate;
-        Summary = summary==null? "":summary;
+        Summary = summary == null ? "" : summary;
     }
     //if a user friendly bookId is provided, it needs to be reduced to isbn-(copy num) format
     public static String GetReducedId(String bookId) {
