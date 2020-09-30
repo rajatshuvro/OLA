@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TimeUtilities {
+    public static final String GoogleFormatString = "yyyy/MM/dd HH:mm:ss";
+    public static final DateFormat GoogleDateFormat = new SimpleDateFormat(GoogleFormatString);
     public static final String DateFormatString = "yyyy-MM-dd";
     public static final DateFormat DateFormat = new SimpleDateFormat(DateFormatString);
 
@@ -16,6 +18,16 @@ public class TimeUtilities {
         return new Date(System.currentTimeMillis());
     }
 
+    public static Date parseGoogleDateTime(String value) {
+        if(value == null || value.equals("")) return null;
+        try {
+            return GoogleDateFormat.parse(value);
+        } catch (ParseException e) {
+            System.out.println("Invalid entry date-time provided:"+value);
+            System.out.println("Please use the following format: "+ GoogleFormatString);
+            return null;
+        }
+    }
     public static Date parseDateTime(String value) {
         if(value == null || value.equals("")) return null;
         try {

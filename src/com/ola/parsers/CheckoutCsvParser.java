@@ -1,9 +1,7 @@
 package com.ola.parsers;
 
-import com.ola.CheckOut;
 import com.ola.dataStructures.Checkout;
-import com.ola.dataStructures.User;
-import com.ola.databases.UserDb;
+import com.ola.utilities.TimeUtilities;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
@@ -17,6 +15,7 @@ public class CheckoutCsvParser {
     public final String TimeTag = "Timestamp";
     public final String BookIdTag = "Book id";
     public final String UserIdTag = "User id";
+    public final String DueDateTag = "Due Date";
 
     public CheckoutCsvParser(InputStream stream){
         _reader = new InputStreamReader(stream);
@@ -28,7 +27,7 @@ public class CheckoutCsvParser {
 
     public ArrayList<Checkout> GetCheckouts() throws IOException {
         var checkouts = new ArrayList<Checkout>();
-        Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader(TimeTag, BookIdTag, UserIdTag).parse(_reader);
+        Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader(TimeTag, BookIdTag, UserIdTag, DueDateTag).parse(_reader);
         var isHeaderRecord = true;
         for (CSVRecord record : records) {
             //the first line is also reported as entry. We need to skip it
@@ -36,10 +35,14 @@ public class CheckoutCsvParser {
                 isHeaderRecord = false;
                 continue;
             }
+
+            var timeStamp = record.get(TimeTag).trim();
             var bookId = record.get(BookIdTag).trim();
             var userId = record.get(UserIdTag).trim();
-
-            checkouts.add(new Checkout(bookId, ParserUtilities.ParseUInt(userId)));
+            var dueDateString = record.get(DueDateTag).trim();
+            var dueDate = TimeUtilities.parseDate(dueDateString);
+            var checkoutDate = TimeUtilities.parseGoogleDateTime(timeStamp);
+            checkouts.add(new Checkout(bookId, ParserUtilities.ParseUInt(userId),checkoutDate, dueDate));
         }
         return checkouts;
     }

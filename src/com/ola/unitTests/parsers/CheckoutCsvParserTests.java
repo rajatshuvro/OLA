@@ -14,8 +14,8 @@ public class CheckoutCsvParserTests {
         var parser = new CheckoutCsvParser(TestStreams.GetCheckoutCsvStream());
 
         var checkouts = parser.GetCheckouts();
-        assertEquals(3, checkouts.size());
-        assertEquals("9848494226-FIC-5-(1)", checkouts.get(0).BookId);
-        assertEquals(474, checkouts.get(0).UserId);
+        assertEquals(4, checkouts.size());
+        assertEquals("9848494226-FIC-5-(1)", checkouts.get(1).BookId);
+        assertEquals(474, checkouts.get(1).UserId);
     }
 }
