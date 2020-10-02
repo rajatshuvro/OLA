@@ -7,10 +7,12 @@ import com.ola.dataStructures.Checkout;
 import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
 import com.ola.databases.BookDb;
+import com.ola.databases.CheckoutDb;
 import com.ola.databases.TransactionDb;
 import com.ola.databases.UserDb;
 import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.BookParser;
+import com.ola.parsers.CheckoutParser;
 import com.ola.parsers.TransactionParser;
 import com.ola.parsers.UserParser;
 import com.ola.utilities.PrintUtilities;
@@ -23,20 +25,24 @@ import java.util.Calendar;
 public class DataProvider {
     public BookDb BookDb;
     public UserDb UserDb;
+    public CheckoutDb CheckoutDb;
     public TransactionDb TransactionDb;
 
     private BookParser _bookParser;
     private UserParser _userParser;
+    private CheckoutParser _checkoutParser;
     private TransactionParser _transactionParser;
 
     public final Appender Appender;
 
     private InputStream _bookInputStream;
     private InputStream _userInputStream;
+    private InputStream _checkoutInputStream;
     private InputStream _transactionInputStream;
 
     private OutputStream _bookAppendStream;
     private OutputStream _userAppendStream;
+    private OutputStream _checkoutOutputStream;
     private OutputStream _transactionAppendStream;
 
     private InvertedIndex _searchIndex;
@@ -190,17 +196,4 @@ public class DataProvider {
         return results;
     }
 
-    public int AddCheckouts(ArrayList<Checkout> checkouts) throws IOException {
-        var count=0;
-        for (var checkout:
-             checkouts) {
-            if(TransactionDb.Checkout(checkout))
-            {
-                count++;
-                PrintUtilities.PrintSuccessLine(checkout.BookId +" has been checked out by "+ checkout.UserId);
-            }
-            else PrintUtilities.PrintWarningLine("Checkout attempt was unsuccessful!!");
-        }
-        return count;
-    }
 }

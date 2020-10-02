@@ -96,7 +96,6 @@ public class Main {
         PrintUtilities.PrintInfoLine("\tret            (return book)");
         PrintUtilities.PrintInfoLine("\tco-stat/cs     (checkout status)");
         PrintUtilities.PrintInfoLine("\tsearch/$       (search book and user records)");
-        //PrintUtilities.PrintInfoLine("\tfind/#         (search using JWR index)");
         PrintUtilities.PrintInfoLine("\tfilter         (filter book database by genre, level, etc fields)");
         PrintUtilities.PrintInfoLine("\tlabel          (print out book titles and Ids)");
         PrintUtilities.PrintInfoLine("\tquit           (quit OLA)");

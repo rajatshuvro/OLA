@@ -93,6 +93,20 @@ public class TransactionDb {
         return Add(Transaction.Create(bookId, userId, date, Transaction.CheckoutTag));
     }
 
+    public int AddCheckouts(ArrayList<Checkout> checkouts) throws IOException {
+        var count=0;
+        for (var checkout:
+                checkouts) {
+            if(Checkout(checkout))
+            {
+                count++;
+                PrintUtilities.PrintSuccessLine(checkout.BookId +" has been checked out by "+ checkout.UserId);
+            }
+            else PrintUtilities.PrintWarningLine("Checkout attempt was unsuccessful!!");
+        }
+        return count;
+    }
+
     public boolean Checkout(Checkout co) throws IOException {
         return Checkout(co.BookId, co.UserId);
     }
