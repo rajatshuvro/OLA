@@ -76,6 +76,10 @@ public class DataProvider {
 
     }
 
+    public void AddCheckoutDb(Iterable<Checkout> checkouts, OutputStream outputStream) throws IOException {
+        CheckoutDb = new CheckoutDb(checkouts, UserDb, BookDb, outputStream);
+    }
+
     public void Load() throws IOException{
         BookDb = new BookDb(_bookParser.GetBooks());
         UserDb = new UserDb(_userParser.GetUsers());
@@ -151,6 +155,7 @@ public class DataProvider {
 
     public void Close() throws IOException {
         Appender.Close();
+        CheckoutDb.Close();
         _userAppendStream.close();
         _bookAppendStream.close();
         _transactionAppendStream.close();

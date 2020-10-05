@@ -1,4 +1,6 @@
 package com.ola;
+import com.ola.databases.CheckoutDb;
+import com.ola.parsers.CheckoutCsvParser;
 import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
@@ -40,7 +42,7 @@ public class Main {
                     AddUser.Run(subArgs, dataProvider);
                     break;
                 case "co":
-                    CheckOut.Run(subArgs, dataProvider.TransactionDb);
+                    CheckOut.Run(subArgs, dataProvider.CheckoutDb);
                     break;
                 case "ret":
                     Return.Run(subArgs, dataProvider.TransactionDb);
@@ -107,6 +109,7 @@ public class Main {
     private static String UsersFileName = "Users.fob";
     private static String BooksFileName = "Books.fob";
     private static String TransactionsFileName = "Transactions.fob";
+    private static String CheckoutsFileName = "Checkouts.fob";
 
     private static DataProvider Initialize(String[] args) {
         Options options = new Options();
@@ -143,14 +146,28 @@ public class Main {
                 PrintUtilities.PrintErrorLine("Failed to find file: "+transactionFileName);
                 return null;
             }
-            return new DataProvider(new FileInputStream(bookFileName),
+            var dataProvider =new DataProvider(new FileInputStream(bookFileName),
                     new FileInputStream(userFileName),
                     new FileInputStream(transactionFileName),
                     new FileOutputStream(transactionFileName,true),
                     new FileOutputStream(bookFileName, true),
                     new FileOutputStream(userFileName, true));
+
+            var checkoutFileName =  dataDir+ File.separatorChar+CheckoutsFileName;
+            if(FileUtilities.Exists(checkoutFileName)){
+                var inputStream = new FileInputStream(checkoutFileName);
+                var checkoutParser = new CheckoutCsvParser(inputStream);
+                var checkouts = checkoutParser.GetCheckouts();
+                var outputStream = new FileOutputStream(checkoutFileName, true);
+                dataProvider.AddCheckoutDb(checkouts, outputStream);
+            }
+            return dataProvider;
         }
         catch (ParseException | FileNotFoundException e) {
+            PrintUtilities.PrintErrorLine(e.getMessage());
+            formatter.printHelp(commandSyntex, options);
+            return null;
+        } catch (IOException e) {
             PrintUtilities.PrintErrorLine(e.getMessage());
             formatter.printHelp(commandSyntex, options);
             return null;

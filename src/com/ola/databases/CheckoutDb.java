@@ -47,6 +47,9 @@ public class CheckoutDb {
         return _checkouts.getOrDefault(bookId, null);
     }
 
+    public boolean IsCheckedOut(String bookId){
+        return _checkouts.containsKey(bookId);
+    }
     public ArrayList<Checkout> GetCheckouts(int userId){
         var checkouts = new ArrayList<Checkout>();
         for (var checkout:

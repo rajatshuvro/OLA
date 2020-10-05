@@ -3,9 +3,11 @@ package com.ola.unitTests.subCommands;
 import com.ola.Appender;
 import com.ola.CheckOut;
 import com.ola.dataStructures.Book;
+import com.ola.dataStructures.Checkout;
 import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
 import com.ola.databases.BookDb;
+import com.ola.databases.CheckoutDb;
 import com.ola.databases.TransactionDb;
 import com.ola.databases.UserDb;
 import com.ola.utilities.TimeUtilities;
@@ -15,6 +17,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CheckoutTests {
     private BookDb GetBookDb() {
@@ -52,14 +55,24 @@ public class CheckoutTests {
         return transactions;
     }
 
+    private ArrayList<Checkout> GetCheckouts(){
+        var checkouts = new ArrayList<Checkout>();
+        checkouts.add(new Checkout("7890788-(2)", 234, TimeUtilities.parseGoogleDateTime("2020/09/30 3:20:16 PM MDT"), TimeUtilities.parseDate("2020-10-25")));
+        checkouts.add(new Checkout("678564-(1)", 123, TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
+        checkouts.add(new Checkout("456098-(1)", 345, TimeUtilities.parseGoogleDateTime("2020/09/30 3:22:04 PM MDT"), TimeUtilities.parseDate("2020-10-28")));
+        checkouts.add(new Checkout("7890788-(2)", 234, TimeUtilities.parseGoogleDateTime("2020/09/30 3:23:30 PM MDT"), TimeUtilities.parseDate("2020-10-26")));
+
+        return checkouts;
+    }
+
     @Test
     public void Checkout_already_in_circulation(){
-        var appender = new Appender(null, null, new ByteArrayOutputStream());
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
+        var appender = new Appender(null, null, null, new ByteArrayOutputStream());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), GetUserDb(), GetBookDb(),);
         var args = new String[]{"co", "-b", "7890788-(2)","-u","345"};
-        CheckOut.Run(args, transactionDb);
+        CheckOut.Run(args, );
 
-        assertEquals(Transaction.CheckoutTag, transactionDb.GetBookStatus("7890788-(2)"));
+        assertTrue(chekoutDb.IsCheckedOut("7890788-(2)"));
     }
 
     @Test

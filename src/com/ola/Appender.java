@@ -14,16 +14,18 @@ public class Appender {
     private OutputStream _bookStream;
     private OutputStream _userStream;
     private OutputStream _transactionStream;
+    private OutputStream _checkOutStream;
 
     private BufferedWriter _transactionAppender;
     private BufferedWriter _bookAppender;
     private BufferedWriter _userAppender;
+    private BufferedWriter _checkOutAppender;
 
-    public Appender(OutputStream bookStream, OutputStream userStream, OutputStream transactionStream){
+    public Appender(OutputStream bookStream, OutputStream userStream, OutputStream transactionStream, OutputStream checkoutStream){
         _bookStream = bookStream;
         _userStream = userStream;
         _transactionStream = transactionStream;
-
+        _checkOutStream = checkoutStream;
     }
 
     public void AppendTransactions(Transaction transaction) throws IOException {
@@ -45,6 +47,19 @@ public class Appender {
         }
         _bookAppender.flush();
     }
+
+    public void AppendCheckouts(Iterable<CheckOut> checkOuts) throws IOException {
+        if(_checkOutAppender == null)
+            _checkOutAppender = new BufferedWriter(new OutputStreamWriter(_checkOutStream));
+        if (checkOuts == null) return;
+        for (var checkout:
+             checkOuts) {
+            _checkOutAppender.write(checkOuts.toString()+'\n');
+            _checkOutAppender.write(FlatObjectParser.RecordSeparator+'\n');
+        }
+        _checkOutAppender.flush();
+    }
+
     public void AppendUsers(Iterable<User> users) throws IOException {
         if(_userAppender == null)
             _userAppender = new BufferedWriter(new OutputStreamWriter(_userStream));
