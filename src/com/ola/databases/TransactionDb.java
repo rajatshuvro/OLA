@@ -21,7 +21,7 @@ public class TransactionDb {
     private UserDb _userDb;
     private BookDb _bookDb;
     private Appender _appender;
-    public final int CheckoutLimit = 5;
+    public final int CheckoutLimit = 15;
 
     public TransactionDb(Iterable<Transaction> transactions, UserDb userDb, BookDb bookDb, Appender appender){
         //transactions are assumed to ordered by increasing timestamps
