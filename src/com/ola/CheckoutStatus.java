@@ -91,6 +91,7 @@ public class CheckoutStatus {
         var pendingCheckouts = dataProvider.GetPendingCheckouts(userId);
         if (pendingCheckouts == null) {
             PrintUtilities.PrintLine("No checkouts found for user id:"+userId);
+            return;
         }
 
         for(var checkout: pendingCheckouts){
