@@ -156,10 +156,7 @@ public class Main {
             var checkoutFileName =  dataDir+ File.separatorChar+CheckoutsFileName;
             if(FileUtilities.Exists(checkoutFileName)){
                 var inputStream = new FileInputStream(checkoutFileName);
-                var checkoutParser = new CheckoutCsvParser(inputStream);
-                var checkouts = checkoutParser.GetCheckouts();
-                var outputStream = new FileOutputStream(checkoutFileName, true);
-                dataProvider.AddCheckoutDb(checkouts, outputStream);
+                dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true));
             }
             return dataProvider;
         }

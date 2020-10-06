@@ -16,8 +16,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CheckoutTests {
     private BookDb GetBookDb() {
@@ -65,43 +64,44 @@ public class CheckoutTests {
         return checkouts;
     }
 
+    private ArrayList<Checkout> GetNewCheckouts(){
+        var checkouts = new ArrayList<Checkout>();
+        checkouts.add(new Checkout("678564-(2)", 345, TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
+
+        return checkouts;
+    }
     @Test
     public void Checkout_already_in_circulation(){
-        var appender = new Appender(null, null, null, new ByteArrayOutputStream());
-        var chekoutDb = new CheckoutDb(GetCheckouts(), GetUserDb(), GetBookDb(),);
-        var args = new String[]{"co", "-b", "7890788-(2)","-u","345"};
-        CheckOut.Run(args, );
+        var appender = new Appender(null, null, null);
+        var chekoutDb = new CheckoutDb(null, new ByteArrayOutputStream(), GetUserDb(), GetBookDb());
 
         assertTrue(chekoutDb.IsCheckedOut("7890788-(2)"));
     }
 
     @Test
     public void Checkout_new_book(){
-        var appender = new Appender(null, null, new ByteArrayOutputStream());
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
-        var args = new String[]{"co", "-b", "678564-(2)","-u","345"};
-        CheckOut.Run(args, transactionDb);
-
-        assertEquals(Transaction.CheckoutTag, transactionDb.GetBookStatus("678564-(2)"));
+        var appender = new Appender(null, null, null, new ByteArrayOutputStream());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), GetUserDb(), GetBookDb());
+        chekoutDb.TryAddRange(GetNewCheckouts());
+        assertTrue(chekoutDb.IsCheckedOut("678564-(2)"));
     }
 
     @Test
     public void Checkout_invalid_user(){
-        var appender = new Appender(null, null, new ByteArrayOutputStream());
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
-        var args = new String[]{"co", "-b", "678564-(2)","-u","1345"};
-        CheckOut.Run(args, transactionDb);
+        var appender = new Appender(null, null, null, new ByteArrayOutputStream());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), GetUserDb(), GetBookDb());
+        var invalidCheckout = new Checkout("678564-(2)", 12345,TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
 
-        assertEquals(Transaction.UnknownTag, transactionDb.GetBookStatus("678564-(2)"));
+        assertFalse(chekoutDb.TryAdd(invalidCheckout));
     }
 
     @Test
     public void Checkout_invalid_book(){
-        var appender = new Appender(null, null, new ByteArrayOutputStream());
-        var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
         var args = new String[]{"co", "-b", "678564-(3)","-u","345"};
-        CheckOut.Run(args, transactionDb);
+        var appender = new Appender(null, null, null, new ByteArrayOutputStream());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), GetUserDb(), GetBookDb());
+        var invalidCheckout = new Checkout("678564-(3)", 345,TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
 
-        assertEquals(Transaction.UnknownTag, transactionDb.GetBookStatus("678564-(2)"));
+        assertTrue(chekoutDb.TryAdd(invalidCheckout));
     }
 }

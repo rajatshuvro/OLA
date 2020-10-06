@@ -4,18 +4,17 @@ import com.ola.Appender;
 import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Checkout;
 import com.ola.dataStructures.Transaction;
+import com.ola.parsers.CheckoutCsvParser;
 import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.PrintUtilities;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
 public class CheckoutDb {
+    private final BufferedWriter _appender;
     private OutputStream _outputStream;
     private HashMap<String, Checkout> _checkouts;
     private UserDb _userDb;
@@ -23,24 +22,34 @@ public class CheckoutDb {
     private boolean _hasNewRecords =false;
     public final int CheckoutLimit = 5;
 
-    public CheckoutDb(Iterable<Checkout> checkouts, UserDb userDb, BookDb bookDb, OutputStream outputStream){
+    public CheckoutDb(InputStream inputStream, OutputStream outputStream, UserDb userDb, BookDb bookDb) throws IOException {
         _userDb = userDb;
         _bookDb = bookDb;
         _outputStream = outputStream;
         _checkouts = new HashMap<>();
 
-        for (var checkout: checkouts) {
-            if(_bookDb.GetBook(checkout.BookId)== null) {
-                System.out.println("WARNING: Invalid book id:"+checkout.BookId+". Ignoring transaction.");
-                continue;
-            }
-            if(_userDb.GetUser(checkout.UserId) == null){
-                System.out.println("WARNING: Invalid user id:"+checkout.UserId+". Ignoring transaction.");
-                continue;
-            }
-            _checkouts.put(checkout.BookId, checkout);
-        }
+        GetCheckouts(inputStream);
 
+        if(_outputStream != null) _appender = new BufferedWriter(new OutputStreamWriter(_outputStream));
+        else _appender = null;
+    }
+
+    private void GetCheckouts(InputStream inputStream) throws IOException {
+        if(inputStream !=null){
+            var csvParser = new CheckoutCsvParser(inputStream);
+            var checkouts = csvParser.GetCheckouts();
+            for (var checkout: checkouts) {
+                if(_bookDb.GetBook(checkout.BookId)== null) {
+                    System.out.println("WARNING: Invalid book id:"+checkout.BookId+". Ignoring transaction.");
+                    continue;
+                }
+                if(_userDb.GetUser(checkout.UserId) == null){
+                    System.out.println("WARNING: Invalid user id:"+checkout.UserId+". Ignoring transaction.");
+                    continue;
+                }
+                _checkouts.put(checkout.BookId, checkout);
+            }
+        }
     }
 
     public Checkout GetCheckout(String bookId){
@@ -59,7 +68,7 @@ public class CheckoutDb {
         return checkouts;
     }
 
-    public boolean TryAdd(Checkout checkout) {
+    public boolean TryAdd(Checkout checkout) throws IOException {
         var checkouts = GetCheckouts(checkout.UserId);
         var checkoutCount = checkouts.size();
         if(checkoutCount >= CheckoutLimit)
@@ -68,11 +77,16 @@ public class CheckoutDb {
             return false;
         }
         _checkouts.put(checkout.BookId, checkout);
-        _hasNewRecords = true;
+        Append(checkout);
         return true;
     }
 
-    public int TryAddRange(Iterable<Checkout> checkouts){
+    private void Append(Checkout checkout) throws IOException {
+        _appender.write(checkout.toString()+'\n');
+        _appender.write(FlatObjectParser.RecordSeparator+'\n');
+    }
+
+    public int TryAddRange(Iterable<Checkout> checkouts) throws IOException {
         var count =0;
         for (var checkout:
              checkouts) {
@@ -97,19 +111,9 @@ public class CheckoutDb {
             "#CheckoutDate = Checkout date. Value = <YYYY-MM-DD HH:MM:ss>\n",
             "#DueDate = Due date. Value = <YYYY-MM-DD HH:MM:ss>\n"
     };
-    /// Write out all the records into an output stream
+
     public void Close() throws IOException {
-        var writer = new BufferedWriter(new OutputStreamWriter(_outputStream));
-        //header lines
-        for (String line: HeaderLines) {
-            writer.write(line);
-        }
-        //not required, but for aesthetics
-        writer.write(FlatObjectParser.RecordSeparator+'\n');
-        for (var record: _checkouts.values()) {
-            writer.write(record.toString()+'\n');
-            writer.write(FlatObjectParser.RecordSeparator+'\n');
-        }
-        writer.close();
+        if(_appender != null)_appender.close();
+        if(_outputStream != null) _outputStream.close();
     }
 }
