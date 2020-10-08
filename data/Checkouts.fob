@@ -1,0 +1,6 @@
+#Onkur library book checkout records
+#Book Id = Onkur book id. Value = <String>
+#User Id = Onkur user id. Value = <Integer>
+#CheckoutDate = Checkout date. Value = <YYYY-MM-DD HH:MM:ss>
+#DueDate = Due date. Value = <YYYY-MM-DD HH:MM:ss>
+***************************************************************

@@ -1,5 +1,6 @@
 package com.ola.unitTests;
 
+import com.ola.databases.CheckoutDb;
 import com.ola.parsers.FlatObjectParser;
 
 import java.io.*;
@@ -271,4 +272,46 @@ public class TestStreams {
         return new ByteArrayInputStream(buffer);
     }
 
+    public static InputStream  GetEmptyCheckoutStream() throws IOException {
+        var memStream = new ByteArrayOutputStream();
+        var writer = new OutputStreamWriter(memStream);
+
+        for (var line: CheckoutDb.HeaderLines
+             ) {
+            writer.write(line+'\n');
+        }
+        writer.write(FlatObjectParser.RecordSeparator+"\n");
+
+        writer.close();
+
+        var buffer = memStream.toByteArray();
+        memStream.close();
+        return new ByteArrayInputStream(buffer);
+    }
+
+    public static InputStream  GetCheckoutStream() throws IOException {
+        var memStream = new ByteArrayOutputStream();
+        var writer = new OutputStreamWriter(memStream);
+
+        for (var line: CheckoutDb.HeaderLines
+        ) {
+            writer.write(line+'\n');
+        }
+        writer.write(FlatObjectParser.RecordSeparator+"\n");
+        writer.write("Book Id:\t456098-(1)\n");
+        writer.write("User Id:\t897\n");
+        writer.write("CheckoutDate:\t\t2019-11-03 10:33:10\n");
+        writer.write("DueDate:\t\t2019-12-03 10:33:10\n");
+        writer.write(FlatObjectParser.RecordSeparator+"\n");
+        writer.write("Book Id:\t456097-(1)\n");
+        writer.write("User Id:\t897\n");
+        writer.write("CheckoutDate:\t\t2019-11-03 10:33:10\n");
+        writer.write("DueDate:\t\t2019-12-03 10:33:10\n");
+        writer.write(FlatObjectParser.RecordSeparator+"\n");
+        writer.close();
+
+        var buffer = memStream.toByteArray();
+        memStream.close();
+        return new ByteArrayInputStream(buffer);
+    }
 }

@@ -11,7 +11,7 @@ import java.io.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DataProviderTests {
-    
+
     public static OutputStream GetAppendStream() {
         return new ByteArrayOutputStream();
     }

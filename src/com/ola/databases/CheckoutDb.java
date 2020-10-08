@@ -98,7 +98,7 @@ public class CheckoutDb {
         return false;
     }
 
-    public final String[] HeaderLines = new String[]{
+    public static final String[] HeaderLines = new String[]{
             "#Onkur library book checkout records\n",
             "#Book Id = Onkur book id. Value = <String>\n",
             "#User Id = Onkur user id. Value = <Integer>\n",

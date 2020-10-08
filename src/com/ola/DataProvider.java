@@ -26,19 +26,16 @@ public class DataProvider {
 
     private BookParser _bookParser;
     private UserParser _userParser;
-    private CheckoutParser _checkoutParser;
     private TransactionParser _transactionParser;
 
     public final Appender Appender;
 
     private InputStream _bookInputStream;
     private InputStream _userInputStream;
-    private InputStream _checkoutInputStream;
     private InputStream _transactionInputStream;
 
     private OutputStream _bookAppendStream;
     private OutputStream _userAppendStream;
-    private OutputStream _checkoutAppendStream;
     private OutputStream _transactionAppendStream;
 
     private InvertedIndex _searchIndex;
@@ -72,7 +69,7 @@ public class DataProvider {
 
     }
 
-    public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream) throws IOException {
+    public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream) {
         var checkouts = DbUtilities.ReadCheckouts(inputStream);
         CheckoutDb = new CheckoutDb(checkouts, outputStream);
     }
@@ -155,7 +152,6 @@ public class DataProvider {
         _userAppendStream.close();
         _bookAppendStream.close();
         _transactionAppendStream.close();
-        _checkoutAppendStream.close();
     }
 
     private static final int CheckoutDurationInDays = 14;
