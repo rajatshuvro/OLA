@@ -1,5 +1,6 @@
 package com.ola.parsers;
 
+import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Checkout;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.csv.CSVFormat;
@@ -38,6 +39,7 @@ public class CheckoutCsvParser {
 
             var timeStamp = record.get(TimeTag).trim();
             var bookId = record.get(BookIdTag).trim();
+            bookId = Book.GetReducedId(bookId);
             var userId = record.get(UserIdTag).trim();
             var dueDateString = record.get(DueDateTag).trim();
             var dueDate = TimeUtilities.parseDate(dueDateString);

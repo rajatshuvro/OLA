@@ -34,7 +34,7 @@ public class CheckOut {
         try {
             cmd = parser.parse(options, args);
             if(cmd.hasOption('f')){
-                var filePath = cmd.getOptionValue("co");
+                var filePath = cmd.getOptionValue("file");
                 if(!FileUtilities.Exists(filePath)){
                     System.out.println("Specified file does not exist: "+filePath);
                 }

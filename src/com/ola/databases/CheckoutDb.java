@@ -73,15 +73,20 @@ public class CheckoutDb {
         try {
             _appender.write(checkout.toString()+'\n');
             _appender.write(FlatObjectParser.RecordSeparator+'\n');
+            _appender.flush();
         } catch (IOException e) {
             System.out.println("Failed to append checkouts.\n"+ checkout.toString());
             return false;
         }
+
         return true;
     }
 
     public int TryAddRange(Iterable<Checkout> checkouts, BookDb bookDb, UserDb userDb) {
         var count =0;
+        if (_appender == null)
+            PrintUtilities.PrintWarningLine("Checkout appender set to null. No entry was saved");
+
         for (var checkout:
              checkouts) {
             if(TryAdd(checkout, bookDb, userDb)) count++;
