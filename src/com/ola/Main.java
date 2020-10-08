@@ -42,7 +42,7 @@ public class Main {
                     AddUser.Run(subArgs, dataProvider);
                     break;
                 case "co":
-                    CheckOut.Run(subArgs, dataProvider.CheckoutDb);
+                    CheckOut.Run(subArgs, dataProvider.CheckoutDb, dataProvider.BookDb, dataProvider.UserDb);
                     break;
                 case "ret":
                     Return.Run(subArgs, dataProvider.TransactionDb);

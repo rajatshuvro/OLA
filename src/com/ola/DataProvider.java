@@ -3,13 +3,9 @@ package com.ola;
 import com.ola.NativeSearch.InvertedIndex;
 import com.ola.NativeSearch.SmithWaterman;
 import com.ola.dataStructures.Book;
-import com.ola.dataStructures.Checkout;
 import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
-import com.ola.databases.BookDb;
-import com.ola.databases.CheckoutDb;
-import com.ola.databases.TransactionDb;
-import com.ola.databases.UserDb;
+import com.ola.databases.*;
 import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.BookParser;
 import com.ola.parsers.CheckoutParser;
@@ -68,7 +64,7 @@ public class DataProvider {
         _userAppendStream = userAppendStream;
         _transactionAppendStream = transactionAppendStream;
 
-        Appender = new Appender(bookAppendStream, userAppendStream, transactionAppendStream, null);
+        Appender = new Appender(bookAppendStream, userAppendStream, transactionAppendStream);
 
         _bookParser = new BookParser(bookInputStream);
         _userParser = new UserParser(userInputStream);
@@ -77,7 +73,8 @@ public class DataProvider {
     }
 
     public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream) throws IOException {
-        CheckoutDb = new CheckoutDb(inputStream, outputStream, UserDb, BookDb);
+        var checkouts = DbUtilities.ReadCheckouts(inputStream);
+        CheckoutDb = new CheckoutDb(checkouts, outputStream);
     }
 
     public void Load() throws IOException{

@@ -1,56 +1,34 @@
 package com.ola.databases;
 
-import com.ola.Appender;
-import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Checkout;
-import com.ola.dataStructures.Transaction;
 import com.ola.parsers.CheckoutCsvParser;
 import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.PrintUtilities;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 public class CheckoutDb {
     private final BufferedWriter _appender;
     private OutputStream _outputStream;
     private HashMap<String, Checkout> _checkouts;
-    private UserDb _userDb;
-    private BookDb _bookDb;
-    private boolean _hasNewRecords =false;
+    private boolean _hasReturns =false;
     public final int CheckoutLimit = 5;
 
-    public CheckoutDb(InputStream inputStream, OutputStream outputStream, UserDb userDb, BookDb bookDb) throws IOException {
-        _userDb = userDb;
-        _bookDb = bookDb;
+    public CheckoutDb(Iterable<Checkout> checkouts, OutputStream outputStream)  {
         _outputStream = outputStream;
         _checkouts = new HashMap<>();
 
-        GetCheckouts(inputStream);
+        for (var checkout:
+             checkouts) {
+            _checkouts.put(checkout.BookId, checkout);
+        }
 
         if(_outputStream != null) _appender = new BufferedWriter(new OutputStreamWriter(_outputStream));
         else _appender = null;
     }
 
-    private void GetCheckouts(InputStream inputStream) throws IOException {
-        if(inputStream !=null){
-            var csvParser = new CheckoutCsvParser(inputStream);
-            var checkouts = csvParser.GetCheckouts();
-            for (var checkout: checkouts) {
-                if(_bookDb.GetBook(checkout.BookId)== null) {
-                    System.out.println("WARNING: Invalid book id:"+checkout.BookId+". Ignoring transaction.");
-                    continue;
-                }
-                if(_userDb.GetUser(checkout.UserId) == null){
-                    System.out.println("WARNING: Invalid user id:"+checkout.UserId+". Ignoring transaction.");
-                    continue;
-                }
-                _checkouts.put(checkout.BookId, checkout);
-            }
-        }
-    }
 
     public Checkout GetCheckout(String bookId){
         return _checkouts.getOrDefault(bookId, null);
@@ -59,7 +37,7 @@ public class CheckoutDb {
     public boolean IsCheckedOut(String bookId){
         return _checkouts.containsKey(bookId);
     }
-    public ArrayList<Checkout> GetCheckouts(int userId){
+    public ArrayList<Checkout> ReadCheckouts(int userId){
         var checkouts = new ArrayList<Checkout>();
         for (var checkout:
              _checkouts.values()) {
@@ -68,8 +46,17 @@ public class CheckoutDb {
         return checkouts;
     }
 
-    public boolean TryAdd(Checkout checkout) throws IOException {
-        var checkouts = GetCheckouts(checkout.UserId);
+    public boolean TryAdd(Checkout checkout, BookDb bookDb, UserDb userDb)  {
+        if(bookDb.GetBook(checkout.BookId)== null) {
+            System.out.println("WARNING: Invalid book id:"+checkout.BookId+". Ignoring transaction.");
+            return false;
+        }
+        if(userDb.GetUser(checkout.UserId) == null){
+            System.out.println("WARNING: Invalid user id:"+checkout.UserId+". Ignoring transaction.");
+            return false;
+        }
+
+        var checkouts = ReadCheckouts(checkout.UserId);
         var checkoutCount = checkouts.size();
         if(checkoutCount >= CheckoutLimit)
         {
@@ -77,20 +64,27 @@ public class CheckoutDb {
             return false;
         }
         _checkouts.put(checkout.BookId, checkout);
-        Append(checkout);
+
+        return _appender == null? true: Append(checkout);
+    }
+
+    private boolean Append(Checkout checkout) {
+
+        try {
+            _appender.write(checkout.toString()+'\n');
+            _appender.write(FlatObjectParser.RecordSeparator+'\n');
+        } catch (IOException e) {
+            System.out.println("Failed to append checkouts.\n"+ checkout.toString());
+            return false;
+        }
         return true;
     }
 
-    private void Append(Checkout checkout) throws IOException {
-        _appender.write(checkout.toString()+'\n');
-        _appender.write(FlatObjectParser.RecordSeparator+'\n');
-    }
-
-    public int TryAddRange(Iterable<Checkout> checkouts) throws IOException {
+    public int TryAddRange(Iterable<Checkout> checkouts, BookDb bookDb, UserDb userDb) {
         var count =0;
         for (var checkout:
              checkouts) {
-            if(TryAdd(checkout)) count++;
+            if(TryAdd(checkout, bookDb, userDb)) count++;
         }
         return count;
     }
@@ -98,7 +92,7 @@ public class CheckoutDb {
     public boolean Return (String bookId){
         if (_checkouts.containsKey(bookId)){
             _checkouts.remove(bookId);
-            _hasNewRecords = true;
+            _hasReturns = true;
             return true;
         }
         return false;

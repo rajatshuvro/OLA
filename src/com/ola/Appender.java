@@ -19,7 +19,7 @@ public class Appender {
     private BufferedWriter _bookAppender;
     private BufferedWriter _userAppender;
 
-    public Appender(OutputStream bookStream, OutputStream userStream, OutputStream transactionStream, OutputStream checkoutStream){
+    public Appender(OutputStream bookStream, OutputStream userStream, OutputStream transactionStream){
         _bookStream = bookStream;
         _userStream = userStream;
         _transactionStream = transactionStream;

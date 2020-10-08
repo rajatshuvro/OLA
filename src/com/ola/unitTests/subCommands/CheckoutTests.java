@@ -72,36 +72,31 @@ public class CheckoutTests {
     }
     @Test
     public void Checkout_already_in_circulation(){
-        var appender = new Appender(null, null, null);
-        var chekoutDb = new CheckoutDb(null, new ByteArrayOutputStream(), GetUserDb(), GetBookDb());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), new ByteArrayOutputStream());
 
         assertTrue(chekoutDb.IsCheckedOut("7890788-(2)"));
     }
 
     @Test
     public void Checkout_new_book(){
-        var appender = new Appender(null, null, null, new ByteArrayOutputStream());
-        var chekoutDb = new CheckoutDb(GetCheckouts(), GetUserDb(), GetBookDb());
-        chekoutDb.TryAddRange(GetNewCheckouts());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), new ByteArrayOutputStream());
+        chekoutDb.TryAddRange(GetNewCheckouts(), GetBookDb(), GetUserDb());
         assertTrue(chekoutDb.IsCheckedOut("678564-(2)"));
     }
 
     @Test
     public void Checkout_invalid_user(){
-        var appender = new Appender(null, null, null, new ByteArrayOutputStream());
-        var chekoutDb = new CheckoutDb(GetCheckouts(), GetUserDb(), GetBookDb());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), null);
         var invalidCheckout = new Checkout("678564-(2)", 12345,TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
 
-        assertFalse(chekoutDb.TryAdd(invalidCheckout));
+        assertFalse(chekoutDb.TryAdd(invalidCheckout, GetBookDb(), GetUserDb()));
     }
 
     @Test
     public void Checkout_invalid_book(){
-        var args = new String[]{"co", "-b", "678564-(3)","-u","345"};
-        var appender = new Appender(null, null, null, new ByteArrayOutputStream());
-        var chekoutDb = new CheckoutDb(GetCheckouts(), GetUserDb(), GetBookDb());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), null);
         var invalidCheckout = new Checkout("678564-(3)", 345,TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
 
-        assertTrue(chekoutDb.TryAdd(invalidCheckout));
+        assertFalse(chekoutDb.TryAdd(invalidCheckout, GetBookDb(), GetUserDb()));
     }
 }
