@@ -14,7 +14,7 @@ public class CheckoutDb {
     private OutputStream _outputStream;
     private HashMap<String, Checkout> _checkouts;
     private boolean _hasReturns =false;
-    public final int CheckoutLimit = 5;
+    public final int CheckoutLimit = 15;
 
     public CheckoutDb(Iterable<Checkout> checkouts, OutputStream outputStream)  {
         _outputStream = outputStream;
