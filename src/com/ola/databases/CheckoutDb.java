@@ -56,6 +56,10 @@ public class CheckoutDb {
             return false;
         }
 
+        if(IsCheckedOut(checkout.BookId)) {
+            PrintUtilities.PrintWarningLine("Can not checkout the same book twice:"+checkout.BookId);
+            return false;
+        }
         var checkouts = ReadCheckouts(checkout.UserId);
         var checkoutCount = checkouts.size();
         if(checkoutCount >= CheckoutLimit)
