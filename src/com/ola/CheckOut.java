@@ -15,7 +15,7 @@ import java.io.InputStream;
 
 public class CheckOut {
     private static String commandSyntax = "co -f [csv file path]";
-    public static void Run(String[] args, CheckoutDb checkoutDb, BookDb bookDb, UserDb userDb){
+    public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
 
         Option checkoutOption = new Option("f", "file", true, "file with checkout details");
@@ -31,6 +31,10 @@ public class CheckOut {
             return;
         }
 
+        var checkoutDb = dataProvider.CheckoutDb;
+        var bookDb = dataProvider.BookDb;
+        var userDb = dataProvider.UserDb;
+        var transactionDb = dataProvider.TransactionDb;
         try {
             cmd = parser.parse(options, args);
             if(cmd.hasOption('f')){
@@ -40,8 +44,13 @@ public class CheckOut {
                 }
                 InputStream stream = new FileInputStream(filePath);
                 var csvParser = new CheckoutCsvParser(stream);
-                var count = checkoutDb.TryAddRange(csvParser.GetCheckouts(),bookDb, userDb);
+                var checkouts = csvParser.GetCheckouts();
+                var count = checkoutDb.TryAddRange(checkouts,bookDb, userDb);
                 System.out.println("Number of successful checkouts: "+count);
+
+                //adding transactions for future records
+                count = transactionDb.AddCheckouts(checkouts);
+                System.out.println("Number of successful transactions: "+count);
             }
 
         }

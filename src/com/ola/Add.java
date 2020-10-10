@@ -64,8 +64,8 @@ public class Add {
                     System.out.println("Specified file does not exist: "+filePath);
                 }
                 InputStream stream = new FileInputStream(filePath);
-                var userParser = new CheckoutCsvParser(stream);
-                var count = dataProvider.AddCheckouts(userParser.GetCheckouts());
+                var checkoutParser = new CheckoutCsvParser(stream);
+                var count = dataProvider.AddCheckouts(checkoutParser.GetCheckouts());
                 System.out.println("Number of successful checkouts: "+count);
             }
         }
