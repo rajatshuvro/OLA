@@ -11,7 +11,7 @@ import java.io.InputStream;
 
 
 public class Add {
-    private static String commandSyntex = "add  -b [books CSV file] -u [users CSV file] -c [checkout CSV file]";
+    private static String commandSyntex = "add  -b [books CSV file] -u [users CSV file]";
     public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
 
