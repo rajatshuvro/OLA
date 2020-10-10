@@ -45,7 +45,7 @@ public class Main {
                     CheckOut.Run(subArgs, dataProvider);
                     break;
                 case "ret":
-                    Return.Run(subArgs, dataProvider.TransactionDb);
+                    Return.Run(subArgs, dataProvider);
                     break;
                 case "cs":
                 case "co-stat":

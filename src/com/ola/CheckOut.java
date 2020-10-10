@@ -18,9 +18,9 @@ public class CheckOut {
     public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
 
-        Option checkoutOption = new Option("f", "file", true, "file with checkout details");
-        checkoutOption.setRequired(true);
-        options.addOption(checkoutOption);
+        Option filePathOption = new Option("f", "file", true, "file with checkout details");
+        filePathOption.setRequired(true);
+        options.addOption(filePathOption);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -41,6 +41,7 @@ public class CheckOut {
                 var filePath = cmd.getOptionValue("file");
                 if(!FileUtilities.Exists(filePath)){
                     System.out.println("Specified file does not exist: "+filePath);
+                    return;
                 }
                 InputStream stream = new FileInputStream(filePath);
                 var csvParser = new CheckoutCsvParser(stream);
