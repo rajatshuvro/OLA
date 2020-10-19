@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class Main {
 //https://github.com/rajatshuvro/OLA/blob/master/README.md
+    private static String DataDir;
     public static void main(String[] args) throws Exception{
 
         DataProvider dataProvider = Initialize(args);
@@ -45,7 +46,8 @@ public class Main {
                     CheckOut.Run(subArgs, dataProvider);
                     break;
                 case "ret":
-                    Return.Run(subArgs, dataProvider);
+                    var checkoutFilePath =  DataDir+ File.separatorChar+CheckoutsFileName;
+                    Return.Run(subArgs, dataProvider, checkoutFilePath);
                     break;
                 case "cs":
                 case "co-stat":
@@ -129,19 +131,19 @@ public class Main {
 
         try {
             cmd = parser.parse(options, args);
-            String dataDir = cmd.getOptionValue('d');
+            DataDir = cmd.getOptionValue('d');
 
-            String bookFileName = dataDir+ File.separatorChar+BooksFileName;
+            String bookFileName = DataDir+ File.separatorChar+BooksFileName;
             if(!FileUtilities.Exists(bookFileName)){
                 PrintUtilities.PrintErrorLine("Failed to find file: "+bookFileName);
                 return null;
             }
-            String userFileName = dataDir+ File.separatorChar+UsersFileName;
+            String userFileName = DataDir+ File.separatorChar+UsersFileName;
             if(!FileUtilities.Exists(userFileName)){
                 PrintUtilities.PrintErrorLine("Failed to find file: "+userFileName);
                 return null;
             }
-            String transactionFileName = dataDir+ File.separatorChar+TransactionsFileName;
+            String transactionFileName = DataDir+ File.separatorChar+TransactionsFileName;
             if(!FileUtilities.Exists(transactionFileName)){
                 PrintUtilities.PrintErrorLine("Failed to find file: "+transactionFileName);
                 return null;
@@ -153,7 +155,7 @@ public class Main {
                     new FileOutputStream(bookFileName, true),
                     new FileOutputStream(userFileName, true));
 
-            var checkoutFileName =  dataDir+ File.separatorChar+CheckoutsFileName;
+            var checkoutFileName =  DataDir+ File.separatorChar+CheckoutsFileName;
             if(FileUtilities.Exists(checkoutFileName)){
                 var inputStream = new FileInputStream(checkoutFileName);
                 dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true));

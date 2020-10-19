@@ -14,7 +14,7 @@ import java.io.InputStream;
 
 public class Return {
     private static String commandSyntex = "ret  -f [csv file path]";
-    public static void Run(String[] args, DataProvider dataProvider){
+    public static void Run(String[] args, DataProvider dataProvider, String checkoutFilePath){
         Options options = new Options();
 
         Option filePathOption = new Option("f", "file", true, "file with checkout details");
@@ -51,6 +51,7 @@ public class Return {
                 }
                 else PrintUtilities.PrintWarningLine(bookId +" unable to remove from checkouts");
             }
+            checkoutDb.ReWrite(checkoutFilePath);
 
         }
         catch (ParseException | IOException e) {

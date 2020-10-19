@@ -2,6 +2,7 @@ package com.ola.parsers;
 
 import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Checkout;
+import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -24,9 +25,14 @@ public class ReturnCsvParser {
         _reader.close();
     }
 
-    public ArrayList<String> GetReturnedBookIds() throws IOException {
+    public ArrayList<String> GetReturnedBookIds() {
         var returns = new ArrayList<String>();
-        Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader(TimeTag, BookIdTag).parse(_reader);
+        Iterable<CSVRecord> records = null;
+        try {
+            records = CSVFormat.RFC4180.withHeader(TimeTag, BookIdTag).parse(_reader);
+        } catch (IOException e) {
+            PrintUtilities.PrintErrorLine("Failed to parse return CSV stream");
+        }
         var isHeaderRecord = true;
         for (CSVRecord record : records) {
             //the first line is also reported as entry. We need to skip it

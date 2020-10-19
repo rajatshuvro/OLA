@@ -3,6 +3,7 @@ package com.ola.databases;
 import com.ola.dataStructures.Checkout;
 import com.ola.parsers.CheckoutCsvParser;
 import com.ola.parsers.FlatObjectParser;
+import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
 
 import java.io.*;
@@ -114,6 +115,33 @@ public class CheckoutDb {
             "#CheckoutDate = Checkout date. Value = <YYYY-MM-DD HH:MM:ss>\n",
             "#DueDate = Due date. Value = <YYYY-MM-DD HH:MM:ss>\n"
     };
+
+    public void ReWrite(String filePath) throws IOException{
+        if (!_hasReturns) return;
+        OutputStream rewriteStream=null;
+        if(FileUtilities.Exists(filePath)){
+            rewriteStream = new FileOutputStream(filePath);
+        }
+        if(rewriteStream == null) {
+            PrintUtilities.PrintErrorLine("Pending returns require a re-write stream to be recorded.");
+            throw new IOException("Missing re-write stream");
+        }
+        var writer =  new BufferedWriter(new OutputStreamWriter(rewriteStream));
+        for (var line:
+                HeaderLines) {
+            writer.write(line);
+        }
+
+        for (var checkout:
+                _checkouts.values()) {
+            writer.write(checkout.toString());
+            writer.write(FlatObjectParser.RecordSeparator);
+        }
+
+        rewriteStream.close();
+        _hasReturns = false;
+
+    }
 
     public void Close() throws IOException {
         if(_appender != null)_appender.close();

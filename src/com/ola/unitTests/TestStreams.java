@@ -21,6 +21,25 @@ public class TestStreams {
         memStream.close();
         return new ByteArrayInputStream(buffer);
     }
+
+    public static InputStream GetReturnCsvStream() {
+        var memStream = new ByteArrayOutputStream();
+        var writer = new OutputStreamWriter(memStream);
+
+        try {
+            writer.write("\"Timestamp\",\"Book id\"\n");
+            writer.write("\"2020/09/30 9:29:20 AM MDT\",\"7890788-(2)\"\n");
+            writer.write("\"2020/09/22 8:05:04 AM MDT\",\"678564-SOC-3-(1)\"\n");
+            writer.close();
+
+            var buffer = memStream.toByteArray();
+            memStream.close();
+            return new ByteArrayInputStream(buffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static InputStream GetNewUserCsvStream() throws IOException{
         var memStream = new ByteArrayOutputStream();
         var writer = new OutputStreamWriter(memStream);
@@ -314,4 +333,6 @@ public class TestStreams {
         memStream.close();
         return new ByteArrayInputStream(buffer);
     }
+
+
 }

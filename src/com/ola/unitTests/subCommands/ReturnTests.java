@@ -4,18 +4,22 @@ import com.ola.Appender;
 import com.ola.DataProvider;
 import com.ola.Return;
 import com.ola.dataStructures.Book;
+import com.ola.dataStructures.Checkout;
 import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
 import com.ola.databases.BookDb;
+import com.ola.databases.CheckoutDb;
 import com.ola.databases.TransactionDb;
 import com.ola.databases.UserDb;
+import com.ola.parsers.ReturnCsvParser;
+import com.ola.unitTests.TestStreams;
 import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ReturnTests {
     private BookDb GetBookDb() {
@@ -52,22 +56,41 @@ public class ReturnTests {
         return transactions;
     }
     @Test
-    public void Return(){
+    public void Transaction_return(){
         var appender = new Appender(null, null, new ByteArrayOutputStream());
         var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
-        var args = new String[]{"ret", "-b", "456098-(1)"};
-        Return.Run(args, transactionDb);
+        transactionDb.Return("456098-(1)");
 
         assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("456098-(1)"));
     }
 
     @Test
-    public void Return_invalid_book(){
+    public void Transaction_return_invalid_book(){
         var appender = new Appender(null, null, new ByteArrayOutputStream());
         var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
-        var args = new String[]{"ret", "-b", "456098-(4)"};
-        Return.Run(args, transactionDb);
+        transactionDb.Return("456098-(4)");
 
         assertEquals(Transaction.UnknownTag, transactionDb.GetBookStatus("456098-(4)"));
+    }
+    private ArrayList<Checkout> GetCheckouts(){
+        var checkouts = new ArrayList<Checkout>();
+        checkouts.add(new Checkout("7890788-(2)", 234, TimeUtilities.parseGoogleDateTime("2020/09/30 3:20:16 PM MDT"), TimeUtilities.parseDate("2020-10-25")));
+        checkouts.add(new Checkout("678564-(1)", 123, TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
+        checkouts.add(new Checkout("456098-(1)", 345, TimeUtilities.parseGoogleDateTime("2020/09/30 3:22:04 PM MDT"), TimeUtilities.parseDate("2020-10-28")));
+        checkouts.add(new Checkout("7890788-(2)", 234, TimeUtilities.parseGoogleDateTime("2020/09/30 3:23:30 PM MDT"), TimeUtilities.parseDate("2020-10-26")));
+
+        return checkouts;
+    }
+
+    @Test
+    public void Bulk_return(){
+        var csvParser = new ReturnCsvParser(TestStreams.GetReturnCsvStream());
+        var checkoutDb = new CheckoutDb(GetCheckouts(), null);
+
+        for (var bookId: csvParser.GetReturnedBookIds()) {
+            assertTrue(checkoutDb.Return(bookId));
+        }
+
+        assertFalse(checkoutDb.Return("1234567-(3)"));
     }
 }

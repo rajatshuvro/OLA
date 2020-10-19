@@ -110,7 +110,7 @@ public class TransactionDb {
     public boolean Checkout(Checkout co) throws IOException {
         return Checkout(co.BookId, co.UserId);
     }
-    public boolean Return(String bookId) throws IOException {
+    public boolean Return(String bookId){
         var transaction = GetLatest(bookId);
         if(transaction == null) {
             PrintUtilities.PrintErrorLine("Could not locate a checkout for: "+bookId);
@@ -124,7 +124,7 @@ public class TransactionDb {
         }
         return false;
     }
-    public boolean Add(Transaction record) throws IOException {
+    public boolean Add(Transaction record) {
         //make sure the book exists in the book database and the user in user database
         if(_bookDb.GetBook(record.BookId)== null){
             PrintUtilities.PrintWarningLine("WARNING:Unknown book id: "+ record.BookId);
