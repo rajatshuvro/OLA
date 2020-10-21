@@ -11,12 +11,16 @@ import com.ola.databases.BookDb;
 import com.ola.databases.CheckoutDb;
 import com.ola.databases.TransactionDb;
 import com.ola.databases.UserDb;
+import com.ola.parsers.CheckoutParser;
 import com.ola.parsers.ReturnCsvParser;
 import com.ola.unitTests.TestStreams;
 import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -91,6 +95,30 @@ public class ReturnTests {
             assertTrue(checkoutDb.Return(bookId));
         }
 
+        assertFalse(checkoutDb.Return("1234567-(3)"));
+
+    }
+
+    @Test
+    public void Return_write() throws IOException {
+        var csvParser = new ReturnCsvParser(TestStreams.GetReturnCsvStream());
+        var checkoutDb = new CheckoutDb(GetCheckouts(), null);
+
+        for (var bookId: csvParser.GetReturnedBookIds()) {
+            assertTrue(checkoutDb.Return(bookId));
+        }
+        //write out returns
+        var memStream = new ByteArrayOutputStream();
+        checkoutDb.WriteReturns(memStream,true);
+
+        checkoutDb.Close();
+        //read re-written checkouts
+        var buffer = memStream.toByteArray();
+        memStream.close();
+        var readStream = new ByteArrayInputStream(buffer);
+
+        var checkoutParser = new CheckoutParser(readStream);
+        checkoutDb = new CheckoutDb(checkoutParser.GetCheckouts(), null);
         assertFalse(checkoutDb.Return("1234567-(3)"));
     }
 }

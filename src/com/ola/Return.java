@@ -9,6 +9,7 @@ import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -51,7 +52,14 @@ public class Return {
                 }
                 else PrintUtilities.PrintWarningLine(bookId +" unable to remove from checkouts");
             }
-            checkoutDb.ReWrite(checkoutFilePath);
+            
+            if(checkoutDb.HasReturns() && FileUtilities.Exists(checkoutFilePath)){
+                var rewriteStream = new FileOutputStream(checkoutFilePath);
+                checkoutDb.WriteReturns(rewriteStream, false);
+            }
+            else{
+                PrintUtilities.PrintErrorLine("Unable to find checkout file. Returns were not recorded.");
+            }
 
         }
         catch (ParseException | IOException e) {

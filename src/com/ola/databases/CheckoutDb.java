@@ -116,12 +116,8 @@ public class CheckoutDb {
             "#DueDate = Due date. Value = <YYYY-MM-DD HH:MM:ss>\n"
     };
 
-    public void ReWrite(String filePath) throws IOException{
+    public void WriteReturns(OutputStream rewriteStream, boolean leaveOpen) throws IOException{
         if (!_hasReturns) return;
-        OutputStream rewriteStream=null;
-        if(FileUtilities.Exists(filePath)){
-            rewriteStream = new FileOutputStream(filePath);
-        }
         if(rewriteStream == null) {
             PrintUtilities.PrintErrorLine("Pending returns require a re-write stream to be recorded.");
             throw new IOException("Missing re-write stream");
@@ -138,7 +134,8 @@ public class CheckoutDb {
             writer.write(FlatObjectParser.RecordSeparator);
         }
 
-        rewriteStream.close();
+        writer.close();
+        if(!leaveOpen) rewriteStream.close();
         _hasReturns = false;
 
     }
@@ -146,5 +143,9 @@ public class CheckoutDb {
     public void Close() throws IOException {
         if(_appender != null)_appender.close();
         if(_outputStream != null) _outputStream.close();
+    }
+
+    public boolean HasReturns() {
+        return _hasReturns;
     }
 }
