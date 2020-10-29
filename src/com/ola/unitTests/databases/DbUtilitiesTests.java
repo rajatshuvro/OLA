@@ -24,5 +24,6 @@ public class DbUtilitiesTests {
 
         var checkouts = DbUtilities.ReadCheckouts(checkoutStream);
         assertEquals(2, checkouts.size());
+        assertEquals("", checkouts.get(0).toString());
     }
 }

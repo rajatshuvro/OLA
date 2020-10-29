@@ -20,10 +20,10 @@ public class Checkout {
     @Override
     public String toString(){
         return
-                "Book Id:       "+ BookId+'\n'+
-                "User Id:       "+ UserId+'\n'+
-                "CheckoutDate:  "+ TimeUtilities.ToString(CheckoutDate)+'\n'+
-                "DueDate:       "+TimeUtilities.ToString(DueDate);
+                "Book Id:        "+ BookId+'\n'+
+                "User Id:        "+ UserId+'\n'+
+                "Checkout Date:  "+ TimeUtilities.ToString(CheckoutDate)+'\n'+
+                "Due Date:       "+TimeUtilities.ToString(DueDate);
 
     }
 }
