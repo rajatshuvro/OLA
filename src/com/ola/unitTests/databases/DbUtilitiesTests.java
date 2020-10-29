@@ -24,6 +24,9 @@ public class DbUtilitiesTests {
 
         var checkouts = DbUtilities.ReadCheckouts(checkoutStream);
         assertEquals(2, checkouts.size());
-        assertEquals("", checkouts.get(0).toString());
+        assertEquals("Book Id:        456098-(1)\n" +
+                "User Id:        897\n" +
+                "Checkout Date:  2019-11-03 10:33:10\n" +
+                "Due Date:       2019-12-03 10:33:10\n", checkouts.get(0).toString());
     }
 }

@@ -319,13 +319,13 @@ public class TestStreams {
         writer.write(FlatObjectParser.RecordSeparator+"\n");
         writer.write("Book Id:\t456098-(1)\n");
         writer.write("User Id:\t897\n");
-        writer.write("Checkout Date:\t\t2019-11-03 10:33:10\n");
-        writer.write("Due Date:\t\t2019-12-03 10:33:10\n");
+        writer.write("Checkout Date:\t\t2019/11/03 10:33:10\n");
+        writer.write("Due Date:\t\t2019/12/03 10:33:10\n");
         writer.write(FlatObjectParser.RecordSeparator+"\n");
         writer.write("Book Id:\t456097-(1)\n");
         writer.write("User Id:\t897\n");
-        writer.write("Checkout Date:\t\t2019-11-03 10:33:10\n");
-        writer.write("Due Date:\t\t2019-12-03 10:33:10\n");
+        writer.write("Checkout Date:\t\t2019/11/03 10:33:10\n");
+        writer.write("Due Date:\t\t2019/12/03 10:33:10\n");
         writer.write(FlatObjectParser.RecordSeparator+"\n");
         writer.close();
 
