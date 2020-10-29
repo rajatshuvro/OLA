@@ -57,10 +57,10 @@ public class CheckoutParser {
                     userId = Integer.parseInt(value);
                     break;
                 case CheckoutDateTag:
-                    checkoutDate = TimeUtilities.parseGoogleDateTime(value);
+                    checkoutDate = TimeUtilities.parseDateTime(value);
                     break;
                 case DueDateTag:
-                    dueDate = TimeUtilities.parseGoogleDateTime(value);
+                    dueDate = TimeUtilities.parseDateTime(value);
                     break;
             }
 
