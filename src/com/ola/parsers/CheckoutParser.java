@@ -60,7 +60,7 @@ public class CheckoutParser {
                     checkoutDate = TimeUtilities.parseGoogleDateTime(value);
                     break;
                 case DueDateTag:
-                    dueDate = TimeUtilities.parseDate(value);
+                    dueDate = TimeUtilities.parseGoogleDateTime(value);
                     break;
             }
 
