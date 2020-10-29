@@ -126,6 +126,7 @@ public class CheckoutDb {
         for (var line:
                 HeaderLines) {
             writer.write(line);
+            writer.write(FlatObjectParser.RecordSeparator+"\n");
         }
 
         for (var checkout:
