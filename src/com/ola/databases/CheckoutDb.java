@@ -112,8 +112,8 @@ public class CheckoutDb {
             "#Onkur library book checkout records\n",
             "#Book Id = Onkur book id. Value = <String>\n",
             "#User Id = Onkur user id. Value = <Integer>\n",
-            "#CheckoutDate = Checkout date. Value = <YYYY-MM-DD HH:MM:ss>\n",
-            "#DueDate = Due date. Value = <YYYY-MM-DD HH:MM:ss>\n"
+            "#Checkout Date = Checkout date. Value = <YYYY-MM-DD HH:MM:ss>\n",
+            "#Due Date = Due date. Value = <YYYY-MM-DD HH:MM:ss>\n"
     };
 
     public void WriteReturns(OutputStream rewriteStream, boolean leaveOpen) throws IOException{
