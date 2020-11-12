@@ -2,6 +2,7 @@ package com.ola.parsers;
 
 import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Checkout;
+import com.ola.dataStructures.Return;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.csv.CSVFormat;
@@ -26,8 +27,8 @@ public class ReturnCsvParser {
         _reader.close();
     }
 
-    public ArrayList<String> GetReturnedBookIds() {
-        var returns = new ArrayList<String>();
+    public ArrayList<Return> GetReturnes() {
+        var returns = new ArrayList<Return>();
         Iterable<CSVRecord> records = null;
         try {
             records = CSVFormat.RFC4180.withHeader(TimeTag, UsernameTag, BookIdTag).parse(_reader);
@@ -46,7 +47,7 @@ public class ReturnCsvParser {
             var userName = record.get(UsernameTag);
             var bookId = record.get(BookIdTag).trim();
             bookId = Book.GetReducedId(bookId);
-            returns.add(bookId);
+            returns.add(new Return(bookId, dateTime));
         }
         return returns;
     }

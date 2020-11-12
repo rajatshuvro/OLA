@@ -1,6 +1,7 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Checkout;
+import com.ola.dataStructures.Return;
 import com.ola.parsers.CheckoutCsvParser;
 import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.FileUtilities;
@@ -99,9 +100,9 @@ public class CheckoutDb {
         return count;
     }
 
-    public boolean Return (String bookId){
-        if (_checkouts.containsKey(bookId)){
-            _checkouts.remove(bookId);
+    public boolean Return (Return record){
+        if (_checkouts.containsKey(record.BookId)){
+            _checkouts.remove(record.BookId);
             _hasReturns = true;
             return true;
         }

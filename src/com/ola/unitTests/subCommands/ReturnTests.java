@@ -1,12 +1,7 @@
 package com.ola.unitTests.subCommands;
 
 import com.ola.Appender;
-import com.ola.DataProvider;
-import com.ola.Return;
-import com.ola.dataStructures.Book;
-import com.ola.dataStructures.Checkout;
-import com.ola.dataStructures.Transaction;
-import com.ola.dataStructures.User;
+import com.ola.dataStructures.*;
 import com.ola.databases.BookDb;
 import com.ola.databases.CheckoutDb;
 import com.ola.databases.TransactionDb;
@@ -20,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,7 +58,7 @@ public class ReturnTests {
     public void Transaction_return(){
         var appender = new Appender(null, null, new ByteArrayOutputStream());
         var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
-        transactionDb.Return("456098-(1)");
+        transactionDb.Return(new Return("456098-(1)", TimeUtilities.GetCurrentTime()));
 
         assertEquals(Transaction.ReturnTag, transactionDb.GetBookStatus("456098-(1)"));
     }
@@ -72,7 +67,7 @@ public class ReturnTests {
     public void Transaction_return_invalid_book(){
         var appender = new Appender(null, null, new ByteArrayOutputStream());
         var transactionDb = new TransactionDb(GetTransactions(), GetUserDb(), GetBookDb(), appender);
-        transactionDb.Return("456098-(4)");
+        transactionDb.Return(new Return("456098-(4)", TimeUtilities.GetCurrentTime()));
 
         assertEquals(Transaction.UnknownTag, transactionDb.GetBookStatus("456098-(4)"));
     }
@@ -91,11 +86,11 @@ public class ReturnTests {
         var csvParser = new ReturnCsvParser(TestStreams.GetReturnCsvStream());
         var checkoutDb = new CheckoutDb(GetCheckouts(), null);
 
-        for (var bookId: csvParser.GetReturnedBookIds()) {
-            assertTrue(checkoutDb.Return(bookId));
+        for (var returnRecord: csvParser.GetReturnes()) {
+            assertTrue(checkoutDb.Return(returnRecord));
         }
 
-        assertFalse(checkoutDb.Return("1234567-(3)"));
+        assertFalse(checkoutDb.Return(new Return("1234567-(3)", TimeUtilities.GetCurrentTime())));
 
     }
 
@@ -104,7 +99,7 @@ public class ReturnTests {
         var csvParser = new ReturnCsvParser(TestStreams.GetReturnCsvStream());
         var checkoutDb = new CheckoutDb(GetCheckouts(), null);
 
-        for (var bookId: csvParser.GetReturnedBookIds()) {
+        for (var bookId: csvParser.GetReturnes()) {
             assertTrue(checkoutDb.Return(bookId));
         }
         //write out returns
@@ -119,6 +114,6 @@ public class ReturnTests {
 
         var checkoutParser = new CheckoutParser(readStream);
         checkoutDb = new CheckoutDb(checkoutParser.GetCheckouts(), null);
-        assertFalse(checkoutDb.Return("1234567-(3)"));
+        assertFalse(checkoutDb.Return(new Return("1234567-(3)", TimeUtilities.GetCurrentTime())));
     }
 }

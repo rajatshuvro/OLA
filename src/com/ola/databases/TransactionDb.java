@@ -3,6 +3,7 @@ package com.ola.databases;
 import com.ola.Appender;
 import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Checkout;
+import com.ola.dataStructures.Return;
 import com.ola.dataStructures.Transaction;
 import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.PrintUtilities;
@@ -110,20 +111,20 @@ public class TransactionDb {
     public boolean Checkout(Checkout co) throws IOException {
         return Checkout(co.BookId, co.UserId);
     }
-    public boolean Return(String bookId){
-        var transaction = GetLatest(bookId);
+    public boolean Return(Return record){
+        var transaction = GetLatest(record.BookId);
         if(transaction == null) {
-            PrintUtilities.PrintErrorLine("Could not locate a checkout for: "+bookId);
+            PrintUtilities.PrintErrorLine("Could not locate a checkout for: "+record.BookId);
             return false;
         }
 
-        var date = TimeUtilities.GetCurrentTime();
         var userId = transaction.UserId;
-        if(Add(Transaction.Create(bookId, userId, date, Transaction.ReturnTag))){
+        if(Add(Transaction.Create(record.BookId, userId, record.DateTime, Transaction.ReturnTag))){
             return true;
         }
         return false;
     }
+
     public boolean Add(Transaction record) {
         //make sure the book exists in the book database and the user in user database
         if(_bookDb.GetBook(record.BookId)== null){

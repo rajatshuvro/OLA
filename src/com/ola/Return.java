@@ -1,11 +1,8 @@
 package com.ola;
 
-import com.ola.dataStructures.Transaction;
-import com.ola.databases.TransactionDb;
 import com.ola.parsers.ReturnCsvParser;
 import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
-import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.FileInputStream;
@@ -42,15 +39,15 @@ public class Return {
             }
             InputStream stream = new FileInputStream(filePath);
             var csvParser = new ReturnCsvParser(stream);
-            for (var bookId: csvParser.GetReturnedBookIds()) {
-                if(transactionDb.Return(bookId)){
-                    PrintUtilities.PrintSuccessLine(bookId +" has been returned.");
+            for (var record: csvParser.GetReturnes()) {
+                if(transactionDb.Return(record)){
+                    PrintUtilities.PrintSuccessLine(record.BookId +" has been returned.");
                 }
                 else PrintUtilities.PrintWarningLine("Book return unsuccessful");
-                if(checkoutDb.Return(bookId)){
-                    PrintUtilities.PrintSuccessLine(bookId +" removed from checkouts");
+                if(checkoutDb.Return(record)){
+                    PrintUtilities.PrintSuccessLine(record.BookId +" removed from checkouts");
                 }
-                else PrintUtilities.PrintWarningLine(bookId +" unable to remove from checkouts");
+                else PrintUtilities.PrintWarningLine(record.BookId +" unable to remove from checkouts");
             }
             
             if(checkoutDb.HasReturns() && FileUtilities.Exists(checkoutFilePath)){
