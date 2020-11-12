@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class ReturnCsvParser {
     private InputStreamReader _reader;
     public final String TimeTag = "Timestamp";
+    public final String UsernameTag = "Username";
     public final String BookIdTag = "Book id";
 
     public ReturnCsvParser(InputStream stream){
@@ -29,7 +30,7 @@ public class ReturnCsvParser {
         var returns = new ArrayList<String>();
         Iterable<CSVRecord> records = null;
         try {
-            records = CSVFormat.RFC4180.withHeader(TimeTag, BookIdTag).parse(_reader);
+            records = CSVFormat.RFC4180.withHeader(TimeTag, UsernameTag, BookIdTag).parse(_reader);
         } catch (IOException e) {
             PrintUtilities.PrintErrorLine("Failed to parse return CSV stream");
         }
@@ -41,6 +42,8 @@ public class ReturnCsvParser {
                 continue;
             }
 
+            var dateTime = TimeUtilities.parseGoogleDateTime(record.get(TimeTag));
+            var userName = record.get(UsernameTag);
             var bookId = record.get(BookIdTag).trim();
             bookId = Book.GetReducedId(bookId);
             returns.add(bookId);

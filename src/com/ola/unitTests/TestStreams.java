@@ -27,9 +27,9 @@ public class TestStreams {
         var writer = new OutputStreamWriter(memStream);
 
         try {
-            writer.write("\"Timestamp\",\"Book id\"\n");
-            writer.write("\"2020/09/30 9:29:20 AM MDT\",\"7890788-(2)\"\n");
-            writer.write("\"2020/09/22 8:05:04 AM MDT\",\"678564-SOC-3-(1)\"\n");
+            writer.write("\"Timestamp\",\"Username\",\"Book id\"\n");
+            writer.write("\"2020/09/30 9:29:20 AM MDT\",\"someone@email.com\",\"7890788-(2)\"\n");
+            writer.write("\"2020/09/22 8:05:04 AM MDT\",\"someone@email.com\",\"678564-SOC-3-(1)\"\n");
             writer.close();
 
             var buffer = memStream.toByteArray();
