@@ -72,4 +72,10 @@ public class UserDb {
     }
 
 
+    public User GetByEmail(String email) {
+        for (var user: _users.values()) {
+            if(user.Email.equals(email)) return user;
+        }
+        return null;
+    }
 }

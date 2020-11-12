@@ -10,11 +10,11 @@ public class TestStreams {
         var memStream = new ByteArrayOutputStream();
         var writer = new OutputStreamWriter(memStream);
 
-        writer.write("\"Timestamp\",\"Book id\",\"User id\",\"Due Date\"\n");
-        writer.write("\"2020/09/30 9:29:20 AM MDT\",\"123456789-(1)\",\"111\",\"2020-10-07\"\n");
-        writer.write("\"2020/09/22 8:05:04 AM MDT\",\"9848494226-FIC-5-(1)\",\"474\",\"2020-10-07\"\n");
-        writer.write("\"2020/09/22 8:09:24 AM MDT\",\"9848494234-SOC-5-(1)\",\"472\",\"2020-10-07\"\n");
-        writer.write("\"2020/09/22 8:11:44 AM MDT\",\"9848494049-FIC-1-(1)\",\"480\",\"2020-10-07\"\n");
+        writer.write("\"Timestamp\",\"Username\",\"Book id\",\"User id\",\"Due Date\"\n");
+        writer.write("\"2020/09/30 9:29:20 AM MDT\",\"someone@email.com\",\"123456789-(1)\",\"111\",\"2020-10-07\"\n");
+        writer.write("\"2020/09/22 8:05:04 AM MDT\",\"someone@email.com\",\"9848494226-FIC-5-(1)\",\"474\",\"2020-10-07\"\n");
+        writer.write("\"2020/09/22 8:09:24 AM MDT\",\"someone@email.com\",\"9848494234-SOC-5-(1)\",\"472\",\"2020-10-07\"\n");
+        writer.write("\"2020/09/22 8:11:44 AM MDT\",\"someone@email.com\",\"9848494049-FIC-1-(1)\",\"480\",\"2020-10-07\"\n");
         writer.close();
 
         var buffer = memStream.toByteArray();

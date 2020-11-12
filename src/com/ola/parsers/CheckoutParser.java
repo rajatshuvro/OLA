@@ -66,6 +66,6 @@ public class CheckoutParser {
 
         }
 
-        return new Checkout(bookId, userId, checkoutDate, dueDate);
+        return new Checkout(bookId, userId, null, checkoutDate, dueDate);
     }
 }
