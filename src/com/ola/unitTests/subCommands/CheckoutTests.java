@@ -46,17 +46,24 @@ public class CheckoutTests {
 
     private ArrayList<Checkout> GetCheckouts(){
         var checkouts = new ArrayList<Checkout>();
-        checkouts.add(new Checkout("7890788-(2)", 234, TimeUtilities.parseGoogleDateTime("2020/09/30 3:20:16 PM MDT"), TimeUtilities.parseDate("2020-10-25")));
-        checkouts.add(new Checkout("678564-(1)", 123, TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
-        checkouts.add(new Checkout("456098-(1)", 345, TimeUtilities.parseGoogleDateTime("2020/09/30 3:22:04 PM MDT"), TimeUtilities.parseDate("2020-10-28")));
-        checkouts.add(new Checkout("7890788-(2)", 234, TimeUtilities.parseGoogleDateTime("2020/09/30 3:23:30 PM MDT"), TimeUtilities.parseDate("2020-10-26")));
+        checkouts.add(new Checkout("7890788-(2)", 234, "name1@onkur.com", TimeUtilities.parseGoogleDateTime("2020/09/30 3:20:16 PM MDT"), TimeUtilities.parseDate("2020-10-25")));
+        checkouts.add(new Checkout("678564-(1)", 123, "name2@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
+        checkouts.add(new Checkout("456098-(1)", 345, "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:22:04 PM MDT"), TimeUtilities.parseDate("2020-10-28")));
+        checkouts.add(new Checkout("7890788-(2)", 234, "name1@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:23:30 PM MDT"), TimeUtilities.parseDate("2020-10-26")));
 
         return checkouts;
     }
 
     private ArrayList<Checkout> GetNewCheckouts(){
         var checkouts = new ArrayList<Checkout>();
-        checkouts.add(new Checkout("678564-(2)", 345, TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
+        checkouts.add(new Checkout("678564-(2)", 345, "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
+
+        return checkouts;
+    }
+
+    private ArrayList<Checkout> GetNewCheckouts_without_userid(){
+        var checkouts = new ArrayList<Checkout>();
+        checkouts.add(new Checkout("678564-(2)", -1, "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
 
         return checkouts;
     }
@@ -75,9 +82,15 @@ public class CheckoutTests {
     }
 
     @Test
+    public void Checkout_new_book_without_userid(){
+        var chekoutDb = new CheckoutDb(GetNewCheckouts_without_userid(), new ByteArrayOutputStream());
+        assertTrue(chekoutDb.IsCheckedOut("678564-(2)"));
+    }
+
+    @Test
     public void Checkout_invalid_user(){
         var chekoutDb = new CheckoutDb(GetCheckouts(), null);
-        var invalidCheckout = new Checkout("678564-(2)", 12345,TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
+        var invalidCheckout = new Checkout("678564-(2)", 12345,"name1@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
 
         assertFalse(chekoutDb.TryAdd(invalidCheckout, GetBookDb(), GetUserDb()));
     }
@@ -85,7 +98,7 @@ public class CheckoutTests {
     @Test
     public void Checkout_invalid_book(){
         var chekoutDb = new CheckoutDb(GetCheckouts(), null);
-        var invalidCheckout = new Checkout("678564-(3)", 345,TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
+        var invalidCheckout = new Checkout("678564-(3)", 345,"name1@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
 
         assertFalse(chekoutDb.TryAdd(invalidCheckout, GetBookDb(), GetUserDb()));
     }

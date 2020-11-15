@@ -50,11 +50,19 @@ public class CheckoutDb {
 
     public boolean TryAdd(Checkout checkout, BookDb bookDb, UserDb userDb)  {
         if(bookDb.GetBook(checkout.BookId)== null) {
-            System.out.println("WARNING: Invalid book id:"+checkout.BookId+". Ignoring transaction.");
+            PrintUtilities.PrintWarningLine("WARNING: Invalid book id:"+checkout.BookId+". Ignoring transaction.");
             return false;
         }
-        if(userDb.GetUser(checkout.UserId) == null){
-            System.out.println("WARNING: Invalid user id:"+checkout.UserId+". Ignoring transaction.");
+        var user = userDb.GetUser(checkout.UserId);
+        if(user==null){
+            //try to get user id using email
+            user =userDb.GetByEmail(checkout.Email);
+            if (user == null) PrintUtilities.PrintWarningLine("WARNING: failed to find using email:"+checkout.Email+". Ignoring transactions.");
+            return false;
+        }
+        var userId = user != null? user.Id: -1;
+        if( userId == -1){
+            PrintUtilities.PrintWarningLine("WARNING: Invalid user id:"+checkout.UserId+". Ignoring transaction.");
             return false;
         }
 

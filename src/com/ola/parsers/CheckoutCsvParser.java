@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class CheckoutCsvParser {
     private InputStreamReader _reader;
     public final String TimeTag = "Timestamp";
+    public final String UsernameTag = "Username";
     public final String BookIdTag = "Book id";
     public final String UserIdTag = "User id";
     public final String DueDateTag = "Due Date";
@@ -28,7 +29,7 @@ public class CheckoutCsvParser {
 
     public ArrayList<Checkout> GetCheckouts() throws IOException {
         var checkouts = new ArrayList<Checkout>();
-        Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader(TimeTag, BookIdTag, UserIdTag, DueDateTag).parse(_reader);
+        Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader(TimeTag, UsernameTag, BookIdTag, UserIdTag, DueDateTag).parse(_reader);
         var isHeaderRecord = true;
         for (CSVRecord record : records) {
             //the first line is also reported as entry. We need to skip it
@@ -38,13 +39,18 @@ public class CheckoutCsvParser {
             }
 
             var timeStamp = record.get(TimeTag).trim();
+            var email = record.get(UsernameTag);
             var bookId = record.get(BookIdTag).trim();
             bookId = Book.GetReducedId(bookId);
-            var userId = record.get(UserIdTag).trim();
+
+            var userIdString = record.get(UserIdTag).trim();
+            var userId = userIdString.isEmpty()? -1: ParserUtilities.ParseUInt(userIdString);
+
             var dueDateString = record.get(DueDateTag).trim();
             var dueDate = TimeUtilities.parseDate(dueDateString);
             var checkoutDate = TimeUtilities.parseGoogleDateTime(timeStamp);
-            checkouts.add(new Checkout(bookId, ParserUtilities.ParseUInt(userId),checkoutDate, dueDate));
+
+            checkouts.add(new Checkout(bookId, userId, email, checkoutDate, dueDate));
         }
         return checkouts;
     }
