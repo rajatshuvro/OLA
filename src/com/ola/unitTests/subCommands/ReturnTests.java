@@ -81,10 +81,33 @@ public class ReturnTests {
         return checkouts;
     }
 
+    private ArrayList<Checkout> GetCheckouts_without_userid(){
+        var checkouts = new ArrayList<Checkout>();
+        checkouts.add(new Checkout("7890788-(2)", -1,"name1@onkur.com", TimeUtilities.parseGoogleDateTime("2020/09/30 3:20:16 PM MDT"), TimeUtilities.parseDate("2020-10-25")));
+        checkouts.add(new Checkout("678564-(1)", -1, "name2@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
+        checkouts.add(new Checkout("456098-(1)", -1, "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:22:04 PM MDT"), TimeUtilities.parseDate("2020-10-28")));
+        checkouts.add(new Checkout("7890788-(2)", -1, "name1@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:23:30 PM MDT"), TimeUtilities.parseDate("2020-10-26")));
+
+        return checkouts;
+    }
+
     @Test
     public void Bulk_return(){
         var csvParser = new ReturnCsvParser(TestStreams.GetReturnCsvStream());
         var checkoutDb = new CheckoutDb(GetCheckouts(), null);
+
+        for (var returnRecord: csvParser.GetReturnes()) {
+            assertTrue(checkoutDb.Return(returnRecord));
+        }
+
+        assertFalse(checkoutDb.Return(new Return("1234567-(3)", TimeUtilities.GetCurrentTime())));
+
+    }
+
+    @Test
+    public void Bulk_return_without_userid(){
+        var csvParser = new ReturnCsvParser(TestStreams.GetReturnCsvStream());
+        var checkoutDb = new CheckoutDb(GetCheckouts_without_userid(), null);
 
         for (var returnRecord: csvParser.GetReturnes()) {
             assertTrue(checkoutDb.Return(returnRecord));

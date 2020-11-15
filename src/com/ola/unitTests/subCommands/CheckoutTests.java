@@ -60,6 +60,13 @@ public class CheckoutTests {
 
         return checkouts;
     }
+
+    private ArrayList<Checkout> GetNewCheckouts_without_userid(){
+        var checkouts = new ArrayList<Checkout>();
+        checkouts.add(new Checkout("678564-(2)", -1, "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
+
+        return checkouts;
+    }
     @Test
     public void Checkout_already_in_circulation(){
         var chekoutDb = new CheckoutDb(GetCheckouts(), new ByteArrayOutputStream());
@@ -71,6 +78,12 @@ public class CheckoutTests {
     public void Checkout_new_book(){
         var chekoutDb = new CheckoutDb(GetCheckouts(), new ByteArrayOutputStream());
         chekoutDb.TryAddRange(GetNewCheckouts(), GetBookDb(), GetUserDb());
+        assertTrue(chekoutDb.IsCheckedOut("678564-(2)"));
+    }
+
+    @Test
+    public void Checkout_new_book_without_userid(){
+        var chekoutDb = new CheckoutDb(GetNewCheckouts_without_userid(), new ByteArrayOutputStream());
         assertTrue(chekoutDb.IsCheckedOut("678564-(2)"));
     }
 
