@@ -1,25 +1,28 @@
 package com.ola;
 
-import com.ola.dataStructures.Transaction;
+import com.ola.dataStructures.Checkout;
+import com.ola.databases.BookDb;
+import com.ola.databases.CheckoutDb;
 import com.ola.databases.TransactionDb;
+import com.ola.databases.UserDb;
+import com.ola.parsers.CheckoutCsvParser;
+import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
-import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 public class CheckOut {
-    private static String commandSyntax = "co  -b [book id] -u [user id]";
-    public static void Run(String[] args, TransactionDb transactionDb){
+    private static String commandSyntax = "co -f [csv file path]";
+    public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
 
-        Option bookIdOption = new Option("b", "book", true, "book id");
-        bookIdOption.setRequired(true);
-        options.addOption(bookIdOption);
-
-        Option userIdOption = new Option("u", "user", true, "user id");
-        userIdOption.setRequired(true);
-        options.addOption(userIdOption);
+        Option filePathOption = new Option("f", "file", true, "file with checkout details");
+        filePathOption.setRequired(true);
+        options.addOption(filePathOption);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -30,16 +33,34 @@ public class CheckOut {
             return;
         }
 
+        var checkoutDb = dataProvider.CheckoutDb;
+        var bookDb = dataProvider.BookDb;
+        var userDb = dataProvider.UserDb;
+        var transactionDb = dataProvider.TransactionDb;
         try {
             cmd = parser.parse(options, args);
-            var bookId = cmd.getOptionValue('b');
-            var userId = Integer.parseInt(cmd.getOptionValue('u'));
-            var date = TimeUtilities.GetCurrentTime();
-            if(transactionDb.Add(Transaction.Create(bookId, userId, date, Transaction.CheckoutTag)))
-            {
-                PrintUtilities.PrintSuccessLine(bookId +" has been checked out by "+ userId);
+            if(cmd.hasOption('f')){
+                var filePath = cmd.getOptionValue("file");
+                if(!FileUtilities.Exists(filePath)){
+                    System.out.println("Specified file does not exist: "+filePath);
+                    return;
+                }
+                InputStream stream = new FileInputStream(filePath);
+                var csvParser = new CheckoutCsvParser(stream);
+                var checkouts = new ArrayList<Checkout>();
+                // resolve unknown users
+                for (var checkout : csvParser.GetCheckouts()) {
+                    var resolvedUser = userDb.ResolveUser(checkout.UserId, checkout.Email);
+                    checkouts.add(new Checkout(checkout.BookId, resolvedUser.Id, resolvedUser.Email, checkout.CheckoutDate, checkout.DueDate));
+                }
+
+                var count = checkoutDb.TryAddRange(checkouts,bookDb, userDb);
+                System.out.println("Number of successful checkouts: "+count);
+
+                //adding transactions for future records
+                count = transactionDb.AddCheckouts(checkouts);
+                System.out.println("Number of successful transactions: "+count);
             }
-            else PrintUtilities.PrintWarningLine("Checkout attempt was unsuccessful!!");
 
         }
         catch (ParseException | IOException e) {

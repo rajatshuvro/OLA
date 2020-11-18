@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BookDbTests {
     public static ArrayList<Book> GetBooks() {
@@ -50,5 +50,14 @@ public class BookDbTests {
 
         result = bookDb.Filter("Fiction", 5);
         assertEquals(1, result.size());
+    }
+
+    @Test
+    public void IsBookIdValid(){
+        assertTrue(BookDb.IsValidId("1223456-(3)"));
+        assertFalse(BookDb.IsValidId("12345667"));
+        assertFalse(BookDb.IsValidId("12345-(0)"));
+        assertFalse(BookDb.IsValidId("12345-(-1)"));
+        assertFalse(BookDb.IsValidId("0-(3)"));
     }
 }

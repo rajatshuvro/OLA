@@ -1,11 +1,12 @@
 package com.ola.dataStructures;
 
+import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.FormatUtilities;
 
 import java.util.HashSet;
 
-public class User {
+public class User implements ISearchDocument {
     public final int Id;
     public final String Name;
     public final String Role;
@@ -20,6 +21,9 @@ public class User {
         Phone = phn;
     }
 
+    public String GetId(){
+        return Integer.toString(Id);
+    }
     public static User Create(int id, String name, String role, String email, String phn){
         if(!IsValid(id, name, role, email, phn)) return null;
         return new User(id, name, role, email, phn);
@@ -52,6 +56,10 @@ public class User {
                 "\nRole:     "+ Role +
                 "\nEmail:    "+ Email+
                 "\nPhone:    "+ Phone;
+    }
+
+    public String GetContent(){
+        return   Id +"\n"+ Name +"\n"+ Role +"\n"+ Email+"\n"+ Phone;
     }
 
     //static fields

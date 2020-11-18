@@ -1,29 +1,22 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Book;
-import com.ola.luceneIndex.BookSearchIndex;
+import com.ola.luceneIndex.ISearchDocument;
+import com.ola.parsers.ParserUtilities;
+import com.ola.utilities.PrintUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
-import java.io.IOException;
 import java.util.*;
 
 public class BookDb {
     private HashMap<String, Book> _books;
     private HashMap<Long, Integer> _latestCopyNumbers;
     private ArrayList<Book> _newBooks;
-    private BookSearchIndex _searchIndex;
 
     public HashSet<String> GetIds() {
         var ids = new HashSet<String>();
-        for (String bookId:_books.keySet()) {
-            ids.add(bookId);
-        }
+        ids.addAll(_books.keySet());
         return ids;
-    }
-
-    public BookSearchIndex GetSearchIndex() throws IOException {
-        if(_searchIndex == null) BuildSearchIndex();
-        return _searchIndex;
     }
 
     public Iterable<Book> GetAllBooks(){
@@ -47,9 +40,22 @@ public class BookDb {
     }
 
     public Book GetBook(String id){
+        if(! IsValidId(id)){
+            PrintUtilities.PrintWarningLine("Invalid book id. Book id format: ISBN-(copy_number). e.g. 123456789-(2)");
+            return null;
+        }
         if(_books.containsKey(id)) return _books.get(id);
         else return null;
     }
+
+    public static boolean IsValidId(String id) {
+        var idParts = id.split("-");
+        if(idParts.length != 2) return false;
+        if(ParserUtilities.ParseULong(idParts[0]) < 1) return false;
+        var copyNumString = idParts[1].substring(1, idParts[1].length()-1);
+        return ParserUtilities.ParseUInt(copyNumString) > 0;
+    }
+
     //return a list of all books having a isbn number
     public ArrayList<Book> GetBooks(long isbn){
         ArrayList<Book> books = new ArrayList<>();
@@ -180,11 +186,6 @@ public class BookDb {
     private boolean IsGeneratedIsbn(Long isbn) {
         var s = isbn.toString();
         return s.length() < 10;
-    }
-
-    public void BuildSearchIndex() throws IOException {
-        var books = GetAllBooks();
-        _searchIndex = new BookSearchIndex(books);
     }
 
     public ArrayList<Book> Filter(String genre, int level) {

@@ -1,8 +1,5 @@
 package com.ola.parsers;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class ParserUtilities {
     // if failed to parse, return -1,
     // java doesn't allow passing by ref

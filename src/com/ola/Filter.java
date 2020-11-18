@@ -3,7 +3,6 @@ package com.ola;
 import com.ola.dataStructures.Book;
 import com.ola.databases.BookDb;
 import com.ola.parsers.FlatObjectParser;
-import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
 import org.apache.commons.cli.*;
 

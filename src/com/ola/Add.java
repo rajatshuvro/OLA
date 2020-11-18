@@ -1,23 +1,17 @@
 package com.ola;
-import com.ola.dataStructures.Book;
-import com.ola.dataStructures.User;
-import com.ola.databases.BookDb;
-import com.ola.databases.UserDb;
 import com.ola.parsers.BookCsvParser;
+import com.ola.parsers.CheckoutCsvParser;
 import com.ola.parsers.UserCsvParser;
 import com.ola.utilities.FileUtilities;
-import com.ola.utilities.PrintUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-
 
 public class Add {
-    private static String commandSyntex = "add  -b [books CSV file] -u [users CSV file]";
-    public static void Run(String[] args, BookDb bookDb, UserDb userDb, Appender appender){
+    private static String commandSyntex = "add  -b [books CSV file] -u [users CSV file] -c [checkout CSV file]";
+    public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
 
         Option bookOption = new Option("b", "book", true, "file with book details");
@@ -27,6 +21,10 @@ public class Add {
         Option userOption = new Option("u", "user", true, "file with user details");
         userOption.setRequired(false);
         options.addOption(userOption);
+
+        Option checkoutOption = new Option("c", "co", true, "file with checkout details");
+        checkoutOption.setRequired(false);
+        options.addOption(checkoutOption);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -47,9 +45,7 @@ public class Add {
 
                 InputStream stream = new FileInputStream(filePath);
                 var bookParser = new BookCsvParser(stream);
-                var count = AddNewBook(bookParser.GetBooks(), bookDb);
-                appender.AppendBooks(bookDb.GetNewRecords());
-
+                var count = dataProvider.AddBooks(bookParser.GetBooks());
                 System.out.println("Number of new books added: "+count);
             }
             if(cmd.hasOption("user")){
@@ -59,49 +55,23 @@ public class Add {
                 }
                 InputStream stream = new FileInputStream(filePath);
                 var userParser = new UserCsvParser(stream);
-                var count = AddNewUsers(userParser.GetUsers(), userDb);
-                appender.AppendUsers(userDb.GetNewRecords());
-
+                var count = dataProvider.AddUsers(userParser.GetUsers());
                 System.out.println("Number of new users added: "+count);
             }
-
+            if(cmd.hasOption("co")){
+                var filePath = cmd.getOptionValue("co");
+                if(!FileUtilities.Exists(filePath)){
+                    System.out.println("Specified file does not exist: "+filePath);
+                }
+                InputStream stream = new FileInputStream(filePath);
+                var checkoutParser = new CheckoutCsvParser(stream);
+                var count = dataProvider.AddCheckouts(checkoutParser.GetCheckouts());
+                System.out.println("Number of successful checkouts: "+count);
+            }
         }
         catch (ParseException | IOException e) {
             System.out.println(e.getMessage());
             formatter.printHelp(commandSyntex, options);
         }
-    }
-
-    private static int AddNewUsers(ArrayList<User> users, UserDb userDb) throws IOException {
-        var count =0;
-        for(var user: users){
-            var id = userDb.AddNewUser(user.Name, user.Role, user.Email, user.Phone);
-            if(id != -1) {
-                PrintUtilities.PrintSuccessLine(user.Name +" was added to the user database. Assigned Id: "+id);
-                count++;
-            }
-            else PrintUtilities.PrintErrorLine("Failed to add new user "+user.Name);
-        }
-
-        System.out.print("Rebuilding user search index...");
-        userDb.BuildSearchIndex();
-        System.out.println("done");
-        return count;
-    }
-
-    public static int AddNewBook(ArrayList<Book> books, BookDb bookDb) throws IOException {
-        var count=0;
-        for (Book book: books) {
-            var displayId = bookDb.Add(book);
-            if(displayId!=null) {
-                PrintUtilities.PrintSuccessLine("New book added: "+displayId);
-                count++;
-            }
-            else PrintUtilities.PrintErrorLine("Failed to add: "+ book.Title);
-        }
-        System.out.print("Rebuilding book search index...");
-        bookDb.BuildSearchIndex();
-        System.out.println("done");
-        return count;
     }
 }

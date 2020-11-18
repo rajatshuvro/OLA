@@ -1,21 +1,23 @@
 package com.ola;
 
-import com.ola.dataStructures.Transaction;
-import com.ola.databases.TransactionDb;
+import com.ola.parsers.ReturnCsvParser;
+import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
-import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class Return {
-    private static String commandSyntex = "ret  -b [book id]";
-    public static void Run(String[] args, TransactionDb transactionDb){
+    private static String commandSyntex = "ret  -f [csv file path]";
+    public static void Run(String[] args, DataProvider dataProvider, String checkoutFilePath){
         Options options = new Options();
 
-        Option bookIdOption = new Option("b", "book", true, "book id");
-        bookIdOption.setRequired(true);
-        options.addOption(bookIdOption);
+        Option filePathOption = new Option("f", "file", true, "file with checkout details");
+        filePathOption.setRequired(true);
+        options.addOption(filePathOption);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -25,20 +27,37 @@ public class Return {
             formatter.printHelp(commandSyntex, options);
             return;
         }
+        var transactionDb = dataProvider.TransactionDb;
+        var checkoutDb = dataProvider.CheckoutDb;
 
         try {
             cmd = parser.parse(options, args);
-            var bookId = cmd.getOptionValue('b');
-            var date = TimeUtilities.GetCurrentTime();
-            var transaction = transactionDb.GetLatest(bookId);
-            if(transaction == null) {
-                PrintUtilities.PrintErrorLine("Could not locate a checkout for: "+bookId);
+            var filePath = cmd.getOptionValue('f');
+            if(!FileUtilities.Exists(filePath)){
+                System.out.println("Specified file does not exist: "+filePath);
                 return;
             }
-            var userId = transaction.UserId;
-            if(transactionDb.Add(Transaction.Create(bookId, userId, date, Transaction.ReturnTag))){
-                PrintUtilities.PrintSuccessLine(bookId +" has been returned.");
+            InputStream stream = new FileInputStream(filePath);
+            var csvParser = new ReturnCsvParser(stream);
+            for (var record: csvParser.GetReturnes()) {
+                if(transactionDb.Return(record)){
+                    PrintUtilities.PrintSuccessLine(record.BookId +" has been returned.");
+                }
+                else PrintUtilities.PrintWarningLine("Book return unsuccessful");
+                if(checkoutDb.Return(record)){
+                    PrintUtilities.PrintSuccessLine(record.BookId +" removed from checkouts");
+                }
+                else PrintUtilities.PrintWarningLine(record.BookId +" unable to remove from checkouts");
             }
+            
+            if(checkoutDb.HasReturns() && FileUtilities.Exists(checkoutFilePath)){
+                var rewriteStream = new FileOutputStream(checkoutFilePath);
+                checkoutDb.WriteReturns(rewriteStream, false);
+            }
+            else{
+                PrintUtilities.PrintErrorLine("Unable to find checkout file. Returns were not recorded.");
+            }
+
         }
         catch (ParseException | IOException e) {
             PrintUtilities.PrintLine(e.getMessage());

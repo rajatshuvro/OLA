@@ -1,7 +1,8 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.User;
-import com.ola.luceneIndex.UserSearchIndex;
+import com.ola.luceneIndex.DocumentSearchIndex;
+import com.ola.luceneIndex.ISearchDocument;
 
 import java.io.IOException;
 import java.util.*;
@@ -9,7 +10,6 @@ import java.util.*;
 public class UserDb {
     private HashMap<Integer, User> _users;
     private int _maxId;
-    private UserSearchIndex _searchIndex;
     private ArrayList<User> _newUsers;
     public static final int NewUserId=99999;
 
@@ -37,11 +37,13 @@ public class UserDb {
         return null;
     }
 
+    public Iterable<User> GetAllUsers(){
+        return _users.values();
+    }
+
     public HashSet<Integer> GetIds() {
         var ids = new HashSet<Integer>();
-        for (int id: _users.keySet()) {
-            ids.add(id);
-        }
+        ids.addAll(_users.keySet());
         return ids;
     }
 
@@ -50,9 +52,9 @@ public class UserDb {
         return null;
     }
 
+    private Random _rand = new Random();
     public int AddNewUser(String name, String role, String email, String phone) {
-        var rand = new Random(13);
-        var idIncrement = rand.nextInt(20);
+        var idIncrement = _rand.nextInt(20)+1;//preventing having a inc of 0
 
         var user = User.Create(_maxId+idIncrement, name, role, email, phone);
         if(user == null) return -1;//invalid user data
@@ -62,14 +64,24 @@ public class UserDb {
         return user.Id;
     }
 
-    public UserSearchIndex GetSearchIndex() throws IOException {
-        if(_searchIndex == null) BuildSearchIndex();
-        return _searchIndex;
+    public User ResolveUser(int userId, String email) {
+        var user = GetUser(userId);
+        var emailUsers = GetByEmail(email);
+
+        if (user == null && emailUsers==null) return null;
+
+        if(emailUsers == null) return user;
+        if(user == null){
+            return emailUsers.size()==1? emailUsers.get(0): null;
+        }
+
+        for (var emailUser: emailUsers) {
+            if (user.Id == emailUser.Id)
+                return user;
+        }
+        return null;
     }
 
-    public void BuildSearchIndex() throws IOException {
-        _searchIndex = new UserSearchIndex(_users.values());
-    }
 
     public List<User> GetNewRecords(){
         if(_newUsers.size()==0) return null;
@@ -79,4 +91,11 @@ public class UserDb {
     }
 
 
+    private List<User> GetByEmail(String email) {
+        var users = new ArrayList<User>();
+        for (var user: _users.values()) {
+            if(user.Email.equals(email)) users.add(user);
+        }
+        return users.size()>0? users: null;
+    }
 }

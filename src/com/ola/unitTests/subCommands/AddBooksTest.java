@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AddTest {
+public class AddBooksTest {
     public ArrayList<Book> GetNewBooks() {
         var books = new ArrayList<Book>();
         books.add(Book.Create(7890788,"Rajat Shuvro Roy","Amar Baba","Bonosree books and co",
@@ -38,10 +38,11 @@ public class AddTest {
         return books;
     }
     @Test
-    public void AddBooks() throws IOException {
+    public void AddBooks() {
         var bookDb = new BookDb(BookDbTests.GetBooks());
 
-        Add.AddNewBook(GetNewBooks(), bookDb);
+        for(var book: GetNewBooks())
+            bookDb.Add(book);
 
         assertEquals(3, bookDb.GetCopyCount(7890788));
         assertEquals(3, bookDb.GetCopyCount(678564));
@@ -52,7 +53,9 @@ public class AddTest {
     @Test
     public void AddBooks_details_mismatch() throws IOException {
         var bookDb = new BookDb(BookDbTests.GetBooks());
-        Add.AddNewBook(GetMismatchingBook(), bookDb);
+
+        for(var book: GetMismatchingBook())
+            bookDb.Add(book);
 
         assertEquals(5, bookDb.Count());
     }

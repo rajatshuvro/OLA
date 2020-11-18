@@ -1,24 +1,28 @@
 package com.ola;
 
+import com.ola.NativeSearch.InvertedIndex;
+import com.ola.NativeSearch.SmithWaterman;
 import com.ola.dataStructures.Book;
+import com.ola.dataStructures.Checkout;
 import com.ola.dataStructures.Transaction;
-import com.ola.databases.BookDb;
-import com.ola.databases.TransactionDb;
-import com.ola.databases.UserDb;
+import com.ola.dataStructures.User;
+import com.ola.databases.*;
+import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.BookParser;
-import com.ola.parsers.FlatObjectParser;
+import com.ola.parsers.CheckoutParser;
 import com.ola.parsers.TransactionParser;
 import com.ola.parsers.UserParser;
+import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class DataProvider {
     public BookDb BookDb;
     public UserDb UserDb;
+    public CheckoutDb CheckoutDb;
     public TransactionDb TransactionDb;
 
     private BookParser _bookParser;
@@ -35,8 +39,21 @@ public class DataProvider {
     private OutputStream _userAppendStream;
     private OutputStream _transactionAppendStream;
 
+    private InvertedIndex _searchIndex;
+    private ArrayList<ISearchDocument> _docs;
+
+    public DataProvider(BookDb bookDb, UserDb userDb, TransactionDb transactionDb, Appender appender){
+        BookDb = bookDb;
+        UserDb = userDb;
+        TransactionDb = transactionDb;
+        Appender = appender;
+        _searchIndex = new InvertedIndex(new SmithWaterman());
+        _docs = new ArrayList<>();
+
+    }
+
     public DataProvider(InputStream bookInputStream, InputStream userInputStream, InputStream transactionInputStream
-                        , OutputStream transactionAppendStream, OutputStream bookAppendStream, OutputStream userAppendStream) {
+            , OutputStream transactionAppendStream, OutputStream bookAppendStream, OutputStream userAppendStream) {
         _bookInputStream = bookInputStream;
         _userInputStream = userInputStream;
         _transactionInputStream = transactionInputStream;
@@ -53,17 +70,82 @@ public class DataProvider {
 
     }
 
+    public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream) {
+        var checkouts = DbUtilities.ReadCheckouts(inputStream);
+        CheckoutDb = new CheckoutDb(checkouts, outputStream);
+    }
+
     public void Load() throws IOException{
         BookDb = new BookDb(_bookParser.GetBooks());
         UserDb = new UserDb(_userParser.GetUsers());
         TransactionDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb, BookDb, Appender);
 
-        BookDb.GetSearchIndex();
-        UserDb.GetSearchIndex();
+        BuildSearchIndex();
 
         _userInputStream.close();
         _bookInputStream.close();
         _transactionInputStream.close();
+    }
+
+    private void BuildSearchIndex() {
+        _searchIndex = new InvertedIndex(new SmithWaterman());
+        _docs = new ArrayList<>();
+        for(var book: BookDb.GetAllBooks())
+        {
+            _searchIndex.Add(book.GetContent());
+            _docs.add(book);
+        }
+        for(var user: UserDb.GetAllUsers())
+        {
+            _searchIndex.Add(user.GetContent());
+            _docs.add(user);
+        }
+    }
+
+    public int AddBooks(ArrayList<Book> books) throws IOException {
+        var count=0;
+        for (Book book: books) {
+            var displayId = BookDb.Add(book);
+            if(displayId!=null) {
+                PrintUtilities.PrintSuccessLine("New book added: "+displayId);
+                _searchIndex.Add(book.GetContent());
+                _docs.add(book);
+                count++;
+            }
+            else PrintUtilities.PrintErrorLine("Failed to add: "+ book.Title);
+        }
+        Appender.AppendBooks(BookDb.GetNewRecords());
+        return count;
+    }
+
+    public int AddNewUser(String name, String role, String email, String phone) throws IOException {
+        int id = UserDb.AddNewUser(name, role, email, phone);
+        if(id != -1) {
+            var newUsers = UserDb.GetNewRecords();
+            Appender.AppendUsers(newUsers);
+            _searchIndex.Add(newUsers.get(0).GetContent());
+            _docs.add(newUsers.get(0));
+            return id;
+        }
+        else return -1;
+    }
+
+    public int AddUsers(ArrayList<User> users) throws IOException {
+        var count =0;
+        for(var user: users){
+            var id = UserDb.AddNewUser(user.Name, user.Role, user.Email, user.Phone);
+            if(id != -1) {
+                PrintUtilities.PrintSuccessLine(user.Name +" was added to the user database. Assigned Id: "+id);
+                _searchIndex.Add(user.GetContent());
+                _docs.add(user);
+                count++;
+            }
+            else PrintUtilities.PrintErrorLine("Failed to add new user "+user.Name);
+        }
+
+        Appender.AppendUsers(UserDb.GetNewRecords());
+        return count;
+
     }
 
     public void Close() throws IOException {
@@ -97,13 +179,34 @@ public class DataProvider {
     }
 
     public ArrayList<Transaction> GetPendingCheckouts(int userId) {
-        var checkouts = new ArrayList<Transaction>();
-        for (Transaction record: TransactionDb.GetPendingCheckouts()) {
-            if(userId != record.UserId) continue;
-            checkouts.add(record);
-        }
-        return checkouts.size()==0? null: checkouts;
+         return TransactionDb.GetPendingCheckouts(userId);
     }
 
+    public ArrayList<String> Search(String query){
+        var topDocs = _searchIndex.Search(query);
+        return GetResults(topDocs, 5);
+    }
+    private ArrayList<String> GetResults( int[] topDocs, int maxCount) {
+        var results = new ArrayList<String>();
+
+        for(var i=0; i < maxCount && i < topDocs.length; i++)
+            results.add(_docs.get(topDocs[i]).toString());
+
+        return results;
+    }
+
+    public int AddCheckouts(ArrayList<Checkout> checkouts) throws IOException {
+        var count=0;
+        for (var checkout:
+                checkouts) {
+            if(TransactionDb.Checkout(checkout))
+            {
+                count++;
+                PrintUtilities.PrintSuccessLine(checkout.BookId +" has been checked out by "+ checkout.UserId);
+            }
+            else PrintUtilities.PrintWarningLine("Checkout attempt was unsuccessful!!");
+        }
+        return count;
+    }
 
 }

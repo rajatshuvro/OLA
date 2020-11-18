@@ -10,8 +10,7 @@ public  class FormatUtilities {
         for(var c : phnString.toCharArray()){
             if(Character.isDigit(c)) numCount++;
         }
-        if(numCount != 10) return false;
-        return true;
+        return numCount == 10;
     }
 
     public static boolean IsValidEmail(String email) {

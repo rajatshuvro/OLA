@@ -1,13 +1,17 @@
 package com.ola;
 
+import com.ola.NativeSearch.InvertedIndex;
+import com.ola.NativeSearch.JaroWinkler;
+import com.ola.NativeSearch.SmithWaterman;
+import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.FlatObjectParser;
 import org.apache.lucene.queryparser.classic.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Search {
-    private static String commandSyntax = "search  [query text]";
+public class TokenSearch {
+    private static String commandSyntax = "find  [query text]";
 
     public static void Run(String[] args, DataProvider dataProvider) throws IOException, ParseException {
         if(args.length <= 1) {
@@ -15,24 +19,9 @@ public class Search {
             return;
         }
         String queryText = ConstructQuery(args);
-        var results = new ArrayList<String>();
 
-        var bookDb = dataProvider.BookDb;
-        var bookSearchIndex = bookDb.GetSearchIndex();
-
-        for (var id: bookSearchIndex.Search(queryText, 5)) {
-            results.add(bookDb.GetBook(id).toString());
-        }
-        OutputResults(results, "----------------------Books----------------------");
-
-        var userDb = dataProvider.UserDb;
-        var userSearchIndex = userDb.GetSearchIndex();
-
-        for(var id: userSearchIndex.Search(queryText, 5)){
-            results.add(userDb.GetUser(id).toString());
-        }
-        OutputResults(results, "----------------------Users----------------------");
-
+        var results = dataProvider.Search(queryText);
+        OutputResults(results, "-----------------------Showing top 5 search results --------------------");
         System.out.println('\n');
         System.out.println("=========================End of search results=====================");
     }

@@ -4,6 +4,7 @@ import com.ola.dataStructures.Book;
 import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
 import com.ola.parsers.FlatObjectParser;
+import com.ola.utilities.PrintUtilities;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -23,16 +24,21 @@ public class Appender {
         _bookStream = bookStream;
         _userStream = userStream;
         _transactionStream = transactionStream;
-
     }
 
-    public void AppendTransactions(Transaction transaction) throws IOException {
+    public void AppendTransactions(Transaction transaction) {
         if(_transactionAppender == null)
             _transactionAppender = new BufferedWriter(new OutputStreamWriter(_transactionStream));
         if(transaction == null ) return;
-        _transactionAppender.write(transaction.toString()+'\n');
-        _transactionAppender.write(FlatObjectParser.RecordSeparator +'\n');
-        _transactionAppender.flush();
+
+        try {
+            _transactionAppender.write(transaction.toString()+'\n');
+            _transactionAppender.write(FlatObjectParser.RecordSeparator +'\n');
+            _transactionAppender.flush();
+        } catch (IOException e) {
+            PrintUtilities.PrintErrorLine("Failed to add transaction to file");
+        }
+
     }
 
     public void AppendBooks(Iterable<Book> books) throws IOException {
@@ -45,6 +51,7 @@ public class Appender {
         }
         _bookAppender.flush();
     }
+
     public void AppendUsers(Iterable<User> users) throws IOException {
         if(_userAppender == null)
             _userAppender = new BufferedWriter(new OutputStreamWriter(_userStream));
@@ -61,4 +68,5 @@ public class Appender {
         if(_bookAppender!= null) _bookAppender.close();
         if(_userAppender!= null) _userAppender.close();
     }
+
 }

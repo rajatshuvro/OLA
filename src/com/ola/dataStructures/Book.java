@@ -1,5 +1,6 @@
 package com.ola.dataStructures;
 
+import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.StringUtilities;
@@ -9,7 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Book implements Comparable<Book>{
+public class Book implements Comparable<Book>, ISearchDocument {
     public final long Isbn;
     public final String Author;
     public final String Title;
@@ -39,8 +40,19 @@ public class Book implements Comparable<Book>{
         ReadingLevel = readingLevel;
         EntryDate = entryDate;
         ExpiryDate = expiryDate;
-        Summary = summary==null? "":summary;
+        Summary = summary == null ? "" : summary;
     }
+    //if a user friendly bookId is provided, it needs to be reduced to isbn-(copy num) format
+    public static String GetReducedId(String bookId) {
+        var splits = bookId.split("-");
+        if (splits.length == 2) return bookId;
+        else return splits[0]+'-'+splits[splits.length-1];
+    }
+
+    public String GetId(){
+        return GenerateId(Isbn, CopyNum);
+    }
+
     @Override
     public int compareTo(Book other) {
         return Title.compareTo(other.Title);
@@ -126,10 +138,6 @@ public class Book implements Comparable<Book>{
         return String.join("-", Long.toString(Isbn), GetAbbreviation(Genre), Integer.toString(ReadingLevel), '('+Integer.toString(CopyNum)+')');
     }
 
-    public String GetId(){
-        return GenerateId(Isbn, CopyNum);
-    }
-
     public static String GenerateId(long isbn, int copyNum){
         return isbn +"-("+ copyNum +')';
     }
@@ -145,6 +153,7 @@ public class Book implements Comparable<Book>{
         return  "Title:           "+Title+'\n'+
                 "Author:          "+Author+'\n'+
                 "ISBN:            "+Isbn+'\n'+
+                "ID:              "+GetUserFriendlyId()+'\n'+
                 "Publisher:       "+Publisher+'\n'+
                 "Year:            "+Year+'\n'+
                 "Genre:           "+Genre+'\n'+
@@ -156,6 +165,22 @@ public class Book implements Comparable<Book>{
                 "Expiry date:     "+ TimeUtilities.ToString(ExpiryDate)+'\n'+
                 "Summary:         "+ Summary;
 
+    }
+
+    public String GetContent(){
+        return  Title+'\n'+
+                Author+'\n'+
+                Isbn+'\n'+
+                Publisher+'\n'+
+                Year+'\n'+
+                Genre+'\n'+
+                CopyNum+'\n'+
+                PageCount+'\n'+
+                Price+'\n'+
+                ReadingLevel+'\n'+
+                TimeUtilities.ToString(EntryDate)+'\n'+
+                TimeUtilities.ToString(ExpiryDate)+'\n'+
+                Summary;
     }
 
     public String ToCsvString(){

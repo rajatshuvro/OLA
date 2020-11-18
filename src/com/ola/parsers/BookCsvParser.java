@@ -1,10 +1,7 @@
 package com.ola.parsers;
 
 import com.ola.dataStructures.Book;
-import com.ola.dataStructures.User;
 import com.ola.utilities.PrintUtilities;
-import com.ola.utilities.StringUtilities;
-import com.ola.utilities.TimeUtilities;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
@@ -53,7 +50,7 @@ public class BookCsvParser {
             String publisher = record.get(PublisherTag).trim();
             int year = ParserUtilities.ParseUInt(record.get(YearTag));
             var summary = record.get(SummaryTag).trim();
-            var genre = record.get(GenreTag);
+            var genre = record.get(GenreTag).trim();
             var readingLevel = ParserUtilities.ParseUInt(record.get(ReadingLevelTag));
             int pageCount = ParserUtilities.ParseUInt(record.get(PageCountTag));
             float price = ParserUtilities.ParseUFloat(record.get(PriceTag));

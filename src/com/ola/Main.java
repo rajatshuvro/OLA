@@ -1,15 +1,17 @@
 package com.ola;
+import com.ola.databases.CheckoutDb;
+import com.ola.parsers.CheckoutCsvParser;
 import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
+import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
 //https://github.com/rajatshuvro/OLA/blob/master/README.md
+    private static String DataDir;
     public static void main(String[] args) throws Exception{
 
         DataProvider dataProvider = Initialize(args);
@@ -21,6 +23,7 @@ public class Main {
         boolean quit=false;
         PrintMenu();
 
+        var logger = GetLogger();
         while (!quit){
             PrintUtilities.PrintPrompt();
             Scanner in = new Scanner(System.in);
@@ -28,20 +31,23 @@ public class Main {
             command = command.trim();
             String[] subArgs = command.split("\\s+");
 
+            logger.write(command);
+
             String subCommand = subArgs[0];
             switch (subCommand){
                 case "add":
-                    Add.Run(subArgs, dataProvider.BookDb, dataProvider.UserDb, dataProvider.Appender);
+                    Add.Run(subArgs, dataProvider);
                     break;
                 case "au":
                 case "add-user":
-                    AddUser.Run(subArgs, dataProvider.UserDb, dataProvider.Appender);
+                    AddUser.Run(subArgs, dataProvider);
                     break;
                 case "co":
-                    CheckOut.Run(subArgs, dataProvider.TransactionDb);
+                    CheckOut.Run(subArgs, dataProvider);
                     break;
                 case "ret":
-                    Return.Run(subArgs, dataProvider.TransactionDb);
+                    var checkoutFilePath =  DataDir+ File.separatorChar+CheckoutsFileName;
+                    Return.Run(subArgs, dataProvider, checkoutFilePath);
                     break;
                 case "cs":
                 case "co-stat":
@@ -52,7 +58,11 @@ public class Main {
                     break;
                 case "$":
                 case "search":
-                    Search.Run(subArgs, dataProvider);
+                //    Search.Run(subArgs, dataProvider);
+                //    break;
+                //case "#":
+                //case "find":
+                    TokenSearch.Run(subArgs, dataProvider);
                     break;
                 case "label":
                     LabelPrinter.Run(subArgs, dataProvider.BookDb);
@@ -68,12 +78,20 @@ public class Main {
                 default:
                     System.out.println("Unrecognized command: "+subCommand+"\nType \"help\" for the help menu or \"quit\" to exit");
             }
+            logger.write("\tsuccess\n");
+            logger.flush();
 
         }
         //save changes to file
         dataProvider.Close();
-
+        logger.close();
     }
+
+    private static OutputStreamWriter GetLogger() throws FileNotFoundException {
+        var time = TimeUtilities.GetCurrentTime().getTime();
+        return new OutputStreamWriter(new FileOutputStream(time+".log"));
+    }
+
     private static void PrintMenu() {
         PrintUtilities.PrintInfoLine("Please choose from the following options:");
         PrintUtilities.PrintInfoLine("\tadd            (add new books or users)");
@@ -89,23 +107,18 @@ public class Main {
         PrintUtilities.PrintInfoLine("\t[Type command to get detailed help]");
     }
 
-    private static String commandSyntex = "ola -b [full path to books data file] " +
-            "-u [full path to users data file] " +
-            "-t [full path to transactions data file]";
+    private static String commandSyntex = "ola -d [full path data directory] ";
+    private static String UsersFileName = "Users.fob";
+    private static String BooksFileName = "Books.fob";
+    private static String TransactionsFileName = "Transactions.fob";
+    private static String CheckoutsFileName = "Checkouts.fob";
+
     private static DataProvider Initialize(String[] args) {
         Options options = new Options();
 
-        Option bookDbFile = new Option("b", "books", true, "book database file");
-        bookDbFile.setRequired(true);
-        options.addOption(bookDbFile);
-
-        Option userDbFile = new Option("u", "users", true, "user database file");
-        userDbFile.setRequired(true);
-        options.addOption(userDbFile);
-
-        Option transactionsFile = new Option("t", "transactions", true, "transactions records file");
-        transactionsFile.setRequired(true);
-        options.addOption(transactionsFile);
+        Option dataDirOption = new Option("d", "dir", true, "data directory path");
+        dataDirOption.setRequired(true);
+        options.addOption(dataDirOption);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -118,29 +131,42 @@ public class Main {
 
         try {
             cmd = parser.parse(options, args);
-            String bookFileName = cmd.getOptionValue("books");
+            DataDir = cmd.getOptionValue('d');
+
+            String bookFileName = DataDir+ File.separatorChar+BooksFileName;
             if(!FileUtilities.Exists(bookFileName)){
                 PrintUtilities.PrintErrorLine("Failed to find file: "+bookFileName);
                 return null;
             }
-            String userFileName = cmd.getOptionValue("users");
+            String userFileName = DataDir+ File.separatorChar+UsersFileName;
             if(!FileUtilities.Exists(userFileName)){
                 PrintUtilities.PrintErrorLine("Failed to find file: "+userFileName);
                 return null;
             }
-            String transactionFileName = cmd.getOptionValue("transactions");
+            String transactionFileName = DataDir+ File.separatorChar+TransactionsFileName;
             if(!FileUtilities.Exists(transactionFileName)){
                 PrintUtilities.PrintErrorLine("Failed to find file: "+transactionFileName);
                 return null;
             }
-            return new DataProvider(new FileInputStream(bookFileName),
+            var dataProvider =new DataProvider(new FileInputStream(bookFileName),
                     new FileInputStream(userFileName),
                     new FileInputStream(transactionFileName),
                     new FileOutputStream(transactionFileName,true),
                     new FileOutputStream(bookFileName, true),
                     new FileOutputStream(userFileName, true));
+
+            var checkoutFileName =  DataDir+ File.separatorChar+CheckoutsFileName;
+            if(FileUtilities.Exists(checkoutFileName)){
+                var inputStream = new FileInputStream(checkoutFileName);
+                dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true));
+            }
+            return dataProvider;
         }
         catch (ParseException | FileNotFoundException e) {
+            PrintUtilities.PrintErrorLine(e.getMessage());
+            formatter.printHelp(commandSyntex, options);
+            return null;
+        } catch (IOException e) {
             PrintUtilities.PrintErrorLine(e.getMessage());
             formatter.printHelp(commandSyntex, options);
             return null;
