@@ -13,6 +13,7 @@ import com.ola.databases.UserDb;
 import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
@@ -40,6 +41,7 @@ public class CheckoutTests {
         users.add(User.Create(234, "name1", User.StudentRoleTag, "name1@onkur.com", "4568932678"));
         users.add(User.Create(123, "name2", User.StudentRoleTag, "name2@onkur.com", "4568732678"));
         users.add(User.Create(345, "name2", User.VolunteerRoleTag, "name3@onkur.com", "4568732676"));
+        users.add(User.Create(349, "name3", User.VolunteerRoleTag, "name3@onkur.com", "4568732676"));
         return new UserDb(users);
     }
 
@@ -61,9 +63,11 @@ public class CheckoutTests {
         return checkouts;
     }
 
-    private ArrayList<Checkout> GetNewCheckouts_without_userid(){
+    private ArrayList<Checkout> GetCheckouts_without_userid(){
         var checkouts = new ArrayList<Checkout>();
-        checkouts.add(new Checkout("678564-(2)", -1, "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
+        checkouts.add(new Checkout("7890788-(2)", -1, "name1@onkur.com", TimeUtilities.parseGoogleDateTime("2020/09/30 3:20:16 PM MDT"), TimeUtilities.parseDate("2020-10-25")));
+        checkouts.add(new Checkout("678564-(1)", 345, "name2@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
+        checkouts.add(new Checkout("456098-(1)", 349, "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:22:04 PM MDT"), TimeUtilities.parseDate("2020-10-28")));
 
         return checkouts;
     }
@@ -83,14 +87,18 @@ public class CheckoutTests {
 
     @Test
     public void Checkout_new_book_without_userid(){
-        var chekoutDb = new CheckoutDb(GetNewCheckouts_without_userid(), new ByteArrayOutputStream());
-        assertTrue(chekoutDb.IsCheckedOut("678564-(2)"));
+        var checkoutDb = new CheckoutDb(null, new ByteArrayOutputStream());
+        checkoutDb.TryAddRange(GetCheckouts_without_userid(), GetBookDb(), GetUserDb());
+
+        assertTrue(checkoutDb.IsCheckedOut("7890788-(2)"));
+        assertFalse(checkoutDb.IsCheckedOut("678564-(1)"));
+        assertEquals(349, checkoutDb.GetCheckout("456098-(1)").UserId);
     }
 
     @Test
     public void Checkout_invalid_user(){
         var chekoutDb = new CheckoutDb(GetCheckouts(), null);
-        var invalidCheckout = new Checkout("678564-(2)", 12345,"name1@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
+        var invalidCheckout = new Checkout("678564-(2)", 12345,"name10@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
 
         assertFalse(chekoutDb.TryAdd(invalidCheckout, GetBookDb(), GetUserDb()));
     }

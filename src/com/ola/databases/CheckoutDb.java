@@ -2,14 +2,14 @@ package com.ola.databases;
 
 import com.ola.dataStructures.Checkout;
 import com.ola.dataStructures.Return;
-import com.ola.parsers.CheckoutCsvParser;
+import com.ola.dataStructures.User;
 import com.ola.parsers.FlatObjectParser;
-import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class CheckoutDb {
     private final BufferedWriter _appender;
@@ -22,10 +22,11 @@ public class CheckoutDb {
         _outputStream = outputStream;
         _checkouts = new HashMap<>();
 
-        for (var checkout:
-             checkouts) {
-            _checkouts.put(checkout.BookId, checkout);
-        }
+        if(checkouts!=null)
+            for (var checkout:
+                 checkouts) {
+                _checkouts.put(checkout.BookId, checkout);
+            }
 
         if(_outputStream != null) _appender = new BufferedWriter(new OutputStreamWriter(_outputStream));
         else _appender = null;
@@ -54,14 +55,10 @@ public class CheckoutDb {
             return false;
         }
         var user = userDb.GetUser(checkout.UserId);
-        if(user==null){
-            //try to get user id using email
-            user =userDb.GetByEmail(checkout.Email);
-            if (user == null) PrintUtilities.PrintWarningLine("WARNING: failed to find using email:"+checkout.Email+". Ignoring transactions.");
-            return false;
-        }
-        var userId = user != null? user.Id: -1;
-        if( userId == -1){
+        var emailUsers =userDb.GetByEmail(checkout.Email);
+        user = GetUser(user, emailUsers);
+
+        if( user == null){
             PrintUtilities.PrintWarningLine("WARNING: Invalid user id:"+checkout.UserId+". Ignoring transaction.");
             return false;
         }
@@ -80,6 +77,21 @@ public class CheckoutDb {
         _checkouts.put(checkout.BookId, checkout);
 
         return _appender == null? true: Append(checkout);
+    }
+
+    private User GetUser(User user, List<User> emailUsers) {
+        if (user == null && emailUsers==null) return null;
+
+        if(emailUsers == null) return user;
+        if(user == null){
+            return emailUsers.size()==1? emailUsers.get(0): null;
+        }
+
+        for (var emailUser: emailUsers) {
+            if (user.Id == emailUser.Id)
+                return user;
+        }
+        return null;
     }
 
     private boolean Append(Checkout checkout) {

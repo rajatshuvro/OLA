@@ -72,10 +72,11 @@ public class UserDb {
     }
 
 
-    public User GetByEmail(String email) {
+    public List<User> GetByEmail(String email) {
+        var users = new ArrayList<User>();
         for (var user: _users.values()) {
-            if(user.Email.equals(email)) return user;
+            if(user.Email.equals(email)) users.add(user);
         }
-        return null;
+        return users.size()>0? users: null;
     }
 }
