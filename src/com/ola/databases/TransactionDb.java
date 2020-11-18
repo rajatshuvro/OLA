@@ -33,11 +33,11 @@ public class TransactionDb {
         _latestTransactions = new HashMap<>();
         for (Transaction record: transactions) {
             if(_bookDb.GetBook(record.BookId)== null) {
-                System.out.println("WARNING: Invalid book id:"+record.BookId+". Ignoring transaction.");
+                PrintUtilities.PrintWarningLine("WARNING: Invalid book id:"+record.BookId+". Ignoring transaction.");
                 continue;
             }
             if(_userDb.GetUser(record.UserId) == null){
-                System.out.println("WARNING: Invalid user id:"+record.UserId+". Ignoring transaction.");
+                PrintUtilities.PrintWarningLine("WARNING: Invalid user id:"+record.UserId+". Ignoring transaction.");
                 continue;
             }
             _transactions.add(record);

@@ -64,6 +64,25 @@ public class UserDb {
         return user.Id;
     }
 
+    public User ResolveUser(int userId, String email) {
+        var user = GetUser(userId);
+        var emailUsers = GetByEmail(email);
+
+        if (user == null && emailUsers==null) return null;
+
+        if(emailUsers == null) return user;
+        if(user == null){
+            return emailUsers.size()==1? emailUsers.get(0): null;
+        }
+
+        for (var emailUser: emailUsers) {
+            if (user.Id == emailUser.Id)
+                return user;
+        }
+        return null;
+    }
+
+
     public List<User> GetNewRecords(){
         if(_newUsers.size()==0) return null;
         var newUsers = new ArrayList<>(_newUsers);
@@ -72,7 +91,7 @@ public class UserDb {
     }
 
 
-    public List<User> GetByEmail(String email) {
+    private List<User> GetByEmail(String email) {
         var users = new ArrayList<User>();
         for (var user: _users.values()) {
             if(user.Email.equals(email)) users.add(user);

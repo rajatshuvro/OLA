@@ -1,5 +1,6 @@
 package com.ola;
 
+import com.ola.dataStructures.Checkout;
 import com.ola.databases.BookDb;
 import com.ola.databases.CheckoutDb;
 import com.ola.databases.TransactionDb;
@@ -12,6 +13,7 @@ import org.apache.commons.cli.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class CheckOut {
     private static String commandSyntax = "co -f [csv file path]";
@@ -45,7 +47,13 @@ public class CheckOut {
                 }
                 InputStream stream = new FileInputStream(filePath);
                 var csvParser = new CheckoutCsvParser(stream);
-                var checkouts = csvParser.GetCheckouts();
+                var checkouts = new ArrayList<Checkout>();
+                // resolve unknown users
+                for (var checkout : csvParser.GetCheckouts()) {
+                    var resolvedUser = userDb.ResolveUser(checkout.UserId, checkout.Email);
+                    checkouts.add(new Checkout(checkout.BookId, resolvedUser.Id, resolvedUser.Email, checkout.CheckoutDate, checkout.DueDate));
+                }
+
                 var count = checkoutDb.TryAddRange(checkouts,bookDb, userDb);
                 System.out.println("Number of successful checkouts: "+count);
 

@@ -110,4 +110,5 @@ public class CheckoutTests {
 
         assertFalse(chekoutDb.TryAdd(invalidCheckout, GetBookDb(), GetUserDb()));
     }
+
 }

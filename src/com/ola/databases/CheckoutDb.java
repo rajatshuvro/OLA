@@ -54,9 +54,7 @@ public class CheckoutDb {
             PrintUtilities.PrintWarningLine("WARNING: Invalid book id:"+checkout.BookId+". Ignoring transaction.");
             return false;
         }
-        var user = userDb.GetUser(checkout.UserId);
-        var emailUsers =userDb.GetByEmail(checkout.Email);
-        user = GetUser(user, emailUsers);
+        var user = userDb.ResolveUser(checkout.UserId, checkout.Email);
 
         if( user == null){
             PrintUtilities.PrintWarningLine("WARNING: Invalid user id:"+checkout.UserId+". Ignoring transaction.");
@@ -67,7 +65,7 @@ public class CheckoutDb {
             PrintUtilities.PrintWarningLine("Can not checkout the same book twice:"+checkout.BookId);
             return false;
         }
-        var checkouts = ReadCheckouts(checkout.UserId);
+        var checkouts = ReadCheckouts(user.Id);
         var checkoutCount = checkouts.size();
         if(checkoutCount >= CheckoutLimit)
         {
@@ -77,21 +75,6 @@ public class CheckoutDb {
         _checkouts.put(checkout.BookId, checkout);
 
         return _appender == null? true: Append(checkout);
-    }
-
-    private User GetUser(User user, List<User> emailUsers) {
-        if (user == null && emailUsers==null) return null;
-
-        if(emailUsers == null) return user;
-        if(user == null){
-            return emailUsers.size()==1? emailUsers.get(0): null;
-        }
-
-        for (var emailUser: emailUsers) {
-            if (user.Id == emailUser.Id)
-                return user;
-        }
-        return null;
     }
 
     private boolean Append(Checkout checkout) {
