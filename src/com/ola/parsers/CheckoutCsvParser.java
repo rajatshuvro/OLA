@@ -44,7 +44,7 @@ public class CheckoutCsvParser {
             bookId = Book.GetReducedId(bookId);
 
             var userIdString = record.get(UserIdTag).trim();
-            var userId = userIdString.isEmpty()? -1: ParserUtilities.ParseUInt(userIdString);
+            var userId = ParserUtilities.IsNullOrEmpty(userIdString) ? -1: ParserUtilities.ParseUInt(userIdString);
 
             var dueDateString = record.get(DueDateTag).trim();
             var dueDate = TimeUtilities.parseDate(dueDateString);
