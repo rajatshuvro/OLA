@@ -131,6 +131,30 @@ public class TestStreams {
         return new ByteArrayInputStream(buffer);
     }
 
+    public static InputStream GetIdMapStream() throws IOException {
+        var memStream = new ByteArrayOutputStream();
+        var writer = new OutputStreamWriter(memStream);
+
+        writer.write("#Onkur library short to long id mappings\n");
+        writer.write(FlatObjectParser.RecordSeparator+"\n");
+        writer.write("Long Id:\t7890788-(2)\n");
+        writer.write("Short Id:\tAC564\n");
+        writer.write(FlatObjectParser.RecordSeparator+"\n");
+        writer.write("Long Id:\t678564-(1)\n");
+        writer.write("Short Id:\tEU8C7\n");
+        writer.write(FlatObjectParser.RecordSeparator+"\n");
+        writer.write("Long Id:\t456098-(1)\n");
+        writer.write("Short Id:\tUSA20\n");
+        writer.write(FlatObjectParser.RecordSeparator+"\n");
+        writer.write("Long Id:\t7890788-(1)\n");
+        writer.write("Short Id:\tBA123\n");
+        writer.close();
+
+        var buffer = memStream.toByteArray();
+        memStream.close();
+        return new ByteArrayInputStream(buffer);
+    }
+
     public static InputStream GetUsersStream() throws IOException {
         var memStream = new ByteArrayOutputStream();
         var writer = new OutputStreamWriter(memStream);

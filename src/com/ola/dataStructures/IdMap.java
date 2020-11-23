@@ -8,4 +8,9 @@ public class IdMap {
         ShortId = id;
         LongId = longId;
     }
+    @Override
+    public String toString(){
+        return "Short Id:       "+ShortId+'\n'+
+               "Long Id:        "+LongId;
+    }
 }
