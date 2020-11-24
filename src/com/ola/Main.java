@@ -165,16 +165,17 @@ public class Main {
             var idMapFileName =  DataDir+ File.separatorChar+IdMapsFileName;
             if(FileUtilities.Exists(idMapFileName)){
                 var inputStream = new FileInputStream(idMapFileName);
-                dataProvider.AddIdMapDb(inputStream, new FileOutputStream(checkoutFileName,true));
+                dataProvider.AddIdMapDb(inputStream, new FileOutputStream(idMapFileName,true));
             }
-            var bookCount =0;
-            var sidCount =0;
-            for (var bookId: dataProvider.BookDb.GetIds()) {
-                bookCount++;
-                var shortId = dataProvider.IdDb.GenerateShortId();
-                if(dataProvider.IdDb.TryAdd(shortId, bookId)) sidCount++;
-            }
-            if (bookCount != sidCount) PrintUtilities.PrintWarningLine("Failed to create sid for all books");
+//            var bookCount =0;
+//            var sidCount =0;
+//            dataProvider.Load();
+//            for (var bookId: dataProvider.BookDb.GetIds()) {
+//                bookCount++;
+//                var shortId = dataProvider.IdDb.GenerateShortId();
+//                if(dataProvider.IdDb.TryAdd(shortId, bookId)) sidCount++;
+//            }
+//            if (bookCount != sidCount) PrintUtilities.PrintWarningLine("Failed to create sid for all books");
             return dataProvider;
         }
         catch (ParseException | FileNotFoundException e) {
