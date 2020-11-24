@@ -1,8 +1,10 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Checkout;
-import com.ola.parsers.CheckoutCsvParser;
+import com.ola.dataStructures.IdMap;
 import com.ola.parsers.CheckoutParser;
+import com.ola.parsers.IdMapParser;
+import com.ola.utilities.PrintUtilities;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +20,24 @@ public class DbUtilities {
                 inputStream.close();
                 return checkouts;
             } catch (IOException e) {
-                System.out.println("Error reading checkout file");
+                PrintUtilities.PrintWarningLine("Error reading checkout file");
+                return null;
+            }
+
+        }
+        return null;
+    }
+
+    public static ArrayList<IdMap> ReadIdMaps(InputStream inputStream)  {
+        if(inputStream !=null){
+            var parser = new IdMapParser(inputStream);
+            ArrayList<IdMap> idMaps;
+            try {
+                idMaps = parser.GetIdMaps();
+                inputStream.close();
+                return idMaps;
+            } catch (IOException e) {
+                PrintUtilities.PrintWarningLine("Error reading Id map file");
                 return null;
             }
 

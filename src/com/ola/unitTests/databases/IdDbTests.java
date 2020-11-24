@@ -26,7 +26,7 @@ public class IdDbTests {
     }
     @Test
     public void GenerateNewId(){
-        var idDb = new IdDb(GetIdMaps());
+        var idDb = new IdDb(GetIdMaps(), null);
 
         var id = idDb.GenerateShortId();
         assertTrue(IdDb.IsValidShortId(id));
@@ -35,7 +35,7 @@ public class IdDbTests {
 
     @Test
     public void TryAddId(){
-        var idDb = new IdDb(GetIdMaps());
+        var idDb = new IdDb(GetIdMaps(), null);
 
         var shortId = idDb.GenerateShortId();
         var longId = "this-is-long";

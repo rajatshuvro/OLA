@@ -112,6 +112,7 @@ public class Main {
     private static String BooksFileName = "Books.fob";
     private static String TransactionsFileName = "Transactions.fob";
     private static String CheckoutsFileName = "Checkouts.fob";
+    private static String IdMapsFileName = "IdMaps.fob";
 
     private static DataProvider Initialize(String[] args) {
         Options options = new Options();
@@ -160,6 +161,20 @@ public class Main {
                 var inputStream = new FileInputStream(checkoutFileName);
                 dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true));
             }
+
+            var idMapFileName =  DataDir+ File.separatorChar+IdMapsFileName;
+            if(FileUtilities.Exists(idMapFileName)){
+                var inputStream = new FileInputStream(idMapFileName);
+                dataProvider.AddIdMapDb(inputStream, new FileOutputStream(checkoutFileName,true));
+            }
+            var bookCount =0;
+            var sidCount =0;
+            for (var bookId: dataProvider.BookDb.GetIds()) {
+                bookCount++;
+                var shortId = dataProvider.IdDb.GenerateShortId();
+                if(dataProvider.IdDb.TryAdd(shortId, bookId)) sidCount++;
+            }
+            if (bookCount != sidCount) PrintUtilities.PrintWarningLine("Failed to create sid for all books");
             return dataProvider;
         }
         catch (ParseException | FileNotFoundException e) {

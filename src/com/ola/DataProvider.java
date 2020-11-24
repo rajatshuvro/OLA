@@ -8,10 +8,7 @@ import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
 import com.ola.databases.*;
 import com.ola.luceneIndex.ISearchDocument;
-import com.ola.parsers.BookParser;
-import com.ola.parsers.CheckoutParser;
-import com.ola.parsers.TransactionParser;
-import com.ola.parsers.UserParser;
+import com.ola.parsers.*;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 
@@ -21,21 +18,25 @@ import java.util.Calendar;
 
 public class DataProvider {
     public BookDb BookDb;
+    public IdDb IdDb;
     public UserDb UserDb;
     public CheckoutDb CheckoutDb;
     public TransactionDb TransactionDb;
 
     private BookParser _bookParser;
+    private IdMapParser _idMapParser;
     private UserParser _userParser;
     private TransactionParser _transactionParser;
 
     public final Appender Appender;
 
     private InputStream _bookInputStream;
+    private InputStream _idMapInputStream;
     private InputStream _userInputStream;
     private InputStream _transactionInputStream;
 
     private OutputStream _bookAppendStream;
+    private OutputStream _idMapAppendStream;
     private OutputStream _userAppendStream;
     private OutputStream _transactionAppendStream;
 
@@ -73,6 +74,11 @@ public class DataProvider {
     public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream) {
         var checkouts = DbUtilities.ReadCheckouts(inputStream);
         CheckoutDb = new CheckoutDb(checkouts, outputStream);
+    }
+
+    public void AddIdMapDb(InputStream inputStream, OutputStream outputStream){
+        var idMaps = DbUtilities.ReadIdMaps(inputStream);
+        IdDb = new IdDb(idMaps, outputStream);
     }
 
     public void Load() throws IOException{
@@ -153,6 +159,9 @@ public class DataProvider {
         _userAppendStream.close();
         _bookAppendStream.close();
         _transactionAppendStream.close();
+
+        CheckoutDb.Close();
+        IdDb.Close();
     }
 
     private static final int CheckoutDurationInDays = 14;
