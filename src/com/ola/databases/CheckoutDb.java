@@ -18,7 +18,13 @@ public class CheckoutDb {
     private boolean _hasReturns =false;
     public final int CheckoutLimit = 15;
 
-    public CheckoutDb(Iterable<Checkout> checkouts, OutputStream outputStream)  {
+    private UserDb _userDb;
+    private IdDb _idDb;
+
+    public CheckoutDb(Iterable<Checkout> checkouts, OutputStream outputStream, UserDb userDb, IdDb idDb)  {
+        _userDb = userDb;
+        _idDb = idDb;
+
         _outputStream = outputStream;
         _checkouts = new HashMap<>();
 
@@ -49,19 +55,20 @@ public class CheckoutDb {
         return checkouts;
     }
 
-    public boolean TryAdd(Checkout checkout, BookDb bookDb, UserDb userDb)  {
-        if(bookDb.GetBook(checkout.BookId)== null) {
+    public boolean TryAdd(Checkout checkout)  {
+        if(!_idDb.IsRecognizedId(checkout.BookId)) {
             PrintUtilities.PrintWarningLine("WARNING: Invalid book id:"+checkout.BookId+". Ignoring transaction.");
             return false;
         }
-        var user = userDb.ResolveUser(checkout.UserId, checkout.Email);
+        var bookId = IdDb.IsValidShortId(checkout.BookId)? _idDb.GetLongId(checkout.BookId): checkout.BookId;
+        var user = _userDb.ResolveUser(checkout.UserId, checkout.Email);
 
         if( user == null){
             PrintUtilities.PrintWarningLine("WARNING: Invalid user id:"+checkout.UserId+". Ignoring transaction.");
             return false;
         }
 
-        if(IsCheckedOut(checkout.BookId)) {
+        if(IsCheckedOut(bookId)) {
             PrintUtilities.PrintWarningLine("Can not checkout the same book twice:"+checkout.BookId);
             return false;
         }
@@ -72,7 +79,7 @@ public class CheckoutDb {
             PrintUtilities.PrintWarningLine("Checkout limit reached. Cannot issue more books to user id:"+checkout.UserId);
             return false;
         }
-        _checkouts.put(checkout.BookId, checkout);
+        _checkouts.put(bookId, checkout);
 
         return _appender == null? true: Append(checkout);
     }
@@ -91,14 +98,14 @@ public class CheckoutDb {
         return true;
     }
 
-    public int TryAddRange(Iterable<Checkout> checkouts, BookDb bookDb, UserDb userDb) {
+    public int TryAddRange(Iterable<Checkout> checkouts) {
         var count =0;
         if (_appender == null)
             PrintUtilities.PrintWarningLine("Checkout appender set to null. No entry was saved");
 
         for (var checkout:
              checkouts) {
-            if(TryAdd(checkout, bookDb, userDb)) count++;
+            if(TryAdd(checkout)) count++;
         }
         return count;
     }

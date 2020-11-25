@@ -159,7 +159,7 @@ public class Main {
             var checkoutFileName =  DataDir+ File.separatorChar+CheckoutsFileName;
             if(FileUtilities.Exists(checkoutFileName)){
                 var inputStream = new FileInputStream(checkoutFileName);
-                dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true));
+                dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true), dataProvider.UserDb, dataProvider.IdDb);
             }
 
             var idMapFileName =  DataDir+ File.separatorChar+IdMapsFileName;

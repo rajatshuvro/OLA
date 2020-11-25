@@ -96,4 +96,8 @@ public class IdDb {
         if(_appender != null)_appender.close();
         if(_outputStream != null) _outputStream.close();
     }
+
+    public boolean IsRecognizedId(String id) {
+        return _shortToLong.containsKey(id) || _longToShort.containsKey(id);
+    }
 }

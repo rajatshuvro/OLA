@@ -1,10 +1,7 @@
 package com.ola;
 
 import com.ola.dataStructures.Checkout;
-import com.ola.databases.BookDb;
-import com.ola.databases.CheckoutDb;
-import com.ola.databases.TransactionDb;
-import com.ola.databases.UserDb;
+import com.ola.databases.*;
 import com.ola.parsers.CheckoutCsvParser;
 import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
@@ -34,7 +31,7 @@ public class CheckOut {
         }
 
         var checkoutDb = dataProvider.CheckoutDb;
-        var bookDb = dataProvider.BookDb;
+        var idDb = dataProvider.IdDb;
         var userDb = dataProvider.UserDb;
         var transactionDb = dataProvider.TransactionDb;
         try {
@@ -54,7 +51,7 @@ public class CheckOut {
                     checkouts.add(new Checkout(checkout.BookId, resolvedUser.Id, resolvedUser.Email, checkout.CheckoutDate, checkout.DueDate));
                 }
 
-                var count = checkoutDb.TryAddRange(checkouts,bookDb, userDb);
+                var count = checkoutDb.TryAddRange(checkouts);
                 System.out.println("Number of successful checkouts: "+count);
 
                 //adding transactions for future records

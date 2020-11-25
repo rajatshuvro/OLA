@@ -71,9 +71,9 @@ public class DataProvider {
 
     }
 
-    public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream) {
+    public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream, UserDb userDb, IdDb idDb) {
         var checkouts = DbUtilities.ReadCheckouts(inputStream);
-        CheckoutDb = new CheckoutDb(checkouts, outputStream);
+        CheckoutDb = new CheckoutDb(checkouts, outputStream, userDb, idDb);
     }
 
     public void AddIdMapDb(InputStream inputStream, OutputStream outputStream){
