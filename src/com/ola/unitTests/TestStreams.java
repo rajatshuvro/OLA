@@ -40,6 +40,25 @@ public class TestStreams {
         }
         return null;
     }
+
+    public static InputStream GetReturnCsvStream_shortId() {
+        var memStream = new ByteArrayOutputStream();
+        var writer = new OutputStreamWriter(memStream);
+
+        try {
+            writer.write("\"Timestamp\",\"Username\",\"Book id\"\n");
+            writer.write("\"2020/09/30 9:29:20 AM MDT\",\"someone@email.com\",\"CAT12\"\n");
+            writer.write("\"2020/09/22 8:05:04 AM MDT\",\"someone@email.com\",\"BAT12\"\n");
+            writer.close();
+
+            var buffer = memStream.toByteArray();
+            memStream.close();
+            return new ByteArrayInputStream(buffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static InputStream GetNewUserCsvStream() throws IOException{
         var memStream = new ByteArrayOutputStream();
         var writer = new OutputStreamWriter(memStream);

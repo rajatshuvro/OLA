@@ -111,8 +111,9 @@ public class CheckoutDb {
     }
 
     public boolean Return (Return record){
-        if (_checkouts.containsKey(record.BookId)){
-            _checkouts.remove(record.BookId);
+        var bookId = IdDb.IsValidShortId(record.BookId)? _idDb.GetLongId(record.BookId): record.BookId;
+        if (_checkouts.containsKey(bookId)){
+            _checkouts.remove(bookId);
             _hasReturns = true;
             return true;
         }

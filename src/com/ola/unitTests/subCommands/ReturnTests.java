@@ -109,6 +109,17 @@ public class ReturnTests {
         }
 
         assertFalse(checkoutDb.Return(new Return("1234567-(3)", TimeUtilities.GetCurrentTime())));
+    }
+
+    @Test
+    public void Bulk_return_shortId(){
+        var csvParser = new ReturnCsvParser(TestStreams.GetReturnCsvStream_shortId());
+        var checkoutDb = new CheckoutDb(GetCheckouts(), null, GetUserDb(), GetIdDb());
+
+        for (var returnRecord: csvParser.GetReturnes()) {
+            assertTrue(checkoutDb.Return(returnRecord));
+        }
+        assertFalse(checkoutDb.Return(new Return("1234567-(3)", TimeUtilities.GetCurrentTime())));
 
     }
 

@@ -1,5 +1,6 @@
 package com.ola.dataStructures;
 
+import com.ola.databases.IdDb;
 import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
@@ -44,6 +45,7 @@ public class Book implements Comparable<Book>, ISearchDocument {
     }
     //if a user friendly bookId is provided, it needs to be reduced to isbn-(copy num) format
     public static String GetReducedId(String bookId) {
+        if(IdDb.IsValidShortId(bookId)) return bookId;
         var splits = bookId.split("-");
         if (splits.length == 2) return bookId;
         else return splits[0]+'-'+splits[splits.length-1];
