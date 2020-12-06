@@ -1,6 +1,4 @@
 package com.ola;
-import com.ola.databases.CheckoutDb;
-import com.ola.parsers.CheckoutCsvParser;
 import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
@@ -16,7 +14,7 @@ public class Main {
 
         DataProvider dataProvider = Initialize(args);
         if(dataProvider == null) return;
-        dataProvider.Load();
+        //dataProvider.Load();
         PrintUtilities.PrintBanner();
         PrintUtilities.PrintSuccessLine("Welcome to Onkur Library Application");
 
@@ -43,7 +41,7 @@ public class Main {
                     AddUser.Run(subArgs, dataProvider);
                     break;
                 case "co":
-                    CheckOut.Run(subArgs, dataProvider);
+                    CheckoutMain.Run(subArgs, dataProvider);
                     break;
                 case "ret":
                     var checkoutFilePath =  DataDir+ File.separatorChar+CheckoutsFileName;
@@ -156,17 +154,19 @@ public class Main {
                     new FileOutputStream(bookFileName, true),
                     new FileOutputStream(userFileName, true));
 
+            var idMapFileName =  DataDir+ File.separatorChar+IdMapsFileName;
+            if(FileUtilities.Exists(idMapFileName)){
+                var inputStream = new FileInputStream(idMapFileName);
+                dataProvider.AddIdMapDb(inputStream, new FileOutputStream(idMapFileName,true));
+            }
+
             var checkoutFileName =  DataDir+ File.separatorChar+CheckoutsFileName;
             if(FileUtilities.Exists(checkoutFileName)){
                 var inputStream = new FileInputStream(checkoutFileName);
                 dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true), dataProvider.UserDb, dataProvider.IdDb);
             }
 
-            var idMapFileName =  DataDir+ File.separatorChar+IdMapsFileName;
-            if(FileUtilities.Exists(idMapFileName)){
-                var inputStream = new FileInputStream(idMapFileName);
-                dataProvider.AddIdMapDb(inputStream, new FileOutputStream(idMapFileName,true));
-            }
+
 //            var bookCount =0;
 //            var sidCount =0;
 //            dataProvider.Load();

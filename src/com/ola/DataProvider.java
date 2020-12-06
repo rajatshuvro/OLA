@@ -69,6 +69,12 @@ public class DataProvider {
         _userParser = new UserParser(userInputStream);
         _transactionParser = new TransactionParser(transactionInputStream);
 
+
+        try {
+            Load();
+        } catch (IOException e) {
+            PrintUtilities.PrintErrorLine("Failed to load data provider");
+        }
     }
 
     public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream, UserDb userDb, IdDb idDb) {

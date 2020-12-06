@@ -1,15 +1,11 @@
 package com.ola.unitTests.subCommands;
 
-import com.ola.Appender;
-import com.ola.CheckOut;
 import com.ola.dataStructures.*;
 import com.ola.databases.*;
 import com.ola.utilities.TimeUtilities;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
 import java.io.ByteArrayOutputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;

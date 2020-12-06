@@ -25,7 +25,7 @@ public class Checkout {
                 "Book Id:        "+ BookId+'\n'+
                 "User Id:        "+ UserId+'\n'+
                 "Checkout Date:  "+ TimeUtilities.ToString(CheckoutDate)+'\n'+
-                "Due Date:       "+TimeUtilities.ToString(DueDate)+'\n';
+                "Due Date:       "+TimeUtilities.ToString(DueDate);
 
     }
 }

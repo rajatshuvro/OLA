@@ -1,9 +1,6 @@
 package com.ola.unitTests.databases;
 
-import com.ola.CheckOut;
 import com.ola.DataProvider;
-import com.ola.Return;
-import com.ola.dataStructures.Transaction;
 import com.ola.unitTests.TestStreams;
 import org.junit.jupiter.api.Test;
 

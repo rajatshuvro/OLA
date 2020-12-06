@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class CheckOut {
+public class CheckoutMain {
     private static String commandSyntax = "co -f [csv file path]";
     public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
@@ -48,11 +48,12 @@ public class CheckOut {
                 // resolve unknown users
                 for (var checkout : csvParser.GetCheckouts()) {
                     var resolvedUser = userDb.ResolveUser(checkout.UserId, checkout.Email);
+                    var bookId = IdDb.IsValidShortId(checkout.BookId)? idDb.GetLongId(checkout.BookId): checkout.BookId;
                     if (resolvedUser == null){
                         PrintUtilities.PrintErrorLine("Failed to resolve user, skipping checkout for book:"+checkout.BookId);
                         continue;
                     }
-                    checkouts.add(new Checkout(checkout.BookId, resolvedUser.Id, resolvedUser.Email, checkout.CheckoutDate, checkout.DueDate));
+                    checkouts.add(new Checkout(bookId, resolvedUser.Id, resolvedUser.Email, checkout.CheckoutDate, checkout.DueDate));
                 }
 
                 var count = checkoutDb.TryAddRange(checkouts);
