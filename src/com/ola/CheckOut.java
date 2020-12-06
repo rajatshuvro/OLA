@@ -48,6 +48,10 @@ public class CheckOut {
                 // resolve unknown users
                 for (var checkout : csvParser.GetCheckouts()) {
                     var resolvedUser = userDb.ResolveUser(checkout.UserId, checkout.Email);
+                    if (resolvedUser == null){
+                        PrintUtilities.PrintErrorLine("Failed to resolve user, skipping checkout for book:"+checkout.BookId);
+                        continue;
+                    }
                     checkouts.add(new Checkout(checkout.BookId, resolvedUser.Id, resolvedUser.Email, checkout.CheckoutDate, checkout.DueDate));
                 }
 

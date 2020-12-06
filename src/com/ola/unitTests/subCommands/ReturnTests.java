@@ -120,7 +120,6 @@ public class ReturnTests {
             assertTrue(checkoutDb.Return(returnRecord));
         }
         assertFalse(checkoutDb.Return(new Return("1234567-(3)", TimeUtilities.GetCurrentTime())));
-
     }
 
     @Test
