@@ -170,17 +170,17 @@ public class Main {
                 dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true), dataProvider.UserDb, dataProvider.IdDb);
             }
 
-            var newBooks = new ArrayList<Book>();
-            for (var book: dataProvider.BookDb.GetAllBooks()) {
-                var shortIdDb = new IdDb(null, null);
-                book.ShortId = shortIdDb.GenerateShortId();
-                newBooks.add(book);
-            }
-            for (var book:newBooks
-                 ) {
-                PrintUtilities.PrintLine(book.toString());
-                PrintUtilities.PrintLine(FlatObjectParser.RecordSeparator);
-            }
+//            var newBooks = new ArrayList<Book>();
+//            for (var book: dataProvider.BookDb.GetAllBooks()) {
+//                var shortIdDb = new IdDb(null, null);
+//                book.ShortId = shortIdDb.GenerateShortId();
+//                newBooks.add(book);
+//            }
+//            for (var book:newBooks
+//                 ) {
+//                PrintUtilities.PrintLine(book.toString());
+//                PrintUtilities.PrintLine(FlatObjectParser.RecordSeparator);
+//            }
 
             return dataProvider;
         }

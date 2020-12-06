@@ -77,10 +77,10 @@ public class TestStreams {
         var memStream = new ByteArrayOutputStream();
         var writer = new OutputStreamWriter(memStream);
 
-        writer.write("\"Timestamp\",\"ISBN\",\"Title\",\"Author\",\"Publisher\",\"Year\",\"Summary\",\"Genre\",\"Reading level\",\"Page count\",\"Price\"\n");
-        writer.write("\"2020/01/31 3:45:48 PM PST\",\"\",\"Golper Asor (4)\",\"Brac\",\"Brac\",\"2017\",\"Koto boro shalgom\",\"General\",\"4\",\"10\",\"5\"\n");
-        writer.write("\"2020/01/31 3:54:45 PM PST\",\"\",\"Golper Asor (2)\",\"Brac\",\"Brac\",\"2017\",\"Bera O chagol \",\"General\",\"2\",\"10\",\"5\"\n");
-        writer.write("\"2020/01/25 7:01:51 PM PST\",\"\",\"Pani\",\"Md.shah alam\",\"Sisemi workshop \",\"2013\",\"\",\"Science\",\"5\",\"10\",\"5\"\n");
+        writer.write("\"Timestamp\",\"ISBN\",\"Title\",\"Author\",\"Publisher\",\"Year\",\"Genre\",\"Reading level\",\"Page count\",\"Price\"\n");
+        writer.write("\"2020/01/31 3:45:48 PM PST\",\"\",\"Golper Asor (4)\",\"Brac\",\"Brac\",\"2017\",\"General\",\"4\",\"10\",\"5\"\n");
+        writer.write("\"2020/01/31 3:54:45 PM PST\",\"\",\"Golper Asor (2)\",\"Brac\",\"Brac\",\"2017\",\"General\",\"2\",\"10\",\"5\"\n");
+        writer.write("\"2020/01/25 7:01:51 PM PST\",\"\",\"Pani\",\"Md.shah alam\",\"Sisemi workshop \",\"2013\",\"Science\",\"5\",\"10\",\"5\"\n");
         writer.close();
 
         var buffer = memStream.toByteArray();
@@ -253,7 +253,7 @@ public class TestStreams {
         writer.write("Reading level:\t4\n");
         writer.write("Entry date:\t\t2018-05-17 11:35:06\n");
         writer.write("Expiry date:\t2018-11-10 11:35:34\n");
-        writer.write("Summary:\tLittle girl describes her daddy\n");
+        writer.write("ShortId:\tLILDD\n");
         writer.write(FlatObjectParser.RecordSeparator+"\n");
         writer.write("Title:\t\t\tAmar Baba\n");
         writer.write("Author:\t\t\tRajat Shuvro Roy\n");

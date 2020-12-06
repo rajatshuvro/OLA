@@ -21,7 +21,7 @@ public class Book implements Comparable<Book>, ISearchDocument {
     public final int PageCount;
     public final float Price;
     public final String Genre;
-    public String ShortId;
+    public final String ShortId;
     public final int ReadingLevel;
     public final Date EntryDate;
     public final Date ExpiryDate;
@@ -64,14 +64,6 @@ public class Book implements Comparable<Book>, ISearchDocument {
 
         var isbnString = bookId.split("-")[0];
         return ParserUtilities.ParseULong(isbnString);
-    }
-
-    public boolean SetSummary(String s){
-        if(ParserUtilities.IsNullOrEmpty(ShortId)) {
-            ShortId =s;
-            return true;
-        }
-        return false;
     }
 
     public static Book Create(long isbn, String author, String title, String publisher, int year, int pageCount,

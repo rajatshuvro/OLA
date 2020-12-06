@@ -24,7 +24,7 @@ public class BookParser {
     private final String YearTag = "Year";
     private final String EntryDateTag = "Entry date";
     private final String ExpiryDateTag = "Expiry date";
-    private final String SummaryTag = "Summary";
+    private final String ShortIdTag = "ShortId";
 
     public BookParser(InputStream inputStream){
         _inputStream = inputStream;
@@ -34,7 +34,7 @@ public class BookParser {
         ArrayList<Book> books = new ArrayList<>();
         var fobParser = new FlatObjectParser(_inputStream, new String[]{
                 TitleTag, AuthorTag, IsbnTag, PageCountTag, PriceTag, PublisherTag, GenreTag, ReadingLevelTag,
-                CopyNumTag, YearTag, EntryDateTag, ExpiryDateTag, SummaryTag
+                CopyNumTag, YearTag, EntryDateTag, ExpiryDateTag, ShortIdTag
         });
 
         var record =fobParser.GetNextRecord();
@@ -52,7 +52,7 @@ public class BookParser {
         var author      = record.get(AuthorTag);
         long isbn       = ParserUtilities.ParseIsbn(record.get(IsbnTag));
         var publisher   = record.get(PublisherTag);
-        var summary     = record.get(SummaryTag);
+        var shortId     = record.get(ShortIdTag);
         var year        = ParserUtilities.ParseUInt(record.get(YearTag));
         var genre       = record.get(GenreTag);
         var readingLevel = ParserUtilities.ParseUInt(record.get(ReadingLevelTag));
@@ -69,7 +69,7 @@ public class BookParser {
             System.out.println("Generating ISBN for Title:"+title+"..."+ isbn);
         }
         return Book.Create(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNumber,
-                    entryDate, expiryDate, summary);
+                    entryDate, expiryDate, shortId);
 
     }
 

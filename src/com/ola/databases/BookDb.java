@@ -64,6 +64,14 @@ public class BookDb {
         return books;
     }
 
+    public ArrayList<String> GetAllShortIds(){
+        var sids = new ArrayList<String>();
+        for (var book: _books.values()) {
+            if(!ParserUtilities.IsNullOrEmpty(book.ShortId)) sids.add(book.ShortId);
+        }
+        return sids;
+    }
+
     // get the new copy number for a given isbn. e.g. if the latest copy in the db has copy# 4, this will return 4
     //if book doesn't exist return 0.
     public int GetCopyCount(long isbn){
