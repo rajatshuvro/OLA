@@ -141,8 +141,7 @@ public class CheckoutDb {
 
         }
         writer.write(FlatObjectParser.RecordSeparator+"\n");
-        for (var checkout:
-                _checkouts.values()) {
+        for (var checkout: _checkouts.values()) {
             writer.write(checkout.toString()+'\n');
             writer.write(FlatObjectParser.RecordSeparator+"\n");
         }
