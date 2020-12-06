@@ -1,7 +1,6 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Book;
-import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
@@ -115,7 +114,7 @@ public class BookDb {
             //this is the first copy of this book
             return Book.Create(book.Isbn, book.Author, book.Title,
                     book.Publisher,book.Year, book.PageCount, book.Price,
-                    book.Genre, book.ReadingLevel, copyNum, date, null, book.Summary );
+                    book.Genre, book.ReadingLevel, copyNum, date, null, book.ShortId);
         }
         boolean hasGeneratedIsbn = IsGeneratedIsbn(book.Isbn);
 

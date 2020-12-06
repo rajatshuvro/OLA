@@ -17,7 +17,6 @@ public class CheckoutStatusTests {
         var args = new String[]{"status","-u","897"};
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
-        provider.Load();
         //just run it to make sure it doesn't crash
         assertEquals(0, CheckoutStatus.Run(args, provider));
     }
@@ -27,7 +26,6 @@ public class CheckoutStatusTests {
         var args = new String[]{"status","-b","7890788-(2)"};
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
-        provider.Load();
         //just run it to make sure it doesn't crash
         assertEquals(0, CheckoutStatus.Run(args, provider));
 
@@ -38,7 +36,6 @@ public class CheckoutStatusTests {
         var args = new String[]{"status","-b","7890788"};
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
-        provider.Load();
         //just run it to make sure it doesn't crash
         assertEquals(0, CheckoutStatus.Run(args, provider));
     }
@@ -48,7 +45,6 @@ public class CheckoutStatusTests {
         var args = new String[]{"status"};
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
-        provider.Load();
         //just run it to make sure it doesn't crash
         assertEquals(0, CheckoutStatus.Run(args, provider));
     }

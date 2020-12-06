@@ -19,7 +19,7 @@ public class BookParserTests {
         var books = bookParser.GetBooks();
         var count = books.size();
         assertEquals(4, count);
-        assertEquals("Little girl describes her daddy", books.get(0).Summary);
+        assertEquals("Little girl describes her daddy", books.get(0).ShortId);
         assertNull(books.get(2).ExpiryDate);
     }
 

@@ -87,7 +87,7 @@ public class DataProvider {
         IdDb = new IdDb(idMaps, outputStream);
     }
 
-    public void Load() throws IOException{
+    private void Load() throws IOException{
         BookDb = new BookDb(_bookParser.GetBooks());
         UserDb = new UserDb(_userParser.GetUsers());
         TransactionDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb, BookDb, Appender);

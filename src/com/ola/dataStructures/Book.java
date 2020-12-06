@@ -21,14 +21,14 @@ public class Book implements Comparable<Book>, ISearchDocument {
     public final int PageCount;
     public final float Price;
     public final String Genre;
-    public String Summary;
+    public String ShortId;
     public final int ReadingLevel;
     public final Date EntryDate;
     public final Date ExpiryDate;
 
     private Book(long isbn, String author, String title, String publisher, int year, int pageCount,
                 float price, String genre, int readingLevel, int copyNum,
-                Date entryDate, Date expiryDate, String summary){
+                Date entryDate, Date expiryDate, String shortId){
         Isbn = isbn;
         Author = author;
         Title = title;
@@ -41,7 +41,7 @@ public class Book implements Comparable<Book>, ISearchDocument {
         ReadingLevel = readingLevel;
         EntryDate = entryDate;
         ExpiryDate = expiryDate;
-        Summary = summary == null ? "" : summary;
+        ShortId = shortId == null ? "" : shortId;
     }
     //if a user friendly bookId is provided, it needs to be reduced to isbn-(copy num) format
     public static String GetReducedId(String bookId) {
@@ -67,8 +67,8 @@ public class Book implements Comparable<Book>, ISearchDocument {
     }
 
     public boolean SetSummary(String s){
-        if(ParserUtilities.IsNullOrEmpty(Summary)) {
-            Summary=s;
+        if(ParserUtilities.IsNullOrEmpty(ShortId)) {
+            ShortId =s;
             return true;
         }
         return false;
@@ -165,7 +165,7 @@ public class Book implements Comparable<Book>, ISearchDocument {
                 "Reading level:   "+ReadingLevel+'\n'+
                 "Entry date:      "+ TimeUtilities.ToString(EntryDate)+'\n'+
                 "Expiry date:     "+ TimeUtilities.ToString(ExpiryDate)+'\n'+
-                "Summary:         "+ Summary;
+                "ShortId:         "+ ShortId;
 
     }
 
@@ -182,7 +182,7 @@ public class Book implements Comparable<Book>, ISearchDocument {
                 ReadingLevel+'\n'+
                 TimeUtilities.ToString(EntryDate)+'\n'+
                 TimeUtilities.ToString(ExpiryDate)+'\n'+
-                Summary;
+                ShortId;
     }
 
     public String ToCsvString(){
@@ -192,7 +192,7 @@ public class Book implements Comparable<Book>, ISearchDocument {
                 "\""+Author+"\"," +
                 "\""+Publisher+"\"," +
                 "\""+Year+"\"," +
-                "\""+Summary+"\"," +
+                "\""+ ShortId +"\"," +
                 "\""+Genre+"\"," +
                 "\""+ReadingLevel+"\"," +
                 "\""+PageCount+"\"," +

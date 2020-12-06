@@ -1,10 +1,14 @@
 package com.ola;
+import com.ola.dataStructures.Book;
+import com.ola.databases.IdDb;
+import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -166,16 +170,18 @@ public class Main {
                 dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true), dataProvider.UserDb, dataProvider.IdDb);
             }
 
+            var newBooks = new ArrayList<Book>();
+            for (var book: dataProvider.BookDb.GetAllBooks()) {
+                var shortIdDb = new IdDb(null, null);
+                book.ShortId = shortIdDb.GenerateShortId();
+                newBooks.add(book);
+            }
+            for (var book:newBooks
+                 ) {
+                PrintUtilities.PrintLine(book.toString());
+                PrintUtilities.PrintLine(FlatObjectParser.RecordSeparator);
+            }
 
-//            var bookCount =0;
-//            var sidCount =0;
-//            dataProvider.Load();
-//            for (var bookId: dataProvider.BookDb.GetIds()) {
-//                bookCount++;
-//                var shortId = dataProvider.IdDb.GenerateShortId();
-//                if(dataProvider.IdDb.TryAdd(shortId, bookId)) sidCount++;
-//            }
-//            if (bookCount != sidCount) PrintUtilities.PrintWarningLine("Failed to create sid for all books");
             return dataProvider;
         }
         catch (ParseException | FileNotFoundException e) {
