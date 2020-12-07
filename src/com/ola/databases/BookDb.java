@@ -1,14 +1,17 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Book;
+import com.ola.dataStructures.IdMap;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class BookDb {
     private HashMap<String, Book> _books;
+    private IdDb _idDbb;
     private HashMap<Long, Integer> _latestCopyNumbers;
     private ArrayList<Book> _newBooks;
 
@@ -29,16 +32,23 @@ public class BookDb {
         _books = new HashMap<>();
         _newBooks = new ArrayList<>();
         _latestCopyNumbers = new HashMap<>();
+        var idMaps = new ArrayList<IdMap>();
+
         for(Book book: books){
             var id = book.GetId();
             if (_books.containsKey(id)) throw new DataValidationException("Duplicate book id:"+ id);
             _books.put(book.GetId(), book);
+            idMaps.add(new IdMap(book.ShortId, book.GetId()));
             UpdateLatestCopyNum(book);
         }
-
+        _idDbb = new IdDb(idMaps, null);
     }
 
     public Book GetBook(String id){
+        if (IdDb.IsValidShortId(id)) {
+            if (_idDbb.IsRecognizedId(id)) id = _idDbb.GetLongId(id);
+            else return null;
+        }
         if(! IsValidId(id)){
             PrintUtilities.PrintWarningLine("Invalid book id. Book id format: ISBN-(copy_number). e.g. 123456789-(2)");
             return null;
@@ -64,7 +74,7 @@ public class BookDb {
         return books;
     }
 
-    public ArrayList<String> GetAllShortIds(){
+    private ArrayList<String> GetAllShortIds(){
         var sids = new ArrayList<String>();
         for (var book: _books.values()) {
             if(!ParserUtilities.IsNullOrEmpty(book.ShortId)) sids.add(book.ShortId);

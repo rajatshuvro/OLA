@@ -2,14 +2,12 @@ package com.ola.databases;
 
 import com.ola.dataStructures.Checkout;
 import com.ola.dataStructures.Return;
-import com.ola.dataStructures.User;
 import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.PrintUtilities;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class CheckoutDb {
     private final BufferedWriter _appender;
@@ -19,11 +17,11 @@ public class CheckoutDb {
     public final int CheckoutLimit = 15;
 
     private UserDb _userDb;
-    private IdDb _idDb;
+    private BookDb _bookDb;
 
-    public CheckoutDb(Iterable<Checkout> checkouts, OutputStream outputStream, UserDb userDb, IdDb idDb)  {
+    public CheckoutDb(Iterable<Checkout> checkouts, OutputStream outputStream, UserDb userDb, BookDb idDb)  {
         _userDb = userDb;
-        _idDb = idDb;
+        _bookDb = idDb;
 
         _outputStream = outputStream;
         _checkouts = new HashMap<>();
@@ -56,11 +54,11 @@ public class CheckoutDb {
     }
 
     public boolean TryAdd(Checkout checkout)  {
-        if(!_idDb.IsRecognizedId(checkout.BookId)) {
+        var book =_bookDb.GetBook(checkout.BookId);
+        if( book == null) {
             PrintUtilities.PrintWarningLine("WARNING: Invalid book id:"+checkout.BookId+". Ignoring transaction.");
             return false;
         }
-        var bookId = IdDb.IsValidShortId(checkout.BookId)? _idDb.GetLongId(checkout.BookId): checkout.BookId;
         var user = _userDb.ResolveUser(checkout.UserId, checkout.Email);
 
         if( user == null){
@@ -68,6 +66,7 @@ public class CheckoutDb {
             return false;
         }
 
+        var bookId = book.GetId();
         if(IsCheckedOut(bookId)) {
             PrintUtilities.PrintWarningLine("Can not checkout the same book twice:"+checkout.BookId);
             return false;
@@ -111,7 +110,10 @@ public class CheckoutDb {
     }
 
     public boolean Return (Return record){
-        var bookId = IdDb.IsValidShortId(record.BookId)? _idDb.GetLongId(record.BookId): record.BookId;
+        var book = _bookDb.GetBook(record.BookId);
+        if (book == null) return false;
+
+        var bookId = book.GetId();
         if (_checkouts.containsKey(bookId)){
             _checkouts.remove(bookId);
             _hasReturns = true;

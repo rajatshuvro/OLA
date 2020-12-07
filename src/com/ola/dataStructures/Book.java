@@ -68,13 +68,13 @@ public class Book implements Comparable<Book>, ISearchDocument {
 
     public static Book Create(long isbn, String author, String title, String publisher, int year, int pageCount,
                               float price, String genre, int readingLevel, int copyNum,
-                              Date entryDate, Date expiryDate, String summary)
+                              Date entryDate, Date expiryDate, String shortId)
     {
         if(!IsValid(isbn, author,title, publisher, year, pageCount, price, genre, readingLevel, copyNum)) return null;
 
         return new Book(isbn, author, title, publisher, year, pageCount,
                         price, genre, readingLevel, copyNum,
-                        entryDate, expiryDate, summary);
+                        entryDate, expiryDate, shortId);
     }
     private static boolean IsValid(long isbn, String author, String title, String publisher, int year,
                                   int pageCount, float price, String genre, int readingLevel, int copyNumber) {

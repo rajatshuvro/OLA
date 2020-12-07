@@ -77,9 +77,9 @@ public class DataProvider {
         }
     }
 
-    public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream, UserDb userDb, IdDb idDb) {
+    public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream, UserDb userDb, BookDb bookDb) {
         var checkouts = DbUtilities.ReadCheckouts(inputStream);
-        CheckoutDb = new CheckoutDb(checkouts, outputStream, userDb, idDb);
+        CheckoutDb = new CheckoutDb(checkouts, outputStream, userDb, bookDb);
     }
 
     public void AddIdMapDb(InputStream inputStream, OutputStream outputStream){
@@ -117,6 +117,7 @@ public class DataProvider {
     public int AddBooks(ArrayList<Book> books) throws IOException {
         var count=0;
         for (Book book: books) {
+            if (ParserUtilities.IsNullOrEmpty(book.ShortId))
             var displayId = BookDb.Add(book);
             if(displayId!=null) {
                 PrintUtilities.PrintSuccessLine("New book added: "+displayId);

@@ -158,16 +158,10 @@ public class Main {
                     new FileOutputStream(bookFileName, true),
                     new FileOutputStream(userFileName, true));
 
-            var idMapFileName =  DataDir+ File.separatorChar+IdMapsFileName;
-            if(FileUtilities.Exists(idMapFileName)){
-                var inputStream = new FileInputStream(idMapFileName);
-                dataProvider.AddIdMapDb(inputStream, new FileOutputStream(idMapFileName,true));
-            }
-
             var checkoutFileName =  DataDir+ File.separatorChar+CheckoutsFileName;
             if(FileUtilities.Exists(checkoutFileName)){
                 var inputStream = new FileInputStream(checkoutFileName);
-                dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true), dataProvider.UserDb, dataProvider.IdDb);
+                dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true), dataProvider.UserDb, dataProvider.BookDb);
             }
 
 //            var newBooks = new ArrayList<Book>();
