@@ -18,25 +18,21 @@ import java.util.Calendar;
 
 public class DataProvider {
     public BookDb BookDb;
-    public IdDb IdDb;
     public UserDb UserDb;
     public CheckoutDb CheckoutDb;
     public TransactionDb TransactionDb;
 
     private BookParser _bookParser;
-    private IdMapParser _idMapParser;
     private UserParser _userParser;
     private TransactionParser _transactionParser;
 
     public final Appender Appender;
 
     private InputStream _bookInputStream;
-    private InputStream _idMapInputStream;
     private InputStream _userInputStream;
     private InputStream _transactionInputStream;
 
     private OutputStream _bookAppendStream;
-    private OutputStream _idMapAppendStream;
     private OutputStream _userAppendStream;
     private OutputStream _transactionAppendStream;
 
@@ -82,11 +78,6 @@ public class DataProvider {
         CheckoutDb = new CheckoutDb(checkouts, outputStream, userDb, bookDb);
     }
 
-    public void AddIdMapDb(InputStream inputStream, OutputStream outputStream){
-        var idMaps = DbUtilities.ReadIdMaps(inputStream);
-        IdDb = new IdDb(idMaps, outputStream);
-    }
-
     private void Load() throws IOException{
         BookDb = new BookDb(_bookParser.GetBooks());
         UserDb = new UserDb(_userParser.GetUsers());
@@ -117,7 +108,6 @@ public class DataProvider {
     public int AddBooks(ArrayList<Book> books) throws IOException {
         var count=0;
         for (Book book: books) {
-            if (ParserUtilities.IsNullOrEmpty(book.ShortId))
             var displayId = BookDb.Add(book);
             if(displayId!=null) {
                 PrintUtilities.PrintSuccessLine("New book added: "+displayId);
@@ -168,7 +158,6 @@ public class DataProvider {
         _transactionAppendStream.close();
 
         CheckoutDb.Close();
-        IdDb.Close();
     }
 
     private static final int CheckoutDurationInDays = 14;

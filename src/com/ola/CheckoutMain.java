@@ -31,7 +31,6 @@ public class CheckoutMain {
         }
 
         var checkoutDb = dataProvider.CheckoutDb;
-        var idDb = dataProvider.IdDb;
         var userDb = dataProvider.UserDb;
         var transactionDb = dataProvider.TransactionDb;
         try {
@@ -48,12 +47,11 @@ public class CheckoutMain {
                 // resolve unknown users
                 for (var checkout : csvParser.GetCheckouts()) {
                     var resolvedUser = userDb.ResolveUser(checkout.UserId, checkout.Email);
-                    var bookId = IdDb.IsValidShortId(checkout.BookId)? idDb.GetLongId(checkout.BookId): checkout.BookId;
                     if (resolvedUser == null){
                         PrintUtilities.PrintErrorLine("Failed to resolve user, skipping checkout for book:"+checkout.BookId);
                         continue;
                     }
-                    checkouts.add(new Checkout(bookId, resolvedUser.Id, resolvedUser.Email, checkout.CheckoutDate, checkout.DueDate));
+                    checkouts.add(new Checkout(checkout.BookId, resolvedUser.Id, resolvedUser.Email, checkout.CheckoutDate, checkout.DueDate));
                 }
 
                 var count = checkoutDb.TryAddRange(checkouts);

@@ -125,6 +125,9 @@ public class BookDb {
         var copyNum = GetCopyCount(book.Isbn) + 1;
         Date date = new Date(System.currentTimeMillis());
 
+        //add short id to book if absent
+        var shortId = ParserUtilities.IsNullOrEmpty(book.ShortId)? _idDbb.GenerateShortId(): book.ShortId;
+
         //getting canonical id (id for the first copy of this book)
         var canonicalId = Book.GenerateId(book.Isbn, 1);
         var canon = _books.get(canonicalId);
@@ -132,7 +135,7 @@ public class BookDb {
             //this is the first copy of this book
             return Book.Create(book.Isbn, book.Author, book.Title,
                     book.Publisher,book.Year, book.PageCount, book.Price,
-                    book.Genre, book.ReadingLevel, copyNum, date, null, book.ShortId);
+                    book.Genre, book.ReadingLevel, copyNum, date, null, shortId);
         }
         boolean hasGeneratedIsbn = IsGeneratedIsbn(book.Isbn);
 
@@ -197,7 +200,7 @@ public class BookDb {
         }
         return Book.Create(book.Isbn, canon.Author, canon.Title,
                 canon.Publisher,canon.Year, canon.PageCount, canon.Price,
-                canon.Genre, canon.ReadingLevel, copyNum, date, null , null);
+                canon.Genre, canon.ReadingLevel, copyNum, date, null , shortId);
     }
 
     private boolean IsGeneratedIsbn(Long isbn) {
@@ -237,4 +240,5 @@ public class BookDb {
         var booksByGenre = FilterByGenre(allBooks, genre);
         return FilterByLevel(booksByGenre, level);
     }
+
 }

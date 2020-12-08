@@ -21,7 +21,7 @@ public class Book implements Comparable<Book>, ISearchDocument {
     public final int PageCount;
     public final float Price;
     public final String Genre;
-    public final String ShortId;
+    public String ShortId;
     public final int ReadingLevel;
     public final Date EntryDate;
     public final Date ExpiryDate;
