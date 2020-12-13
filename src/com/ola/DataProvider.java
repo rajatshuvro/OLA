@@ -8,10 +8,7 @@ import com.ola.dataStructures.Transaction;
 import com.ola.dataStructures.User;
 import com.ola.databases.*;
 import com.ola.luceneIndex.ISearchDocument;
-import com.ola.parsers.BookParser;
-import com.ola.parsers.CheckoutParser;
-import com.ola.parsers.TransactionParser;
-import com.ola.parsers.UserParser;
+import com.ola.parsers.*;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 
@@ -68,14 +65,20 @@ public class DataProvider {
         _userParser = new UserParser(userInputStream);
         _transactionParser = new TransactionParser(transactionInputStream);
 
+
+        try {
+            Load();
+        } catch (IOException e) {
+            PrintUtilities.PrintErrorLine("Failed to load data provider");
+        }
     }
 
-    public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream) {
+    public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream, UserDb userDb, BookDb bookDb) {
         var checkouts = DbUtilities.ReadCheckouts(inputStream);
-        CheckoutDb = new CheckoutDb(checkouts, outputStream);
+        CheckoutDb = new CheckoutDb(checkouts, outputStream, userDb, bookDb);
     }
 
-    public void Load() throws IOException{
+    private void Load() throws IOException{
         BookDb = new BookDb(_bookParser.GetBooks());
         UserDb = new UserDb(_userParser.GetUsers());
         TransactionDb = new TransactionDb(_transactionParser.GetTransactions(), UserDb, BookDb, Appender);
@@ -153,6 +156,8 @@ public class DataProvider {
         _userAppendStream.close();
         _bookAppendStream.close();
         _transactionAppendStream.close();
+
+        CheckoutDb.Close();
     }
 
     private static final int CheckoutDurationInDays = 14;

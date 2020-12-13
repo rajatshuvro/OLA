@@ -1,15 +1,17 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Book;
-import com.ola.luceneIndex.ISearchDocument;
+import com.ola.dataStructures.IdMap;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class BookDb {
     private HashMap<String, Book> _books;
+    private IdDb _idDbb;
     private HashMap<Long, Integer> _latestCopyNumbers;
     private ArrayList<Book> _newBooks;
 
@@ -30,16 +32,23 @@ public class BookDb {
         _books = new HashMap<>();
         _newBooks = new ArrayList<>();
         _latestCopyNumbers = new HashMap<>();
+        var idMaps = new ArrayList<IdMap>();
+
         for(Book book: books){
             var id = book.GetId();
             if (_books.containsKey(id)) throw new DataValidationException("Duplicate book id:"+ id);
             _books.put(book.GetId(), book);
+            idMaps.add(new IdMap(book.ShortId, book.GetId()));
             UpdateLatestCopyNum(book);
         }
-
+        _idDbb = new IdDb(idMaps, null);
     }
 
     public Book GetBook(String id){
+        if (IdDb.IsValidShortId(id)) {
+            if (_idDbb.IsRecognizedId(id)) id = _idDbb.GetLongId(id);
+            else return null;
+        }
         if(! IsValidId(id)){
             PrintUtilities.PrintWarningLine("Invalid book id. Book id format: ISBN-(copy_number). e.g. 123456789-(2)");
             return null;
@@ -63,6 +72,14 @@ public class BookDb {
             if(book.Isbn== isbn) books.add(book);
         }
         return books;
+    }
+
+    private ArrayList<String> GetAllShortIds(){
+        var sids = new ArrayList<String>();
+        for (var book: _books.values()) {
+            if(!ParserUtilities.IsNullOrEmpty(book.ShortId)) sids.add(book.ShortId);
+        }
+        return sids;
     }
 
     // get the new copy number for a given isbn. e.g. if the latest copy in the db has copy# 4, this will return 4
@@ -108,6 +125,9 @@ public class BookDb {
         var copyNum = GetCopyCount(book.Isbn) + 1;
         Date date = new Date(System.currentTimeMillis());
 
+        //add short id to book if absent
+        var shortId = ParserUtilities.IsNullOrEmpty(book.ShortId)? _idDbb.GenerateShortId(): book.ShortId;
+
         //getting canonical id (id for the first copy of this book)
         var canonicalId = Book.GenerateId(book.Isbn, 1);
         var canon = _books.get(canonicalId);
@@ -115,7 +135,7 @@ public class BookDb {
             //this is the first copy of this book
             return Book.Create(book.Isbn, book.Author, book.Title,
                     book.Publisher,book.Year, book.PageCount, book.Price,
-                    book.Genre, book.ReadingLevel, copyNum, date, null, book.Summary );
+                    book.Genre, book.ReadingLevel, copyNum, date, null, shortId);
         }
         boolean hasGeneratedIsbn = IsGeneratedIsbn(book.Isbn);
 
@@ -180,7 +200,7 @@ public class BookDb {
         }
         return Book.Create(book.Isbn, canon.Author, canon.Title,
                 canon.Publisher,canon.Year, canon.PageCount, canon.Price,
-                canon.Genre, canon.ReadingLevel, copyNum, date, null , null);
+                canon.Genre, canon.ReadingLevel, copyNum, date, null , shortId);
     }
 
     private boolean IsGeneratedIsbn(Long isbn) {
@@ -220,4 +240,5 @@ public class BookDb {
         var booksByGenre = FilterByGenre(allBooks, genre);
         return FilterByLevel(booksByGenre, level);
     }
+
 }

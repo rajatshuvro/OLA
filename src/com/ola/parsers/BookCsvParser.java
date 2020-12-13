@@ -22,7 +22,6 @@ public class BookCsvParser {
     private final String GenreTag = "Genre";
     private final String ReadingLevelTag = "Reading level";
     private final String YearTag = "Year";
-    private final String SummaryTag = "Summary";
 
     public BookCsvParser(InputStream stream){
         _reader = new InputStreamReader(stream);
@@ -35,7 +34,7 @@ public class BookCsvParser {
     public ArrayList<Book> GetBooks() throws IOException {
         var books = new ArrayList<Book>();
         Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader(TimeTag, IsbnTag,TitleTag, AuthorTag, PublisherTag,
-                YearTag, SummaryTag, GenreTag, ReadingLevelTag, PageCountTag, PriceTag).parse(_reader);
+                YearTag, GenreTag, ReadingLevelTag, PageCountTag, PriceTag).parse(_reader);
         var isHeaderRecord = true;
         for (CSVRecord record : records) {
             //the first line is also reported as entry. We need to skip it
@@ -49,7 +48,6 @@ public class BookCsvParser {
             String author = record.get(AuthorTag).trim();
             String publisher = record.get(PublisherTag).trim();
             int year = ParserUtilities.ParseUInt(record.get(YearTag));
-            var summary = record.get(SummaryTag).trim();
             var genre = record.get(GenreTag).trim();
             var readingLevel = ParserUtilities.ParseUInt(record.get(ReadingLevelTag));
             int pageCount = ParserUtilities.ParseUInt(record.get(PageCountTag));
@@ -68,7 +66,6 @@ public class BookCsvParser {
                 PrintUtilities.PrintWarningLine("Unable to import:"+title);
                 continue;
             }
-            book.SetSummary(summary);
             books.add(book);
         }
         return books;

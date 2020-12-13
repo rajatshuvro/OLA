@@ -1,8 +1,8 @@
 package com.ola.databases;
 
 import com.ola.dataStructures.Checkout;
-import com.ola.parsers.CheckoutCsvParser;
 import com.ola.parsers.CheckoutParser;
+import com.ola.utilities.PrintUtilities;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,11 +18,12 @@ public class DbUtilities {
                 inputStream.close();
                 return checkouts;
             } catch (IOException e) {
-                System.out.println("Error reading checkout file");
+                PrintUtilities.PrintWarningLine("Error reading checkout file");
                 return null;
             }
 
         }
         return null;
     }
+
 }

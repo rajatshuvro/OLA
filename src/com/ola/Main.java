@@ -1,12 +1,14 @@
 package com.ola;
-import com.ola.databases.CheckoutDb;
-import com.ola.parsers.CheckoutCsvParser;
+import com.ola.dataStructures.Book;
+import com.ola.databases.IdDb;
+import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +18,7 @@ public class Main {
 
         DataProvider dataProvider = Initialize(args);
         if(dataProvider == null) return;
-        dataProvider.Load();
+        //dataProvider.Load();
         PrintUtilities.PrintBanner();
         PrintUtilities.PrintSuccessLine("Welcome to Onkur Library Application");
 
@@ -43,7 +45,7 @@ public class Main {
                     AddUser.Run(subArgs, dataProvider);
                     break;
                 case "co":
-                    CheckOut.Run(subArgs, dataProvider);
+                    CheckoutMain.Run(subArgs, dataProvider);
                     break;
                 case "ret":
                     var checkoutFilePath =  DataDir+ File.separatorChar+CheckoutsFileName;
@@ -112,6 +114,7 @@ public class Main {
     private static String BooksFileName = "Books.fob";
     private static String TransactionsFileName = "Transactions.fob";
     private static String CheckoutsFileName = "Checkouts.fob";
+    private static String IdMapsFileName = "IdMaps.fob";
 
     private static DataProvider Initialize(String[] args) {
         Options options = new Options();
@@ -158,8 +161,21 @@ public class Main {
             var checkoutFileName =  DataDir+ File.separatorChar+CheckoutsFileName;
             if(FileUtilities.Exists(checkoutFileName)){
                 var inputStream = new FileInputStream(checkoutFileName);
-                dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true));
+                dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true), dataProvider.UserDb, dataProvider.BookDb);
             }
+
+//            var newBooks = new ArrayList<Book>();
+//            for (var book: dataProvider.BookDb.GetAllBooks()) {
+//                var shortIdDb = new IdDb(null, null);
+//                book.ShortId = shortIdDb.GenerateShortId();
+//                newBooks.add(book);
+//            }
+//            for (var book:newBooks
+//                 ) {
+//                PrintUtilities.PrintLine(book.toString());
+//                PrintUtilities.PrintLine(FlatObjectParser.RecordSeparator);
+//            }
+
             return dataProvider;
         }
         catch (ParseException | FileNotFoundException e) {

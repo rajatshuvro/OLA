@@ -1,9 +1,6 @@
 package com.ola.unitTests.databases;
 
-import com.ola.CheckOut;
 import com.ola.DataProvider;
-import com.ola.Return;
-import com.ola.dataStructures.Transaction;
 import com.ola.unitTests.TestStreams;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +16,7 @@ public class DataProviderTests {
     public void Status_by_book() throws IOException {
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
-        provider.Load();
+
         var transaction = provider.TransactionDb.GetLatest("7890788-(2)");
         assertNotNull(transaction);
         assertTrue(provider.GetTransactionString(transaction).contains("7890788-(2)"));
@@ -28,7 +25,6 @@ public class DataProviderTests {
     public void Status_by_user() throws IOException {
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
-        provider.Load();
         var transactions = provider.GetPendingCheckouts( 897);
         assertNotNull(transactions);
         assertEquals(2, transactions.size());

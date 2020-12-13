@@ -63,7 +63,7 @@ public class LabelPrinter {
 
         PrintUtilities.PrintLine(bookList.size() + " book labels to print.");
         for (var book: bookList ) {
-            writer.write(book.Title+'\n'+book.GetUserFriendlyId()+"\n\n");
+            writer.write(book.Title+'\n'+book.GetUserFriendlyId()+'\n'+book.ShortId+"\n\n");
         }
     }
 

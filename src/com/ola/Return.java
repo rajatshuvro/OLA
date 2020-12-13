@@ -1,5 +1,6 @@
 package com.ola;
 
+import com.ola.databases.IdDb;
 import com.ola.parsers.ReturnCsvParser;
 import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
@@ -40,6 +41,7 @@ public class Return {
             InputStream stream = new FileInputStream(filePath);
             var csvParser = new ReturnCsvParser(stream);
             for (var record: csvParser.GetReturnes()) {
+                record = new com.ola.dataStructures.Return(record.BookId, record.DateTime);
                 if(transactionDb.Return(record)){
                     PrintUtilities.PrintSuccessLine(record.BookId +" has been returned.");
                 }

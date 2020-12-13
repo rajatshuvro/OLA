@@ -1,10 +1,7 @@
 package com.ola;
 
 import com.ola.dataStructures.Checkout;
-import com.ola.databases.BookDb;
-import com.ola.databases.CheckoutDb;
-import com.ola.databases.TransactionDb;
-import com.ola.databases.UserDb;
+import com.ola.databases.*;
 import com.ola.parsers.CheckoutCsvParser;
 import com.ola.utilities.FileUtilities;
 import com.ola.utilities.PrintUtilities;
@@ -15,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class CheckOut {
+public class CheckoutMain {
     private static String commandSyntax = "co -f [csv file path]";
     public static void Run(String[] args, DataProvider dataProvider){
         Options options = new Options();
@@ -34,7 +31,6 @@ public class CheckOut {
         }
 
         var checkoutDb = dataProvider.CheckoutDb;
-        var bookDb = dataProvider.BookDb;
         var userDb = dataProvider.UserDb;
         var transactionDb = dataProvider.TransactionDb;
         try {
@@ -51,10 +47,14 @@ public class CheckOut {
                 // resolve unknown users
                 for (var checkout : csvParser.GetCheckouts()) {
                     var resolvedUser = userDb.ResolveUser(checkout.UserId, checkout.Email);
+                    if (resolvedUser == null){
+                        PrintUtilities.PrintErrorLine("Failed to resolve user, skipping checkout for book:"+checkout.BookId);
+                        continue;
+                    }
                     checkouts.add(new Checkout(checkout.BookId, resolvedUser.Id, resolvedUser.Email, checkout.CheckoutDate, checkout.DueDate));
                 }
 
-                var count = checkoutDb.TryAddRange(checkouts,bookDb, userDb);
+                var count = checkoutDb.TryAddRange(checkouts);
                 System.out.println("Number of successful checkouts: "+count);
 
                 //adding transactions for future records
