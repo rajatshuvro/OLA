@@ -166,7 +166,12 @@ public class Main {
             }
 
             //duplicate all users to add new user id
+            var newUsers = new ArrayList<User>();
             for (var user: dataProvider.UserDb.GetAllUsers()) {
+                newUsers.add(user);
+            }
+
+            for (var user: newUsers) {
                 dataProvider.UserDb.AddNewUser(user.Name, user.Role, user.Email, user.Phone);
             }
 
