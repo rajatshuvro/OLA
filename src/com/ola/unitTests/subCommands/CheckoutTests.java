@@ -106,7 +106,7 @@ public class CheckoutTests {
     @Test
     public void Checkout_invalid_user(){
         var chekoutDb = new CheckoutDb(GetCheckouts(), null, GetUserDb(), GetBookDb());
-        var invalidCheckout = new Checkout("678564-(2)", "name.1","name10@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
+        var invalidCheckout = new Checkout("678564-(2)", "name.10","name10@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
 
         assertFalse(chekoutDb.TryAdd(invalidCheckout));
     }

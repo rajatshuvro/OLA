@@ -48,7 +48,7 @@ public class CheckoutDb {
         var checkouts = new ArrayList<Checkout>();
         for (var checkout:
              _checkouts.values()) {
-            if (checkout.UserId.equals(userId)) checkouts.add(checkout);
+            if (checkout.UserId != null && checkout.UserId.equals(userId)) checkouts.add(checkout);
         }
         return checkouts;
     }

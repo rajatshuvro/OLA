@@ -28,7 +28,7 @@ public class AddUserTests {
         var dataProvider = new DataProvider(null, userDb, null,appender);
 
         AddUser.Run(new String[]{"add-user", "-n","Shawroth","Shuvro", "-r", "Student", "-e", "shawroth.shuvro@onkur.com", "-p", "858-666-7242"}, dataProvider);
-        var user = userDb.GetUser("Shawroth Shuvro");
+        var user = userDb.GetUser("shawroth.shuvro");
         assertNotNull(user);
         assertEquals(User.StudentRoleTag,user.Role);
     }

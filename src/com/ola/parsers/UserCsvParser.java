@@ -42,7 +42,7 @@ public class UserCsvParser {
             var email = record.get(EmailTag).trim();
             var phone = record.get(PhoneTag).trim();
 
-            users.add(User.Create(UserDb.NewUserId,name, role, email, phone));
+            users.add(User.Create(UserDb.NewUserId, name, role, email, phone));
         }
         return users;
     }

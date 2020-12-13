@@ -11,7 +11,7 @@ import java.util.*;
 public class UserDb {
     private HashMap<String, User> _users;
     private ArrayList<User> _newUsers;
-    public static final int NewUserId=99999;
+    public static final String NewUserId="New.User";
 
     public UserDb(Iterable<User> users){
         _users = new HashMap<>();
@@ -49,15 +49,16 @@ public class UserDb {
         return null;
     }
 
-    private Random _rand = new Random();
-
     private String GenerateUserId(String name){
         var names = name.split("\\s+");
-        var id = names[0]+'.'+names[names.length-1];
+        var firstName = names[0].toLowerCase();
+        var lastName = names.length>1? names[names.length-1].toLowerCase(): null;
+
+        var id = firstName + '.' + lastName;
 
         var i = 1;
         while (_users.containsKey(id)){
-            id = names[0]+'.'+names[names.length-1] + '.'+ i;
+            id = firstName + '.' + lastName + '.'+ i;
         }
         return id;
     }
