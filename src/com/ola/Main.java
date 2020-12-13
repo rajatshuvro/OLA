@@ -1,5 +1,6 @@
 package com.ola;
 import com.ola.dataStructures.Book;
+import com.ola.dataStructures.User;
 import com.ola.databases.IdDb;
 import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.FileUtilities;
@@ -164,17 +165,10 @@ public class Main {
                 dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true), dataProvider.UserDb, dataProvider.BookDb);
             }
 
-//            var newBooks = new ArrayList<Book>();
-//            for (var book: dataProvider.BookDb.GetAllBooks()) {
-//                var shortIdDb = new IdDb(null, null);
-//                book.ShortId = shortIdDb.GenerateShortId();
-//                newBooks.add(book);
-//            }
-//            for (var book:newBooks
-//                 ) {
-//                PrintUtilities.PrintLine(book.toString());
-//                PrintUtilities.PrintLine(FlatObjectParser.RecordSeparator);
-//            }
+            //duplicate all users to add new user id
+            for (var user: dataProvider.UserDb.GetAllUsers()) {
+                dataProvider.UserDb.AddNewUser(user.Name, user.Role, user.Email, user.Phone);
+            }
 
             return dataProvider;
         }
