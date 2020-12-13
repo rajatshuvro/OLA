@@ -166,14 +166,22 @@ public class Main {
             }
 
             //duplicate all users to add new user id
-            var newUsers = new ArrayList<User>();
-            for (var user: dataProvider.UserDb.GetAllUsers()) {
-                newUsers.add(user);
-            }
-
-            for (var user: newUsers) {
-                dataProvider.UserDb.AddNewUser(user.Name, user.Role, user.Email, user.Phone);
-            }
+//            var newUsers = new ArrayList<User>();
+//            for (var user: dataProvider.UserDb.GetAllUsers()) {
+//                newUsers.add(user);
+//            }
+//
+//            var newIds = new ArrayList<String>();
+//            for (var user: newUsers) {
+//                var id = dataProvider.UserDb.AddNewUser(user.Name, user.Role, user.Email, user.Phone);
+//                newIds.add(id);
+//            }
+//            newUsers.clear();
+//            for (var id: newIds) {
+//                var user = dataProvider.UserDb.GetUser(id);
+//                newUsers.add(user);
+//            }
+//            dataProvider.Appender.AppendUsers(newUsers);
 
             return dataProvider;
         }

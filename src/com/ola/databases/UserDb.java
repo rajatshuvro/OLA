@@ -54,11 +54,11 @@ public class UserDb {
         var firstName = names[0].toLowerCase();
         var lastName = names.length>1? names[names.length-1].toLowerCase(): null;
 
-        var id = firstName + '.' + lastName;
+        var id = lastName != null ? firstName + '.' + lastName: firstName;
 
         var i = 1;
         while (_users.containsKey(id)){
-            id = firstName + '.' + lastName + '.'+ i;
+            id = lastName != null ? firstName + '.' + lastName + '.' + i : firstName + '.'+ i;
         }
         return id;
     }
