@@ -39,7 +39,7 @@ public class UserParser {
     }
 
     private User GetUser(HashMap<String, String> record){
-        int id       = Integer.parseInt(record.get(IdTag));
+        String id    = record.get(IdTag);
         String name  = record.get(NameTag);
         String role  = record.get(RoleTag);
         String email = record.get(EmailTag);

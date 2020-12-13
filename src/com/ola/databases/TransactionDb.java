@@ -60,8 +60,7 @@ public class TransactionDb {
     public ArrayList<Transaction> GetUserActivity(int userId){
         var transactions = new ArrayList<Transaction>();
         for(var transaction: _transactions){
-            if(transaction.UserId != userId) continue;
-            transactions.add(transaction);
+            if(transaction.UserId.equals(userId)) transactions.add(transaction);
         }
         return transactions;
     }
@@ -81,7 +80,7 @@ public class TransactionDb {
         return _transactions.get(index);
     }
 
-    public boolean Checkout(String bookId, int userId) throws IOException {
+    public boolean Checkout(String bookId, String userId) throws IOException {
         var date = TimeUtilities.GetCurrentTime();
         var checkouts = GetPendingCheckouts(userId);
         var checkoutCount = checkouts==null? 0: checkouts.size();
@@ -131,7 +130,7 @@ public class TransactionDb {
             PrintUtilities.PrintWarningLine("WARNING:Unknown book id: "+ record.BookId);
             return false;
         }
-        if(_userDb.GetUser(record.UserId) == null && record.UserId != Integer.MIN_VALUE){
+        if(_userDb.GetUser(record.UserId) == null){
             PrintUtilities.PrintWarningLine("WARNING:Unknown user id: "+ record.UserId);
             return false;
         }
@@ -181,10 +180,10 @@ public class TransactionDb {
         if(_latestTransactions.containsKey(bookId)) return _latestTransactions.get(bookId).Type;
         return Transaction.UnknownTag;
     }
-    public ArrayList<Transaction> GetPendingCheckouts(int userId) {
+    public ArrayList<Transaction> GetPendingCheckouts(String userId) {
         var checkouts = new ArrayList<Transaction>();
         for (Transaction record: GetPendingCheckouts()) {
-            if(userId != record.UserId) continue;
+            if(!userId.equals(record.UserId)) continue;
             checkouts.add(record);
         }
         return checkouts.size()==0? null: checkouts;

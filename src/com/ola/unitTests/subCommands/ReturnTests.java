@@ -37,18 +37,18 @@ public class ReturnTests {
 
     private UserDb GetUserDb() {
         var users = new ArrayList<User>();
-        users.add(User.Create(234, "name1", User.StudentRoleTag, "name1@onkur.com", "4568932678"));
-        users.add(User.Create(123, "name2", User.StudentRoleTag, "name2@onkur.com", "4568732678"));
-        users.add(User.Create(345, "name3", User.VolunteerRoleTag, "name3@onkur.com", "4568732676"));
+        users.add(User.Create("234", "name1", User.StudentRoleTag, "name1@onkur.com", "4568932678"));
+        users.add(User.Create("123", "name2", User.StudentRoleTag, "name2@onkur.com", "4568732678"));
+        users.add(User.Create("345", "name3", User.VolunteerRoleTag, "name3@onkur.com", "4568732676"));
         return new UserDb(users);
     }
 
     private ArrayList<Transaction> GetTransactions(){
         var transactions = new ArrayList<Transaction>();
-        transactions.add(Transaction.Create("7890788-(2)", 234, TimeUtilities.parseDateTime("2019-09-13 10:30:31"), Transaction.CheckoutTag));
-        transactions.add(Transaction.Create("678564-(1)", 123, TimeUtilities.parseDateTime("2019-10-15 11:01:22"), Transaction.CheckoutTag));
-        transactions.add(Transaction.Create("456098-(1)", 345, TimeUtilities.parseDateTime("2019-11-03 10:33:22"), Transaction.CheckoutTag));
-        transactions.add(Transaction.Create("7890788-(2)", 234, TimeUtilities.parseDateTime("2019-11-13 10:30:25"), Transaction.ReturnTag));
+        transactions.add(Transaction.Create("7890788-(2)", "234", TimeUtilities.parseDateTime("2019-09null3 10:30:31"), Transaction.CheckoutTag));
+        transactions.add(Transaction.Create("678564-(1)", "123", TimeUtilities.parseDateTime("2019null0null5 11:01:22"), Transaction.CheckoutTag));
+        transactions.add(Transaction.Create("456098-(1)", "345", TimeUtilities.parseDateTime("2019null1-03 10:33:22"), Transaction.CheckoutTag));
+        transactions.add(Transaction.Create("7890788-(2)", "234", TimeUtilities.parseDateTime("2019null1null3 10:30:25"), Transaction.ReturnTag));
 
         return transactions;
     }
@@ -71,20 +71,20 @@ public class ReturnTests {
     }
     private ArrayList<Checkout> GetCheckouts(){
         var checkouts = new ArrayList<Checkout>();
-        checkouts.add(new Checkout("7890788-(2)", 234,"name1@onkur.com", TimeUtilities.parseGoogleDateTime("2020/09/30 3:20:16 PM MDT"), TimeUtilities.parseDate("2020-10-25")));
-        checkouts.add(new Checkout("678564-(1)", 123, "name2@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
-        checkouts.add(new Checkout("456098-(1)", 345, "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:22:04 PM MDT"), TimeUtilities.parseDate("2020-10-28")));
-        checkouts.add(new Checkout("7890788-(2)", 234, "name1@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:23:30 PM MDT"), TimeUtilities.parseDate("2020-10-26")));
+        checkouts.add(new Checkout("7890788-(2)", "234","name1@onkur.com", TimeUtilities.parseGoogleDateTime("2020/09/30 3:20:16 PM MDT"), TimeUtilities.parseDate("2020null0-25")));
+        checkouts.add(new Checkout("678564-(1)", "123", "name2@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020null0-29")));
+        checkouts.add(new Checkout("456098-(1)", "345", "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:22:04 PM MDT"), TimeUtilities.parseDate("2020null0-28")));
+        checkouts.add(new Checkout("7890788-(2)", "234", "name1@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:23:30 PM MDT"), TimeUtilities.parseDate("2020null0-26")));
 
         return checkouts;
     }
 
     private ArrayList<Checkout> GetCheckouts_without_userid(){
         var checkouts = new ArrayList<Checkout>();
-        checkouts.add(new Checkout("7890788-(2)", -1,"name1@onkur.com", TimeUtilities.parseGoogleDateTime("2020/09/30 3:20:16 PM MDT"), TimeUtilities.parseDate("2020-10-25")));
-        checkouts.add(new Checkout("678564-(1)", -1, "name2@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29")));
-        checkouts.add(new Checkout("456098-(1)", -1, "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:22:04 PM MDT"), TimeUtilities.parseDate("2020-10-28")));
-        checkouts.add(new Checkout("7890788-(2)", -1, "name1@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:23:30 PM MDT"), TimeUtilities.parseDate("2020-10-26")));
+        checkouts.add(new Checkout("7890788-(2)", null,"name1@onkur.com", TimeUtilities.parseGoogleDateTime("2020/09/30 3:20:16 PM MDT"), TimeUtilities.parseDate("2020null0-25")));
+        checkouts.add(new Checkout("678564-(1)", null, "name2@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020null0-29")));
+        checkouts.add(new Checkout("456098-(1)", null, "name3@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:22:04 PM MDT"), TimeUtilities.parseDate("2020null0-28")));
+        checkouts.add(new Checkout("7890788-(2)", null, "name1@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:23:30 PM MDT"), TimeUtilities.parseDate("2020null0-26")));
 
         return checkouts;
     }

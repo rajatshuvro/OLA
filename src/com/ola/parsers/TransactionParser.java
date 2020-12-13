@@ -40,7 +40,7 @@ public class TransactionParser {
 
     private Transaction GetTransaction(HashMap<String, String> keyValues) {
         String bookId = null;
-        int userId = 0;
+        String userId = null;
         Date date = null;
         String type = null;
 
@@ -53,7 +53,7 @@ public class TransactionParser {
                     bookId = value;
                     break;
                 case UserIdTag:
-                    userId = Integer.parseInt(value);
+                    userId = value;
                     break;
                 case DateTag:
                     date = TimeUtilities.parseDateTime(value);

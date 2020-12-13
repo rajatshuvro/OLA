@@ -25,7 +25,7 @@ public class DataProviderTests {
     public void Status_by_user() throws IOException {
         var provider = new DataProvider(TestStreams.GetBooksStream(), TestStreams.GetUsersStream(), TestStreams.GetTransactionsStream(),
                 GetAppendStream(), GetAppendStream(), GetAppendStream());
-        var transactions = provider.GetPendingCheckouts( 897);
+        var transactions = provider.GetPendingCheckouts( "897");
         assertNotNull(transactions);
         assertEquals(2, transactions.size());
         assertTrue(provider.GetTransactionString(transactions.get(0)).contains("Zohir Chowdhury"));

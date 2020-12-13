@@ -7,13 +7,13 @@ import com.ola.utilities.FormatUtilities;
 import java.util.HashSet;
 
 public class User implements ISearchDocument {
-    public final int Id;
+    public final String Id;
     public final String Name;
     public final String Role;
     public final String Email;
     public final String Phone;
 
-    private User(int id, String name, String role, String email, String phn){
+    private User(String id, String name, String role, String email, String phn){
         Id = id;
         Name = name;
         Role = role;
@@ -22,14 +22,14 @@ public class User implements ISearchDocument {
     }
 
     public String GetId(){
-        return Integer.toString(Id);
+        return Id;
     }
-    public static User Create(int id, String name, String role, String email, String phn){
+    public static User Create(String id, String name, String role, String email, String phn){
         if(!IsValid(id, name, role, email, phn)) return null;
         return new User(id, name, role, email, phn);
     }
 
-    private static boolean IsValid(int id, String name, String role, String email, String phn) {
+    private static boolean IsValid(String id, String name, String role, String email, String phn) {
         if(ParserUtilities.IsNullOrEmpty(name)){
             System.out.println("User name cannot be empty");
             return false;
@@ -46,7 +46,7 @@ public class User implements ISearchDocument {
             System.out.println("Please provide a valid phone number. e.g. XXX-XXX-XXXX");
             return false;
         }
-        return id > 0;
+        return !ParserUtilities.IsNullOrEmpty(id);
     }
 
     @Override

@@ -121,23 +121,23 @@ public class DataProvider {
         return count;
     }
 
-    public int AddNewUser(String name, String role, String email, String phone) throws IOException {
-        int id = UserDb.AddNewUser(name, role, email, phone);
-        if(id != -1) {
+    public String AddNewUser(String name, String role, String email, String phone) throws IOException {
+        var id = UserDb.AddNewUser(name, role, email, phone);
+        if(id != null) {
             var newUsers = UserDb.GetNewRecords();
             Appender.AppendUsers(newUsers);
             _searchIndex.Add(newUsers.get(0).GetContent());
             _docs.add(newUsers.get(0));
             return id;
         }
-        else return -1;
+        else return null;
     }
 
     public int AddUsers(ArrayList<User> users) throws IOException {
         var count =0;
         for(var user: users){
             var id = UserDb.AddNewUser(user.Name, user.Role, user.Email, user.Phone);
-            if(id != -1) {
+            if(id != null) {
                 PrintUtilities.PrintSuccessLine(user.Name +" was added to the user database. Assigned Id: "+id);
                 _searchIndex.Add(user.GetContent());
                 _docs.add(user);
@@ -183,7 +183,7 @@ public class DataProvider {
         return sb.toString();
     }
 
-    public ArrayList<Transaction> GetPendingCheckouts(int userId) {
+    public ArrayList<Transaction> GetPendingCheckouts(String userId) {
          return TransactionDb.GetPendingCheckouts(userId);
     }
 

@@ -44,7 +44,7 @@ public class AddUser
             var phone = cmd.getOptionValue("phone");
 
             var id = dataProvider.AddNewUser(name, role, email, phone);
-            if(id != -1)
+            if(id != null)
                 PrintUtilities.PrintSuccessLine(name+" was added to the user database. Assigned Id: "+id);
             else PrintUtilities.PrintErrorLine("Failed to add new user.");
 

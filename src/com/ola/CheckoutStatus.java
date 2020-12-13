@@ -47,7 +47,7 @@ public class CheckoutStatus {
                 return 0;
             }
             if(cmd.hasOption('u') ){
-                var userId = Integer.parseInt(cmd.getOptionValue('u'));
+                var userId = cmd.getOptionValue('u');
                 if(dataProvider.UserDb.GetUser(userId) == null)
                     PrintUtilities.PrintErrorLine("Unknown user id: "+userId);
 
@@ -86,7 +86,7 @@ public class CheckoutStatus {
         return 0;
     }
 
-    private static void PrintUserCheckouts(DataProvider dataProvider, int userId) {
+    private static void PrintUserCheckouts(DataProvider dataProvider, String userId) {
         PrintUtilities.PrintLine("Pending checkouts for: "+ dataProvider.UserDb.GetUserName(userId));
         var pendingCheckouts = dataProvider.GetPendingCheckouts(userId);
         if (pendingCheckouts == null) {

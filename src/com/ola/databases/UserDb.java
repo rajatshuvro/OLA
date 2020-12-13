@@ -3,13 +3,13 @@ package com.ola.databases;
 import com.ola.dataStructures.User;
 import com.ola.luceneIndex.DocumentSearchIndex;
 import com.ola.luceneIndex.ISearchDocument;
+import com.ola.utilities.PrintUtilities;
 
 import java.io.IOException;
 import java.util.*;
 
 public class UserDb {
-    private HashMap<Integer, User> _users;
-    private int _maxId;
+    private HashMap<String, User> _users;
     private ArrayList<User> _newUsers;
     public static final int NewUserId=99999;
 
@@ -18,22 +18,19 @@ public class UserDb {
         for (User user: users) {
             if(user== null) continue;
 
-            _users.put(user.Id, user);
-            if(user.Id != NewUserId && user.Id > _maxId) _maxId = user.Id;
+            if(_users.containsKey(user.Id)){
+                PrintUtilities.PrintWarningLine("Duplicate user id:"+ user.Id);
+            }
+            else _users.put(user.Id, user);
         }
         _newUsers = new ArrayList<>();
     }
     public int size(){
         return _users.size();
     }
-    public User GetUser(int id){
+
+    public User GetUser(String id){
         if(_users.containsKey(id)) return _users.get(id);
-        return null;
-    }
-    public User GetUser(String name){
-        for (var user: _users.values()) {
-            if(user.Name.equals(name)) return user;
-        }
         return null;
     }
 
@@ -41,30 +38,41 @@ public class UserDb {
         return _users.values();
     }
 
-    public HashSet<Integer> GetIds() {
-        var ids = new HashSet<Integer>();
+    public HashSet<String> GetIds() {
+        var ids = new HashSet<String>();
         ids.addAll(_users.keySet());
         return ids;
     }
 
-    public String GetUserName(int userId) {
+    public String GetUserName(String userId) {
         if(_users.containsKey(userId)) return _users.get(userId).Name;
         return null;
     }
 
     private Random _rand = new Random();
-    public int AddNewUser(String name, String role, String email, String phone) {
-        var idIncrement = _rand.nextInt(20)+1;//preventing having a inc of 0
 
-        var user = User.Create(_maxId+idIncrement, name, role, email, phone);
-        if(user == null) return -1;//invalid user data
-        _maxId+=idIncrement;
+    private String GenerateUserId(String name){
+        var names = name.split("\\s+");
+        var id = names[0]+'.'+names[names.length-1];
+
+        var i = 1;
+        while (_users.containsKey(id)){
+            id = names[0]+'.'+names[names.length-1] + '.'+ i;
+        }
+        return id;
+    }
+    public String AddNewUser(String name, String role, String email, String phone) {
+        var id = GenerateUserId(name);
+
+        var user = User.Create(id, name, role, email, phone);
+        if(user == null) return null;//invalid user data
+
         _users.put(user.Id, user);
         _newUsers.add(user);
         return user.Id;
     }
 
-    public User ResolveUser(int userId, String email) {
+    public User ResolveUser(String userId, String email) {
         var user = GetUser(userId);
         var emailUsers = GetByEmail(email);
 

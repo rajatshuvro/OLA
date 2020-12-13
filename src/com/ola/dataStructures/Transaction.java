@@ -7,12 +7,12 @@ import java.util.HashSet;
 
 public class Transaction {
     public final String BookId;
-    public final int UserId;
+    public final String UserId;
     public final Date Date; // use the transaction time stamp
     public final String Type;
     public final long Id;
 
-    private Transaction(String bookId, int userId, Date date, String type){
+    private Transaction(String bookId, String userId, Date date, String type){
         BookId = bookId;
         UserId = userId;
         Date = date;
@@ -20,13 +20,13 @@ public class Transaction {
         Id = date.getTime();
     }
 
-    private static boolean IsValid(String bookId, int userId, Date date, String type){
+    private static boolean IsValid(String bookId, String userId, Date date, String type){
         return bookId != null &&
-                userId != 0 &&
+                userId != null &&
                 IsValidType(type);
     }
 
-    public static Transaction Create(String bookId, int userId, Date date, String type){
+    public static Transaction Create(String bookId, String userId, Date date, String type){
         if(!IsValid( bookId, userId, date, type)) return null;
         return new Transaction(bookId, userId, date, type);
     }

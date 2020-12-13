@@ -44,11 +44,11 @@ public class CheckoutDb {
     public boolean IsCheckedOut(String bookId){
         return _checkouts.containsKey(bookId);
     }
-    public ArrayList<Checkout> ReadCheckouts(int userId){
+    public ArrayList<Checkout> ReadCheckouts(String userId){
         var checkouts = new ArrayList<Checkout>();
         for (var checkout:
              _checkouts.values()) {
-            if (checkout.UserId == userId) checkouts.add(checkout);
+            if (checkout.UserId.equals(userId)) checkouts.add(checkout);
         }
         return checkouts;
     }

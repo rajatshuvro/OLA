@@ -41,7 +41,7 @@ public class CheckoutParser {
 
     private Checkout GetCheckout(HashMap<String, String> keyValues) {
         String bookId = null;
-        int userId = 0;
+        String userId = null;
         Date checkoutDate = null;
         Date dueDate =null;
 
@@ -54,7 +54,7 @@ public class CheckoutParser {
                     bookId = value;
                     break;
                 case UserIdTag:
-                    userId = Integer.parseInt(value);
+                    userId = value;
                     break;
                 case CheckoutDateTag:
                     checkoutDate = TimeUtilities.parseDateTime(value);

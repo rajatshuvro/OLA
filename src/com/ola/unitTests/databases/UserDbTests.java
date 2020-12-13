@@ -25,15 +25,15 @@ public class UserDbTests {
     @Test
     public void CreateUserDbTest(){
         var users = new ArrayList<User>();
-        users.add(User.Create(123, "Totini", User.StudentRoleTag, "totini.tonu@onkur.com", "732-666-7242"));
-        users.add(User.Create(234, "Nabil", User.TeacherRoleTag, "saber.nabil@onkur.com", "858-345-1234"));
-        users.add(User.Create(345, "Rajat", User.VolunteerRoleTag, "rajat.shuvro@onkur.com", "732-666-7242"));
-        users.add(User.Create(456, "Zohir", User.AdminRoleTag, "zohir.choudhury@onkur.com","987-145-3456"));
+        users.add(User.Create("123", "Totini", User.StudentRoleTag, "totini.tonu@onkur.com", "732-666-7242"));
+        users.add(User.Create("234", "Nabil", User.TeacherRoleTag, "saber.nabil@onkur.com", "858-345-1234"));
+        users.add(User.Create("345", "Rajat", User.VolunteerRoleTag, "rajat.shuvro@onkur.com", "732-666-7242"));
+        users.add(User.Create("456", "Zohir", User.AdminRoleTag, "zohir.choudhury@onkur.com","987-145-3456"));
 
         var userDb = new UserDb(users);
         assertEquals(4,userDb.size());
 
-        assertEquals("Totini", userDb.GetUser(123).Name);
-        assertNull(userDb.GetUser(999));
+        assertEquals("Totini", userDb.GetUser("123").Name);
+        assertNull(userDb.GetUser("999"));
     }
 }
