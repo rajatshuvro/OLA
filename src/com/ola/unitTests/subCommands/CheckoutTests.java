@@ -11,15 +11,20 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CheckoutTests {
-    private IdDb GetIdDb(){
-        var idMaps = new ArrayList<IdMap>();
-        idMaps.add(new IdMap("CAT12", "7890788-(2)"));
-        idMaps.add(new IdMap("BAT12", "678564-(1)"));
-        idMaps.add(new IdMap("DOG99", "678564-(2)"));
-        idMaps.add(new IdMap("PIG07", "456098-(1)"));
-        idMaps.add(new IdMap("GIP09", "456098-(2)"));
+    private BookDb GetBookDb() {
+        var books = new ArrayList<Book>();
+        books.add(Book.Create(7890788L,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+                2016,16, 5, "Fiction", 3, 2, null, null, "CAT12"));
+        books.add(Book.Create(678564,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+                2016,16, 5, "Fiction", 3, 1, null, null, "BAT12"));
+        books.add(Book.Create(678564,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+                2016,16, 5, "Fiction", 3, 2, null, null, "DOG99"));
+        books.add(Book.Create(456098,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+                2016,16, 5, "Fiction", 3, 1, null, null, "PIG07"));
+        books.add(Book.Create(456098,"Binoy Bormon", "Panite Jhopat Jhopat", "Sisimpur",
+                2016,16, 5, "Fiction", 3, 2, null, null, "GIP09"));
 
-        return new IdDb(idMaps,null);
+        return new BookDb(books);
     }
 
     private UserDb GetUserDb() {
@@ -69,28 +74,28 @@ public class CheckoutTests {
     }
     @Test
     public void Checkout_already_in_circulation(){
-        var chekoutDb = new CheckoutDb(GetCheckouts(), new ByteArrayOutputStream(), GetUserDb(), GetIdDb());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), new ByteArrayOutputStream(), GetUserDb(), GetBookDb());
 
         assertTrue(chekoutDb.IsCheckedOut("7890788-(2)"));
     }
 
     @Test
     public void Checkout_with_short_id(){
-        var chekoutDb = new CheckoutDb(null, new ByteArrayOutputStream(), GetUserDb(), GetIdDb());
+        var chekoutDb = new CheckoutDb(null, new ByteArrayOutputStream(), GetUserDb(), GetBookDb());
         chekoutDb.TryAddRange(GetCheckouts_shortId());
 
         assertTrue(chekoutDb.IsCheckedOut("7890788-(2)"));
     }
     @Test
     public void Checkout_new_book(){
-        var chekoutDb = new CheckoutDb(GetCheckouts(), new ByteArrayOutputStream(), GetUserDb(), GetIdDb());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), new ByteArrayOutputStream(), GetUserDb(), GetBookDb());
         chekoutDb.TryAddRange(GetNewCheckouts());
         assertTrue(chekoutDb.IsCheckedOut("678564-(2)"));
     }
 
     @Test
     public void Checkout_new_book_without_userid(){
-        var checkoutDb = new CheckoutDb(null, new ByteArrayOutputStream(), GetUserDb(), GetIdDb());
+        var checkoutDb = new CheckoutDb(null, new ByteArrayOutputStream(), GetUserDb(), GetBookDb());
         checkoutDb.TryAddRange(GetCheckouts_without_userid());
 
         assertTrue(checkoutDb.IsCheckedOut("7890788-(2)"));
@@ -100,7 +105,7 @@ public class CheckoutTests {
 
     @Test
     public void Checkout_invalid_user(){
-        var chekoutDb = new CheckoutDb(GetCheckouts(), null, GetUserDb(), GetIdDb());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), null, GetUserDb(), GetBookDb());
         var invalidCheckout = new Checkout("678564-(2)", 12345,"name10@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
 
         assertFalse(chekoutDb.TryAdd(invalidCheckout));
@@ -108,7 +113,7 @@ public class CheckoutTests {
 
     @Test
     public void Checkout_invalid_book(){
-        var chekoutDb = new CheckoutDb(GetCheckouts(), null, GetUserDb(), GetIdDb());
+        var chekoutDb = new CheckoutDb(GetCheckouts(), null, GetUserDb(), GetBookDb());
         var invalidCheckout = new Checkout("678564-(3)", 345,"name1@onkur.com",TimeUtilities.parseGoogleDateTime("2020/09/30 3:21:27 PM MDT"), TimeUtilities.parseDate("2020-10-29") );
 
         assertFalse(chekoutDb.TryAdd(invalidCheckout));

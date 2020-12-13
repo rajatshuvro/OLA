@@ -41,8 +41,7 @@ public class Return {
             InputStream stream = new FileInputStream(filePath);
             var csvParser = new ReturnCsvParser(stream);
             for (var record: csvParser.GetReturnes()) {
-                var bookId = IdDb.IsValidShortId(record.BookId)? dataProvider.IdDb.GetLongId(record.BookId): record.BookId;
-                record = new com.ola.dataStructures.Return(bookId, record.DateTime);
+                record = new com.ola.dataStructures.Return(record.BookId, record.DateTime);
                 if(transactionDb.Return(record)){
                     PrintUtilities.PrintSuccessLine(record.BookId +" has been returned.");
                 }
