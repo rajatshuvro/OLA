@@ -2,10 +2,15 @@ package com.ola.databases;
 
 import com.ola.dataStructures.Book;
 import com.ola.dataStructures.IdMap;
+import com.ola.parsers.FlatObjectParser;
 import com.ola.parsers.ParserUtilities;
 import com.ola.utilities.PrintUtilities;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -42,6 +47,17 @@ public class BookDb {
             UpdateLatestCopyNum(book);
         }
         _idDbb = new IdDb(idMaps, null);
+    }
+
+    public void AppendBooks(Iterable<Book> books, OutputStream appendStream) throws IOException {
+        if(books == null || appendStream == null)  return;
+
+        var appender = new BufferedWriter(new OutputStreamWriter(appendStream));
+        for (var book: books) {
+            appender.write(book.toString()+'\n');
+            appender.write(FlatObjectParser.RecordSeparator +'\n');
+        }
+        appender.close();
     }
 
     public Book GetBook(String id){

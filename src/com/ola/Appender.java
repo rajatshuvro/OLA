@@ -41,16 +41,16 @@ public class Appender {
 
     }
 
-    public void AppendBooks(Iterable<Book> books) throws IOException {
-        if(_bookAppender == null)
-            _bookAppender = new BufferedWriter(new OutputStreamWriter(_bookStream));
-        if(books == null ) return;
-        for (var book: books) {
-            _bookAppender.write(book.toString()+'\n');
-            _bookAppender.write(FlatObjectParser.RecordSeparator +'\n');
-        }
-        _bookAppender.flush();
-    }
+//    public void AppendBooks(Iterable<Book> books) throws IOException {
+//        if(_bookAppender == null)
+//            _bookAppender = new BufferedWriter(new OutputStreamWriter(_bookStream));
+//        if(books == null ) return;
+//        for (var book: books) {
+//            _bookAppender.write(book.toString()+'\n');
+//            _bookAppender.write(FlatObjectParser.RecordSeparator +'\n');
+//        }
+//        _bookAppender.flush();
+//    }
 
     public void AppendUsers(Iterable<User> users) throws IOException {
         if(_userAppender == null)

@@ -45,7 +45,7 @@ public class Add {
 
                 InputStream stream = new FileInputStream(filePath);
                 var bookParser = new BookCsvParser(stream);
-                var count = dataProvider.AddBooks(bookParser.GetBooks());
+                var count = dataProvider.AddNewBooks(bookParser.GetBooks());
                 System.out.println("Number of new books added: "+count);
             }
             if(cmd.hasOption("user")){

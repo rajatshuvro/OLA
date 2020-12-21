@@ -1,23 +1,24 @@
 package com.ola;
 import com.ola.dataStructures.Book;
-import com.ola.dataStructures.User;
-import com.ola.databases.IdDb;
-import com.ola.parsers.FlatObjectParser;
 import com.ola.utilities.FileUtilities;
+import com.ola.utilities.PathUtilities;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 import org.apache.commons.cli.*;
 
+import javax.xml.crypto.Data;
 import java.io.*;
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Main {
 //https://github.com/rajatshuvro/OLA/blob/master/README.md
     private static String DataDir;
+
     public static void main(String[] args) throws Exception{
 
-        DataProvider dataProvider = Initialize(args);
+        DataProvider dataProvider = GetDataProvider(args);
         if(dataProvider == null) return;
         //dataProvider.Load();
         PrintUtilities.PrintBanner();
@@ -49,8 +50,7 @@ public class Main {
                     CheckoutMain.Run(subArgs, dataProvider);
                     break;
                 case "ret":
-                    var checkoutFilePath =  DataDir+ File.separatorChar+CheckoutsFileName;
-                    Return.Run(subArgs, dataProvider, checkoutFilePath);
+                    Return.Run(subArgs, dataProvider);
                     break;
                 case "cs":
                 case "co-stat":
@@ -111,13 +111,8 @@ public class Main {
     }
 
     private static String commandSyntex = "ola -d [full path data directory] ";
-    private static String UsersFileName = "Users.fob";
-    private static String BooksFileName = "Books.fob";
-    private static String TransactionsFileName = "Transactions.fob";
-    private static String CheckoutsFileName = "Checkouts.fob";
-    private static String IdMapsFileName = "IdMaps.fob";
 
-    private static DataProvider Initialize(String[] args) {
+    private static DataProvider GetDataProvider(String[] args) {
         Options options = new Options();
 
         Option dataDirOption = new Option("d", "dir", true, "data directory path");
@@ -137,33 +132,14 @@ public class Main {
             cmd = parser.parse(options, args);
             DataDir = cmd.getOptionValue('d');
 
-            String bookFileName = DataDir+ File.separatorChar+BooksFileName;
-            if(!FileUtilities.Exists(bookFileName)){
-                PrintUtilities.PrintErrorLine("Failed to find file: "+bookFileName);
+            var dataDirPath = Paths.get(DataDir);
+            if(!Files.exists(dataDirPath) || !Files.isDirectory(dataDirPath)) {
+                PrintUtilities.PrintErrorLine("Data directory not found!!");
                 return null;
             }
-            String userFileName = DataDir+ File.separatorChar+UsersFileName;
-            if(!FileUtilities.Exists(userFileName)){
-                PrintUtilities.PrintErrorLine("Failed to find file: "+userFileName);
-                return null;
-            }
-            String transactionFileName = DataDir+ File.separatorChar+TransactionsFileName;
-            if(!FileUtilities.Exists(transactionFileName)){
-                PrintUtilities.PrintErrorLine("Failed to find file: "+transactionFileName);
-                return null;
-            }
-            var dataProvider =new DataProvider(new FileInputStream(bookFileName),
-                    new FileInputStream(userFileName),
-                    new FileInputStream(transactionFileName),
-                    new FileOutputStream(transactionFileName,true),
-                    new FileOutputStream(bookFileName, true),
-                    new FileOutputStream(userFileName, true));
+            var dataProvider = new DataProvider(DataDir);
 
-            var checkoutFileName =  DataDir+ File.separatorChar+CheckoutsFileName;
-            if(FileUtilities.Exists(checkoutFileName)){
-                var inputStream = new FileInputStream(checkoutFileName);
-                dataProvider.AddCheckoutDb(inputStream, new FileOutputStream(checkoutFileName,true), dataProvider.UserDb, dataProvider.BookDb);
-            }
+            if (!dataProvider.AddDbs()) return null;
 
             //duplicate all users to add new user id
 //            var newUsers = new ArrayList<User>();
@@ -185,11 +161,7 @@ public class Main {
 
             return dataProvider;
         }
-        catch (ParseException | FileNotFoundException e) {
-            PrintUtilities.PrintErrorLine(e.getMessage());
-            formatter.printHelp(commandSyntex, options);
-            return null;
-        } catch (IOException e) {
+        catch (ParseException e) {
             PrintUtilities.PrintErrorLine(e.getMessage());
             formatter.printHelp(commandSyntex, options);
             return null;

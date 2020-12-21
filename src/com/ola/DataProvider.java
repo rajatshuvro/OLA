@@ -9,6 +9,8 @@ import com.ola.dataStructures.User;
 import com.ola.databases.*;
 import com.ola.luceneIndex.ISearchDocument;
 import com.ola.parsers.*;
+import com.ola.utilities.FileUtilities;
+import com.ola.utilities.PathUtilities;
 import com.ola.utilities.PrintUtilities;
 import com.ola.utilities.TimeUtilities;
 
@@ -17,6 +19,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class DataProvider {
+    public final String UsersFileName = "Users.fob";
+    public final String BooksFileName = "Books.fob";
+    public final String TransactionsFileName = "Transactions.fob";
+    public final String CheckoutsFileName = "Checkouts.fob";
+
+
+    private String _dataDir;
     public BookDb BookDb;
     public UserDb UserDb;
     public CheckoutDb CheckoutDb;
@@ -48,6 +57,10 @@ public class DataProvider {
         _docs = new ArrayList<>();
 
     }
+    //to be used for builder pattern
+    public DataProvider(String dataDir){
+        _dataDir = dataDir;
+    }
 
     public DataProvider(InputStream bookInputStream, InputStream userInputStream, InputStream transactionInputStream
             , OutputStream transactionAppendStream, OutputStream bookAppendStream, OutputStream userAppendStream) {
@@ -71,11 +84,6 @@ public class DataProvider {
         } catch (IOException e) {
             PrintUtilities.PrintErrorLine("Failed to load data provider");
         }
-    }
-
-    public void AddCheckoutDb(InputStream inputStream, OutputStream outputStream, UserDb userDb, BookDb bookDb) {
-        var checkouts = DbUtilities.ReadCheckouts(inputStream);
-        CheckoutDb = new CheckoutDb(checkouts, outputStream, userDb, bookDb);
     }
 
     private void Load() throws IOException{
@@ -105,7 +113,7 @@ public class DataProvider {
         }
     }
 
-    public int AddBooks(ArrayList<Book> books) throws IOException {
+    public int AddNewBooks(ArrayList<Book> books) throws IOException {
         var count=0;
         for (Book book: books) {
             var displayId = BookDb.Add(book);
@@ -117,7 +125,14 @@ public class DataProvider {
             }
             else PrintUtilities.PrintErrorLine("Failed to add: "+ book.Title);
         }
-        Appender.AppendBooks(BookDb.GetNewRecords());
+
+        String fileName = PathUtilities.combine(_dataDir, BooksFileName);//DataDir+ File.separatorChar+BooksFileName;
+        if(!FileUtilities.Exists(fileName)){
+            PrintUtilities.PrintErrorLine("Failed to find file: "+fileName);
+            return 0;
+        }
+        var appendStream = new FileOutputStream(fileName, true);
+        BookDb.AppendBooks(BookDb.GetNewRecords(), appendStream);
         return count;
     }
 
@@ -214,4 +229,72 @@ public class DataProvider {
         return count;
     }
 
+    private boolean AddBookDb() {
+        String fileName = PathUtilities.combine(_dataDir, BooksFileName);//DataDir+ File.separatorChar+BooksFileName;
+        if(!FileUtilities.Exists(fileName)){
+            PrintUtilities.PrintErrorLine("Failed to find file: "+fileName);
+            return false;
+        }
+        try {
+            var inputStream = new FileInputStream(fileName);
+            BookDb = new BookDb(DbUtilities.ReadBooks(inputStream));
+        } catch (FileNotFoundException e) {
+            PrintUtilities.PrintErrorLine("Failed to open file stream:"+ fileName);
+        }
+        return true;
+    }
+
+    private boolean AddUserDb(){
+        String fileName = PathUtilities.combine(_dataDir, UsersFileName);
+        if(!FileUtilities.Exists(fileName)){
+            PrintUtilities.PrintErrorLine("Failed to find file: "+fileName);
+            return false;
+        }
+        try {
+            var inputStream = new FileInputStream(fileName);
+            UserDb = new UserDb(DbUtilities.ReadUsers(inputStream));
+        } catch (FileNotFoundException e) {
+            PrintUtilities.PrintErrorLine("Failed to open file stream:"+ fileName);
+        }
+        return true;
+    }
+
+    private boolean AddTransactionDb() {
+        String fileName = PathUtilities.combine(_dataDir, TransactionsFileName);
+        if(!FileUtilities.Exists(fileName)){
+            PrintUtilities.PrintErrorLine("Failed to find file: "+fileName);
+            return false;
+        }
+        try {
+            var inputStream = new FileInputStream(fileName);
+            TransactionDb = new TransactionDb(DbUtilities.ReadTransactions(inputStream), UserDb, BookDb, null);
+        } catch (FileNotFoundException e) {
+            PrintUtilities.PrintErrorLine("Failed to open file stream:"+ fileName);
+        }
+        return true;
+    }
+
+    private boolean AddCheckoutDb() {
+        String fileName = PathUtilities.combine(_dataDir, CheckoutsFileName);
+        if(!FileUtilities.Exists(fileName)){
+            PrintUtilities.PrintErrorLine("Failed to find file: "+fileName);
+            return false;
+        }
+        try {
+            var inputStream = new FileInputStream(fileName);
+            CheckoutDb = new CheckoutDb(DbUtilities.ReadCheckouts(inputStream),null, UserDb, BookDb);
+        } catch (FileNotFoundException e) {
+            PrintUtilities.PrintErrorLine("Failed to open file stream:"+ fileName);
+        }
+        return true;
+    }
+
+    public boolean AddDbs(){
+        if(!AddBookDb()) return false;
+        if(!AddUserDb()) return false;
+        if(!AddTransactionDb()) return false;
+        if(!AddCheckoutDb()) return false;
+
+        return true;
+    }
 }
