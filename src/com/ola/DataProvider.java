@@ -35,7 +35,7 @@ public class DataProvider {
     private UserParser _userParser;
     private TransactionParser _transactionParser;
 
-    public final Appender Appender;
+    public Appender Appender;
 
     private InputStream _bookInputStream;
     private InputStream _userInputStream;
@@ -98,7 +98,7 @@ public class DataProvider {
         _transactionInputStream.close();
     }
 
-    private void BuildSearchIndex() {
+    public void BuildSearchIndex() {
         _searchIndex = new InvertedIndex(new SmithWaterman());
         _docs = new ArrayList<>();
         for(var book: BookDb.GetAllBooks())
@@ -167,10 +167,10 @@ public class DataProvider {
     }
 
     public void Close() throws IOException {
-        Appender.Close();
-        _userAppendStream.close();
-        _bookAppendStream.close();
-        _transactionAppendStream.close();
+        if (Appender != null) Appender.Close();
+        if (_userAppendStream != null) _userAppendStream.close();
+        if (_bookAppendStream != null) _bookAppendStream.close();
+        if ( _transactionAppendStream!= null)_transactionAppendStream.close();
 
         CheckoutDb.Close();
     }

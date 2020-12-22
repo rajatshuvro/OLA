@@ -50,7 +50,8 @@ public class Main {
                     CheckoutMain.Run(subArgs, dataProvider);
                     break;
                 case "ret":
-                    Return.Run(subArgs, dataProvider);
+                    // todo: remove null checkout file path
+                    Return.Run(subArgs, dataProvider, null);
                     break;
                 case "cs":
                 case "co-stat":
@@ -140,6 +141,7 @@ public class Main {
             var dataProvider = new DataProvider(DataDir);
 
             if (!dataProvider.AddDbs()) return null;
+            dataProvider.BuildSearchIndex();
 
             //duplicate all users to add new user id
 //            var newUsers = new ArrayList<User>();
