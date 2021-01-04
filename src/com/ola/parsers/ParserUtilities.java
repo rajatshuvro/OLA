@@ -61,4 +61,17 @@ public class ParserUtilities {
         if(isbnString.contains("-")) isbnString = isbnString.replace("-","");
         return ParseULong(isbnString);
     }
+
+
+    public static String ToProperCase(String s) {
+        var words = s.split("\\s+");
+        var sb = new StringBuilder();
+        for (int i=0; i < words.length; i++) {
+            var word = words[i];
+            words[i] = word.substring(0, 1).toUpperCase() +
+                    word.substring(1).toLowerCase();
+
+        }
+        return String.join(" ", words);
+    }
 }

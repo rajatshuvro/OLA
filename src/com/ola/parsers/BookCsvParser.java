@@ -44,8 +44,8 @@ public class BookCsvParser {
             }
 
             long isbn = ParserUtilities.ParseIsbn(record.get(IsbnTag));
-            String title = record.get(TitleTag).trim();
-            String author = record.get(AuthorTag).trim();
+            String title = ParserUtilities.ToProperCase(record.get(TitleTag).trim());
+            String author = ParserUtilities.ToProperCase(record.get(AuthorTag).trim());
             String publisher = record.get(PublisherTag).trim();
             int year = ParserUtilities.ParseUInt(record.get(YearTag));
             var genre = record.get(GenreTag).trim();
